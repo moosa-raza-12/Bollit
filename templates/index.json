@@ -1,75 +1,397 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "lp-home-next-day-delivery-ends": {
+      "type": "lp-home-next-day-delivery-ends",
+      "settings": {},
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "block_lp-home-next-day-delivery-ends_0": {
+          "type": "nav_item",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "text": "Shop by category",
+            "url": "#",
+            "has_dropdown": true
           }
         },
-        "button": {
-          "type": "buttons",
+        "block_lp-home-next-day-delivery-ends_1": {
+          "type": "nav_item",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "Best sellers",
+            "url": "#",
+            "has_dropdown": true
+          }
+        },
+        "block_lp-home-next-day-delivery-ends_2": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Collection",
+            "url": "#"
+          }
+        },
+        "block_lp-home-next-day-delivery-ends_3": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Track your order",
+            "url": "#"
+          }
+        },
+        "block_lp-home-next-day-delivery-ends_4": {
+          "type": "nav_item",
+          "settings": {
+            "text": "Company",
+            "url": "#",
+            "has_dropdown": true
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+        "block_lp-home-next-day-delivery-ends_0",
+        "block_lp-home-next-day-delivery-ends_1",
+        "block_lp-home-next-day-delivery-ends_2",
+        "block_lp-home-next-day-delivery-ends_3",
+        "block_lp-home-next-day-delivery-ends_4"
+      ]
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
+    "lp-home-chemical-free-steam-one": {
+      "type": "lp-home-chemical-free-steam-one",
+      "settings": {},
+      "blocks": {
+        "block_lp-home-chemical-free-steam-one_0": {
+          "type": "feature",
+          "settings": {
+            "icon": "money",
+            "text": "100% Money-Back Guarantee"
+          }
+        },
+        "block_lp-home-chemical-free-steam-one_1": {
+          "type": "feature",
+          "settings": {
+            "icon": "return",
+            "text": "Free Shipping and Returns"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-home-chemical-free-steam-one_0",
+        "block_lp-home-chemical-free-steam-one_1"
+      ]
+    },
+    "lp-home-free-day-returns": {
+      "type": "lp-home-free-day-returns",
+      "settings": {},
+      "blocks": {
+        "block_lp-home-free-day-returns_0": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "return",
+            "title": "Free 30-Day Returns",
+            "description": "Return it within 30 days, no hassle."
+          }
+        },
+        "block_lp-home-free-day-returns_1": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "money",
+            "title": "100% Money-Back Guarantee",
+            "description": "Your purchase is fully protected."
+          }
+        },
+        "block_lp-home-free-day-returns_2": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "truck",
+            "title": "Free Shipping",
+            "description": "Free delivery on orders above €30."
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-home-free-day-returns_0",
+        "block_lp-home-free-day-returns_1",
+        "block_lp-home-free-day-returns_2"
+      ]
+    },
+    "lp-home-view-all": {
+      "type": "lp-home-view-all",
+      "settings": {},
+      "blocks": {
+        "block_lp-home-view-all_0": {
+          "type": "category",
+          "settings": {
+            "title": "Tapijtreinigers"
+          }
+        },
+        "block_lp-home-view-all_1": {
+          "type": "category",
+          "settings": {
+            "title": "HandSteamer"
+          }
+        },
+        "block_lp-home-view-all_2": {
+          "type": "category",
+          "settings": {
+            "title": "Stoomreiniger"
+          }
+        },
+        "block_lp-home-view-all_3": {
+          "type": "category",
+          "settings": {
+            "title": "Handheld Steamers"
+          }
+        },
+        "block_lp-home-view-all_4": {
+          "type": "category",
+          "settings": {
+            "title": "Luchtreinigers"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-home-view-all_0",
+        "block_lp-home-view-all_1",
+        "block_lp-home-view-all_2",
+        "block_lp-home-view-all_3",
+        "block_lp-home-view-all_4"
+      ]
+    },
+    "lp-home-sold-in-total": {
+      "type": "lp-home-sold-in-total",
+      "settings": {},
+      "blocks": {
+        "block_lp-home-sold-in-total_0": {
+          "type": "product_card",
+          "settings": {
+            "title": "Electric mop steam 1500W",
+            "badge": "Best Seller"
+          }
+        },
+        "block_lp-home-sold-in-total_1": {
+          "type": "product_card",
+          "settings": {
+            "title": "Steam Scrubber",
+            "badge": "Newly Launched"
+          }
+        },
+        "block_lp-home-sold-in-total_2": {
+          "type": "product_card",
+          "settings": {
+            "title": "Handheld Steamer",
+            "badge": "Newly Launched"
+          }
+        },
+        "block_lp-home-sold-in-total_3": {
+          "type": "product_card",
+          "settings": {
+            "title": "Steam Cleaner",
+            "badge": "Newly Launched"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-home-sold-in-total_0",
+        "block_lp-home-sold-in-total_1",
+        "block_lp-home-sold-in-total_2",
+        "block_lp-home-sold-in-total_3"
+      ]
+    },
+    "lp-home-why-choose-bollit": {
+      "type": "lp-home-why-choose-bollit",
+      "settings": {},
+      "blocks": {
+        "block_lp-home-why-choose-bollit_0": {
+          "type": "feature",
+          "settings": {
+            "title": "Chemical-free power",
+            "description": "High-temperature steam deep cleans and sanitizes without harsh chemicals. Safe for children, pets, and your home.",
+            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.3846 1.61538L10.3846 19.3846M1.61538 10.3846L19.3846 10.3846' stroke='#003665' stroke-width='1.5' stroke-linecap='round'/></svg>"
+          }
+        },
+        "block_lp-home-why-choose-bollit_1": {
+          "type": "feature",
+          "settings": {
+            "title": "Engineered performance",
+            "description": "Powerful performance metrics ensure that every corner of your home is sparkling clean with minimal effort.",
+            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M11.25 2.5L3.75 11.25H9.375L8.75 18.125L16.25 9.375H10.625L11.25 2.5Z' stroke='#003665' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+          }
+        },
+        "block_lp-home-why-choose-bollit_2": {
+          "type": "feature",
+          "settings": {
+            "title": "Specifically built to last",
+            "description": "Durable materials and quality components ensure reliable performance, day after day.",
+            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.5 1.75L3.5 4.375V9.625C3.5 13.9212 6.48375 17.9288 10.5 19.25C14.5163 17.9288 17.5 13.9212 17.5 9.625V4.375L10.5 1.75Z' stroke='#003665' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+          }
+        },
+        "block_lp-home-why-choose-bollit_3": {
+          "type": "feature",
+          "settings": {
+            "title": "Multi-surface safe",
+            "description": "From hardwood to tiles and carpets, Bollit is designed to adapt to every floor type in your modern home.",
+            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M3.5 5.25H17.5M3.5 10.5H17.5M3.5 15.75H17.5' stroke='#003665' stroke-width='1.5' stroke-linecap='round'/></svg>"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-home-why-choose-bollit_0",
+        "block_lp-home-why-choose-bollit_1",
+        "block_lp-home-why-choose-bollit_2",
+        "block_lp-home-why-choose-bollit_3"
+      ]
+    },
+    "lp-home-join-happier-homes": {
+      "type": "lp-home-join-happier-homes",
+      "settings": {},
+      "blocks": {
+        "block_lp-home-join-happier-homes_0": {
+          "type": "testimonial",
+          "settings": {
+            "reviewer_name": "Margreet"
+          }
+        },
+        "block_lp-home-join-happier-homes_1": {
+          "type": "testimonial",
+          "settings": {
+            "reviewer_name": "Margreet"
+          }
+        },
+        "block_lp-home-join-happier-homes_2": {
+          "type": "testimonial",
+          "settings": {
+            "reviewer_name": "Margreet"
+          }
+        },
+        "block_lp-home-join-happier-homes_3": {
+          "type": "testimonial",
+          "settings": {
+            "reviewer_name": "Margreet"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-home-join-happier-homes_0",
+        "block_lp-home-join-happier-homes_1",
+        "block_lp-home-join-happier-homes_2",
+        "block_lp-home-join-happier-homes_3"
+      ]
+    },
+    "lp-home-need-some-help": {
+      "type": "lp-home-need-some-help",
+      "settings": {},
+      "blocks": {
+        "block_lp-home-need-some-help_0": {
+          "type": "tab",
+          "settings": {
+            "title": "Product"
+          }
+        },
+        "block_lp-home-need-some-help_1": {
+          "type": "tab",
+          "settings": {
+            "title": "Usage"
+          }
+        },
+        "block_lp-home-need-some-help_2": {
+          "type": "tab",
+          "settings": {
+            "title": "Warranty"
+          }
+        },
+        "block_lp-home-need-some-help_3": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "block_lp-home-need-some-help_4": {
+          "type": "tab",
+          "settings": {
+            "title": "Returns"
+          }
+        },
+        "block_lp-home-need-some-help_5": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "Is the steam mop safe for hardwood floors?",
+            "answer": "Yes. It’s designed for sealed hardwood, tile, laminate, marble, and vinyl surfaces."
+          }
+        },
+        "block_lp-home-need-some-help_6": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "Does it require cleaning chemicals?",
+            "answer": "No chemicals required. Pure water steam kills 99.9% of bacteria."
+          }
+        },
+        "block_lp-home-need-some-help_7": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "How long does it take to heat up?",
+            "answer": "It typically reaches full steam temperature in 30 seconds."
+          }
+        },
+        "block_lp-home-need-some-help_8": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "How long does the water tank last?",
+            "answer": "A full tank provides approximately 15-20 minutes of continuous steam."
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-home-need-some-help_0",
+        "block_lp-home-need-some-help_1",
+        "block_lp-home-need-some-help_2",
+        "block_lp-home-need-some-help_3",
+        "block_lp-home-need-some-help_4",
+        "block_lp-home-need-some-help_5",
+        "block_lp-home-need-some-help_6",
+        "block_lp-home-need-some-help_7",
+        "block_lp-home-need-some-help_8"
+      ]
+    },
+    "lp-home-quick-links": {
+      "type": "lp-home-quick-links",
+      "settings": {},
+      "blocks": {
+        "block_lp-home-quick-links_0": {
+          "type": "column",
+          "settings": {
+            "title": "Products"
+          }
+        },
+        "block_lp-home-quick-links_1": {
+          "type": "column",
+          "settings": {
+            "title": "Quick Links"
+          }
+        },
+        "block_lp-home-quick-links_2": {
+          "type": "column",
+          "settings": {
+            "title": "Contact",
+            "custom_content": "helpbollit@gmail.com"
+          }
+        }
+      },
+      "block_order": [
+        "block_lp-home-quick-links_0",
+        "block_lp-home-quick-links_1",
+        "block_lp-home-quick-links_2"
+      ]
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "lp-home-next-day-delivery-ends",
+    "lp-home-chemical-free-steam-one",
+    "lp-home-free-day-returns",
+    "lp-home-view-all",
+    "lp-home-sold-in-total",
+    "lp-home-why-choose-bollit",
+    "lp-home-join-happier-homes",
+    "lp-home-need-some-help",
+    "lp-home-quick-links"
   ]
 }
