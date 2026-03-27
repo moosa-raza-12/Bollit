@@ -495,8 +495,8 @@
         "newsletter_desc": "Sign up for expert advice on cleaning, healthy home",
         "email_placeholder": "E-mail",
         "subscribe_button_text": "Subscribe",
-        "terms_url": "",
-        "privacy_url": "",
+        "terms_url": "shopify://policies/privacy-policy",
+        "privacy_url": "shopify://pages/contact",
         "copyright_text": "Bollit.",
         "show_background_graphic": true
       }
