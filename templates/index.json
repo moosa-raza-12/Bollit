@@ -449,14 +449,6 @@
     "lp-home-quick-links": {
       "type": "lp-home-quick-links",
       "blocks": {
-        "column_6ckK4N": {
-          "type": "column",
-          "settings": {
-            "title": "",
-            "menu": "",
-            "custom_content": ""
-          }
-        },
         "block_lp-home-quick-links_0": {
           "type": "column",
           "settings": {
@@ -483,7 +475,6 @@
         }
       },
       "block_order": [
-        "column_6ckK4N",
         "block_lp-home-quick-links_0",
         "block_lp-home-quick-links_1",
         "block_lp-home-quick-links_2"
