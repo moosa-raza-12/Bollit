@@ -61,6 +61,7 @@
         "block_lp-home-next-day-delivery-ends_4"
       ],
       "settings": {
+        "logo": "shopify://shop_images/Layer_1.png",
         "countdown_text": "Next-day delivery ends in"
       }
     },
