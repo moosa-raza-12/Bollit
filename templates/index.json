@@ -370,6 +370,14 @@
             "title": "Product"
           }
         },
+        "faq_item_7NwCw8": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "Is the steam mop safe for hardwood floors?",
+            "answer": "Yes. It’s designed for sealed hardwood, tile, laminate, marble, and vinyl surfaces."
+          }
+        },
         "block_lp-home-need-some-help_1": {
           "type": "tab",
           "settings": {
@@ -429,6 +437,7 @@
       },
       "block_order": [
         "block_lp-home-need-some-help_0",
+        "faq_item_7NwCw8",
         "block_lp-home-need-some-help_1",
         "block_lp-home-need-some-help_2",
         "block_lp-home-need-some-help_3",
@@ -442,6 +451,7 @@
         "subtitle": "Need some help?",
         "title": "Frequently asked questions",
         "description": "We’ve answered the most common questions so you can choose with confidence.",
+        "image": "shopify://shop_images/Image.png",
         "contact_title": "Need more help?",
         "contact_text": "<p>We’re happy to help. Whether it’s about your product, delivery, or setup. Contact our customer service at helpbollit@gmail.com</p>"
       }
