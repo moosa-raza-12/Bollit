@@ -1,0 +1,205 @@
+{{ 'lp-home-quick-links.css' | asset_url | stylesheet_tag }}
+
+<footer class="lp-footer" id="lp-footer-{{ section.id }}">
+  <div class="lp-footer__container">
+    <div class="lp-footer__main">
+      <div class="lp-footer__brand-newsletter">
+        <div class="lp-footer__brand">
+          {%- if section.settings.logo != blank -%}
+            <img src="{{ section.settings.logo | image_url: width: 200 }}" alt="{{ shop.name }}" class="lp-footer__logo" width="100" height="36" loading="lazy">
+          {%- else -%}
+            <div class="lp-footer__logo-placeholder">BOLLIT</div>
+          {%- endif -%}
+          <div class="lp-footer__description">
+            {{ section.settings.description }}
+          </div>
+        </div>
+
+        <div class="lp-footer__newsletter">
+          <div class="lp-footer__newsletter-content">
+            <h3 class="lp-footer__newsletter-title">{{ section.settings.newsletter_title }}</h3>
+            <p class="lp-footer__newsletter-desc">{{ section.settings.newsletter_desc }}</p>
+            
+            {%- form 'customer', class: 'lp-footer__form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="lp-footer__input-wrapper">
+                <input
+                  type="email"
+                  name="contact[email]"
+                  class="lp-footer__input"
+                  value="{{ form.email }}"
+                  aria-required="true"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  autocomplete="email"
+                  placeholder="{{ section.settings.email_placeholder }}"
+                  required
+                >
+                <button type="submit" class="lp-footer__submit" name="commit">
+                  {{ section.settings.subscribe_button_text }}
+                </button>
+              </div>
+              {%- if form.errors -%}
+                <small class="lp-footer__form-message lp-footer__form-message--error">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</small>
+              {%- endif -%}
+              {%- if form.posted_successfully? -%}
+                <small class="lp-footer__form-message lp-footer__form-message--success">{{ 'newsletter.success' | t }}</small>
+              {%- endif -%}
+            {%- endform -%}
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-footer__nav">
+        {%- for block in section.blocks -%}
+          <div class="lp-footer__col" {{ block.shopify_attributes }}>
+            <h4 class="lp-footer__col-title">{{ block.settings.title }}</h4>
+            <ul class="lp-footer__col-list">
+              {%- if block.settings.menu != blank -%}
+                {%- for link in block.settings.menu.links -%}
+                  <li><a href="{{ link.url }}" class="lp-footer__link">{{ link.title }}</a></li>
+                {%- endfor -%}
+              {%- elsif block.settings.custom_content != blank -%}
+                <li><span class="lp-footer__link">{{ block.settings.custom_content }}</span></li>
+              {%- endif -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="lp-footer__bottom">
+      <div class="lp-footer__legal">
+        {%- if section.settings.terms_url != blank -%}
+          <a href="{{ section.settings.terms_url }}" class="lp-footer__legal-link">Terms of Service</a>
+        {%- endif -%}
+        {%- if section.settings.privacy_url != blank -%}
+          <a href="{{ section.settings.privacy_url }}" class="lp-footer__legal-link">Privacy Policy</a>
+        {%- endif -%}
+      </div>
+      <p class="lp-footer__copyright">© {{ section.settings.copyright_text }} {{ 'now' | date: '%Y' }}</p>
+    </div>
+  </div>
+
+  {%- if section.settings.show_background_graphic -%}
+    <div class="lp-footer__graphic">
+      <svg width="271" height="389" viewBox="0 0 271 389" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path opacity="0.05" d="M271 389L0 389L135.5 0L271 389Z" fill="white"/>
+      </svg>
+    </div>
+  {%- endif -%}
+</footer>
+
+{% schema %}
+{
+  "name": "Quick Links Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Bollit builds powerful, chemical-free cleaning systems made for real homes. Designed for performance."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "get 10% off"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_desc",
+      "label": "Newsletter Description",
+      "default": "Sign up for expert advice on cleaning, healthy home"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email Placeholder",
+      "default": "E-mail"
+    },
+    {
+      "type": "text",
+      "id": "subscribe_button_text",
+      "label": "Button Text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "url",
+      "id": "terms_url",
+      "label": "Terms of Service Link"
+    },
+    {
+      "type": "url",
+      "id": "privacy_url",
+      "label": "Privacy Policy Link"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "Bollit."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_background_graphic",
+      "label": "Show Background Graphic",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Link Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column Title"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_content",
+          "label": "Custom Content (e.g. Email)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quick Links Footer",
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "title": "Products"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "title": "Quick Links"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "title": "Contact",
+            "custom_content": "helpbollit@gmail.com"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,114 @@
+{{ 'lp-home-free-day-returns.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-features-bar" id="lp-section-{{ section.id }}">
+  <div class="lp-features-bar__container">
+    <div class="lp-features-bar__inner">
+      {%- for block in section.blocks -%}
+        <div class="lp-feature-item" {{ block.shopify_attributes }}>
+          <div class="lp-feature-item__icon-container">
+            {%- if block.settings.icon_svg != blank -%}
+              {{ block.settings.icon_svg }}
+            {%- else -%}
+              {%- case block.settings.icon_type -%}
+                {%- when 'return' -%}
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 10L4 15L9 20"/><path d="M20 4V11C20 13.2091 18.2091 15 16 15H4"/></svg>
+                {%- when 'money' -%}
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L12 22"/><path d="M17 5H9.5C8.11929 5 7 6.11929 7 7.5C7 8.88071 8.11929 10 9.5 10H14.5C15.8807 10 17 11.1193 17 12.5C17 13.8807 15.8807 15 14.5 15H7"/></svg>
+                {%- when 'truck' -%}
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+          <div class="lp-feature-item__content">
+            <h3 class="lp-feature-item__title">{{ block.settings.title | escape | newline_to_br }}</h3>
+            <p class="lp-feature-item__description">{{ block.settings.description | escape }}</p>
+          </div>
+        </div>
+        {%- unless forloop.last -%}
+          <div class="lp-features-bar__separator"></div>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Features Bar",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon Type",
+          "options": [
+            { "value": "return", "label": "Return" },
+            { "value": "money", "label": "Money Bag" },
+            { "value": "truck", "label": "Truck" }
+          ],
+          "default": "return"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Custom SVG Icon (Optional)"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Feature description goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features Bar",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon_type": "return",
+            "title": "Free 30-Day Returns",
+            "description": "Return it within 30 days, no hassle."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_type": "money",
+            "title": "100% Money-Back Guarantee",
+            "description": "Your purchase is fully protected."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon_type": "truck",
+            "title": "Free Shipping",
+            "description": "Free delivery on orders above €30."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

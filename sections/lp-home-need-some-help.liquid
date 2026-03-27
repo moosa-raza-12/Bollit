@@ -1,0 +1,166 @@
+{{ 'lp-home-need-some-help.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-help" id="lp-help-{{ section.id }}">
+  <div class="lp-help__container">
+    <header class="lp-help__header">
+      <div class="lp-help__badge-wrapper">
+        <span class="lp-help__badge">{{ section.settings.subtitle }}</span>
+        <div class="lp-help__badge-divider">
+          <svg width="82" height="21" viewBox="0 0 82 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 10.5H82" stroke="#003665"/></svg>
+        </div>
+      </div>
+      <h2 class="lp-help__title">{{ section.settings.title }}</h2>
+      <p class="lp-help__description">{{ section.settings.description }}</p>
+    </header>
+
+    <div class="lp-help__tabs-container">
+      {% for block in section.blocks %}
+        {% if block.type == 'tab' %}
+          <input type="radio" name="lp-help-tabs-{{ section.id }}" id="tab-{{ section.id }}-{{ forloop.index }}" class="lp-help__tab-input" {% if forloop.first %}checked{% endif %}>
+          <label for="tab-{{ section.id }}-{{ forloop.index }}" class="lp-help__tab-label" {{ block.shopify_attributes }}>
+            {{ block.settings.title }}
+          </label>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="lp-help__content-grid">
+      <div class="lp-help__image-wrapper">
+        {% if section.settings.image != blank %}
+          {{ section.settings.image | image_url: width: 1000 | image_tag: class: 'lp-help__image', loading: 'lazy' }}
+        {% else %}
+          {{ 'image' | placeholder_svg_tag: 'lp-help__image placeholder' }}
+        {% endif %}
+      </div>
+
+      <div class="lp-help__faq-list">
+        {% for block in section.blocks %}
+          {% if block.type == 'faq_item' %}
+            {% assign tab_index = 0 %}
+            {% for tab_block in section.blocks %}
+              {% if tab_block.type == 'tab' %}
+                {% assign tab_index = tab_index | plus: 1 %}
+                {% if tab_block.settings.title == block.settings.category %}
+                  {% assign current_tab_match = tab_index %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            
+            <details class="lp-help__faq-item" data-tab-content="{{ current_tab_match }}" {{ block.shopify_attributes }}>
+              <summary class="lp-help__faq-summary">
+                <span class="lp-help__faq-question">{{ block.settings.question }}</span>
+                <span class="lp-help__faq-icon">
+                  <svg class="icon-plus" width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 0V13M0 6.5H13" stroke="currentColor"/></svg>
+                  <svg class="icon-minus" width="13" height="2" viewBox="0 0 13 2" fill="none"><path d="M0 1H13" stroke="currentColor"/></svg>
+                </span>
+              </summary>
+              <div class="lp-help__faq-answer">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          {% endif %}
+        {% endfor %}
+
+        <div class="lp-help__contact-card">
+          <h3 class="lp-help__contact-title">{{ section.settings.contact_title }}</h3>
+          <div class="lp-help__contact-text">{{ section.settings.contact_text }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Need Some Help?",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Badge Text",
+      "default": "Need some help?"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We’ve answered the most common questions so you can choose with confidence."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Image"
+    },
+    {
+      "type": "text",
+      "id": "contact_title",
+      "label": "Contact Card Title",
+      "default": "Need more help?"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_text",
+      "label": "Contact Card Text",
+      "default": "<p>We’re happy to help. Whether it’s about your product, delivery, or setup. Contact our customer service at helpbollit@gmail.com</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab Label"
+        }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Tab Category",
+          "info": "Must match Tab Label exactly"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Need Some Help?",
+      "blocks": [
+        { "type": "tab", "settings": { "title": "Product" } },
+        { "type": "tab", "settings": { "title": "Usage" } },
+        { "type": "tab", "settings": { "title": "Warranty" } },
+        { "type": "tab", "settings": { "title": "Shipping" } },
+        { "type": "tab", "settings": { "title": "Returns" } },
+        { "type": "faq_item", "settings": { "category": "Product", "question": "Is the steam mop safe for hardwood floors?", "answer": "Yes. It’s designed for sealed hardwood, tile, laminate, marble, and vinyl surfaces." } },
+        { "type": "faq_item", "settings": { "category": "Product", "question": "Does it require cleaning chemicals?", "answer": "No chemicals required. Pure water steam kills 99.9% of bacteria." } },
+        { "type": "faq_item", "settings": { "category": "Product", "question": "How long does it take to heat up?", "answer": "It typically reaches full steam temperature in 30 seconds." } },
+        { "type": "faq_item", "settings": { "category": "Product", "question": "How long does the water tank last?", "answer": "A full tank provides approximately 15-20 minutes of continuous steam." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

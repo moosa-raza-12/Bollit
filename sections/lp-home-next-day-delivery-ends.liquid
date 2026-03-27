@@ -1,0 +1,164 @@
+{{ 'lp-home-next-day-delivery-ends.css' | asset_url | stylesheet_tag }}
+<header class="lp-header" id="lp-section-{{ section.id }}">
+  <div class="lp-header__top-bar">
+    <div class="lp-header__top-container">
+      <div class="lp-header__delivery-info">
+        <span class="lp-header__icon-truck">
+          <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17 11H19V13C19 13.55 18.55 14 18 14H17C16.45 14 16 13.55 16 13V11ZM1 8H15V14H13C13 15.1 12.1 16 11 16C9.9 16 9 15.1 9 14H5C5 15.1 4.1 16 3 16C1.9 16 1 15.1 1 14V8ZM15 3L18.4 7H15V3ZM14 2H11V7H14V2ZM10 2H1V7H10V2ZM3 13C3.55 13 4 13.45 4 14C4 14.55 3.55 15 3 15C2.45 15 2 14.55 2 14C2 13.45 2.45 13 3 13ZM11 13C11.55 13 12 13.45 12 14C12 14.55 11.55 15 11 15C10.45 15 10 14.55 10 14C10 13.45 10.45 13 11 13Z" fill="white"/>
+          </svg>
+        </span>
+        <div class="lp-header__countdown">
+          <span class="lp-header__countdown-text">{{ section.settings.countdown_text }}</span>
+          <div class="lp-header__timer" data-timer="{{ section.settings.countdown_end_time }}">
+            <div class="lp-header__timer-box">
+              <span class="lp-header__timer-num" data-hours>07</span>
+              <span class="lp-header__timer-unit">HRS</span>
+            </div>
+            <div class="lp-header__timer-box">
+              <span class="lp-header__timer-num" data-minutes>59</span>
+              <span class="lp-header__timer-unit">MINS</span>
+            </div>
+            <div class="lp-header__timer-box">
+              <span class="lp-header__timer-num" data-seconds>12</span>
+              <span class="lp-header__timer-unit">SEC</span>
+            </div>
+          </div>
+        </div>
+        <span class="lp-header__chevron-mobile">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 3L4 6L7 3" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="lp-header__main-bar">
+    <div class="lp-header__main-container">
+      <div class="lp-header__mobile-controls">
+        <button class="lp-header__menu-toggle" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill="black"/>
+          </svg>
+        </button>
+        <button class="lp-header__search-toggle" aria-label="Search">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="black" stroke-width="1.5"/>
+            <path d="M21 21L16.65 16.65" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+      <a href="/" class="lp-header__logo">
+        {%- if section.settings.logo != blank -%}
+          <img src="{{ section.settings.logo | image_url: width: 130 }}" alt="{{ shop.name }}" width="65" height="24">
+        {%- else -%}
+          <span class="lp-header__logo-fallback">LOGO</span>
+        {%- endif -%}
+      </a>
+      <nav class="lp-header__nav">
+        <ul class="lp-header__nav-list">
+          {%- for block in section.blocks -%}
+            <li class="lp-header__nav-item">
+              <a href="{{ block.settings.url }}" class="lp-header__nav-link">
+                {{ block.settings.text }}
+                {%- if block.settings.has_dropdown -%}
+                  <svg width="10" height="5" viewBox="0 0 10 5" fill="none">
+                    <path d="M1 1L5 4L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                {%- endif -%}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+      <div class="lp-header__actions">
+        <a href="/search" class="lp-header__action-btn lp-header__action-search" aria-label="Search">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="black" stroke-width="1.5"/>
+            <path d="M21 21L16.65 16.65" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </a>
+        <a href="/cart" class="lp-header__action-btn" aria-label="Cart">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 3H5L5.4 5M5.4 5H21L19 13H7M5.4 5L7 13M7 13L6 16H19M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM18 20C18 20.5523 17.5523 21 17 21C16.4477 21 16 20.5523 16 20C16 19.4477 16.4477 19 17 19C17.5523 19 18 19.4477 18 20Z" stroke="black" stroke-width="1.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const timer = document.querySelector('#lp-section-{{ section.id }} [data-timer]');
+    if (!timer) return;
+    const endTime = new Date();
+    endTime.setHours(23, 59, 59); // Logic: ends at end of day, or use schema input
+    function updateTimer() {
+      const now = new Date().getTime();
+      const distance = endTime - now;
+      if (distance < 0) return;
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      timer.querySelector('[data-hours]').innerText = hours.toString().padStart(2, '0');
+      timer.querySelector('[data-minutes]').innerText = minutes.toString().padStart(2, '0');
+      timer.querySelector('[data-seconds]').innerText = seconds.toString().padStart(2, '0');
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  });
+</script>
+{% schema %}
+{
+  "name": "LP Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "countdown_text",
+      "label": "Countdown Text",
+      "default": "Next-day delivery ends in"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_item",
+      "name": "Navigation Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "has_dropdown",
+          "label": "Show Dropdown Icon",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP Header",
+      "blocks": [
+        { "type": "nav_item", "settings": { "text": "Shop by category", "url": "#", "has_dropdown": true } },
+        { "type": "nav_item", "settings": { "text": "Best sellers", "url": "#", "has_dropdown": true } },
+        { "type": "nav_item", "settings": { "text": "Collection", "url": "#" } },
+        { "type": "nav_item", "settings": { "text": "Track your order", "url": "#" } },
+        { "type": "nav_item", "settings": { "text": "Company", "url": "#", "has_dropdown": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

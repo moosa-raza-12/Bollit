@@ -1,0 +1,201 @@
+.lp-happier-homes {
+  --bg-color: #eff8ff;
+  --card-bg: #ffffff;
+  --text-primary: #1e1e1e;
+  --text-secondary: #555555;
+  --accent-color: #003665;
+  background-color: var(--bg-color);
+  padding: 36px 0;
+  overflow: hidden;
+}
+
+.lp-happier-homes__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.lp-happier-homes__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.lp-happier-homes__reviews-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  border-bottom: 1px solid rgba(0, 54, 101, 0.2);
+}
+
+.lp-happier-homes__reviews-text {
+  font-size: 16px;
+  color: var(--accent-color);
+  letter-spacing: -0.24px;
+}
+
+.lp-happier-homes__title {
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: -0.48px;
+}
+
+.lp-happier-homes__carousel-wrapper {
+  position: relative;
+  margin: 0 -20px;
+  padding: 0 20px;
+}
+
+.lp-happier-homes__carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 24px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.lp-happier-homes__carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.lp-happier-homes__card {
+  flex: 0 0 225px;
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: auto;
+}
+
+.lp-happier-homes__card-image-wrapper {
+  background-color: var(--bg-color);
+  border-radius: 12px;
+  aspect-ratio: 193 / 195;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lp-happier-homes__card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lp-happier-homes__card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.lp-happier-homes__card-stars {
+  display: flex;
+  gap: 2px;
+}
+
+.lp-happier-homes__card-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  color: #555555;
+}
+
+.lp-happier-homes__card-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(30, 30, 30, 0.7);
+  margin: 0;
+}
+
+.lp-happier-homes__card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.lp-happier-homes__reviewer-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #ddd;
+}
+
+.lp-happier-homes__avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+}
+
+.lp-happier-homes__reviewer-name-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-happier-homes__reviewer-name {
+  font-size: 12px;
+  color: #808080;
+}
+
+.lp-happier-homes__scrollbar {
+  width: 100%;
+  height: 3px;
+  background: rgba(204, 204, 204, 0.4);
+  border-radius: 16px;
+  position: relative;
+  margin-top: 12px;
+}
+
+.lp-happier-homes__scrollbar-thumb {
+  width: 120px;
+  height: 100%;
+  background: var(--accent-color);
+  border-radius: 16px;
+  position: absolute;
+  left: 0;
+  transition: transform 0.1s ease-out;
+}
+
+@media (min-width: 768px) {
+  .lp-happier-homes {
+    padding: 64px 0;
+  }
+  .lp-happier-homes__container {
+    padding: 0 100px;
+  }
+  .lp-happier-homes__title {
+    font-size: 38px;
+  }
+  .lp-happier-homes__card {
+    flex: 0 0 300px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lp-happier-homes__container {
+    padding: 0 200px;
+  }
+  .lp-happier-homes__carousel {
+    gap: 24px;
+  }
+  .lp-happier-homes__scrollbar {
+    margin-top: 36px;
+  }
+}

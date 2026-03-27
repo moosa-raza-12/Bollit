@@ -1,0 +1,175 @@
+{{ 'lp-home-join-happier-homes.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-happier-homes" id="lp-section-{{ section.id }}">
+  <div class="lp-happier-homes__container">
+    <header class="lp-happier-homes__header">
+      <div class="lp-happier-homes__reviews-meta">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 0L8.57143 4.83333H14L9.71429 7.83333L11.2857 12.6667L7 9.66667L2.71429 12.6667L4.28571 7.83333L0 4.83333H5.42857L7 0Z" fill="#003665"/>
+        </svg>
+        <span class="lp-happier-homes__reviews-text">{{ section.settings.reviews_text }}</span>
+      </div>
+      <h2 class="lp-happier-homes__title">{{ section.settings.title }}</h2>
+    </header>
+
+    <div class="lp-happier-homes__carousel-wrapper">
+      <div class="lp-happier-homes__carousel" data-carousel="{{ section.id }}">
+        {% for block in section.blocks %}
+          <div class="lp-happier-homes__card" {{ block.shopify_attributes }}>
+            <div class="lp-happier-homes__card-image-wrapper">
+              {% if block.settings.product_image != blank %}
+                {{ block.settings.product_image | image_url: width: 400 | image_tag: class: 'lp-happier-homes__card-image', loading: 'lazy' }}
+              {% else %}
+                {{ 'product-1' | placeholder_svg_tag: 'lp-happier-homes__card-image' }}
+              {% endif %}
+            </div>
+            
+            <div class="lp-happier-homes__card-content">
+              <div class="lp-happier-homes__card-stars">
+                {% for i in (1..5) %}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 0L7.34733 4.14286H12L8.32634 6.71429L9.67367 10.8571L6 8.28571L2.32633 10.8571L3.67366 6.71429L0 4.14286H4.65267L6 0Z" fill="#003665"/>
+                  </svg>
+                {% endfor %}
+              </div>
+              <h3 class="lp-happier-homes__card-title">{{ block.settings.review_title }}</h3>
+              <p class="lp-happier-homes__card-desc">{{ block.settings.review_desc }}</p>
+            </div>
+
+            <div class="lp-happier-homes__card-footer">
+              <div class="lp-happier-homes__reviewer-avatar">
+                {% if block.settings.reviewer_avatar != blank %}
+                  {{ block.settings.reviewer_avatar | image_url: width: 48 | image_tag: class: 'lp-happier-homes__avatar-img', loading: 'lazy' }}
+                {% else %}
+                  <div class="lp-happier-homes__avatar-placeholder"></div>
+                {% endif %}
+              </div>
+              <div class="lp-happier-homes__reviewer-name-wrap">
+                <span class="lp-happier-homes__reviewer-name">~ {{ block.settings.reviewer_name }}</span>
+                <div class="lp-happier-homes__flag">
+                  <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="20" height="4.66" fill="#AE1C28"/>
+                    <rect y="4.66" width="20" height="4.66" fill="#FFFFFF"/>
+                    <rect y="9.32" width="20" height="4.66" fill="#21468B"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="lp-happier-homes__scrollbar">
+      <div class="lp-happier-homes__scrollbar-thumb" data-thumb="{{ section.id }}"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('[data-carousel="{{ section.id }}"]');
+  const thumb = document.querySelector('[data-thumb="{{ section.id }}"]');
+  
+  if (carousel && thumb) {
+    const updateScroll = () => {
+      const scrollPercentage = (carousel.scrollLeft / (carousel.scrollWidth - carousel.clientWidth)) * 100;
+      // The thumb is 120px fixed width in Figma, but we scale it relatively within the 100% track
+      // Alternatively, we use translate to show position relative to container width
+      const maxTranslate = 100 - (120 / carousel.parentElement.clientWidth * 100);
+      const translateValue = (scrollPercentage / 100) * maxTranslate;
+      thumb.style.transform = `translateX(${translateValue}%)`;
+    };
+    
+    carousel.addEventListener('scroll', updateScroll);
+    window.addEventListener('resize', updateScroll);
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Happier Homes Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "reviews_text",
+      "label": "Reviews Summary",
+      "default": "4.5/5 (1,450+ Reviews)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Join 2,000+ happier homes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image"
+        },
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "Review Title",
+          "default": "Best on the market"
+        },
+        {
+          "type": "textarea",
+          "id": "review_desc",
+          "label": "Review Description",
+          "default": "I love this product because the support is great. I love this product because the support is great."
+        },
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Reviewer Name",
+          "default": "Margreet"
+        },
+        {
+          "type": "image_picker",
+          "id": "reviewer_avatar",
+          "label": "Reviewer Avatar"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Happier Homes Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "reviewer_name": "Margreet"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "reviewer_name": "Margreet"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "reviewer_name": "Margreet"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "reviewer_name": "Margreet"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

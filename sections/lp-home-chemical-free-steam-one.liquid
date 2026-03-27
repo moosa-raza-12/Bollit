@@ -1,0 +1,140 @@
+{{ 'lp-home-chemical-free-steam-one.css' | asset_url | stylesheet_tag }}
+
+<section class="lp-product-image-frame" id="lp-section-{{ section.id }}" style="--bg-image: url('{{ section.settings.background_image | image_url: width: 2000 }}');">
+  <div class="lp-product-image-frame__container">
+    <div class="lp-product-info-container">
+      {% if section.settings.rating_text != blank %}
+        <div class="lp-reviews-badge">
+          <span class="lp-reviews-badge__star">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 0.5L10.2451 5.34171L15.5 6.10354L11.7 9.80354L12.5902 15.0354L8 12.6183L3.40983 15.0354L4.3 9.80354L0.5 6.10354L5.75486 5.34171L8 0.5Z" fill="white"/>
+            </svg>
+          </span>
+          <span class="lp-reviews-badge__text">{{ section.settings.rating_text }}</span>
+        </div>
+      {% endif %}
+
+      <div class="lp-feature-content">
+        {% if section.settings.title != blank %}
+          <h2 class="lp-feature-title">{{ section.settings.title | newline_to_br }}</h2>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <p class="lp-product-description">{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+
+      {% if section.settings.button_label != blank %}
+        <a href="{{ section.settings.button_link }}" class="lp-atc-button">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+
+      <div class="lp-product-features">
+        {% for block in section.blocks %}
+          <div class="lp-feature-item" {{ block.shopify_attributes }}>
+            <div class="lp-feature-item__icon">
+              {% if block.settings.icon == 'money' %}
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M8.5 2.10938V14.7656M5.34375 4.57031H10.2656C11.6429 4.57031 12.7266 5.46016 12.7266 6.55469C12.7266 7.64921 11.6429 8.53906 10.2656 8.53906H6.73438C5.35706 8.53906 4.27344 9.42891 4.27344 10.5234C4.27344 11.618 5.35706 12.5078 6.73438 12.5078H11.6562" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% else %}
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 10L14 10M14 10L11 7M14 10L11 13" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M3 10V6" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              {% endif %}
+            </div>
+            <span class="lp-feature-item__text">{{ block.settings.text }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Hero Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating Text",
+      "default": "4.5/5 (1,450+ Reviews)"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Chemical-free steam.\nOne-pass deep clean."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "With the 1500W powerful steam, you can clean deeply and safely, without scrubbing or harsh chemicals."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "money", "label": "Money Bag" },
+            { "value": "return", "label": "Return Arrow" }
+          ],
+          "default": "money"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Hero Image",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "money",
+            "text": "100% Money-Back Guarantee"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "return",
+            "text": "Free Shipping and Returns"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
