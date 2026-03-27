@@ -461,7 +461,7 @@
           "type": "column",
           "settings": {
             "title": "Products",
-            "menu": "",
+            "menu": "products",
             "custom_content": ""
           }
         },
@@ -469,7 +469,7 @@
           "type": "column",
           "settings": {
             "title": "Quick Links",
-            "menu": "",
+            "menu": "quick-links",
             "custom_content": ""
           }
         },
