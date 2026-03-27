@@ -11,7 +11,6 @@
   "sections": {
     "lp-home-next-day-delivery-ends": {
       "type": "lp-home-next-day-delivery-ends",
-      "settings": {},
       "blocks": {
         "block_lp-home-next-day-delivery-ends_0": {
           "type": "nav_item",
@@ -33,14 +32,16 @@
           "type": "nav_item",
           "settings": {
             "text": "Collection",
-            "url": "#"
+            "url": "#",
+            "has_dropdown": false
           }
         },
         "block_lp-home-next-day-delivery-ends_3": {
           "type": "nav_item",
           "settings": {
             "text": "Track your order",
-            "url": "#"
+            "url": "#",
+            "has_dropdown": false
           }
         },
         "block_lp-home-next-day-delivery-ends_4": {
@@ -58,11 +59,13 @@
         "block_lp-home-next-day-delivery-ends_2",
         "block_lp-home-next-day-delivery-ends_3",
         "block_lp-home-next-day-delivery-ends_4"
-      ]
+      ],
+      "settings": {
+        "countdown_text": "Next-day delivery ends in"
+      }
     },
     "lp-home-chemical-free-steam-one": {
       "type": "lp-home-chemical-free-steam-one",
-      "settings": {},
       "blocks": {
         "block_lp-home-chemical-free-steam-one_0": {
           "type": "feature",
@@ -82,16 +85,23 @@
       "block_order": [
         "block_lp-home-chemical-free-steam-one_0",
         "block_lp-home-chemical-free-steam-one_1"
-      ]
+      ],
+      "settings": {
+        "rating_text": "4.5/5 (1,450+ Reviews)",
+        "title": "Chemical-free steam.\nOne-pass deep clean.",
+        "description": "With the 1500W powerful steam, you can clean deeply and safely, without scrubbing or harsh chemicals.",
+        "button_label": "Shop Now",
+        "button_link": ""
+      }
     },
     "lp-home-free-day-returns": {
       "type": "lp-home-free-day-returns",
-      "settings": {},
       "blocks": {
         "block_lp-home-free-day-returns_0": {
           "type": "feature",
           "settings": {
             "icon_type": "return",
+            "icon_svg": "",
             "title": "Free 30-Day Returns",
             "description": "Return it within 30 days, no hassle."
           }
@@ -100,6 +110,7 @@
           "type": "feature",
           "settings": {
             "icon_type": "money",
+            "icon_svg": "",
             "title": "100% Money-Back Guarantee",
             "description": "Your purchase is fully protected."
           }
@@ -108,6 +119,7 @@
           "type": "feature",
           "settings": {
             "icon_type": "truck",
+            "icon_svg": "",
             "title": "Free Shipping",
             "description": "Free delivery on orders above €30."
           }
@@ -117,40 +129,47 @@
         "block_lp-home-free-day-returns_0",
         "block_lp-home-free-day-returns_1",
         "block_lp-home-free-day-returns_2"
-      ]
+      ],
+      "settings": {
+        "background_color": "#ffffff"
+      }
     },
     "lp-home-view-all": {
       "type": "lp-home-view-all",
-      "settings": {},
       "blocks": {
         "block_lp-home-view-all_0": {
           "type": "category",
           "settings": {
-            "title": "Tapijtreinigers"
+            "title": "Tapijtreinigers",
+            "link": ""
           }
         },
         "block_lp-home-view-all_1": {
           "type": "category",
           "settings": {
-            "title": "HandSteamer"
+            "title": "HandSteamer",
+            "link": ""
           }
         },
         "block_lp-home-view-all_2": {
           "type": "category",
           "settings": {
-            "title": "Stoomreiniger"
+            "title": "Stoomreiniger",
+            "link": ""
           }
         },
         "block_lp-home-view-all_3": {
           "type": "category",
           "settings": {
-            "title": "Handheld Steamers"
+            "title": "Handheld Steamers",
+            "link": ""
           }
         },
         "block_lp-home-view-all_4": {
           "type": "category",
           "settings": {
-            "title": "Luchtreinigers"
+            "title": "Luchtreinigers",
+            "link": ""
           }
         }
       },
@@ -160,38 +179,79 @@
         "block_lp-home-view-all_2",
         "block_lp-home-view-all_3",
         "block_lp-home-view-all_4"
-      ]
+      ],
+      "settings": {
+        "subtitle": "Shop by category",
+        "title": "Find what fits your space",
+        "button_text": "View All",
+        "button_link": ""
+      }
     },
     "lp-home-sold-in-total": {
       "type": "lp-home-sold-in-total",
-      "settings": {},
       "blocks": {
         "block_lp-home-sold-in-total_0": {
           "type": "product_card",
           "settings": {
+            "product": "",
+            "badge": "Best Seller",
             "title": "Electric mop steam 1500W",
-            "badge": "Best Seller"
+            "original_price": "€199.99",
+            "price": "€130",
+            "discount": "Save 24%",
+            "rating": "4.5/5 (1,450+ Reviews)",
+            "feat_1_title": "1500W high-heat system",
+            "feat_1_desc": "Fast, visible cleaning power.",
+            "feat_2_title": "Dual rotating pads",
+            "feat_2_desc": "Deep clean without harsh chemicals."
           }
         },
         "block_lp-home-sold-in-total_1": {
           "type": "product_card",
           "settings": {
+            "product": "",
+            "badge": "Newly Launched",
             "title": "Steam Scrubber",
-            "badge": "Newly Launched"
+            "original_price": "€199.99",
+            "price": "€130",
+            "discount": "Save 24%",
+            "rating": "4.5/5 (1,450+ Reviews)",
+            "feat_1_title": "1500W high-heat system",
+            "feat_1_desc": "Fast, visible cleaning power.",
+            "feat_2_title": "Dual rotating pads",
+            "feat_2_desc": "Deep clean without harsh chemicals."
           }
         },
         "block_lp-home-sold-in-total_2": {
           "type": "product_card",
           "settings": {
+            "product": "",
+            "badge": "Newly Launched",
             "title": "Handheld Steamer",
-            "badge": "Newly Launched"
+            "original_price": "€199.99",
+            "price": "€130",
+            "discount": "Save 24%",
+            "rating": "4.5/5 (1,450+ Reviews)",
+            "feat_1_title": "1500W high-heat system",
+            "feat_1_desc": "Fast, visible cleaning power.",
+            "feat_2_title": "Dual rotating pads",
+            "feat_2_desc": "Deep clean without harsh chemicals."
           }
         },
         "block_lp-home-sold-in-total_3": {
           "type": "product_card",
           "settings": {
+            "product": "",
+            "badge": "Newly Launched",
             "title": "Steam Cleaner",
-            "badge": "Newly Launched"
+            "original_price": "€199.99",
+            "price": "€130",
+            "discount": "Save 24%",
+            "rating": "4.5/5 (1,450+ Reviews)",
+            "feat_1_title": "1500W high-heat system",
+            "feat_1_desc": "Fast, visible cleaning power.",
+            "feat_2_title": "Dual rotating pads",
+            "feat_2_desc": "Deep clean without harsh chemicals."
           }
         }
       },
@@ -200,42 +260,45 @@
         "block_lp-home-sold-in-total_1",
         "block_lp-home-sold-in-total_2",
         "block_lp-home-sold-in-total_3"
-      ]
+      ],
+      "settings": {
+        "title": "Best sellers",
+        "sub_header": "5,000+ sold in total"
+      }
     },
     "lp-home-why-choose-bollit": {
       "type": "lp-home-why-choose-bollit",
-      "settings": {},
       "blocks": {
         "block_lp-home-why-choose-bollit_0": {
           "type": "feature",
           "settings": {
+            "icon_svg": "<svg width=\"21\" height=\"21\" viewbox=\"0 0 21 21\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10.3846 1.61538L10.3846 19.3846M1.61538 10.3846L19.3846 10.3846\" stroke=\"#003665\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>",
             "title": "Chemical-free power",
-            "description": "High-temperature steam deep cleans and sanitizes without harsh chemicals. Safe for children, pets, and your home.",
-            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.3846 1.61538L10.3846 19.3846M1.61538 10.3846L19.3846 10.3846' stroke='#003665' stroke-width='1.5' stroke-linecap='round'/></svg>"
+            "description": "High-temperature steam deep cleans and sanitizes without harsh chemicals. Safe for children, pets, and your home."
           }
         },
         "block_lp-home-why-choose-bollit_1": {
           "type": "feature",
           "settings": {
+            "icon_svg": "<svg width=\"21\" height=\"21\" viewbox=\"0 0 21 21\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M11.25 2.5L3.75 11.25H9.375L8.75 18.125L16.25 9.375H10.625L11.25 2.5Z\" stroke=\"#003665\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>",
             "title": "Engineered performance",
-            "description": "Powerful performance metrics ensure that every corner of your home is sparkling clean with minimal effort.",
-            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M11.25 2.5L3.75 11.25H9.375L8.75 18.125L16.25 9.375H10.625L11.25 2.5Z' stroke='#003665' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+            "description": "Powerful performance metrics ensure that every corner of your home is sparkling clean with minimal effort."
           }
         },
         "block_lp-home-why-choose-bollit_2": {
           "type": "feature",
           "settings": {
+            "icon_svg": "<svg width=\"21\" height=\"21\" viewbox=\"0 0 21 21\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10.5 1.75L3.5 4.375V9.625C3.5 13.9212 6.48375 17.9288 10.5 19.25C14.5163 17.9288 17.5 13.9212 17.5 9.625V4.375L10.5 1.75Z\" stroke=\"#003665\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>",
             "title": "Specifically built to last",
-            "description": "Durable materials and quality components ensure reliable performance, day after day.",
-            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.5 1.75L3.5 4.375V9.625C3.5 13.9212 6.48375 17.9288 10.5 19.25C14.5163 17.9288 17.5 13.9212 17.5 9.625V4.375L10.5 1.75Z' stroke='#003665' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+            "description": "Durable materials and quality components ensure reliable performance, day after day."
           }
         },
         "block_lp-home-why-choose-bollit_3": {
           "type": "feature",
           "settings": {
+            "icon_svg": "<svg width=\"21\" height=\"21\" viewbox=\"0 0 21 21\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M3.5 5.25H17.5M3.5 10.5H17.5M3.5 15.75H17.5\" stroke=\"#003665\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>",
             "title": "Multi-surface safe",
-            "description": "From hardwood to tiles and carpets, Bollit is designed to adapt to every floor type in your modern home.",
-            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M3.5 5.25H17.5M3.5 10.5H17.5M3.5 15.75H17.5' stroke='#003665' stroke-width='1.5' stroke-linecap='round'/></svg>"
+            "description": "From hardwood to tiles and carpets, Bollit is designed to adapt to every floor type in your modern home."
           }
         }
       },
@@ -244,33 +307,44 @@
         "block_lp-home-why-choose-bollit_1",
         "block_lp-home-why-choose-bollit_2",
         "block_lp-home-why-choose-bollit_3"
-      ]
+      ],
+      "settings": {
+        "subheading": "Why choose Bollit?",
+        "heading": "Why Bollit is everyone’s\ntop choice"
+      }
     },
     "lp-home-join-happier-homes": {
       "type": "lp-home-join-happier-homes",
-      "settings": {},
       "blocks": {
         "block_lp-home-join-happier-homes_0": {
           "type": "testimonial",
           "settings": {
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
             "reviewer_name": "Margreet"
           }
         },
         "block_lp-home-join-happier-homes_1": {
           "type": "testimonial",
           "settings": {
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
             "reviewer_name": "Margreet"
           }
         },
         "block_lp-home-join-happier-homes_2": {
           "type": "testimonial",
           "settings": {
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
             "reviewer_name": "Margreet"
           }
         },
         "block_lp-home-join-happier-homes_3": {
           "type": "testimonial",
           "settings": {
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
             "reviewer_name": "Margreet"
           }
         }
@@ -280,11 +354,14 @@
         "block_lp-home-join-happier-homes_1",
         "block_lp-home-join-happier-homes_2",
         "block_lp-home-join-happier-homes_3"
-      ]
+      ],
+      "settings": {
+        "reviews_text": "4.5/5 (1,450+ Reviews)",
+        "title": "Join 2,000+ happier homes"
+      }
     },
     "lp-home-need-some-help": {
       "type": "lp-home-need-some-help",
-      "settings": {},
       "blocks": {
         "block_lp-home-need-some-help_0": {
           "type": "tab",
@@ -359,28 +436,39 @@
         "block_lp-home-need-some-help_6",
         "block_lp-home-need-some-help_7",
         "block_lp-home-need-some-help_8"
-      ]
+      ],
+      "settings": {
+        "subtitle": "Need some help?",
+        "title": "Frequently asked questions",
+        "description": "We’ve answered the most common questions so you can choose with confidence.",
+        "contact_title": "Need more help?",
+        "contact_text": "<p>We’re happy to help. Whether it’s about your product, delivery, or setup. Contact our customer service at helpbollit@gmail.com</p>"
+      }
     },
     "lp-home-quick-links": {
       "type": "lp-home-quick-links",
-      "settings": {},
       "blocks": {
         "block_lp-home-quick-links_0": {
           "type": "column",
           "settings": {
-            "title": "Products"
+            "title": "Products",
+            "menu": "",
+            "custom_content": ""
           }
         },
         "block_lp-home-quick-links_1": {
           "type": "column",
           "settings": {
-            "title": "Quick Links"
+            "title": "Quick Links",
+            "menu": "",
+            "custom_content": ""
           }
         },
         "block_lp-home-quick-links_2": {
           "type": "column",
           "settings": {
             "title": "Contact",
+            "menu": "",
             "custom_content": "helpbollit@gmail.com"
           }
         }
@@ -389,7 +477,19 @@
         "block_lp-home-quick-links_0",
         "block_lp-home-quick-links_1",
         "block_lp-home-quick-links_2"
-      ]
+      ],
+      "settings": {
+        "logo": "shopify://shop_images/Layer_1.png",
+        "description": "Bollit builds powerful, chemical-free cleaning systems made for real homes. Designed for performance.",
+        "newsletter_title": "get 10% off",
+        "newsletter_desc": "Sign up for expert advice on cleaning, healthy home",
+        "email_placeholder": "E-mail",
+        "subscribe_button_text": "Subscribe",
+        "terms_url": "",
+        "privacy_url": "",
+        "copyright_text": "Bollit.",
+        "show_background_graphic": true
+      }
     }
   },
   "order": [
