@@ -462,7 +462,7 @@
         "description": "We’ve answered the most common questions so you can choose with confidence.",
         "image": "shopify://shop_images/Image.png",
         "contact_title": "Need more help?",
-        "contact_text": "<p>We’re happy to help. Whether it’s about your product, delivery, or setup. Contact our customer service at helpbollit@gmail.com</p>"
+        "contact_text": "<p>We’re happy to help. Whether it’s about your product, delivery, or setup. Contact our customer service at <strong>helpbollit@gmail.com</strong></p>"
       }
     },
     "lp-home-quick-links": {
