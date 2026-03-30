@@ -387,7 +387,7 @@
         "faq_item_rBjT9x": {
           "type": "faq_item",
           "settings": {
-            "category": "Test",
+            "category": "Usage",
             "question": "This is a dummy Question?",
             "answer": "This is a dummy answer."
           }
