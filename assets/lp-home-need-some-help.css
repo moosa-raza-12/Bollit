@@ -91,7 +91,7 @@
   border-radius: 0; /* Design shows straight edges for active tab in some nodes */
 }
 
-.lp-help__faq-item { display: none; }
+/* .lp-help__faq-item { display: none; } */
 
 #tab-{{ section.id }}-1:checked ~ .lp-help__content-grid [data-tab-content='1'],
 #tab-{{ section.id }}-2:checked ~ .lp-help__content-grid [data-tab-content='2'],
