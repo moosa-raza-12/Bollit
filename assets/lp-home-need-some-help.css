@@ -29,21 +29,46 @@
   align-items: center;
   gap: 2px;
 }
+.gradient-span{
+  padding-right: 5px;
+  height: 20px;
+  border-right: 1px solid #FD9308;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 8, 0.14) 33.65%);
+  background-size: 70%;
+  background-position: right;
+  background-repeat: no-repeat;
+  display: flex;
+    align-items: center;
+}
 
 .lp-help__badge {
-  color: var(--lp-primary-color);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: -0.015em;
+  color: #003665;
+font-family: "Source Serif Pro" !important;
+font-size: 16px;
+font-style: italic;
+font-weight: 400;
+line-height: 150%; /* 24px */
+letter-spacing: -0.24px;
 }
+
 
 .lp-help__title {
   color: var(--lp-text-color);
   font-size: 28px;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.015em;
-  line-height: 0.9;
+  line-height: 65%;
   margin: 0;
+  width: 70%;
+}
+.lp-help__title-highlight{
+  color: #003665;
+  font-family: "Source Serif Pro"!important;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 90%;
+  letter-spacing: -0.57px;
 }
 
 .lp-help__description {
@@ -52,13 +77,16 @@
   line-height: 1.5;
   max-width: 390px;
   margin: 0;
+  letter-spacing: 0px;
+  font-weight: 400;
+  width: 80%;
 }
 
 .lp-help__tabs-container {
   display: flex;
   overflow-x: auto;
   gap: 4px;
-  padding-bottom: 12px;
+  /* padding-bottom: 12px; */
   margin-bottom: 36px;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -78,6 +106,8 @@
   cursor: pointer;
   border-radius: 100px;
   transition: all 0.2s ease;
+  letter-spacing: 0px;
+  line-height: normal;
 }
 
 /* Tab Switching Logic */
@@ -91,7 +121,7 @@
   border-radius: 0; /* Design shows straight edges for active tab in some nodes */
 }
 
-/* .lp-help__faq-item { display: none; } */
+.lp-help__faq-item { display: none; } 
 
 #tab-{{ section.id }}-1:checked ~ .lp-help__content-grid [data-tab-content='1'],
 #tab-{{ section.id }}-2:checked ~ .lp-help__content-grid [data-tab-content='2'],
@@ -149,6 +179,9 @@
   font-size: 18px;
   font-weight: 500;
   color: var(--lp-text-color);
+  line-height: 150%;
+  letter-spacing: 0px;
+  align-items: start;
 }
 
 .lp-help__faq-summary::-webkit-details-marker { display: none; }
@@ -169,13 +202,17 @@
 .lp-help__faq-answer {
   padding: 0 16px 16px 16px;
   color: var(--lp-muted-color);
-  font-size: 16px;
-  line-height: 1.5;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 24px */
+letter-spacing: 0px;
 }
 
 .lp-help__contact-card {
-  background: var(--lp-bg-active);
-  border-radius: var(--lp-radius);
+  border-radius: 20px;
+  border: 1px solid var(--Blue, #3F77A8);
+  background: var(--Blueish-Gray, #F0F8FF);
   padding: 12px 16px;
   display: flex;
   flex-direction: column;
@@ -184,31 +221,58 @@
 
 .lp-help__contact-title {
   font-size: 16px;
+  color: var(--Black, #1F1F1F);
+  font-style: normal;
   font-weight: 500;
+  line-height: 150%; /* 27px */
   margin: 0;
-  color: var(--lp-text-color);
+  letter-spacing: 0px;
 }
 
 .lp-help__contact-text {
   font-size: 14px;
-  color: var(--lp-muted-color);
-  line-height: 1.5;
-  margin: 0;
+  color: rgba(31, 31, 31, 0.70);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0px;
+}
+.lp-help__contact-text p{
+ margin: 0;
 }
 
 @media (min-width: 1024px) {
+  .lp-help__title-highlight{
+    color: #003665;
+    font-family: "Source Serif Pro"!important;
+    font-size: 38px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 90%;
+    letter-spacing: -0.57px;
+  }
   .lp-help {
     padding: 64px 200px;
   }
-  
+  .lp-help__tab-label{
+    font-size: 18px;
+  }
   .lp-help__header {
     margin-bottom: 42px;
     gap: 20px;
+  }
+  .lp-help__badge{
+    font-size: 18px;
   }
 
   .lp-help__title {
     font-size: 38px;
     max-width: none;
+    width: 100%;
+    letter-spacing: -0.015em;
+  line-height: 0.9;
+  margin: 0;
+  width: 70%;
   }
 
   .lp-help__description {
@@ -261,3 +325,16 @@
     font-size: 16px;
   }
 }
+/* Hide all FAQ items initially - UNCOMMENT THIS */
+.lp-help__faq-item {
+  display: none;
+}
+
+.lp-help__tab-label.active {
+  border-radius: 8px 8px 0 0;
+border-bottom: 1px solid #003665;
+background: var(--Blueish-Gray, #F0F8FF);
+color: #003665;
+}
+
+
