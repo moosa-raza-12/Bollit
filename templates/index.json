@@ -384,6 +384,14 @@
             "title": "Usage"
           }
         },
+        "faq_item_rBjT9x": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Test",
+            "question": "This is a dummy Question?",
+            "answer": "This is a dummy answer."
+          }
+        },
         "block_lp-home-need-some-help_2": {
           "type": "tab",
           "settings": {
@@ -439,6 +447,7 @@
         "block_lp-home-need-some-help_0",
         "faq_item_7NwCw8",
         "block_lp-home-need-some-help_1",
+        "faq_item_rBjT9x",
         "block_lp-home-need-some-help_2",
         "block_lp-home-need-some-help_3",
         "block_lp-home-need-some-help_4",
