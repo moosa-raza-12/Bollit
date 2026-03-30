@@ -4,16 +4,24 @@
   <div class="lp-why-choose__container">
     <header class="lp-why-choose__header">
       <div class="lp-why-choose__subheading-wrapper">
-        <span class="lp-why-choose__subheading">{{ section.settings.subheading }}</span>
+        <div class="gradient-span3">
+          <span class="lp-why-choose__subheading">{{ section.settings.subheading }}</span>
+        </div>
         <div class="lp-why-choose__divider"></div>
       </div>
-      <h2 class="lp-why-choose__heading">{{ section.settings.heading | newline_to_br }}</h2>
+      <h2 class="lp-why-choose__heading">{{ section.settings.heading }}<br>{{ section.settings.special_heading }}</h2>
     </header>
 
     <div class="lp-why-choose__grid">
       <div class="lp-why-choose__accordion">
         {% for block in section.blocks %}
-          <input type="radio" name="why-choose-tabs-{{ section.id }}" id="tab-{{ section.id }}-{{ forloop.index }}" class="lp-why-choose__radio" {% if forloop.first %}checked{% endif %}>
+          <input
+            type="radio"
+            name="why-choose-tabs-{{ section.id }}"
+            id="tab-{{ section.id }}-{{ forloop.index }}"
+            class="lp-why-choose__radio"
+            {% if forloop.first %}
+            checked{% endif %}>
           <div class="lp-why-choose__item" {{ block.shopify_attributes }}>
             <label for="tab-{{ section.id }}-{{ forloop.index }}" class="lp-why-choose__item-header">
               <div class="lp-why-choose__item-title-group">
@@ -21,13 +29,28 @@
                   {% if block.settings.icon_svg != blank %}
                     {{ block.settings.icon_svg }}
                   {% elsif block.settings.icon_image != blank %}
-                    <img src="{{ block.settings.icon_image | image_url: width: 40 }}" alt="" width="20" height="20" loading="lazy">
+                    <img
+                      src="{{ block.settings.icon_image | image_url: width: 400 }}"
+                      alt=""
+                      width="20"
+                      height="20"
+                      loading="lazy">
                   {% endif %}
                 </div>
                 <h3 class="lp-why-choose__item-title">{{ block.settings.title }}</h3>
               </div>
               <span class="lp-why-choose__chevron">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"><path
+                    d="M5 7.5L10 12.5L15 7.5"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" /></svg>
               </span>
             </label>
             <div class="lp-why-choose__item-content">
@@ -35,7 +58,10 @@
                 <p class="lp-why-choose__item-description">{{ block.settings.description }}</p>
                 {% if block.settings.image != blank %}
                   <div class="lp-why-choose__mobile-image">
-                    <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}" loading="lazy">
+                    <img
+                      src="{{ block.settings.image | image_url: width: 800 }}"
+                      alt="{{ block.settings.title }}"
+                      loading="lazy">
                   </div>
                 {% endif %}
               </div>
@@ -48,7 +74,11 @@
         {% for block in section.blocks %}
           {% if block.settings.image != blank %}
             <div class="lp-why-choose__desktop-image-wrapper" data-index="{{ forloop.index }}">
-              <img src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.title }}" class="lp-why-choose__desktop-image" loading="lazy">
+              <img
+                src="{{ block.settings.image | image_url: width: 1000 }}"
+                alt="{{ block.settings.title }}"
+                class="lp-why-choose__desktop-image"
+                loading="lazy">
             </div>
           {% endif %}
         {% endfor %}
@@ -58,95 +88,95 @@
 </section>
 
 {% schema %}
-{
-  "name": "Why choose Bollit",
-  "settings": [
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Subheading",
-      "default": "Why choose Bollit?"
-    },
-    {
-      "type": "textarea",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Why Bollit is everyone’s\ntop choice"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "feature",
-      "name": "Feature",
-      "settings": [
-        {
-          "type": "html",
-          "id": "icon_svg",
-          "label": "Icon SVG"
-        },
-        {
-          "type": "image_picker",
-          "id": "icon_image",
-          "label": "Icon Image (Optional)"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Title",
-          "default": "Feature Title"
-        },
-        {
-          "type": "textarea",
-          "id": "description",
-          "label": "Description",
-          "default": "Feature description text goes here."
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Feature Image"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Why choose Bollit",
-      "blocks": [
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Chemical-free power",
-            "description": "High-temperature steam deep cleans and sanitizes without harsh chemicals. Safe for children, pets, and your home.",
-            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.3846 1.61538L10.3846 19.3846M1.61538 10.3846L19.3846 10.3846' stroke='#003665' stroke-width='1.5' stroke-linecap='round'/></svg>"
+  {
+    "name": "Why choose Bollit",
+    "settings": [
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading",
+        "default": "Why choose Bollit?"
+      }, {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Why Bollit is everyone’s"
+      }, {
+        "type": "textarea",
+        "id": "special_heading",
+        "label": "Special Words",
+        "default": "\ntop choice"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "feature",
+        "name": "Feature",
+        "settings": [
+          {
+            "type": "html",
+            "id": "icon_svg",
+            "label": "Icon SVG"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon_image",
+            "label": "Icon Image (Optional)"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Feature Title"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Feature description text goes here."
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Feature Image"
           }
-        },
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Engineered performance",
-            "description": "Powerful performance metrics ensure that every corner of your home is sparkling clean with minimal effort.",
-            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M11.25 2.5L3.75 11.25H9.375L8.75 18.125L16.25 9.375H10.625L11.25 2.5Z' stroke='#003665' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Why choose Bollit",
+        "blocks": [
+          {
+            "type": "feature",
+            "settings": {
+              "title": "Chemical-free power",
+              "description": "High-temperature steam deep cleans and sanitizes without harsh chemicals. Safe for children, pets, and your home.",
+              "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.3846 1.61538L10.3846 19.3846M1.61538 10.3846L19.3846 10.3846' stroke='#003665' stroke-width='1.5' stroke-linecap='round'/></svg>"
+            }
+          }, {
+            "type": "feature",
+            "settings": {
+              "title": "Engineered performance",
+              "description": "Powerful performance metrics ensure that every corner of your home is sparkling clean with minimal effort.",
+              "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M11.25 2.5L3.75 11.25H9.375L8.75 18.125L16.25 9.375H10.625L11.25 2.5Z' stroke='#003665' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+            }
+          }, {
+            "type": "feature",
+            "settings": {
+              "title": "Specifically built to last",
+              "description": "Durable materials and quality components ensure reliable performance, day after day.",
+              "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.5 1.75L3.5 4.375V9.625C3.5 13.9212 6.48375 17.9288 10.5 19.25C14.5163 17.9288 17.5 13.9212 17.5 9.625V4.375L10.5 1.75Z' stroke='#003665' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+            }
+          }, {
+            "type": "feature",
+            "settings": {
+              "title": "Multi-surface safe",
+              "description": "From hardwood to tiles and carpets, Bollit is designed to adapt to every floor type in your modern home.",
+              "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M3.5 5.25H17.5M3.5 10.5H17.5M3.5 15.75H17.5' stroke='#003665' stroke-width='1.5' stroke-linecap='round'/></svg>"
+            }
           }
-        },
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Specifically built to last",
-            "description": "Durable materials and quality components ensure reliable performance, day after day.",
-            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M10.5 1.75L3.5 4.375V9.625C3.5 13.9212 6.48375 17.9288 10.5 19.25C14.5163 17.9288 17.5 13.9212 17.5 9.625V4.375L10.5 1.75Z' stroke='#003665' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>"
-          }
-        },
-        {
-          "type": "feature",
-          "settings": {
-            "title": "Multi-surface safe",
-            "description": "From hardwood to tiles and carpets, Bollit is designed to adapt to every floor type in your modern home.",
-            "icon_svg": "<svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M3.5 5.25H17.5M3.5 10.5H17.5M3.5 15.75H17.5' stroke='#003665' stroke-width='1.5' stroke-linecap='round'/></svg>"
-          }
-        }
-      ]
-    }
-  ]
-}
+        ]
+      }
+    ]
+  }
 {% endschema %}

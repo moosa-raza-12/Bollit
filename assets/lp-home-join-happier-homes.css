@@ -21,7 +21,7 @@
   align-items: center;
   text-align: center;
   gap: 16px;
-  margin-bottom: 36px;
+  margin-bottom: 42px;
 }
 
 .lp-happier-homes__reviews-meta {
@@ -58,8 +58,19 @@
   line-height: 1.2;
   color: var(--text-primary);
   margin: 0;
-  font-weight: 400;
-  letter-spacing: -0.48px;
+  font-weight: 500;
+  letter-spacing: -0.57px;
+
+}
+.review__title-highlight{
+  color: #003665;
+font-family: "Source Serif Pro"!important;
+font-size: 32px;
+font-style: italic;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.57px;
+
 }
 
 .lp-happier-homes__carousel-wrapper {
@@ -96,7 +107,7 @@
 
 .lp-happier-homes__card-image-wrapper {
   background-color: var(--bg-color);
-  border-radius: 12px;
+  /* border-radius: 12px; */
   aspect-ratio: 193 / 195;
   display: flex;
   align-items: center;
@@ -126,13 +137,18 @@
   font-size: 16px;
   font-weight: 500;
   margin: 0;
-  color: #555555;
+  color: #555;
+font-style: normal;
+font-weight: 500;
+line-height: 109%; /* 19.62px */
 }
 
 .lp-happier-homes__card-desc {
+  color: rgba(31, 31, 31, 0.70);
   font-size: 16px;
-  line-height: 1.5;
-  color: rgba(30, 30, 30, 0.7);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 27px */
   margin: 0;
 }
 
@@ -149,6 +165,10 @@
   border-radius: 50%;
   overflow: hidden;
   background-color: #ddd;
+}
+.lp-happier-homes__reviewer-avatar img{
+  height: 100%;
+  width: 100%;
 }
 
 .lp-happier-homes__avatar-placeholder {
@@ -185,6 +205,7 @@
   border-radius: 16px;
   position: absolute;
   left: 0;
+  display: block !important;
   transition: transform 0.1s ease-out;
 }
 
@@ -198,12 +219,18 @@
   .lp-happier-homes__title {
     font-size: 38px;
   }
+  .review__title-highlight{
+    font-size: 38px;
+  }
   .lp-happier-homes__card {
     flex: 0 0 300px;
   }
 }
 
 @media (min-width: 1024px) {
+  .lp-happier-homes__card-title{
+    font-size: 18px;
+  }
   .lp-happier-homes__header {
   gap: 20px;
   }
