@@ -4,12 +4,21 @@
   <div class="lp-happier-homes__container">
     <header class="lp-happier-homes__header">
       <div class="lp-happier-homes__reviews-meta">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7 0L8.57143 4.83333H14L9.71429 7.83333L11.2857 12.6667L7 9.66667L2.71429 12.6667L4.28571 7.83333L0 4.83333H5.42857L7 0Z" fill="#003665"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none">
+          <path d="M2.68535 13.2506C2.52929 13.1315 2.43483 12.9734 2.40198 12.7762C2.36912 12.5832 2.39582 12.3594 2.48206 12.1048L3.73258 8.39018L0.541598 6.10475C0.319831 5.94459 0.163772 5.77826 0.0734229 5.60578C-0.0128199 5.42918 -0.0230868 5.24643 0.0426219 5.05752C0.104224 4.87271 0.221268 4.73514 0.393753 4.64479C0.566238 4.55444 0.788005 4.51131 1.05905 4.51542L4.97694 4.54006L6.16585 0.800825C6.24799 0.542097 6.35887 0.344971 6.49851 0.209447C6.63814 0.0698155 6.80446 0 6.99748 0C7.19461 0 7.36299 0.0698155 7.50262 0.209447C7.64225 0.344971 7.75313 0.542097 7.83527 0.800825L9.02419 4.54006L12.9359 4.51542C13.2111 4.51131 13.4349 4.55444 13.6074 4.64479C13.7799 4.73514 13.8969 4.87271 13.9585 5.05752C14.0242 5.24643 14.0119 5.42918 13.9215 5.60578C13.8353 5.77826 13.6813 5.94459 13.4595 6.10475L10.2685 8.39018L11.5191 12.1048C11.6053 12.3594 11.632 12.5832 11.5991 12.7762C11.5663 12.9734 11.4718 13.1315 11.3158 13.2506C11.1556 13.3697 10.977 13.4128 10.7798 13.3799C10.5868 13.3471 10.3815 13.2506 10.1638 13.0904L6.99748 10.768L3.8373 13.0904C3.61964 13.2506 3.41225 13.3471 3.21512 13.3799C3.0221 13.4128 2.84551 13.3697 2.68535 13.2506Z" fill="#E88400" />
         </svg>
-        <span class="lp-happier-homes__reviews-text">{{ section.settings.reviews_text }}</span>
+        <div class="gradient-span2">
+          <span class="lp-happier-homes__reviews-text">{{ section.settings.reviews_text }}</span>
+        </div>
       </div>
-      <h2 class="lp-happier-homes__title">{{ section.settings.title }}</h2>
+      <h2 class="lp-happier-homes__title">{{ section.settings.title }}
+        <span class="review__title-highlight">{{ section.settings.title_highlight }}</span>
+      </h2>
     </header>
 
     <div class="lp-happier-homes__carousel-wrapper">
@@ -23,12 +32,17 @@
                 {{ 'product-1' | placeholder_svg_tag: 'lp-happier-homes__card-image' }}
               {% endif %}
             </div>
-            
+
             <div class="lp-happier-homes__card-content">
               <div class="lp-happier-homes__card-stars">
                 {% for i in (1..5) %}
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 0L7.34733 4.14286H12L8.32634 6.71429L9.67367 10.8571L6 8.28571L2.32633 10.8571L3.67366 6.71429L0 4.14286H4.65267L6 0Z" fill="#003665"/>
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 0L7.34733 4.14286H12L8.32634 6.71429L9.67367 10.8571L6 8.28571L2.32633 10.8571L3.67366 6.71429L0 4.14286H4.65267L6 0Z" fill="#003665" />
                   </svg>
                 {% endfor %}
               </div>
@@ -47,10 +61,26 @@
               <div class="lp-happier-homes__reviewer-name-wrap">
                 <span class="lp-happier-homes__reviewer-name">~ {{ block.settings.reviewer_name }}</span>
                 <div class="lp-happier-homes__flag">
-                  <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="20" height="4.66" fill="#AE1C28"/>
-                    <rect y="4.66" width="20" height="4.66" fill="#FFFFFF"/>
-                    <rect y="9.32" width="20" height="4.66" fill="#21468B"/>
+                  <svg
+                    width="20"
+                    height="14"
+                    viewBox="0 0 20 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect
+                      width="20"
+                      height="4.66"
+                      fill="#AE1C28" />
+                    <rect
+                      y="4.66"
+                      width="20"
+                      height="4.66"
+                      fill="#FFFFFF" />
+                    <rect
+                      y="9.32"
+                      width="20"
+                      height="4.66"
+                      fill="#21468B" />
                   </svg>
                 </div>
               </div>
@@ -67,7 +97,7 @@
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
   const carousel = document.querySelector('[data-carousel="{{ section.id }}"]');
   const thumb = document.querySelector('[data-thumb="{{ section.id }}"]');
   
@@ -84,92 +114,92 @@ document.addEventListener('DOMContentLoaded', () => {
     carousel.addEventListener('scroll', updateScroll);
     window.addEventListener('resize', updateScroll);
   }
-});
+  });
 </script>
 
 {% schema %}
-{
-  "name": "Home Testimonials",
-  "settings": [
-    {
-      "type": "text",
-      "id": "reviews_text",
-      "label": "Reviews Summary",
-      "default": "4.5/5 (1,450+ Reviews)"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Join 2,000+ happier homes"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "testimonial",
-      "name": "Testimonial",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "product_image",
-          "label": "Product Image"
-        },
-        {
-          "type": "text",
-          "id": "review_title",
-          "label": "Review Title",
-          "default": "Best on the market"
-        },
-        {
-          "type": "textarea",
-          "id": "review_desc",
-          "label": "Review Description",
-          "default": "I love this product because the support is great. I love this product because the support is great."
-        },
-        {
-          "type": "text",
-          "id": "reviewer_name",
-          "label": "Reviewer Name",
-          "default": "Margreet"
-        },
-        {
-          "type": "image_picker",
-          "id": "reviewer_avatar",
-          "label": "Reviewer Avatar"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Home Testimonials",
-      "blocks": [
-        {
-          "type": "testimonial",
-          "settings": {
-            "reviewer_name": "Margreet"
+  {
+    "name": "Home Testimonials",
+    "settings": [
+      {
+        "type": "text",
+        "id": "reviews_text",
+        "label": "Reviews Summary",
+        "default": "4.5/5 (1,450+ Reviews)"
+      }, {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Join 2,000+ happier homes"
+      }, {
+        "type": "text",
+        "id": "title_highlight",
+        "label": "Title Highlighted Word",
+        "default": "questions"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "testimonial",
+        "name": "Testimonial",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Product Image"
+          },
+          {
+            "type": "text",
+            "id": "review_title",
+            "label": "Review Title",
+            "default": "Best on the market"
+          },
+          {
+            "type": "textarea",
+            "id": "review_desc",
+            "label": "Review Description",
+            "default": "I love this product because the support is great. I love this product because the support is great."
+          },
+          {
+            "type": "text",
+            "id": "reviewer_name",
+            "label": "Reviewer Name",
+            "default": "Margreet"
+          }, {
+            "type": "image_picker",
+            "id": "reviewer_avatar",
+            "label": "Reviewer Avatar"
           }
-        },
-        {
-          "type": "testimonial",
-          "settings": {
-            "reviewer_name": "Margreet"
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Home Testimonials",
+        "blocks": [
+          {
+            "type": "testimonial",
+            "settings": {
+              "reviewer_name": "Margreet"
+            }
+          }, {
+            "type": "testimonial",
+            "settings": {
+              "reviewer_name": "Margreet"
+            }
+          }, {
+            "type": "testimonial",
+            "settings": {
+              "reviewer_name": "Margreet"
+            }
+          }, {
+            "type": "testimonial",
+            "settings": {
+              "reviewer_name": "Margreet"
+            }
           }
-        },
-        {
-          "type": "testimonial",
-          "settings": {
-            "reviewer_name": "Margreet"
-          }
-        },
-        {
-          "type": "testimonial",
-          "settings": {
-            "reviewer_name": "Margreet"
-          }
-        }
-      ]
-    }
-  ]
-}
+        ]
+      }
+    ]
+  }
 {% endschema %}
