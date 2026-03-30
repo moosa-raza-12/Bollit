@@ -358,7 +358,8 @@
       ],
       "settings": {
         "reviews_text": "4.5/5 (1,450+ Reviews)",
-        "title": "Join 2,000+ happier homes"
+        "title": "Join 2,000+",
+        "title_highlight": "happier homes"
       }
     },
     "lp-home-need-some-help": {
