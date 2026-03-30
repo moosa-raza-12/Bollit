@@ -273,7 +273,7 @@
         "block_lp-home-why-choose-bollit_0": {
           "type": "feature",
           "settings": {
-            "icon_svg": "<svg width=\"21\" height=\"21\" viewbox=\"0 0 21 21\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10.3846 1.61538L10.3846 19.3846M1.61538 10.3846L19.3846 10.3846\" stroke=\"#003665\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"21\" height=\"21\" viewbox=\"0 0 21 21\" fill=\"none\">\n  <path d=\"M18.1731 2.59619L13.7562 7.01311C15.7942 9.10908 17.6504 11.1375 16.3783 14.1897C15.384 16.5834 12.9747 18.1731 10.3847 18.1731C8.33715 18.1731 6.40215 17.1788 5.18975 15.5796M5.18975 15.5796L13.7571 7.01225M5.18975 15.5796L2.59619 18.1731M11.6905 4.75965C11.1548 4.08725 10.6927 3.37504 10.3803 2.59619C8.79927 6.55965 3.33869 8.78369 4.03446 12.9808\" stroke=\"#003665\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n</svg>",
             "title": "Chemical-free power",
             "description": "High-temperature steam deep cleans and sanitizes without harsh chemicals. Safe for children, pets, and your home."
           }
