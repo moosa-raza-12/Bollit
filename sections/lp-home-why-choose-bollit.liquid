@@ -85,6 +85,31 @@
       </div>
     </div>
   </div>
+  <script>
+      (function () {
+    const section = document.querySelector('#lp-why-choose-{{ section.id }}');
+    if (!section) return;
+    
+    const radios = section.querySelectorAll('.lp-why-choose__radio');
+    const imageWrappers = section.querySelectorAll('.lp-why-choose__desktop-image-wrapper');
+    
+    function updateImage(activeIndex) {
+      imageWrappers.forEach((wrapper) => {
+        const isActive = parseInt(wrapper.dataset.index) === activeIndex;
+        wrapper.classList.toggle('lp-why-choose__desktop-image-wrapper--active', isActive);
+      });
+    }
+    
+    // Set initial active image
+    radios.forEach((radio, i) => {
+      if (radio.checked) updateImage(i + 1);
+    
+      radio.addEventListener('change', function () {
+        if (this.checked) updateImage(i + 1);
+      });
+    });
+      })();
+  </script>
 </section>
 
 {% schema %}

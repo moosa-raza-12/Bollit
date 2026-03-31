@@ -14,6 +14,9 @@
   .lp-best-sellers {
     padding: 64px 200px;
   }
+  /* .lp-best-sellers__header-wrapper{
+    margin-bottom: 42px;
+  } */
 }
 
 .lp-best-sellers__container {
@@ -25,7 +28,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 36px;
+  margin-bottom: 42px;
 }
 
 .lp-best-sellers__header {
@@ -41,19 +44,24 @@
     align-items: center;
     text-align: center;
   }
+  .lp-best-sellers__badge-row {
+  margin-bottom: 20px;
+  }
 }
 
 .lp-best-sellers__badge-row {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  margin-bottom: 8px;
+  /* gap: 2px; */
+  margin-bottom: 20px;
 }
 
 .lp-best-sellers__badge-text {
   color: var(--text-blue);
   font-size: 16px;
+  font-style: italic;
+  font-family: "Source Serif Pro" !important;
   font-weight: 400;
   letter-spacing: -0.24px;
 }
@@ -77,6 +85,11 @@
   .lp-best-sellers__title {
     font-size: 38px;
     letter-spacing: -0.57px;
+    line-height: 23px;
+  }
+  .lp-best-sellers__badge-text{
+    font-size: 18px;
+    letter-spacing: -0.27px;
   }
 }
 

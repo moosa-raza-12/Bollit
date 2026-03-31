@@ -5,108 +5,179 @@
     <div class="lp-best-sellers__header-wrapper">
       <div class="lp-best-sellers__header">
         <div class="lp-best-sellers__badge-row">
-          <span class="lp-best-sellers__badge-text">{{ section.settings.sub_header }}</span>
-          <div class="lp-best-sellers__divider"></div>
+          <div class="gradient-span3">
+            <span class="lp-best-sellers__badge-text">{{ section.settings.sub_header }}</span>
+          </div>
         </div>
         <h2 class="lp-best-sellers__title">{{ section.settings.title }}</h2>
       </div>
       <div class="lp-best-sellers__nav">
         <button class="lp-best-sellers__nav-btn lp-best-sellers__nav-btn--prev" aria-label="Previous">
-          <svg width="6" height="12" viewBox="0 0 6 12" fill="none"><path d="M5 1L1 6L5 11" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg
+            width="6"
+            height="12"
+            viewBox="0 0 6 12"
+            fill="none"><path
+              d="M5 1L1 6L5 11"
+              stroke="#1F1F1F"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round" /></svg>
         </button>
         <button class="lp-best-sellers__nav-btn lp-best-sellers__nav-btn--next" aria-label="Next">
-          <svg width="6" height="12" viewBox="0 0 6 12" fill="none"><path d="M1 1L5 6L1 11" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg
+            width="6"
+            height="12"
+            viewBox="0 0 6 12"
+            fill="none"><path
+              d="M1 1L5 6L1 11"
+              stroke="#1F1F1F"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round" /></svg>
         </button>
       </div>
     </div>
 
     <div class="lp-best-sellers__grid" data-carousel>
-      {% for block in section.blocks %}
-        <div class="lp-best-sellers__card" {{ block.shopify_attributes }}>
-          <div class="lp-best-sellers__image-container">
-            {% if block.settings.badge != blank %}
-              <span class="lp-best-sellers__card-badge">{{ block.settings.badge }}</span>
-            {% endif %}
-            <div class="lp-best-sellers__image-inner">
-              {% if block.settings.image != blank %}
-                {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-best-sellers__img' }}
-              {% else %}
-                {{ 'product-1' | placeholder_svg_tag: 'lp-best-sellers__placeholder' }}
+      {% assign collection = collections[section.settings.collection] %}
+      {% if collection != blank and collection.products.size > 0 %}
+        {% for product in collection.products limit: section.settings.products_limit %}
+          <div class="lp-best-sellers__card">
+            <div class="lp-best-sellers__image-container">
+              {% if product.compare_at_price > product.price %}
+                <span class="lp-best-sellers__card-badge">{{ section.settings.discount_badge_text | default: 'Sale' }}</span>
               {% endif %}
-            </div>
-          </div>
-
-          <div class="lp-best-sellers__content">
-            <h3 class="lp-best-sellers__card-title">{{ block.settings.title }}</h3>
-            <div class="lp-best-sellers__price-row">
-              <span class="lp-best-sellers__price-original">{{ block.settings.original_price }}</span>
-              <span class="lp-best-sellers__price-current">{{ block.settings.price }}</span>
-              {% if block.settings.discount != blank %}
-                <span class="lp-best-sellers__discount-tag">{{ block.settings.discount }}</span>
-              {% endif %}
-            </div>
-
-            <div class="lp-best-sellers__review">
-              <span class="lp-best-sellers__rating-pill">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1L8.854 4.757L13 5.361L10 8.286L10.708 12.414L7 10.463L3.292 12.414L4 8.286L1 5.361L5.146 4.757L7 1Z" fill="#E88400"/></svg>
-                {{ block.settings.rating }}
-              </span>
-            </div>
-
-            <form method="post" action="/cart/add">
-              <input type="hidden" name="id" value="{{ block.settings.product.first_available_variant.id }}">
-              <button type="submit" class="lp-best-sellers__atc">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 19L6 19.01M17 19L17 19.01M3 3H5.2C5.64183 3 6 3.35817 6 3.8V15.2C6 15.6418 6.35817 16 6.8 16H18.2C18.6418 16 19 15.6418 19 15.2V11M19 11L19.5 11M19 11L16 11M19 7L21 7M21 7L18 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                Add To Cart
-              </button>
-            </form>
-
-            <details class="lp-best-sellers__accordion">
-              <summary class="lp-best-sellers__accordion-header">
-                See capabilities
-                <svg class="lp-best-sellers__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </summary>
-              <div class="lp-best-sellers__accordion-content">
-                <div class="lp-best-sellers__features">
-                  {% if block.settings.feat_1_title != blank %}
-                    <div class="lp-best-sellers__feature">
-                      <div class="lp-best-sellers__feature-icon">
-                        <svg width="12" height="13" viewBox="0 0 12 13" fill="none"><path d="M10.5 5.5H7.5V1.5L1.5 7.5H4.5V11.5L10.5 5.5Z" stroke="#003665" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                      </div>
-                      <div class="lp-best-sellers__feature-text">
-                        <strong>{{ block.settings.feat_1_title }}</strong>
-                        <p>{{ block.settings.feat_1_desc }}</p>
-                      </div>
-                    </div>
-                  {% endif %}
-                  {% if block.settings.feat_2_title != blank %}
-                    <div class="lp-best-sellers__feature">
-                      <div class="lp-best-sellers__feature-icon">
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C10.0376 1.5 12.5 3.96243 12.5 7C12.5 10.0376 10.0376 12.5 7 12.5M7 1.5C3.96243 1.5 1.5 3.96243 1.5 7C1.5 10.0376 3.96243 12.5 7 12.5M7 1.5V12.5" stroke="#003665" stroke-width="1"/></svg>
-                      </div>
-                      <div class="lp-best-sellers__feature-text">
-                        <strong>{{ block.settings.feat_2_title }}</strong>
-                        <p>{{ block.settings.feat_2_desc }}</p>
-                      </div>
-                    </div>
-                  {% endif %}
-                </div>
+              <div class="lp-best-sellers__image-inner">
+                {% if product.featured_image != blank %}
+                  {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-best-sellers__img' }}
+                {% else %}
+                  {{ 'product-1' | placeholder_svg_tag: 'lp-best-sellers__placeholder' }}
+                {% endif %}
               </div>
-            </details>
+            </div>
+
+            <div class="lp-best-sellers__content">
+              <h3 class="lp-best-sellers__card-title">{{ product.title }}</h3>
+              <div class="lp-best-sellers__price-row">
+                {% if product.compare_at_price > product.price %}
+                  <span class="lp-best-sellers__price-original">{{ product.compare_at_price | money }}</span>
+                  <span class="lp-best-sellers__price-current">{{ product.price | money }}</span>
+                  {% assign discount_percentage = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round %}
+                  <span class="lp-best-sellers__discount-tag">Save {{ discount_percentage }}%</span>
+                {% else %}
+                  <span class="lp-best-sellers__price-current">{{ product.price | money }}</span>
+                {% endif %}
+              </div>
+
+              <div class="lp-best-sellers__review">
+                <span class="lp-best-sellers__rating-pill">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"><path d="M7 1L8.854 4.757L13 5.361L10 8.286L10.708 12.414L7 10.463L3.292 12.414L4 8.286L1 5.361L5.146 4.757L7 1Z" fill="#E88400" /></svg>
+                  {{ product.metafields.reviews.rating | default: '4.5/5' }} ({{ product.metafields.reviews.rating_count | default: '0' }} Reviews)
+                </span>
+              </div>
+
+              <form method="post" action="/cart/add">
+                <input
+                  type="hidden"
+                  name="id"
+                  value="{{ product.first_available_variant.id }}">
+                <button type="submit" class="lp-best-sellers__atc">
+                  <svg
+                    width="17"
+                    height="17"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"><path
+                      d="M6 19L6 19.01M17 19L17 19.01M3 3H5.2C5.64183 3 6 3.35817 6 3.8V15.2C6 15.6418 6.35817 16 6.8 16H18.2C18.6418 16 19 15.6418 19 15.2V11M19 11L19.5 11M19 11L16 11M19 7L21 7M21 7L18 7"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" /></svg>
+                  Add To Cart
+                </button>
+              </form>
+
+              <details class="lp-best-sellers__accordion">
+                <summary class="lp-best-sellers__accordion-header">
+                  See capabilities
+                  <svg
+                    class="lp-best-sellers__chevron"
+                    width="10"
+                    height="6"
+                    viewBox="0 0 10 6"
+                    fill="none"><path
+                      d="M1 1L5 5L9 1"
+                      stroke="#1F1F1F"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="lp-best-sellers__accordion-content">
+                  <div class="lp-best-sellers__features">
+                    {% if product.metafields.custom.feature_1_title != blank %}
+                      <div class="lp-best-sellers__feature">
+                        <div class="lp-best-sellers__feature-icon">
+                          <svg
+                            width="12"
+                            height="13"
+                            viewBox="0 0 12 13"
+                            fill="none"><path
+                              d="M10.5 5.5H7.5V1.5L1.5 7.5H4.5V11.5L10.5 5.5Z"
+                              stroke="#003665"
+                              stroke-width="1"
+                              stroke-linecap="round"
+                              stroke-linejoin="round" /></svg>
+                        </div>
+                        <div class="lp-best-sellers__feature-text">
+                          <strong>{{ product.metafields.custom.feature_1_title }}</strong>
+                          <p>{{ product.metafields.custom.feature_1_desc }}</p>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if product.metafields.custom.feature_2_title != blank %}
+                      <div class="lp-best-sellers__feature">
+                        <div class="lp-best-sellers__feature-icon">
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 14 14"
+                            fill="none"><path
+                              d="M7 1.5C10.0376 1.5 12.5 3.96243 12.5 7C12.5 10.0376 10.0376 12.5 7 12.5M7 1.5C3.96243 1.5 1.5 3.96243 1.5 7C1.5 10.0376 3.96243 12.5 7 12.5M7 1.5V12.5"
+                              stroke="#003665"
+                              stroke-width="1" /></svg>
+                        </div>
+                        <div class="lp-best-sellers__feature-text">
+                          <strong>{{ product.metafields.custom.feature_2_title }}</strong>
+                          <p>{{ product.metafields.custom.feature_2_desc }}</p>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </details>
+            </div>
           </div>
+        {% endfor %}
+      {% else %}
+        <div class="lp-best-sellers__empty">
+          <p>No products found in this collection. Please select a collection in the section settings.</p>
         </div>
-      {% endfor %}
+      {% endif %}
     </div>
   </div>
 </section>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
   const section = document.querySelector('#lp-best-sellers-{{ section.id }}');
   const grid = section.querySelector('[data-carousel]');
   const prevBtn = section.querySelector('.lp-best-sellers__nav-btn--prev');
   const nextBtn = section.querySelector('.lp-best-sellers__nav-btn--next');
-
+  
   if (prevBtn && nextBtn && grid) {
     const scrollAmount = 300;
     prevBtn.addEventListener('click', () => {
@@ -116,56 +187,53 @@ document.addEventListener('DOMContentLoaded', () => {
       grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   }
-});
+  });
 </script>
 
 {% schema %}
-{
-  "name": "LP Best Sellers",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Best sellers"
-    },
-    {
-      "type": "text",
-      "id": "sub_header",
-      "label": "Sub-heading",
-      "default": "5,000+ sold in total"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "product_card",
-      "name": "Product Card",
-      "settings": [
-        { "type": "product", "id": "product", "label": "Product" },
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "badge", "label": "Badge", "default": "Best Seller" },
-        { "type": "text", "id": "title", "label": "Title", "default": "Electric mop steam 1500W" },
-        { "type": "text", "id": "original_price", "label": "Original Price", "default": "€199.99" },
-        { "type": "text", "id": "price", "label": "Price", "default": "€130" },
-        { "type": "text", "id": "discount", "label": "Discount Label", "default": "Save 24%" },
-        { "type": "text", "id": "rating", "label": "Rating Text", "default": "4.5/5 (1,450+ Reviews)" },
-        { "type": "text", "id": "feat_1_title", "label": "Feature 1 Title", "default": "1500W high-heat system" },
-        { "type": "text", "id": "feat_1_desc", "label": "Feature 1 Description", "default": "Fast, visible cleaning power." },
-        { "type": "text", "id": "feat_2_title", "label": "Feature 2 Title", "default": "Dual rotating pads" },
-        { "type": "text", "id": "feat_2_desc", "label": "Feature 2 Description", "default": "Deep clean without harsh chemicals." }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "LP Best Sellers",
-      "blocks": [
-        { "type": "product_card", "settings": { "title": "Electric mop steam 1500W", "badge": "Best Seller" } },
-        { "type": "product_card", "settings": { "title": "Steam Scrubber", "badge": "Newly Launched" } },
-        { "type": "product_card", "settings": { "title": "Handheld Steamer", "badge": "Newly Launched" } },
-        { "type": "product_card", "settings": { "title": "Steam Cleaner", "badge": "Newly Launched" } }
-      ]
-    }
-  ]
-}
+  {
+    "name": "LP Best Sellers",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Best sellers"
+      },
+      {
+        "type": "text",
+        "id": "sub_header",
+        "label": "Sub-heading",
+        "default": "5,000+ sold in total"
+      },
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Collection to display"
+      },
+      {
+        "type": "number",
+        "id": "products_limit",
+        "label": "Number of products to show",
+        "default": 8
+
+      }, {
+        "type": "text",
+        "id": "discount_badge_text",
+        "label": "Discount Badge Text",
+        "default": "Sale",
+        "info": "Shown when product is on sale"
+      }
+    ],
+    "presets": [
+      {
+        "name": "LP Best Sellers",
+        "settings": {
+          "title": "Best sellers",
+          "sub_header": "5,000+ sold in total",
+          "products_limit": 8
+        }
+      }
+    ]
+  }
 {% endschema %}

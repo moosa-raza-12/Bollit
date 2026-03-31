@@ -39,6 +39,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
   padding-right: 5px;
   display: flex;
   align-items: center;
+  max-height: 22px;
 }
 
 .lp-why-choose__subheading-wrapper {
@@ -64,11 +65,22 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
 }
 
 .lp-why-choose__heading {
+  color: var(--Black, #1F1F1F);
   font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 90%; /* 34.2px */
+  letter-spacing: -0.57px;
+  margin: 0;
+}
+.special-words{
+  color: #003665;
+  font-family: "Source Serif Pro" !important;
+  font-size: 28px;
+  font-style: italic;
   font-weight: 400;
-  line-height: 1.1;
-  color: var(--color-text);
-  letter-spacing: -0.42px;
+  line-height: 90%;
+  letter-spacing: -0.57px;
   margin: 0;
 }
 
@@ -169,6 +181,32 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
 .lp-why-choose__desktop-media {
   display: none;
 }
+/* Add this to your lp-home-why-choose-bollit.css file */
+
+.lp-why-choose__desktop-image-wrapper {
+  transition: opacity 0.3s ease-in-out;
+  display: none;
+}
+
+.lp-why-choose__desktop-image-wrapper {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.lp-why-choose__desktop-image-wrapper--active {
+  display: block;
+  opacity: 1;
+}
+.lp-why-choose__desktop-image-wrapper:first-child {
+  display: block;
+}
+
+.lp-why-choose__desktop-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
 
 /* Radio Interaction */
 .lp-why-choose__radio:checked + .lp-why-choose__item {
@@ -194,6 +232,10 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
   }
 
   .lp-why-choose__heading {
+    font-size: 38px;
+    letter-spacing: -0.57px;
+  }
+  .special-words{
     font-size: 38px;
     letter-spacing: -0.57px;
   }
@@ -245,7 +287,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
   .lp-why-choose__desktop-image-wrapper {
     position: absolute;
     inset: 0;
-    opacity: 0;
+    /* opacity: 0; */
     transition: opacity 0.4s ease;
   }
 
