@@ -190,81 +190,12 @@
     },
     "lp-home-sold-in-total": {
       "type": "lp-home-sold-in-total",
-      "blocks": {
-        "block_lp-home-sold-in-total_0": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "badge": "Best Seller",
-            "title": "Electric mop steam 1500W",
-            "original_price": "€199.99",
-            "price": "€130",
-            "discount": "Save 24%",
-            "rating": "4.5/5 (1,450+ Reviews)",
-            "feat_1_title": "1500W high-heat system",
-            "feat_1_desc": "Fast, visible cleaning power.",
-            "feat_2_title": "Dual rotating pads",
-            "feat_2_desc": "Deep clean without harsh chemicals."
-          }
-        },
-        "block_lp-home-sold-in-total_1": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "badge": "Newly Launched",
-            "title": "Steam Scrubber",
-            "original_price": "€199.99",
-            "price": "€130",
-            "discount": "Save 24%",
-            "rating": "4.5/5 (1,450+ Reviews)",
-            "feat_1_title": "1500W high-heat system",
-            "feat_1_desc": "Fast, visible cleaning power.",
-            "feat_2_title": "Dual rotating pads",
-            "feat_2_desc": "Deep clean without harsh chemicals."
-          }
-        },
-        "block_lp-home-sold-in-total_2": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "badge": "Newly Launched",
-            "title": "Handheld Steamer",
-            "original_price": "€199.99",
-            "price": "€130",
-            "discount": "Save 24%",
-            "rating": "4.5/5 (1,450+ Reviews)",
-            "feat_1_title": "1500W high-heat system",
-            "feat_1_desc": "Fast, visible cleaning power.",
-            "feat_2_title": "Dual rotating pads",
-            "feat_2_desc": "Deep clean without harsh chemicals."
-          }
-        },
-        "block_lp-home-sold-in-total_3": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "badge": "Newly Launched",
-            "title": "Steam Cleaner",
-            "original_price": "€199.99",
-            "price": "€130",
-            "discount": "Save 24%",
-            "rating": "4.5/5 (1,450+ Reviews)",
-            "feat_1_title": "1500W high-heat system",
-            "feat_1_desc": "Fast, visible cleaning power.",
-            "feat_2_title": "Dual rotating pads",
-            "feat_2_desc": "Deep clean without harsh chemicals."
-          }
-        }
-      },
-      "block_order": [
-        "block_lp-home-sold-in-total_0",
-        "block_lp-home-sold-in-total_1",
-        "block_lp-home-sold-in-total_2",
-        "block_lp-home-sold-in-total_3"
-      ],
       "settings": {
         "title": "Best sellers",
-        "sub_header": "5,000+ sold in total"
+        "sub_header": "5,000+ sold in total",
+        "collection": "frontpage",
+        "products_limit": 8,
+        "discount_badge_text": "Sale"
       }
     },
     "lp-home-why-choose-bollit": {
