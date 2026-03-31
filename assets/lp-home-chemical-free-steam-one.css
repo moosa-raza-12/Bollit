@@ -4,12 +4,16 @@
   position: relative;
   width: 100%;
   height: 548px;
-  background-image: var(--bg-image);
+  background-image: var(--bg-image-desktop);
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: linear-gradient(90deg, rgba(24, 12, 0, 0.81) 28.3%, rgba(24, 12, 0, 0.73) 39.85%, rgba(8, 5, 0, 0.06) 70.76%), var(--bg-image-desktop);
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
 }
 
 .lp-product-image-frame__container {
@@ -46,6 +50,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 1.7;
+  letter-spacing: 0px;
 }
 
 .lp-feature-content {
@@ -61,6 +66,15 @@
   line-height: 1.0;
   letter-spacing: -0.51px;
   margin: 0;
+}
+.lp-feature-title-sp{
+  color: #C4E3FF;
+font-family: "Source Serif Pro"!important;
+font-size: 34px;
+font-style: italic;
+font-weight: 400;
+line-height: 112.77%;
+letter-spacing: -0.51px;
 }
 
 .lp-product-description {
@@ -115,6 +129,14 @@
   line-height: 1.4;
 }
 
+/* Mobile background image */
+@media (max-width: 767px) {
+  .lp-product-image-frame {
+    background-image: var(--bg-image-mobile);
+  }
+}
+
+/* Tablet and desktop styles */
 @media (min-width: 768px) {
   .lp-product-image-frame {
     height: 595px;
@@ -131,6 +153,7 @@
 
   .lp-reviews-badge__text {
     font-size: 16px;
+    line-height: 9px;
   }
 
   .lp-feature-content {
@@ -138,6 +161,10 @@
   }
 
   .lp-feature-title {
+    font-size: 44px;
+    letter-spacing: -0.66px;
+  }
+  .lp-feature-title-sp{
     font-size: 44px;
     letter-spacing: -0.66px;
   }
@@ -153,5 +180,18 @@
 
   .lp-feature-item__text {
     font-size: 14px;
+  }
+}
+
+/* Optional: Add a fallback for browsers that don't support CSS variables */
+@supports not (background-image: var(--bg-image-desktop)) {
+  .lp-product-image-frame {
+    background-image: url('{{ section.settings.background_image_desktop | image_url: width: 2000 }}');
+  }
+  
+  @media (max-width: 767px) {
+    .lp-product-image-frame {
+      background-image: url('{{ section.settings.background_image_mobile | image_url: width: 1000 }}');
+    }
   }
 }

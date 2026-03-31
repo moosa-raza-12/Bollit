@@ -10,12 +10,12 @@
         <div class="lp-reviews-badge">
           <span class="lp-reviews-badge__star">
             <svg
+              xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
               viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 0.5L10.2451 5.34171L15.5 6.10354L11.7 9.80354L12.5902 15.0354L8 12.6183L3.40983 15.0354L4.3 9.80354L0.5 6.10354L5.75486 5.34171L8 0.5Z" fill="white" />
+              fill="none">
+              <path d="M3.06897 15.1435C2.89061 15.0074 2.78266 14.8267 2.74512 14.6014C2.70757 14.3808 2.73808 14.125 2.83664 13.834L4.2658 9.58878L0.618969 6.97686C0.365521 6.79381 0.187168 6.60373 0.0839118 6.4066C-0.0146513 6.20478 -0.026385 5.99592 0.0487107 5.78002C0.119113 5.56881 0.252877 5.41158 0.450003 5.30833C0.64713 5.20507 0.900577 5.15579 1.21035 5.16048L5.68793 5.18864L7.04669 0.915229C7.14056 0.619539 7.26728 0.394252 7.42686 0.239368C7.58644 0.0797892 7.77653 0 7.99712 0C8.22241 0 8.41484 0.0797892 8.57442 0.239368C8.734 0.394252 8.86072 0.619539 8.95459 0.915229L10.3134 5.18864L14.7839 5.16048C15.0984 5.15579 15.3542 5.20507 15.5513 5.30833C15.7484 5.41158 15.8822 5.56881 15.9526 5.78002C16.0277 5.99592 16.0136 6.20478 15.9103 6.4066C15.8118 6.60373 15.6358 6.79381 15.3823 6.97686L11.7355 9.58878L13.1646 13.834C13.2632 14.125 13.2937 14.3808 13.2562 14.6014C13.2186 14.8267 13.1107 15.0074 12.9323 15.1435C12.7493 15.2796 12.5451 15.3289 12.3198 15.2914C12.0992 15.2538 11.8645 15.1435 11.6158 14.9605L7.99712 12.3063L4.38549 14.9605C4.13673 15.1435 3.89971 15.2538 3.67442 15.2914C3.45383 15.3289 3.25201 15.2796 3.06897 15.1435Z" fill="white" />
             </svg>
           </span>
           <span class="lp-reviews-badge__text">{{ section.settings.rating_text }}</span>
@@ -24,7 +24,8 @@
 
       <div class="lp-feature-content">
         {% if section.settings.title != blank %}
-          <h2 class="lp-feature-title">{{ section.settings.title | newline_to_br }}</h2>
+          <h2 class="lp-feature-title">{{ section.settings.title }}<span class="lp-feature-title-sp">{{ section.settings.title2 }}</span>
+          </h2>
         {% endif %}
         {% if section.settings.description != blank %}
           <p class="lp-product-description">{{ section.settings.description }}</p>
@@ -109,7 +110,12 @@
         "type": "textarea",
         "id": "title",
         "label": "Title",
-        "default": "Chemical-free steam.\nOne-pass deep clean."
+        "default": "Chemical-free steam."
+      }, {
+        "type": "textarea",
+        "id": "title2",
+        "label": "Special Title line",
+        "default": "One-pass deep clean."
       }, {
         "type": "textarea",
         "id": "description",
