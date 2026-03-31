@@ -91,7 +91,8 @@
         "background_image_desktop": "shopify://shop_images/0ae9a1132f60a3516a92504df49ef763909d23b6.png",
         "background_image_mobile": "shopify://shop_images/f23534daac8ab51dd3143120e605db1036b5eb2b.png",
         "rating_text": "4.5/5 (1,450+ Reviews)",
-        "title": "Chemical-free steam.\nOne-pass deep clean.",
+        "title": "Chemical-free steam.",
+        "title2": "One-pass deep clean.",
         "description": "With the 1500W powerful steam, you can clean deeply and safely, without scrubbing or harsh chemicals.",
         "button_label": "Shop Now",
         "button_link": ""
