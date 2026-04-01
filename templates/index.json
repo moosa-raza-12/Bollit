@@ -200,13 +200,47 @@
     "lp-home-sold-in-total": {
       "type": "lp-home-sold-in-total",
       "blocks": {
+        "product_A7qyzb": {
+          "type": "product",
+          "settings": {
+            "product": "steam-scrubber",
+            "custom_title": "",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
+            "feature_1_title": "",
+            "feature_1_desc": "",
+            "feature_2_title": "",
+            "feature_2_desc": "",
+            "feature_3_title": "",
+            "feature_3_desc": ""
+          }
+        },
+        "product_xgVJ4m": {
+          "type": "product",
+          "settings": {
+            "product": "steam-cleaner",
+            "custom_title": "",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
+            "feature_1_title": "",
+            "feature_1_desc": "",
+            "feature_2_title": "",
+            "feature_2_desc": "",
+            "feature_3_title": "",
+            "feature_3_desc": ""
+          }
+        },
         "product_BPrkK9": {
           "type": "product",
           "settings": {
             "product": "electric-mop-steam-1500w-copy",
-            "product_image": "shopify://shop_images/Feature_Image_c59a85a8-205f-45df-8c39-93d3867d607a.png",
-            "badge_text": "best",
-            "discount_badge_text": "save",
+            "custom_title": "data",
+            "custom_image": "shopify://shop_images/freepik__output-must-be-img1-but-reduce-item-chairs-etc-in-__29243_2.png",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
             "feature_1_title": "save",
             "feature_1_desc": "save to get one free",
             "feature_2_title": "save",
@@ -219,8 +253,26 @@
           "type": "product",
           "settings": {
             "product": "electric-mop-steam-1500w",
-            "badge_text": "",
-            "discount_badge_text": "Sale",
+            "custom_title": "",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
+            "feature_1_title": "",
+            "feature_1_desc": "",
+            "feature_2_title": "",
+            "feature_2_desc": "",
+            "feature_3_title": "",
+            "feature_3_desc": ""
+          }
+        },
+        "product_FHf68K": {
+          "type": "product",
+          "settings": {
+            "product": "handheld-steamer",
+            "custom_title": "",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
             "feature_1_title": "",
             "feature_1_desc": "",
             "feature_2_title": "",
@@ -231,8 +283,11 @@
         }
       },
       "block_order": [
+        "product_A7qyzb",
+        "product_xgVJ4m",
         "product_BPrkK9",
-        "product_ywVxtX"
+        "product_ywVxtX",
+        "product_FHf68K"
       ],
       "settings": {
         "title": "Best sellers",
