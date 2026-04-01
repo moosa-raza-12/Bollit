@@ -461,6 +461,14 @@
             "answer": "Yes. It cleans using steam only, without leaving harmful chemical residue so it is safe or pets and children."
           }
         },
+        "faq_item_HTdXFg": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Usage",
+            "question": "How do I use the steam mop?",
+            "answer": "Fill the water tank, power it on, wait a few seconds to heat up, and start cleaning."
+          }
+        },
         "faq_item_t6Bebj": {
           "type": "faq_item",
           "settings": {
@@ -535,6 +543,7 @@
         "faq_item_rBjT9x",
         "faq_item_x8GT4d",
         "faq_item_MwRBHK",
+        "faq_item_HTdXFg",
         "faq_item_t6Bebj",
         "faq_item_rH7efk",
         "block_lp-home-need-some-help_2",
