@@ -431,6 +431,14 @@
             "answer": "Yes. It’s designed for sealed hardwood, tile, laminate, marble, and vinyl surfaces."
           }
         },
+        "faq_item_qyrKrp": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Warranty",
+            "question": "Does Bollit offer a warranty?",
+            "answer": "Yes. All products come with a warranty for manufacturing defects."
+          }
+        },
         "block_lp-home-need-some-help_1": {
           "type": "tab",
           "settings": {
@@ -461,27 +469,11 @@
             "answer": "Yes. It cleans using steam only, without leaving harmful chemical residue so it is safe or pets and children."
           }
         },
-        "faq_item_HTdXFg": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Usage",
-            "question": "How do I use the steam mop?",
-            "answer": "Fill the water tank, power it on, wait a few seconds to heat up, and start cleaning."
-          }
-        },
         "faq_item_t6Bebj": {
           "type": "faq_item",
           "settings": {
             "category": "Usage",
             "question": "How often should I use it?",
-            "answer": "You can use it as often as needed for everyday cleaning or deep cleaning sessions."
-          }
-        },
-        "faq_item_rH7efk": {
-          "type": "faq_item",
-          "settings": {
-            "category": "Usage",
-            "question": "Need more help?",
             "answer": "You can use it as often as needed for everyday cleaning or deep cleaning sessions."
           }
         },
@@ -539,13 +531,12 @@
       "block_order": [
         "block_lp-home-need-some-help_0",
         "faq_item_7NwCw8",
+        "faq_item_qyrKrp",
         "block_lp-home-need-some-help_1",
         "faq_item_rBjT9x",
         "faq_item_x8GT4d",
         "faq_item_MwRBHK",
-        "faq_item_HTdXFg",
         "faq_item_t6Bebj",
-        "faq_item_rH7efk",
         "block_lp-home-need-some-help_2",
         "block_lp-home-need-some-help_3",
         "block_lp-home-need-some-help_4",
