@@ -199,11 +199,28 @@
     },
     "lp-home-sold-in-total": {
       "type": "lp-home-sold-in-total",
+      "blocks": {
+        "product_ywVxtX": {
+          "type": "product",
+          "settings": {
+            "product": "electric-mop-steam-1500w",
+            "badge_text": "",
+            "discount_badge_text": "Sale",
+            "feature_1_title": "",
+            "feature_1_desc": "",
+            "feature_2_title": "",
+            "feature_2_desc": "",
+            "feature_3_title": "",
+            "feature_3_desc": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_ywVxtX"
+      ],
       "settings": {
         "title": "Best sellers",
         "sub_header": "5,000+ sold in total",
-        "collection": "frontpage",
-        "products_limit": 8,
         "discount_badge_text": "Sale"
       }
     },
