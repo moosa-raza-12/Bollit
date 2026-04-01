@@ -267,7 +267,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
 
   .lp-why-choose__item-description {
     font-size: 16px;
-    line-height: 1.6;
+    /* line-height: 1.6; */
   }
 
   .lp-why-choose__mobile-image {

@@ -20,13 +20,13 @@ background-repeat: no-repeat;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 36px 20px;
+  /* padding: 36px 20px; */
 }
 
 .lp-product-info-container {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 5px;
   max-width: 390px;
 }
 
@@ -49,7 +49,7 @@ background-repeat: no-repeat;
   color: #fff;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 8px;
   letter-spacing: 0px;
 }
 
@@ -100,6 +100,8 @@ letter-spacing: -0.51px;
   width: 100%;
   height: 52px;
   transition: opacity 0.3s ease;
+  letter-spacing: 0px;
+  margin: 8px 0;
 }
 
 .lp-atc-button:hover {
@@ -108,14 +110,13 @@ letter-spacing: -0.51px;
 
 .lp-product-features {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px 21px;
+  gap:21px;
 }
 
 .lp-feature-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 8px !important;
 }
 
 .lp-feature-item__icon {
@@ -124,10 +125,12 @@ letter-spacing: -0.51px;
 }
 
 .lp-feature-item__text {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.4;
+  color: #FFF;
+font-size: 12px;
+font-style: normal;
+font-weight: 500;
+line-height: 140%; /* 19.6px */
+letter-spacing: 0px;
 }
 
 /* Mobile background image */
@@ -135,6 +138,16 @@ letter-spacing: -0.51px;
   .lp-product-image-frame {
     background-image: var(--bg-image-mobile);
   }
+  .lp-product-image-frame {
+    display: flex;
+height: 548px;
+padding: 36px 20px;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+align-self: stretch;
+background: linear-gradient(180deg, rgba(24, 12, 0, 0.85) 44.71%, rgba(0, 2, 8, 0.00) 73.56%), var(--bg-image-mobile) lightgray 50% / cover no-repeat;
+}
 }
 
 /* Tablet and desktop styles */
@@ -154,7 +167,7 @@ letter-spacing: -0.51px;
 
   .lp-reviews-badge__text {
     font-size: 16px;
-    line-height: 9px;
+    line-height: 1.7;
   }
 
   .lp-feature-content {
@@ -175,9 +188,23 @@ letter-spacing: -0.51px;
   }
 
   .lp-atc-button {
-    width: fit-content;
-    min-width: 200px;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-blue);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 100px;
+    width: 100%;
+    height: 52px;
+    transition: opacity .3s ease;
+    letter-spacing: 0px;
+    margin:0;
+}
+  
 
   .lp-feature-item__text {
     font-size: 14px;

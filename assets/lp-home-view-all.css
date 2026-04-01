@@ -27,22 +27,37 @@
 .lp-view-all__header {
   text-align: center;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
 .lp-view-all__subtitle-pill {
-  display: inline-block;
-  background: var(--lp-btn-bg);
-  padding: 2px 16px;
-  border-radius: 100px;
-  margin-bottom: 16px;
+  border-right: 1px solid #FD9308;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 8, 0.14) 33.65%);
+    background-size: 75%;
+    background-position: right;
+    background-repeat: no-repeat;
+    transform: rotate(-.47deg);
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    max-height: 22px;
+    width: fit-content;
 }
 
 .lp-view-all__subtitle {
   color: var(--lp-primary-blue);
   font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
   letter-spacing: -0.015em;
+  margin: 0;
+  color: #003665;
+font-family: "Source Serif Pro"!important;
+font-style: italic;
+font-weight: 400;
+line-height: normal;
+letter-spacing: -0.27px;
 }
 
 .lp-view-all__title {
@@ -52,6 +67,15 @@
   font-weight: 400;
   margin: 0;
   letter-spacing: -0.015em;
+}
+.lp-view-all__special-text{
+  color: #003665;
+font-family: "Source Serif Pro" !important;
+font-size: 28px;
+font-style: italic;
+font-weight: 400;
+line-height: 90%;
+letter-spacing: -0.42px;
 }
 
 .lp-view-all__btn {
@@ -156,11 +180,17 @@
   .lp-view-all {
     padding: 64px 0;
   }
+  .lp-view-all__subtitle{
+    font-size: 18px;
+  }
   .lp-view-all__container {
     padding: 0 40px;
     gap: 42px;
   }
   .lp-view-all__title {
+    font-size: 38px;
+  }
+  .lp-view-all__special-text{
     font-size: 38px;
   }
   .lp-view-all__btn--desktop {
