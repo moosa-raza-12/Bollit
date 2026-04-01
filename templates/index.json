@@ -208,12 +208,14 @@
             "custom_badge": "",
             "custom_rating": "",
             "custom_rating_count": "",
-            "feature_1_title": "",
-            "feature_1_desc": "",
-            "feature_2_title": "",
+            "feature_1_title": "1500W high-heat system",
+            "feature_1_desc": "Fast, visible cleaning power.",
+            "feature_2_title": "Dual rotating pads",
             "feature_2_desc": "",
-            "feature_3_title": "",
-            "feature_3_desc": ""
+            "feature_3_title": "Chemical-free cleaning",
+            "feature_3_desc": "Deep clean without harsh chemicals.",
+            "feature_4_title": "Safe on hard floors",
+            "feature_4_desc": "Wood, tile, laminate, marble & vinyl."
           }
         },
         "product_xgVJ4m": {
@@ -229,7 +231,9 @@
             "feature_2_title": "",
             "feature_2_desc": "",
             "feature_3_title": "",
-            "feature_3_desc": ""
+            "feature_3_desc": "",
+            "feature_4_title": "",
+            "feature_4_desc": ""
           }
         },
         "product_BPrkK9": {
@@ -246,7 +250,9 @@
             "feature_2_title": "save",
             "feature_2_desc": "",
             "feature_3_title": "",
-            "feature_3_desc": ""
+            "feature_3_desc": "",
+            "feature_4_title": "",
+            "feature_4_desc": ""
           }
         },
         "product_ywVxtX": {
@@ -262,7 +268,9 @@
             "feature_2_title": "",
             "feature_2_desc": "",
             "feature_3_title": "",
-            "feature_3_desc": ""
+            "feature_3_desc": "",
+            "feature_4_title": "",
+            "feature_4_desc": ""
           }
         },
         "product_FHf68K": {
@@ -278,7 +286,9 @@
             "feature_2_title": "",
             "feature_2_desc": "",
             "feature_3_title": "",
-            "feature_3_desc": ""
+            "feature_3_desc": "",
+            "feature_4_title": "",
+            "feature_4_desc": ""
           }
         }
       },
