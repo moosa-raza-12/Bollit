@@ -144,6 +144,7 @@
         "block_lp-home-view-all_0": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/freepik__output-must-be-img1-but-reduce-item-chairs-etc-in-__29243_2.png",
             "title": "Tapijtreinigers",
             "link": ""
           }
@@ -151,6 +152,7 @@
         "block_lp-home-view-all_1": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/90e71209fa0e16e909426a27f465b9ee7a8c3fe4.png",
             "title": "HandSteamer",
             "link": ""
           }
@@ -158,6 +160,7 @@
         "block_lp-home-view-all_2": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/be73964c76748045d2ecc2a4e2f994beae8cefbb.png",
             "title": "Stoomreiniger",
             "link": ""
           }
@@ -165,6 +168,7 @@
         "block_lp-home-view-all_3": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/5af1b8b6ed7105c29a8397ebdbbc39766aba16d8.png",
             "title": "Handheld Steamers",
             "link": ""
           }
@@ -172,6 +176,7 @@
         "block_lp-home-view-all_4": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Product_image.jpg",
             "title": "Luchtreinigers",
             "link": ""
           }
