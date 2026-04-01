@@ -200,6 +200,21 @@
     "lp-home-sold-in-total": {
       "type": "lp-home-sold-in-total",
       "blocks": {
+        "product_BPrkK9": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "product_image": "shopify://shop_images/Feature_Image_c59a85a8-205f-45df-8c39-93d3867d607a.png",
+            "badge_text": "best",
+            "discount_badge_text": "save",
+            "feature_1_title": "save",
+            "feature_1_desc": "save to get one free",
+            "feature_2_title": "save",
+            "feature_2_desc": "",
+            "feature_3_title": "",
+            "feature_3_desc": ""
+          }
+        },
         "product_ywVxtX": {
           "type": "product",
           "settings": {
@@ -216,6 +231,7 @@
         }
       },
       "block_order": [
+        "product_BPrkK9",
         "product_ywVxtX"
       ],
       "settings": {
