@@ -13,10 +13,28 @@
       </div>
       <div class="lp-best-sellers__nav">
         <button class="lp-best-sellers__nav-btn lp-best-sellers__nav-btn--prev" aria-label="Previous">
-          <svg width="6" height="12" viewBox="0 0 6 12" fill="none"><path d="M5 1L1 6L5 11" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <svg
+            width="6"
+            height="12"
+            viewBox="0 0 6 12"
+            fill="none"><path
+              d="M5 1L1 6L5 11"
+              stroke="#1F1F1F"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round" /></svg>
         </button>
         <button class="lp-best-sellers__nav-btn lp-best-sellers__nav-btn--next" aria-label="Next">
-          <svg width="6" height="12" viewBox="0 0 6 12" fill="none"><path d="M1 1L5 6L1 11" stroke="#1F1F1F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <svg
+            width="6"
+            height="12"
+            viewBox="0 0 6 12"
+            fill="none"><path
+              d="M1 1L5 6L1 11"
+              stroke="#1F1F1F"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round" /></svg>
         </button>
       </div>
     </div>
@@ -25,7 +43,7 @@
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
           {% assign product = all_products[block.settings.product] %}
-          {% if product != blank %}
+            {% if product != blank %}
 
             {%- comment -%} ── Resolve overridable values (block > metafield/product default) ── {%- endcomment -%}
 
@@ -41,10 +59,12 @@
 
             {%- assign display_image = block.settings.custom_image | default: product.featured_image -%}
 
-            {%- assign display_rating       = block.settings.custom_rating       | default: product.metafields.reviews.rating -%}
+            {%- assign display_rating = block.settings.custom_rating | default: product.metafields.reviews.rating -%}
             {%- assign display_rating_count = block.settings.custom_rating_count | default: product.metafields.reviews.rating_count -%}
-            {%- if display_rating       == blank -%}{%- assign display_rating       = '4.5/5' -%}{%- endif -%}
-            {%- if display_rating_count == blank -%}{%- assign display_rating_count = '0'     -%}{%- endif -%}
+            {%- if display_rating == blank -%}
+              {%- assign display_rating = '4.5/5' -%}{%- endif -%}
+            {%- if display_rating_count == blank -%}
+              {%- assign display_rating_count = '0' -%}{%- endif -%}
 
             <div class="lp-best-sellers__card" {{ block.shopify_attributes }}>
               <div class="lp-best-sellers__image-container">
@@ -75,7 +95,12 @@
 
                 <div class="lp-best-sellers__review">
                   <span class="lp-best-sellers__rating-pill">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none">
                       <path d="M2.68535 13.2506C2.52929 13.1315 2.43483 12.9734 2.40198 12.7762C2.36912 12.5832 2.39582 12.3594 2.48206 12.1048L3.73258 8.39018L0.541598 6.10475C0.319831 5.94459 0.163772 5.77826 0.0734229 5.60578C-0.0128199 5.42918 -0.0230868 5.24643 0.0426219 5.05752C0.104224 4.87271 0.221268 4.73514 0.393753 4.64479C0.566238 4.55444 0.788005 4.51131 1.05905 4.51542L4.97694 4.54006L6.16585 0.800825C6.24799 0.542097 6.35887 0.344971 6.49851 0.209447C6.63814 0.0698155 6.80446 0 6.99748 0C7.19461 0 7.36299 0.0698155 7.50262 0.209447C7.64225 0.344971 7.75313 0.542097 7.83527 0.800825L9.02419 4.54006L12.9359 4.51542C13.2111 4.51131 13.4349 4.55444 13.6074 4.64479C13.7799 4.73514 13.8969 4.87271 13.9585 5.05752C14.0242 5.24643 14.0119 5.42918 13.9215 5.60578C13.8353 5.77826 13.6813 5.94459 13.4595 6.10475L10.2685 8.39018L11.5191 12.1048C11.6053 12.3594 11.632 12.5832 11.5991 12.7762C11.5663 12.9734 11.4718 13.1315 11.3158 13.2506C11.1556 13.3697 10.977 13.4128 10.7798 13.3799C10.5868 13.3471 10.3815 13.2506 10.1638 13.0904L6.99748 10.768L3.8373 13.0904C3.61964 13.2506 3.41225 13.3471 3.21512 13.3799C3.0221 13.4128 2.84551 13.3697 2.68535 13.2506Z" fill="#E88400" />
                     </svg>
                     {{ display_rating }} ({{ display_rating_count }} Reviews)
@@ -83,15 +108,26 @@
                 </div>
 
                 <form method="post" action="/cart/add">
-                  <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ product.first_available_variant.id }}">
                   <button type="submit" class="lp-best-sellers__atc">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="21"
+                      viewBox="0 0 21 21"
+                      fill="none">
                       <g clip-path="url(#clip0_23025_13665)">
                         <path d="M13.9107 15.6521C14.3719 15.6521 14.8143 15.8354 15.1404 16.1615C15.4666 16.4877 15.6498 16.93 15.6498 17.3913C15.6498 17.8525 15.4666 18.2949 15.1404 18.621C14.8143 18.9472 14.3719 19.1304 13.9107 19.1304C13.4494 19.1304 13.0071 18.9472 12.6809 18.621C12.3548 18.2949 12.1715 17.8525 12.1715 17.3913C12.1715 16.93 12.3548 16.4877 12.6809 16.1615C13.0071 15.8354 13.4494 15.6521 13.9107 15.6521ZM13.9107 16.5217C13.68 16.5217 13.4589 16.6133 13.2958 16.7764C13.1327 16.9394 13.0411 17.1606 13.0411 17.3913C13.0411 17.6219 13.1327 17.8431 13.2958 18.0061C13.4589 18.1692 13.68 18.2608 13.9107 18.2608C14.1413 18.2608 14.3625 18.1692 14.5255 18.0061C14.6886 17.8431 14.7802 17.6219 14.7802 17.3913C14.7802 17.1606 14.6886 16.9394 14.5255 16.7764C14.3625 16.6133 14.1413 16.5217 13.9107 16.5217ZM6.08458 15.6521C6.54582 15.6521 6.98818 15.8354 7.31433 16.1615C7.64048 16.4877 7.82371 16.93 7.82371 17.3913C7.82371 17.8525 7.64048 18.2949 7.31433 18.621C6.98818 18.9472 6.54582 19.1304 6.08458 19.1304C5.62333 19.1304 5.18098 18.9472 4.85483 18.621C4.52868 18.2949 4.34545 17.8525 4.34545 17.3913C4.34545 16.93 4.52868 16.4877 4.85483 16.1615C5.18098 15.8354 5.62333 15.6521 6.08458 15.6521ZM6.08458 16.5217C5.85396 16.5217 5.63278 16.6133 5.4697 16.7764C5.30663 16.9394 5.21501 17.1606 5.21501 17.3913C5.21501 17.6219 5.30663 17.8431 5.4697 18.0061C5.63278 18.1692 5.85396 18.2608 6.08458 18.2608C6.3152 18.2608 6.53638 18.1692 6.69945 18.0061C6.86253 17.8431 6.95414 17.6219 6.95414 17.3913C6.95414 17.1606 6.86253 16.9394 6.69945 16.7764C6.53638 16.6133 6.3152 16.5217 6.08458 16.5217ZM15.6498 5.21734H3.71067L5.92806 10.4347H13.0411C13.3281 10.4347 13.5802 10.2956 13.7368 10.0869L16.3454 6.60864C16.4585 6.46082 16.5194 6.27821 16.5194 6.0869C16.5194 5.85628 16.4277 5.6351 16.2647 5.47203C16.1016 5.30895 15.8804 5.21734 15.6498 5.21734ZM13.0411 11.3043H5.97154L5.30197 12.6608L5.21501 13.0434C5.21501 13.274 5.30663 13.4952 5.4697 13.6583C5.63278 13.8214 5.85396 13.913 6.08458 13.913H15.6498V14.7826H6.08458C5.62333 14.7826 5.18098 14.5993 4.85483 14.2732C4.52868 13.947 4.34545 13.5047 4.34545 13.0434C4.34519 12.7484 4.42 12.4581 4.56284 12.1999L5.18893 10.9217L2.0324 3.47821H0.867188V2.60864H2.60632L3.34545 4.34777H15.6498C16.111 4.34777 16.5534 4.531 16.8795 4.85715C17.2057 5.1833 17.3889 5.62566 17.3889 6.0869C17.3889 6.52169 17.2411 6.8869 16.9976 7.18256L14.4672 10.5652C14.1541 11.0086 13.6324 11.3043 13.0411 11.3043Z" fill="white" />
                       </g>
                       <defs>
                         <clipPath id="clip0_23025_13665">
-                          <rect width="20.8696" height="20.8696" fill="white" />
+                          <rect
+                            width="20.8696"
+                            height="20.8696"
+                            fill="white" />
                         </clipPath>
                       </defs>
                     </svg>
@@ -102,7 +138,13 @@
                 <details class="lp-best-sellers__accordion">
                   <summary class="lp-best-sellers__accordion-header">
                     See capabilities
-                    <svg class="lp-best-sellers__chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <svg
+                      class="lp-best-sellers__chevron"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none">
                       <path d="M4.86646 7.99178L9.58312 12.7084L14.2998 7.99178L13.7081 7.40845L9.58312 11.5334L5.45812 7.40845L4.86646 7.99178Z" fill="#41464B" />
                     </svg>
                   </summary>
@@ -111,11 +153,18 @@
 
                       {%- comment -%} Feature 1 — block override > metafield {%- endcomment -%}
                       {%- assign f1_title = block.settings.feature_1_title | default: product.metafields.custom.feature_1_title -%}
-                      {%- assign f1_desc  = block.settings.feature_1_desc  | default: product.metafields.custom.feature_1_description -%}
+                      {%- assign f1_desc = block.settings.feature_1_desc | default: product.metafields.custom.feature_1_description -%}
                       {% if f1_title != blank %}
                         <div class="lp-best-sellers__feature">
                           <div class="lp-best-sellers__feature-icon">
-                            <svg width="12" height="13" viewBox="0 0 12 13" fill="none"><path d="M10.5 5.5H7.5V1.5L1.5 7.5H4.5V11.5L10.5 5.5Z" stroke="#003665" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="17"
+                              height="17"
+                              viewBox="0 0 17 17"
+                              fill="none">
+                              <path d="M5.3956 14.7841L8.23636 9.84671L2.81226 9.2109L10.7248 2.09668H11.5097L8.60139 7.04674L14.0656 7.66919L6.15309 14.7834L5.3956 14.7841ZM7.39236 12.672L12.4416 8.19247L7.46762 7.63543L9.50869 4.18488L4.43625 8.67847L9.39264 9.27209L7.39236 12.672Z" fill="#003665" />
+                            </svg>
                           </div>
                           <div class="lp-best-sellers__feature-text">
                             <strong>{{ f1_title }}</strong>
@@ -126,11 +175,23 @@
 
                       {%- comment -%} Feature 2 — block override > metafield {%- endcomment -%}
                       {%- assign f2_title = block.settings.feature_2_title | default: product.metafields.custom.feature_2_title -%}
-                      {%- assign f2_desc  = block.settings.feature_2_desc  | default: product.metafields.custom.feature_2_description -%}
+                      {%- assign f2_desc = block.settings.feature_2_desc | default: product.metafields.custom.feature_2_description -%}
                       {% if f2_title != blank %}
                         <div class="lp-best-sellers__feature">
                           <div class="lp-best-sellers__feature-icon">
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C10.0376 1.5 12.5 3.96243 12.5 7C12.5 10.0376 10.0376 12.5 7 12.5M7 1.5C3.96243 1.5 1.5 3.96243 1.5 7C1.5 10.0376 3.96243 12.5 7 12.5M7 1.5V12.5" stroke="#003665" stroke-width="1" /></svg>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="17"
+                              height="17"
+                              viewBox="0 0 17 17"
+                              fill="none">
+                              <path
+                                d="M14.0667 1.40674V3.60958C14.0667 3.65493 14.0527 3.69917 14.0266 3.73628C14.0006 3.7734 13.9637 3.80159 13.9211 3.81703C13.8785 3.83247 13.8321 3.83441 13.7883 3.82259C13.7445 3.81077 13.7055 3.78576 13.6764 3.75095C13.0178 3.01268 12.2104 2.42213 11.3073 2.01811C10.4043 1.61409 9.4259 1.40573 8.43655 1.40674C4.55415 1.40674 1.40674 4.55557 1.40674 8.44007C1.40674 11.2239 3.0237 13.6307 5.36861 14.7701M8.62646 15.4734C8.29823 15.4734 7.97564 15.4518 7.65867 15.4087M15.287 6.09587C15.3658 6.37532 15.4279 6.65713 15.4734 6.94127M15.4488 9.5225C15.3996 9.80384 15.3356 10.0819 15.2568 10.3567M14.1842 12.6573C14.0168 12.9065 13.835 13.1458 13.6398 13.374M11.6543 15.0233C11.4058 15.1653 11.1472 15.2936 10.8785 15.408"
+                                stroke="#003665"
+                                stroke-width="0.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            </svg>
                           </div>
                           <div class="lp-best-sellers__feature-text">
                             <strong>{{ f2_title }}</strong>
@@ -141,12 +202,22 @@
 
                       {%- comment -%} Feature 3 — block override > metafield {%- endcomment -%}
                       {%- assign f3_title = block.settings.feature_3_title | default: product.metafields.custom.feature_3_title -%}
-                      {%- assign f3_desc  = block.settings.feature_3_desc  | default: product.metafields.custom.feature_3_description -%}
+                      {%- assign f3_desc = block.settings.feature_3_desc | default: product.metafields.custom.feature_3_description -%}
                       {% if f3_title != blank %}
                         <div class="lp-best-sellers__feature">
                           <div class="lp-best-sellers__feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-                              <path d="M8.43955 2.11004L8.57811 1.7865C8.53432 1.76773 8.48719 1.75806 8.43955 1.75806C8.39191 1.75806 8.34478 1.76773 8.30099 1.7865L8.43955 2.11004ZM8.43955 14.77L8.26512 15.0753C8.31825 15.1056 8.37837 15.1216 8.43955 15.1216C8.50073 15.1216 8.56085 15.1056 8.61398 15.0753L8.43955 14.77ZM8.30029 1.7865L3.80388 3.71364L4.08099 4.3607L8.57811 2.43357L8.30029 1.7865ZM3.16455 4.68424V9.5077H3.86788V4.68424H3.16455ZM5.46797 13.4773L8.26512 15.0753L8.61398 14.4648L5.81682 12.8661L5.46797 13.4773ZM8.61398 15.0753L11.4111 13.4773L11.0623 12.8661L8.26512 14.4648L8.61398 15.0753ZM13.7146 9.5077V4.68424H13.0112V9.5091L13.7146 9.5077ZM13.0745 3.71434L8.57811 1.7865L8.30099 2.43357L12.7981 4.3607L13.0745 3.71434ZM13.7146 4.68424C13.7144 4.47778 13.6537 4.27521 13.5399 4.10293C13.4261 3.93066 13.2643 3.79554 13.0745 3.71434L12.7981 4.3607C12.8614 4.38784 12.9153 4.43296 12.9532 4.49048C12.9911 4.54799 13.0113 4.61537 13.0112 4.68424H13.7146ZM11.4111 13.4773C12.1109 13.0774 12.6926 12.4996 13.0971 11.8025C13.5016 11.1054 13.7146 10.3137 13.7146 9.5077H13.0112C13.0112 10.1896 12.8309 10.8594 12.4887 11.4492C12.1464 12.0389 11.6543 12.5278 11.0623 12.8661L11.4111 13.4773ZM3.16455 9.5077C3.16449 10.3137 3.37752 11.1054 3.78203 11.8025C4.18655 12.4996 4.76818 13.0774 5.46797 13.4773L5.81682 12.8661C5.22478 12.5278 4.7327 12.0389 4.39044 11.4492C4.04819 10.8594 3.86791 10.1896 3.86788 9.5077H3.16455ZM3.80458 3.71434C3.61477 3.79554 3.45296 3.93066 3.33919 4.10293C3.22542 4.27521 3.1647 4.47778 3.16455 4.68424H3.86788C3.86788 4.54357 3.95228 4.41697 4.08099 4.3607L3.80458 3.71434Z" fill="#003665" />
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="17"
+                              height="17"
+                              viewBox="0 0 17 17"
+                              fill="none">
+                              <path
+                                d="M14.7706 2.11011L11.1808 5.69992C12.8371 7.40339 14.3458 9.05201 13.3119 11.5327C12.5038 13.4781 10.5457 14.7701 8.4406 14.7701C6.77651 14.7701 5.20386 13.962 4.21849 12.6622M4.21849 12.6622L11.1815 5.69922M4.21849 12.6622L2.1106 14.7701M9.50193 3.86844C9.06656 3.32195 8.69098 2.74311 8.43708 2.11011C7.15209 5.33137 2.71406 7.13894 3.27954 10.5501"
+                                stroke="#003665"
+                                stroke-width="0.812741"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
                             </svg>
                           </div>
                           <div class="lp-best-sellers__feature-text">
@@ -155,7 +226,26 @@
                           </div>
                         </div>
                       {% endif %}
-
+                      {%- assign f4_title = block.settings.feature_4_title | default: product.metafields.custom.feature_4_title -%}
+                      {%- assign f4_desc = block.settings.feature_4_desc | default: product.metafields.custom.feature_4_description -%}
+                      {% if f4_title != blank %}
+                        <div class="lp-best-sellers__feature">
+                          <div class="lp-best-sellers__feature-icon">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="17"
+                              height="17"
+                              viewBox="0 0 17 17"
+                              fill="none">
+                              <path d="M8.43955 2.11004L8.57811 1.7865C8.53432 1.76773 8.48719 1.75806 8.43955 1.75806C8.39191 1.75806 8.34478 1.76773 8.30099 1.7865L8.43955 2.11004ZM8.43955 14.77L8.26512 15.0753C8.31825 15.1056 8.37837 15.1216 8.43955 15.1216C8.50073 15.1216 8.56085 15.1056 8.61398 15.0753L8.43955 14.77ZM8.30029 1.7865L3.80388 3.71364L4.08099 4.3607L8.57811 2.43357L8.30029 1.7865ZM3.16455 4.68424V9.5077H3.86788V4.68424H3.16455ZM5.46797 13.4773L8.26512 15.0753L8.61398 14.4648L5.81682 12.8661L5.46797 13.4773ZM8.61398 15.0753L11.4111 13.4773L11.0623 12.8661L8.26512 14.4648L8.61398 15.0753ZM13.7146 9.5077V4.68424H13.0112V9.5091L13.7146 9.5077ZM13.0745 3.71434L8.57811 1.7865L8.30099 2.43357L12.7981 4.3607L13.0745 3.71434ZM13.7146 4.68424C13.7144 4.47778 13.6537 4.27521 13.5399 4.10293C13.4261 3.93066 13.2643 3.79554 13.0745 3.71434L12.7981 4.3607C12.8614 4.38784 12.9153 4.43296 12.9532 4.49048C12.9911 4.54799 13.0113 4.61537 13.0112 4.68424H13.7146ZM11.4111 13.4773C12.1109 13.0774 12.6926 12.4996 13.0971 11.8025C13.5016 11.1054 13.7146 10.3137 13.7146 9.5077H13.0112C13.0112 10.1896 12.8309 10.8594 12.4887 11.4492C12.1464 12.0389 11.6543 12.5278 11.0623 12.8661L11.4111 13.4773ZM3.16455 9.5077C3.16449 10.3137 3.37752 11.1054 3.78203 11.8025C4.18655 12.4996 4.76818 13.0774 5.46797 13.4773L5.81682 12.8661C5.22478 12.5278 4.7327 12.0389 4.39044 11.4492C4.04819 10.8594 3.86791 10.1896 3.86788 9.5077H3.16455ZM3.80458 3.71434C3.61477 3.79554 3.45296 3.93066 3.33919 4.10293C3.22542 4.27521 3.1647 4.47778 3.16455 4.68424H3.86788C3.86788 4.54357 3.95228 4.41697 4.08099 4.3607L3.80458 3.71434Z" fill="#003665" />
+                            </svg>
+                          </div>
+                          <div class="lp-best-sellers__feature-text">
+                            <strong>{{ f4_title }}</strong>
+                            <p>"{{ f4_desc }}"</p>
+                          </div>
+                        </div>
+                      {% endif %}
                     </div>
                   </div>
                 </details>
@@ -178,7 +268,7 @@
     const grid = section.querySelector('[data-carousel]');
     const prevBtn = section.querySelector('.lp-best-sellers__nav-btn--prev');
     const nextBtn = section.querySelector('.lp-best-sellers__nav-btn--next');
-
+  
     if (prevBtn && nextBtn && grid) {
       const scrollAmount = 300;
       prevBtn.addEventListener('click', () => {
@@ -192,122 +282,116 @@
 </script>
 
 {% schema %}
-{
-  "name": "LP Best Sellers",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Best sellers"
-    },
-    {
-      "type": "text",
-      "id": "sub_header",
-      "label": "Sub-heading",
-      "default": "5,000+ sold in total"
-    },
-    {
-      "type": "text",
-      "id": "discount_badge_text",
-      "label": "Discount Badge Text",
-      "default": "Sale",
-      "info": "Shown when product has no custom badge metafield"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "product",
-      "name": "Product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Product"
-        },
-        {
-          "type": "header",
-          "content": "Overrides (leave blank to use product defaults)"
-        },
-        {
-          "type": "text",
-          "id": "custom_title",
-          "label": "Custom Title"
-        },
-        {
-          "type": "image_picker",
-          "id": "custom_image",
-          "label": "Custom Image"
-        },
-        {
-          "type": "text",
-          "id": "custom_badge",
-          "label": "Custom Badge Text"
-        },
-        {
-          "type": "text",
-          "id": "custom_rating",
-          "label": "Rating (e.g. 4.8/5)"
-        },
-        {
-          "type": "text",
-          "id": "custom_rating_count",
-          "label": "Review Count"
-        },
-        {
-          "type": "header",
-          "content": "Feature 1 Override"
-        },
-        {
-          "type": "text",
-          "id": "feature_1_title",
-          "label": "Title"
-        },
-        {
-          "type": "textarea",
-          "id": "feature_1_desc",
-          "label": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Feature 2 Override"
-        },
-        {
-          "type": "text",
-          "id": "feature_2_title",
-          "label": "Title"
-        },
-        {
-          "type": "textarea",
-          "id": "feature_2_desc",
-          "label": "Description"
-        },
-        {
-          "type": "header",
-          "content": "Feature 3 Override"
-        },
-        {
-          "type": "text",
-          "id": "feature_3_title",
-          "label": "Title"
-        },
-        {
-          "type": "textarea",
-          "id": "feature_3_desc",
-          "label": "Description"
-        }
-      ]
-    }
-  ],
-  "max_blocks": 12,
-  "presets": [
-    {
-      "name": "LP Best Sellers",
-      "settings": {
-        "title": "Best sellers",
-        "sub_header": "5,000+ sold in total"
+  {
+    "name": "LP Best Sellers",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Best sellers"
+      }, {
+        "type": "text",
+        "id": "sub_header",
+        "label": "Sub-heading",
+        "default": "5,000+ sold in total"
+      }, {
+        "type": "text",
+        "id": "discount_badge_text",
+        "label": "Discount Badge Text",
+        "default": "Sale",
+        "info": "Shown when product has no custom badge metafield"
       }
-    }
-  ]
-}
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "header",
+            "content": "Overrides (leave blank to use product defaults)"
+          },
+          {
+            "type": "text",
+            "id": "custom_title",
+            "label": "Custom Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "custom_image",
+            "label": "Custom Image"
+          }, {
+            "type": "text",
+            "id": "custom_badge",
+            "label": "Custom Badge Text"
+          }, {
+            "type": "text",
+            "id": "custom_rating",
+            "label": "Rating (e.g. 4.8/5)"
+          }, {
+            "type": "text",
+            "id": "custom_rating_count",
+            "label": "Review Count"
+          }, {
+            "type": "header",
+            "content": "Feature 1 Override"
+          }, {
+            "type": "text",
+            "id": "feature_1_title",
+            "label": "Title"
+          }, {
+            "type": "textarea",
+            "id": "feature_1_desc",
+            "label": "Description"
+          }, {
+            "type": "header",
+            "content": "Feature 2 Override"
+          }, {
+            "type": "text",
+            "id": "feature_2_title",
+            "label": "Title"
+          }, {
+            "type": "textarea",
+            "id": "feature_2_desc",
+            "label": "Description"
+          }, {
+            "type": "header",
+            "content": "Feature 3 Override"
+          }, {
+            "type": "text",
+            "id": "feature_3_title",
+            "label": "Title"
+          }, {
+            "type": "textarea",
+            "id": "feature_3_desc",
+            "label": "Description"
+          }, {
+            "type": "text",
+            "id": "feature_4_title",
+            "label": "Title"
+          }, {
+            "type": "textarea",
+            "id": "feature_4_desc",
+            "label": "Description"
+          }
+        ]
+      }
+    ],
+    "max_blocks": 12,
+    "presets": [
+      {
+        "name": "LP Best Sellers",
+        "settings": {
+          "title": "Best sellers",
+          "sub_header": "5,000+ sold in total"
+        }
+      }
+    ]
+  }
 {% endschema %}
