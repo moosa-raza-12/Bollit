@@ -439,6 +439,30 @@
             "answer": "Yes. All products come with a warranty for manufacturing defects."
           }
         },
+        "faq_item_zG3ntV": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Warranty",
+            "question": "What does the warranty cover?",
+            "answer": "It covers defects in materials and workmanship under normal use."
+          }
+        },
+        "faq_item_pVegPK": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Warranty",
+            "question": "How do I claim a warranty?",
+            "answer": "Contact our support team helpbollit@gmail.com with your order details and we’ll guide you through the process."
+          }
+        },
+        "faq_item_wCNVMD": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How long does delivery take?",
+            "answer": "Most orders are delivered the next day, depending on your order time."
+          }
+        },
         "block_lp-home-need-some-help_1": {
           "type": "tab",
           "settings": {
@@ -532,6 +556,9 @@
         "block_lp-home-need-some-help_0",
         "faq_item_7NwCw8",
         "faq_item_qyrKrp",
+        "faq_item_zG3ntV",
+        "faq_item_pVegPK",
+        "faq_item_wCNVMD",
         "block_lp-home-need-some-help_1",
         "faq_item_rBjT9x",
         "faq_item_x8GT4d",
