@@ -40,218 +40,187 @@
     </div>
 
     <div class="lp-best-sellers__grid" data-carousel>
-      {% for block in section.blocks %}
-        {% assign product = all_products[block.settings.product] %}
-        {% if product != blank %}
-          <div class="lp-best-sellers__card" {{ block.shopify_attributes }}>
-            <div class="lp-best-sellers__image-container">
-              {% comment %} Badge Logic: Block badge > Product metafield > Sale badge > Default section badge {% endcomment %}
-              {% assign badge_text = block.settings.badge_text %}
-              {% assign disc_badge = product.metafields.custom.test_product_badge.value %}
-
-              {% if badge_text != blank %}
-                <span class="lp-best-sellers__card-badge">{{ badge_text }}</span>
-              {% elsif disc_badge != blank %}
-                <span class="lp-best-sellers__card-badge">{{ disc_badge }}</span>
-              {% elsif product.compare_at_price > product.price %}
-                <span class="lp-best-sellers__card-badge">{{ block.settings.discount_badge_text | default: section.settings.discount_badge_text | default: 'Sale' }}</span>
-              {% endif %}
-
-              <div class="lp-best-sellers__image-inner">
-                {% comment %} Image Logic: Block image > Product featured image > Placeholder {% endcomment %}
-                {% if block.settings.product_image != blank %}
-                  {{ block.settings.product_image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-best-sellers__img' }}
-                {% elsif product.featured_image != blank %}
-                  {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-best-sellers__img' }}
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% assign product = all_products[block.settings.product] %}
+          {% if product != blank %}
+            <div class="lp-best-sellers__card" {{ block.shopify_attributes }}>
+              <div class="lp-best-sellers__image-container">
+                {% assign disc-badge = product.metafields.custom.test_product_badge.value %}
+                {% if disc-badge != blank %}
+                  <span class="lp-best-sellers__card-badge">{{ disc-badge }}</span>
                 {% else %}
-                  {{ 'product-1' | placeholder_svg_tag: 'lp-best-sellers__placeholder' }}
+                  <span class="lp-best-sellers__card-badge">{{ section.settings.discount_badge_text | default: 'Sale' }}</span>
                 {% endif %}
-              </div>
-            </div>
 
-            <div class="lp-best-sellers__content">
-              <h3 class="lp-best-sellers__card-title">{{ product.title }}</h3>
-              <div class="lp-best-sellers__price-row">
-                {% if product.compare_at_price > product.price %}
-                  <span class="lp-best-sellers__price-original">{{ product.compare_at_price | money }}</span>
-                  <span class="lp-best-sellers__price-current">{{ product.price | money }}</span>
-                  {% assign discount_percentage = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round %}
-                  <span class="lp-best-sellers__discount-tag">Save {{ discount_percentage }}%</span>
-                {% else %}
-                  <span class="lp-best-sellers__price-current">{{ product.price | money }}</span>
-                {% endif %}
-              </div>
-
-              <div class="lp-best-sellers__review">
-                <span class="lp-best-sellers__rating-pill">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none">
-                    <path d="M2.68535 13.2506C2.52929 13.1315 2.43483 12.9734 2.40198 12.7762C2.36912 12.5832 2.39582 12.3594 2.48206 12.1048L3.73258 8.39018L0.541598 6.10475C0.319831 5.94459 0.163772 5.77826 0.0734229 5.60578C-0.0128199 5.42918 -0.0230868 5.24643 0.0426219 5.05752C0.104224 4.87271 0.221268 4.73514 0.393753 4.64479C0.566238 4.55444 0.788005 4.51131 1.05905 4.51542L4.97694 4.54006L6.16585 0.800825C6.24799 0.542097 6.35887 0.344971 6.49851 0.209447C6.63814 0.0698155 6.80446 0 6.99748 0C7.19461 0 7.36299 0.0698155 7.50262 0.209447C7.64225 0.344971 7.75313 0.542097 7.83527 0.800825L9.02419 4.54006L12.9359 4.51542C13.2111 4.51131 13.4349 4.55444 13.6074 4.64479C13.7799 4.73514 13.8969 4.87271 13.9585 5.05752C14.0242 5.24643 14.0119 5.42918 13.9215 5.60578C13.8353 5.77826 13.6813 5.94459 13.4595 6.10475L10.2685 8.39018L11.5191 12.1048C11.6053 12.3594 11.632 12.5832 11.5991 12.7762C11.5663 12.9734 11.4718 13.1315 11.3158 13.2506C11.1556 13.3697 10.977 13.4128 10.7798 13.3799C10.5868 13.3471 10.3815 13.2506 10.1638 13.0904L6.99748 10.768L3.8373 13.0904C3.61964 13.2506 3.41225 13.3471 3.21512 13.3799C3.0221 13.4128 2.84551 13.3697 2.68535 13.2506Z" fill="#E88400" />
-                  </svg>
-                  {{ product.metafields.reviews.rating | default: '4.5/5' }} ({{ product.metafields.reviews.rating_count | default: '0' }} Reviews)
-                </span>
-              </div>
-
-              <form method="post" action="/cart/add">
-                <input
-                  type="hidden"
-                  name="id"
-                  value="{{ product.first_available_variant.id }}">
-                <button type="submit" class="lp-best-sellers__atc">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="21"
-                    height="21"
-                    viewBox="0 0 21 21"
-                    fill="none">
-                    <g clip-path="url(#clip0_23025_13665)">
-                      <path d="M13.9107 15.6521C14.3719 15.6521 14.8143 15.8354 15.1404 16.1615C15.4666 16.4877 15.6498 16.93 15.6498 17.3913C15.6498 17.8525 15.4666 18.2949 15.1404 18.621C14.8143 18.9472 14.3719 19.1304 13.9107 19.1304C13.4494 19.1304 13.0071 18.9472 12.6809 18.621C12.3548 18.2949 12.1715 17.8525 12.1715 17.3913C12.1715 16.93 12.3548 16.4877 12.6809 16.1615C13.0071 15.8354 13.4494 15.6521 13.9107 15.6521ZM13.9107 16.5217C13.68 16.5217 13.4589 16.6133 13.2958 16.7764C13.1327 16.9394 13.0411 17.1606 13.0411 17.3913C13.0411 17.6219 13.1327 17.8431 13.2958 18.0061C13.4589 18.1692 13.68 18.2608 13.9107 18.2608C14.1413 18.2608 14.3625 18.1692 14.5255 18.0061C14.6886 17.8431 14.7802 17.6219 14.7802 17.3913C14.7802 17.1606 14.6886 16.9394 14.5255 16.7764C14.3625 16.6133 14.1413 16.5217 13.9107 16.5217ZM6.08458 15.6521C6.54582 15.6521 6.98818 15.8354 7.31433 16.1615C7.64048 16.4877 7.82371 16.93 7.82371 17.3913C7.82371 17.8525 7.64048 18.2949 7.31433 18.621C6.98818 18.9472 6.54582 19.1304 6.08458 19.1304C5.62333 19.1304 5.18098 18.9472 4.85483 18.621C4.52868 18.2949 4.34545 17.8525 4.34545 17.3913C4.34545 16.93 4.52868 16.4877 4.85483 16.1615C5.18098 15.8354 5.62333 15.6521 6.08458 15.6521ZM6.08458 16.5217C5.85396 16.5217 5.63278 16.6133 5.4697 16.7764C5.30663 16.9394 5.21501 17.1606 5.21501 17.3913C5.21501 17.6219 5.30663 17.8431 5.4697 18.0061C5.63278 18.1692 5.85396 18.2608 6.08458 18.2608C6.3152 18.2608 6.53638 18.1692 6.69945 18.0061C6.86253 17.8431 6.95414 17.6219 6.95414 17.3913C6.95414 17.1606 6.86253 16.9394 6.69945 16.7764C6.53638 16.6133 6.3152 16.5217 6.08458 16.5217ZM15.6498 5.21734H3.71067L5.92806 10.4347H13.0411C13.3281 10.4347 13.5802 10.2956 13.7368 10.0869L16.3454 6.60864C16.4585 6.46082 16.5194 6.27821 16.5194 6.0869C16.5194 5.85628 16.4277 5.6351 16.2647 5.47203C16.1016 5.30895 15.8804 5.21734 15.6498 5.21734ZM13.0411 11.3043H5.97154L5.30197 12.6608L5.21501 13.0434C5.21501 13.274 5.30663 13.4952 5.4697 13.6583C5.63278 13.8214 5.85396 13.913 6.08458 13.913H15.6498V14.7826H6.08458C5.62333 14.7826 5.18098 14.5993 4.85483 14.2732C4.52868 13.947 4.34545 13.5047 4.34545 13.0434C4.34519 12.7484 4.42 12.4581 4.56284 12.1999L5.18893 10.9217L2.0324 3.47821H0.867188V2.60864H2.60632L3.34545 4.34777H15.6498C16.111 4.34777 16.5534 4.531 16.8795 4.85715C17.2057 5.1833 17.3889 5.62566 17.3889 6.0869C17.3889 6.52169 17.2411 6.8869 16.9976 7.18256L14.4672 10.5652C14.1541 11.0086 13.6324 11.3043 13.0411 11.3043Z" fill="white" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_23025_13665">
-                        <rect
-                          width="20.8696"
-                          height="20.8696"
-                          fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                  Add To Cart
-                </button>
-              </form>
-
-              <details class="lp-best-sellers__accordion">
-                <summary class="lp-best-sellers__accordion-header">
-                  See capabilities
-                  <svg
-                    class="lp-best-sellers__chevron"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none">
-                    <path d="M4.86646 7.99178L9.58312 12.7084L14.2998 7.99178L13.7081 7.40845L9.58312 11.5334L5.45812 7.40845L4.86646 7.99178Z" fill="#41464B" />
-                  </svg>
-                </summary>
-                <div class="lp-best-sellers__accordion-content">
-                  <div class="lp-best-sellers__features">
-                    {% comment %} Feature 1 Logic: Block setting > Product metafield > Empty {% endcomment %}
-                    {% assign feature_1_title = block.settings.feature_1_title %}
-                    {% assign feature_1_desc = block.settings.feature_1_desc %}
-                    {% if feature_1_title == blank %}
-                      {% assign feature_1_title = product.metafields.custom.feature_1_title.value %}
-                      {% assign feature_1_desc = product.metafields.custom.feature_1_desc.value %}
-                    {% endif %}
-
-                    {% if feature_1_title != blank %}
-                      <div class="lp-best-sellers__feature">
-                        <div class="lp-best-sellers__feature-icon">
-                          <svg
-                            width="12"
-                            height="13"
-                            viewBox="0 0 12 13"
-                            fill="none"><path
-                              d="M10.5 5.5H7.5V1.5L1.5 7.5H4.5V11.5L10.5 5.5Z"
-                              stroke="#003665"
-                              stroke-width="1"
-                              stroke-linecap="round"
-                              stroke-linejoin="round" /></svg>
-                        </div>
-                        <div class="lp-best-sellers__feature-text">
-                          <strong>{{ feature_1_title }}</strong>
-                          <p>{{ feature_1_desc }}</p>
-                        </div>
-                      </div>
-                    {% endif %}
-
-                    {% comment %} Feature 2 Logic: Block setting > Product metafield > Empty {% endcomment %}
-                    {% assign feature_2_title = block.settings.feature_2_title %}
-                    {% assign feature_2_desc = block.settings.feature_2_desc %}
-                    {% if feature_2_title == blank %}
-                      {% assign feature_2_title = product.metafields.custom.feature_2_title.value %}
-                      {% assign feature_2_desc = product.metafields.custom.feature_2_desc.value %}
-                    {% endif %}
-
-                    {% if feature_2_title != blank %}
-                      <div class="lp-best-sellers__feature">
-                        <div class="lp-best-sellers__feature-icon">
-                          <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 14 14"
-                            fill="none"><path
-                              d="M7 1.5C10.0376 1.5 12.5 3.96243 12.5 7C12.5 10.0376 10.0376 12.5 7 12.5M7 1.5C3.96243 1.5 1.5 3.96243 1.5 7C1.5 10.0376 3.96243 12.5 7 12.5M7 1.5V12.5"
-                              stroke="#003665"
-                              stroke-width="1" /></svg>
-                        </div>
-                        <div class="lp-best-sellers__feature-text">
-                          <strong>{{ feature_2_title }}</strong>
-                          <p>{{ feature_2_desc }}</p>
-                        </div>
-                      </div>
-                    {% endif %}
-
-                    {% comment %} Feature 3 Logic: Block setting > Product metafield > Empty {% endcomment %}
-                    {% assign feature_3_title = block.settings.feature_3_title %}
-                    {% assign feature_3_desc = block.settings.feature_3_desc %}
-                    {% if feature_3_title == blank %}
-                      {% assign feature_3_title = product.metafields.custom.feature_3_title.value %}
-                      {% assign feature_3_desc = product.metafields.custom.feature_3_desc.value %}
-                    {% endif %}
-
-                    {% if feature_3_title != blank %}
-                      <div class="lp-best-sellers__feature">
-                        <div class="lp-best-sellers__feature-icon">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="17"
-                            height="17"
-                            viewBox="0 0 17 17"
-                            fill="none">
-                            <path d="M8.43955 2.11004L8.57811 1.7865C8.53432 1.76773 8.48719 1.75806 8.43955 1.75806C8.39191 1.75806 8.34478 1.76773 8.30099 1.7865L8.43955 2.11004ZM8.43955 14.77L8.26512 15.0753C8.31825 15.1056 8.37837 15.1216 8.43955 15.1216C8.50073 15.1216 8.56085 15.1056 8.61398 15.0753L8.43955 14.77ZM8.30029 1.7865L3.80388 3.71364L4.08099 4.3607L8.57811 2.43357L8.30029 1.7865ZM3.16455 4.68424V9.5077H3.86788V4.68424H3.16455ZM5.46797 13.4773L8.26512 15.0753L8.61398 14.4648L5.81682 12.8661L5.46797 13.4773ZM8.61398 15.0753L11.4111 13.4773L11.0623 12.8661L8.26512 14.4648L8.61398 15.0753ZM13.7146 9.5077V4.68424H13.0112V9.5091L13.7146 9.5077ZM13.0745 3.71434L8.57811 1.7865L8.30099 2.43357L12.7981 4.3607L13.0745 3.71434ZM13.7146 4.68424C13.7144 4.47778 13.6537 4.27521 13.5399 4.10293C13.4261 3.93066 13.2643 3.79554 13.0745 3.71434L12.7981 4.3607C12.8614 4.38784 12.9153 4.43296 12.9532 4.49048C12.9911 4.54799 13.0113 4.61537 13.0112 4.68424H13.7146ZM11.4111 13.4773C12.1109 13.0774 12.6926 12.4996 13.0971 11.8025C13.5016 11.1054 13.7146 10.3137 13.7146 9.5077H13.0112C13.0112 10.1896 12.8309 10.8594 12.4887 11.4492C12.1464 12.0389 11.6543 12.5278 11.0623 12.8661L11.4111 13.4773ZM3.16455 9.5077C3.16449 10.3137 3.37752 11.1054 3.78203 11.8025C4.18655 12.4996 4.76818 13.0774 5.46797 13.4773L5.81682 12.8661C5.22478 12.5278 4.7327 12.0389 4.39044 11.4492C4.04819 10.8594 3.86791 10.1896 3.86788 9.5077H3.16455ZM3.80458 3.71434C3.61477 3.79554 3.45296 3.93066 3.33919 4.10293C3.22542 4.27521 3.1647 4.47778 3.16455 4.68424H3.86788C3.86788 4.54357 3.95228 4.41697 4.08099 4.3607L3.80458 3.71434Z" fill="#003665" />
-                          </svg>
-                        </div>
-                        <div class="lp-best-sellers__feature-text">
-                          <strong>{{ feature_3_title }}</strong>
-                          <p>{{ feature_3_desc }}</p>
-                        </div>
-                      </div>
-                    {% endif %}
-                  </div>
+                <div class="lp-best-sellers__image-inner">
+                  {% if product.featured_image != blank %}
+                    {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-best-sellers__img' }}
+                  {% else %}
+                    {{ 'product-1' | placeholder_svg_tag: 'lp-best-sellers__placeholder' }}
+                  {% endif %}
                 </div>
-              </details>
+              </div>
+
+              <div class="lp-best-sellers__content">
+                <h3 class="lp-best-sellers__card-title">{{ product.title }}</h3>
+                <div class="lp-best-sellers__price-row">
+                  {% if product.compare_at_price > product.price %}
+                    <span class="lp-best-sellers__price-original">{{ product.compare_at_price | money }}</span>
+                    <span class="lp-best-sellers__price-current">{{ product.price | money }}</span>
+                    {% assign discount_percentage = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round %}
+                    <span class="lp-best-sellers__discount-tag">Save {{ discount_percentage }}%</span>
+                  {% else %}
+                    <span class="lp-best-sellers__price-current">{{ product.price | money }}</span>
+                  {% endif %}
+                </div>
+
+                <div class="lp-best-sellers__review">
+                  <span class="lp-best-sellers__rating-pill">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none">
+                      <path d="M2.68535 13.2506C2.52929 13.1315 2.43483 12.9734 2.40198 12.7762C2.36912 12.5832 2.39582 12.3594 2.48206 12.1048L3.73258 8.39018L0.541598 6.10475C0.319831 5.94459 0.163772 5.77826 0.0734229 5.60578C-0.0128199 5.42918 -0.0230868 5.24643 0.0426219 5.05752C0.104224 4.87271 0.221268 4.73514 0.393753 4.64479C0.566238 4.55444 0.788005 4.51131 1.05905 4.51542L4.97694 4.54006L6.16585 0.800825C6.24799 0.542097 6.35887 0.344971 6.49851 0.209447C6.63814 0.0698155 6.80446 0 6.99748 0C7.19461 0 7.36299 0.0698155 7.50262 0.209447C7.64225 0.344971 7.75313 0.542097 7.83527 0.800825L9.02419 4.54006L12.9359 4.51542C13.2111 4.51131 13.4349 4.55444 13.6074 4.64479C13.7799 4.73514 13.8969 4.87271 13.9585 5.05752C14.0242 5.24643 14.0119 5.42918 13.9215 5.60578C13.8353 5.77826 13.6813 5.94459 13.4595 6.10475L10.2685 8.39018L11.5191 12.1048C11.6053 12.3594 11.632 12.5832 11.5991 12.7762C11.5663 12.9734 11.4718 13.1315 11.3158 13.2506C11.1556 13.3697 10.977 13.4128 10.7798 13.3799C10.5868 13.3471 10.3815 13.2506 10.1638 13.0904L6.99748 10.768L3.8373 13.0904C3.61964 13.2506 3.41225 13.3471 3.21512 13.3799C3.0221 13.4128 2.84551 13.3697 2.68535 13.2506Z" fill="#E88400" />
+                    </svg>
+                    {{ product.metafields.reviews.rating | default: '4.5/5' }} ({{ product.metafields.reviews.rating_count | default: '0' }} Reviews)
+                  </span>
+                </div>
+
+                <form method="post" action="/cart/add">
+                  <input
+                    type="hidden"
+                    name="id"
+                    value="{{ product.first_available_variant.id }}">
+                  <button type="submit" class="lp-best-sellers__atc">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="21"
+                      height="21"
+                      viewBox="0 0 21 21"
+                      fill="none">
+                      <g clip-path="url(#clip0_23025_13665)">
+                        <path d="M13.9107 15.6521C14.3719 15.6521 14.8143 15.8354 15.1404 16.1615C15.4666 16.4877 15.6498 16.93 15.6498 17.3913C15.6498 17.8525 15.4666 18.2949 15.1404 18.621C14.8143 18.9472 14.3719 19.1304 13.9107 19.1304C13.4494 19.1304 13.0071 18.9472 12.6809 18.621C12.3548 18.2949 12.1715 17.8525 12.1715 17.3913C12.1715 16.93 12.3548 16.4877 12.6809 16.1615C13.0071 15.8354 13.4494 15.6521 13.9107 15.6521ZM13.9107 16.5217C13.68 16.5217 13.4589 16.6133 13.2958 16.7764C13.1327 16.9394 13.0411 17.1606 13.0411 17.3913C13.0411 17.6219 13.1327 17.8431 13.2958 18.0061C13.4589 18.1692 13.68 18.2608 13.9107 18.2608C14.1413 18.2608 14.3625 18.1692 14.5255 18.0061C14.6886 17.8431 14.7802 17.6219 14.7802 17.3913C14.7802 17.1606 14.6886 16.9394 14.5255 16.7764C14.3625 16.6133 14.1413 16.5217 13.9107 16.5217ZM6.08458 15.6521C6.54582 15.6521 6.98818 15.8354 7.31433 16.1615C7.64048 16.4877 7.82371 16.93 7.82371 17.3913C7.82371 17.8525 7.64048 18.2949 7.31433 18.621C6.98818 18.9472 6.54582 19.1304 6.08458 19.1304C5.62333 19.1304 5.18098 18.9472 4.85483 18.621C4.52868 18.2949 4.34545 17.8525 4.34545 17.3913C4.34545 16.93 4.52868 16.4877 4.85483 16.1615C5.18098 15.8354 5.62333 15.6521 6.08458 15.6521ZM6.08458 16.5217C5.85396 16.5217 5.63278 16.6133 5.4697 16.7764C5.30663 16.9394 5.21501 17.1606 5.21501 17.3913C5.21501 17.6219 5.30663 17.8431 5.4697 18.0061C5.63278 18.1692 5.85396 18.2608 6.08458 18.2608C6.3152 18.2608 6.53638 18.1692 6.69945 18.0061C6.86253 17.8431 6.95414 17.6219 6.95414 17.3913C6.95414 17.1606 6.86253 16.9394 6.69945 16.7764C6.53638 16.6133 6.3152 16.5217 6.08458 16.5217ZM15.6498 5.21734H3.71067L5.92806 10.4347H13.0411C13.3281 10.4347 13.5802 10.2956 13.7368 10.0869L16.3454 6.60864C16.4585 6.46082 16.5194 6.27821 16.5194 6.0869C16.5194 5.85628 16.4277 5.6351 16.2647 5.47203C16.1016 5.30895 15.8804 5.21734 15.6498 5.21734ZM13.0411 11.3043H5.97154L5.30197 12.6608L5.21501 13.0434C5.21501 13.274 5.30663 13.4952 5.4697 13.6583C5.63278 13.8214 5.85396 13.913 6.08458 13.913H15.6498V14.7826H6.08458C5.62333 14.7826 5.18098 14.5993 4.85483 14.2732C4.52868 13.947 4.34545 13.5047 4.34545 13.0434C4.34519 12.7484 4.42 12.4581 4.56284 12.1999L5.18893 10.9217L2.0324 3.47821H0.867188V2.60864H2.60632L3.34545 4.34777H15.6498C16.111 4.34777 16.5534 4.531 16.8795 4.85715C17.2057 5.1833 17.3889 5.62566 17.3889 6.0869C17.3889 6.52169 17.2411 6.8869 16.9976 7.18256L14.4672 10.5652C14.1541 11.0086 13.6324 11.3043 13.0411 11.3043Z" fill="white" />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_23025_13665">
+                          <rect
+                            width="20.8696"
+                            height="20.8696"
+                            fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    Add To Cart
+                  </button>
+                </form>
+
+                <details class="lp-best-sellers__accordion">
+                  <summary class="lp-best-sellers__accordion-header">
+                    See capabilities
+                    <svg
+                      class="lp-best-sellers__chevron"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none">
+                      <path d="M4.86646 7.99178L9.58312 12.7084L14.2998 7.99178L13.7081 7.40845L9.58312 11.5334L5.45812 7.40845L4.86646 7.99178Z" fill="#41464B" />
+                    </svg>
+                  </summary>
+                  <div class="lp-best-sellers__accordion-content">
+                    <div class="lp-best-sellers__features">
+                      {% if product.metafields.custom.feature_1_title != blank %}
+                        <div class="lp-best-sellers__feature">
+                          <div class="lp-best-sellers__feature-icon">
+                            <svg
+                              width="12"
+                              height="13"
+                              viewBox="0 0 12 13"
+                              fill="none"><path
+                                d="M10.5 5.5H7.5V1.5L1.5 7.5H4.5V11.5L10.5 5.5Z"
+                                stroke="#003665"
+                                stroke-width="1"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" /></svg>
+                          </div>
+                          <div class="lp-best-sellers__feature-text">
+                            <strong>{{ product.metafields.custom.feature_1_title }}</strong>
+                            <p>{{ product.metafields.custom.feature_1_description }}</p>
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if product.metafields.custom.feature_2_title != blank %}
+                        <div class="lp-best-sellers__feature">
+                          <div class="lp-best-sellers__feature-icon">
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 14 14"
+                              fill="none"><path
+                                d="M7 1.5C10.0376 1.5 12.5 3.96243 12.5 7C12.5 10.0376 10.0376 12.5 7 12.5M7 1.5C3.96243 1.5 1.5 3.96243 1.5 7C1.5 10.0376 3.96243 12.5 7 12.5M7 1.5V12.5"
+                                stroke="#003665"
+                                stroke-width="1" /></svg>
+                          </div>
+                          <div class="lp-best-sellers__feature-text">
+                            <strong>{{ product.metafields.custom.feature_2_title }}</strong>
+                            <p>{{ product.metafields.custom.feature_2_description }}</p>
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if product.metafields.custom.feature_3_title != blank %}
+                        <div class="lp-best-sellers__feature">
+                          <div class="lp-best-sellers__feature-icon">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="17"
+                              height="17"
+                              viewBox="0 0 17 17"
+                              fill="none">
+                              <path d="M8.43955 2.11004L8.57811 1.7865C8.53432 1.76773 8.48719 1.75806 8.43955 1.75806C8.39191 1.75806 8.34478 1.76773 8.30099 1.7865L8.43955 2.11004ZM8.43955 14.77L8.26512 15.0753C8.31825 15.1056 8.37837 15.1216 8.43955 15.1216C8.50073 15.1216 8.56085 15.1056 8.61398 15.0753L8.43955 14.77ZM8.30029 1.7865L3.80388 3.71364L4.08099 4.3607L8.57811 2.43357L8.30029 1.7865ZM3.16455 4.68424V9.5077H3.86788V4.68424H3.16455ZM5.46797 13.4773L8.26512 15.0753L8.61398 14.4648L5.81682 12.8661L5.46797 13.4773ZM8.61398 15.0753L11.4111 13.4773L11.0623 12.8661L8.26512 14.4648L8.61398 15.0753ZM13.7146 9.5077V4.68424H13.0112V9.5091L13.7146 9.5077ZM13.0745 3.71434L8.57811 1.7865L8.30099 2.43357L12.7981 4.3607L13.0745 3.71434ZM13.7146 4.68424C13.7144 4.47778 13.6537 4.27521 13.5399 4.10293C13.4261 3.93066 13.2643 3.79554 13.0745 3.71434L12.7981 4.3607C12.8614 4.38784 12.9153 4.43296 12.9532 4.49048C12.9911 4.54799 13.0113 4.61537 13.0112 4.68424H13.7146ZM11.4111 13.4773C12.1109 13.0774 12.6926 12.4996 13.0971 11.8025C13.5016 11.1054 13.7146 10.3137 13.7146 9.5077H13.0112C13.0112 10.1896 12.8309 10.8594 12.4887 11.4492C12.1464 12.0389 11.6543 12.5278 11.0623 12.8661L11.4111 13.4773ZM3.16455 9.5077C3.16449 10.3137 3.37752 11.1054 3.78203 11.8025C4.18655 12.4996 4.76818 13.0774 5.46797 13.4773L5.81682 12.8661C5.22478 12.5278 4.7327 12.0389 4.39044 11.4492C4.04819 10.8594 3.86791 10.1896 3.86788 9.5077H3.16455ZM3.80458 3.71434C3.61477 3.79554 3.45296 3.93066 3.33919 4.10293C3.22542 4.27521 3.1647 4.47778 3.16455 4.68424H3.86788C3.86788 4.54357 3.95228 4.41697 4.08099 4.3607L3.80458 3.71434Z" fill="#003665" />
+                            </svg>
+                          </div>
+                          <div class="lp-best-sellers__feature-text">
+                            <strong>{{ product.metafields.custom.feature_3_title }}</strong>
+                            <p>"{{ product.metafields.custom.feature_3_description }}"</p>
+
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </details>
+              </div>
             </div>
-          </div>
-        {% endif %}
+          {% endif %}
+        {% endfor %}
       {% else %}
         <div class="lp-best-sellers__empty">
-          <p>No products added. Add product blocks to display products in this section.</p>
+          <p>No products added. Please add product blocks in the section settings.</p>
         </div>
-      {% endfor %}
+      {% endif %}
     </div>
   </div>
 </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-  const section = document.querySelector('#lp-best-sellers-{{ section.id }}');
-  const grid = section.querySelector('[data-carousel]');
-  const prevBtn = section.querySelector('.lp-best-sellers__nav-btn--prev');
-  const nextBtn = section.querySelector('.lp-best-sellers__nav-btn--next');
+    const section = document.querySelector('#lp-best-sellers-{{ section.id }}');
+    const grid = section.querySelector('[data-carousel]');
+    const prevBtn = section.querySelector('.lp-best-sellers__nav-btn--prev');
+    const nextBtn = section.querySelector('.lp-best-sellers__nav-btn--next');
   
-  if (prevBtn && nextBtn && grid) {
-    const scrollAmount = 300;
-    prevBtn.addEventListener('click', () => {
-      grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-    nextBtn.addEventListener('click', () => {
-      grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-  }
+    if (prevBtn && nextBtn && grid) {
+      const scrollAmount = 300;
+      prevBtn.addEventListener('click', () => {
+        grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', () => {
+        grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
   });
 </script>
 
@@ -272,9 +241,9 @@
       }, {
         "type": "text",
         "id": "discount_badge_text",
-        "label": "Default Discount Badge Text",
+        "label": "Discount Badge Text",
         "default": "Sale",
-        "info": "Shown when product is on sale and no other badge is set"
+        "info": "Shown when product has no custom badge metafield"
       }
     ],
     "blocks": [
@@ -286,84 +255,18 @@
             "type": "product",
             "id": "product",
             "label": "Product"
-          },
-          {
-            "type": "image_picker",
-            "id": "product_image",
-            "label": "Override Product Image",
-            "info": "Upload a custom image to override the product's default image"
-          },
-          {
-            "type": "text",
-            "id": "badge_text",
-            "label": "Badge Text",
-            "info": "Custom badge text (overrides product metafield and sale badge)"
-          },
-          {
-            "type": "text",
-            "id": "discount_badge_text",
-            "label": "Discount Badge Text",
-            "default": "Sale",
-            "info": "Shown when product is on sale and no custom badge text is set"
-          }, {
-            "type": "header",
-            "content": "Feature 1"
-          }, {
-            "type": "text",
-            "id": "feature_1_title",
-            "label": "Feature 1 Title",
-            "info": "Leave empty to use product metafield"
-          }, {
-            "type": "textarea",
-            "id": "feature_1_desc",
-            "label": "Feature 1 Description",
-            "info": "Leave empty to use product metafield"
-          }, {
-            "type": "header",
-            "content": "Feature 2"
-          }, {
-            "type": "text",
-            "id": "feature_2_title",
-            "label": "Feature 2 Title",
-            "info": "Leave empty to use product metafield"
-          }, {
-            "type": "textarea",
-            "id": "feature_2_desc",
-            "label": "Feature 2 Description",
-            "info": "Leave empty to use product metafield"
-          }, {
-            "type": "header",
-            "content": "Feature 3"
-          }, {
-            "type": "text",
-            "id": "feature_3_title",
-            "label": "Feature 3 Title",
-            "info": "Leave empty to use product metafield"
-          }, {
-            "type": "textarea",
-            "id": "feature_3_desc",
-            "label": "Feature 3 Description",
-            "info": "Leave empty to use product metafield"
           }
         ]
       }
     ],
+    "max_blocks": 12,
     "presets": [
       {
         "name": "LP Best Sellers",
         "settings": {
           "title": "Best sellers",
           "sub_header": "5,000+ sold in total"
-        },
-        "blocks": [
-          {
-            "type": "product"
-          }, {
-            "type": "product"
-          }, {
-            "type": "product"
-          }
-        ]
+        }
       }
     ]
   }
