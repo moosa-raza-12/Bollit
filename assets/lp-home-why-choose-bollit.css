@@ -207,7 +207,12 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
   height: auto;
   object-fit: cover;
 }
-
+.lp-why-choose__accordion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 /* Radio Interaction */
 .lp-why-choose__radio:checked + .lp-why-choose__item {
   background: var(--color-bg-active);

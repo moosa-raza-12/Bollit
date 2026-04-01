@@ -40,23 +40,28 @@
     </div>
 
     <div class="lp-best-sellers__grid" data-carousel>
-      {% assign collection = collections[section.settings.collection] %}
-      {% if collection != blank and collection.products.size > 0 %}
-        {% for product in collection.products limit: section.settings.products_limit %}
-          <div class="lp-best-sellers__card">
+      {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.product] %}
+        {% if product != blank %}
+          <div class="lp-best-sellers__card" {{ block.shopify_attributes }}>
             <div class="lp-best-sellers__image-container">
-              {% assign disc-badge = product.metafields.custom.test_product_badge.value %}
+              {% comment %} Badge Logic: Block badge > Product metafield > Sale badge > Default section badge {% endcomment %}
+              {% assign badge_text = block.settings.badge_text %}
+              {% assign disc_badge = product.metafields.custom.test_product_badge.value %}
 
-              {% if disc-badge != blank %}
-                <span class="lp-best-sellers__card-badge">{{ disc-badge }}</span>
-              {% else %}
-                <span class="lp-best-sellers__card-badge">{{ section.settings.discount_badge_text | default: 'Sale' }}</span>
+              {% if badge_text != blank %}
+                <span class="lp-best-sellers__card-badge">{{ badge_text }}</span>
+              {% elsif disc_badge != blank %}
+                <span class="lp-best-sellers__card-badge">{{ disc_badge }}</span>
+              {% elsif product.compare_at_price > product.price %}
+                <span class="lp-best-sellers__card-badge">{{ block.settings.discount_badge_text | default: section.settings.discount_badge_text | default: 'Sale' }}</span>
               {% endif %}
-              {% comment %} {% if product.compare_at_price > product.price %}
-                              
-                                                                                                                {% endif %} {% endcomment %}
+
               <div class="lp-best-sellers__image-inner">
-                {% if product.featured_image != blank %}
+                {% comment %} Image Logic: Block image > Product featured image > Placeholder {% endcomment %}
+                {% if block.settings.product_image != blank %}
+                  {{ block.settings.product_image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-best-sellers__img' }}
+                {% elsif product.featured_image != blank %}
                   {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', class: 'lp-best-sellers__img' }}
                 {% else %}
                   {{ 'product-1' | placeholder_svg_tag: 'lp-best-sellers__placeholder' }}
@@ -134,7 +139,15 @@
                 </summary>
                 <div class="lp-best-sellers__accordion-content">
                   <div class="lp-best-sellers__features">
-                    {% if product.metafields.custom.feature_1_title != blank %}
+                    {% comment %} Feature 1 Logic: Block setting > Product metafield > Empty {% endcomment %}
+                    {% assign feature_1_title = block.settings.feature_1_title %}
+                    {% assign feature_1_desc = block.settings.feature_1_desc %}
+                    {% if feature_1_title == blank %}
+                      {% assign feature_1_title = product.metafields.custom.feature_1_title.value %}
+                      {% assign feature_1_desc = product.metafields.custom.feature_1_desc.value %}
+                    {% endif %}
+
+                    {% if feature_1_title != blank %}
                       <div class="lp-best-sellers__feature">
                         <div class="lp-best-sellers__feature-icon">
                           <svg
@@ -149,12 +162,21 @@
                               stroke-linejoin="round" /></svg>
                         </div>
                         <div class="lp-best-sellers__feature-text">
-                          <strong>{{ product.metafields.custom.feature_1_title }}</strong>
-                          <p>{{ product.metafields.custom.feature_1_desc }}</p>
+                          <strong>{{ feature_1_title }}</strong>
+                          <p>{{ feature_1_desc }}</p>
                         </div>
                       </div>
                     {% endif %}
-                    {% if product.metafields.custom.feature_2_title != blank %}
+
+                    {% comment %} Feature 2 Logic: Block setting > Product metafield > Empty {% endcomment %}
+                    {% assign feature_2_title = block.settings.feature_2_title %}
+                    {% assign feature_2_desc = block.settings.feature_2_desc %}
+                    {% if feature_2_title == blank %}
+                      {% assign feature_2_title = product.metafields.custom.feature_2_title.value %}
+                      {% assign feature_2_desc = product.metafields.custom.feature_2_desc.value %}
+                    {% endif %}
+
+                    {% if feature_2_title != blank %}
                       <div class="lp-best-sellers__feature">
                         <div class="lp-best-sellers__feature-icon">
                           <svg
@@ -167,12 +189,21 @@
                               stroke-width="1" /></svg>
                         </div>
                         <div class="lp-best-sellers__feature-text">
-                          <strong>{{ product.metafields.custom.feature_2_title }}</strong>
-                          <p>{{ product.metafields.custom.feature_2_desc }}</p>
+                          <strong>{{ feature_2_title }}</strong>
+                          <p>{{ feature_2_desc }}</p>
                         </div>
                       </div>
                     {% endif %}
-                    {% if product.metafields.custom.feature_3_title != blank %}
+
+                    {% comment %} Feature 3 Logic: Block setting > Product metafield > Empty {% endcomment %}
+                    {% assign feature_3_title = block.settings.feature_3_title %}
+                    {% assign feature_3_desc = block.settings.feature_3_desc %}
+                    {% if feature_3_title == blank %}
+                      {% assign feature_3_title = product.metafields.custom.feature_3_title.value %}
+                      {% assign feature_3_desc = product.metafields.custom.feature_3_desc.value %}
+                    {% endif %}
+
+                    {% if feature_3_title != blank %}
                       <div class="lp-best-sellers__feature">
                         <div class="lp-best-sellers__feature-icon">
                           <svg
@@ -185,11 +216,8 @@
                           </svg>
                         </div>
                         <div class="lp-best-sellers__feature-text">
-                          <strong>{{ product.metafields.custom.feature_3_title }}</strong>
-                          <p>"{{ product.metafields.custom.feature_3_description }}"</p>
-                          {% if product.metafields.custom.feature_3_desc == blank %}
-                            <p style="color: red;">Description is empty!</p>
-                          {% endif %}
+                          <strong>{{ feature_3_title }}</strong>
+                          <p>{{ feature_3_desc }}</p>
                         </div>
                       </div>
                     {% endif %}
@@ -198,12 +226,12 @@
               </details>
             </div>
           </div>
-        {% endfor %}
+        {% endif %}
       {% else %}
         <div class="lp-best-sellers__empty">
-          <p>No products found in this collection. Please select a collection in the section settings.</p>
+          <p>No products added. Add product blocks to display products in this section.</p>
         </div>
-      {% endif %}
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -236,30 +264,88 @@
         "id": "title",
         "label": "Heading",
         "default": "Best sellers"
-      },
-      {
+      }, {
         "type": "text",
         "id": "sub_header",
         "label": "Sub-heading",
         "default": "5,000+ sold in total"
-      },
-      {
-        "type": "collection",
-        "id": "collection",
-        "label": "Collection to display"
-      },
-      {
-        "type": "number",
-        "id": "products_limit",
-        "label": "Number of products to show",
-        "default": 8
-
       }, {
         "type": "text",
         "id": "discount_badge_text",
-        "label": "Discount Badge Text",
+        "label": "Default Discount Badge Text",
         "default": "Sale",
-        "info": "Shown when product is on sale"
+        "info": "Shown when product is on sale and no other badge is set"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          },
+          {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Override Product Image",
+            "info": "Upload a custom image to override the product's default image"
+          },
+          {
+            "type": "text",
+            "id": "badge_text",
+            "label": "Badge Text",
+            "info": "Custom badge text (overrides product metafield and sale badge)"
+          },
+          {
+            "type": "text",
+            "id": "discount_badge_text",
+            "label": "Discount Badge Text",
+            "default": "Sale",
+            "info": "Shown when product is on sale and no custom badge text is set"
+          }, {
+            "type": "header",
+            "content": "Feature 1"
+          }, {
+            "type": "text",
+            "id": "feature_1_title",
+            "label": "Feature 1 Title",
+            "info": "Leave empty to use product metafield"
+          }, {
+            "type": "textarea",
+            "id": "feature_1_desc",
+            "label": "Feature 1 Description",
+            "info": "Leave empty to use product metafield"
+          }, {
+            "type": "header",
+            "content": "Feature 2"
+          }, {
+            "type": "text",
+            "id": "feature_2_title",
+            "label": "Feature 2 Title",
+            "info": "Leave empty to use product metafield"
+          }, {
+            "type": "textarea",
+            "id": "feature_2_desc",
+            "label": "Feature 2 Description",
+            "info": "Leave empty to use product metafield"
+          }, {
+            "type": "header",
+            "content": "Feature 3"
+          }, {
+            "type": "text",
+            "id": "feature_3_title",
+            "label": "Feature 3 Title",
+            "info": "Leave empty to use product metafield"
+          }, {
+            "type": "textarea",
+            "id": "feature_3_desc",
+            "label": "Feature 3 Description",
+            "info": "Leave empty to use product metafield"
+          }
+        ]
       }
     ],
     "presets": [
@@ -267,9 +353,17 @@
         "name": "LP Best Sellers",
         "settings": {
           "title": "Best sellers",
-          "sub_header": "5,000+ sold in total",
-          "products_limit": 8
-        }
+          "sub_header": "5,000+ sold in total"
+        },
+        "blocks": [
+          {
+            "type": "product"
+          }, {
+            "type": "product"
+          }, {
+            "type": "product"
+          }
+        ]
       }
     ]
   }
