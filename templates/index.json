@@ -521,6 +521,38 @@
             "answer": "Most orders are delivered the next day, depending on your order time."
           }
         },
+        "faq_item_9ADGdd": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "Do you offer free shipping?",
+            "answer": "Yes, we offer free shipping on orders above €30."
+          }
+        },
+        "faq_item_GXfYCY": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "Can I track my order?",
+            "answer": "Yes. You’ll receive a tracking link once your order is shipped."
+          }
+        },
+        "faq_item_PeiGcK": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "Can I return my product?",
+            "answer": "Yes. You can return your product within 30 days of delivery."
+          }
+        },
+        "faq_item_9hEKz7": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "How do I start a return?",
+            "answer": "You can start your return through our Refund Policy page. Follow the simple steps and we’ll guide you through the process."
+          }
+        },
         "block_lp-home-need-some-help_4": {
           "type": "tab",
           "settings": {
@@ -575,6 +607,10 @@
         "block_lp-home-need-some-help_2",
         "block_lp-home-need-some-help_3",
         "faq_item_F7AxT8",
+        "faq_item_9ADGdd",
+        "faq_item_GXfYCY",
+        "faq_item_PeiGcK",
+        "faq_item_9hEKz7",
         "block_lp-home-need-some-help_4",
         "block_lp-home-need-some-help_5",
         "block_lp-home-need-some-help_6",
