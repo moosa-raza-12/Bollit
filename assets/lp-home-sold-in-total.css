@@ -7,12 +7,9 @@
   --card-bg: #F8F8F6;
   --radius: 20px;
   background: var(--bg-color);
-  padding: 36px 20px;
+  padding: 36px 0;
+  overflow: hidden;
 }
-@media (min-width: 1024px) {
-  .lp-best-sellers {
-    padding: 64px 200px;
-  }}
 @media (max-width: 748px) {
   
   .featured-title{
@@ -39,8 +36,9 @@ letter-spacing: 0px;
 }
 
 .lp-best-sellers__container {
-  max-width: 1040px;
+  max-width: none;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .lp-best-sellers__header-wrapper {
@@ -137,10 +135,19 @@ border: 0.952px solid rgba(0, 54, 101, 0.23);
 
 
 @media (min-width: 768px) {
+  .lp-best-sellers {
+    padding: 64px 0;
+  }
+  .lp-best-sellers__container {
+    padding: 0 0 0 100px;
+  }
+  .lp-best-sellers__header-wrapper {
+    padding-right: 100px;
+  }
   .lp-best-sellers__nav {
     display: flex;
     position: absolute;
-    right: 200px;
+    right: 100px;
     top: 90px;
   }
   .lp-best-sellers__nav-btn {
@@ -240,6 +247,15 @@ letter-spacing: -0.33px;
 }
 
 @media (min-width: 1024px) {
+  .lp-best-sellers__container {
+    padding: 0 0 0 200px;
+  }
+  .lp-best-sellers__header-wrapper {
+    padding-right: 200px;
+  }
+  .lp-best-sellers__nav {
+    right: 200px;
+  }
   .lp-best-sellers__atc{
     margin-bottom: 14px;
   }

@@ -158,31 +158,31 @@
       "settings": {},
       "blocks": {
         "block_lp-home-sold-in-total_0": {
-          "type": "product_card",
+          "type": "product",
           "settings": {
-            "title": "Electric mop steam 1500W",
-            "badge": "Best Seller"
+            "custom_title": "Electric mop steam 1500W",
+            "custom_badge": "Best Seller"
           }
         },
         "block_lp-home-sold-in-total_1": {
-          "type": "product_card",
+          "type": "product",
           "settings": {
-            "title": "Steam Scrubber",
-            "badge": "Newly Launched"
+            "custom_title": "Steam Scrubber",
+            "custom_badge": "Newly Launched"
           }
         },
         "block_lp-home-sold-in-total_2": {
-          "type": "product_card",
+          "type": "product",
           "settings": {
-            "title": "Handheld Steamer",
-            "badge": "Newly Launched"
+            "custom_title": "Handheld Steamer",
+            "custom_badge": "Newly Launched"
           }
         },
         "block_lp-home-sold-in-total_3": {
-          "type": "product_card",
+          "type": "product",
           "settings": {
-            "title": "Steam Cleaner",
-            "badge": "Newly Launched"
+            "custom_title": "Steam Cleaner",
+            "custom_badge": "Newly Launched"
           }
         }
       },

@@ -30,8 +30,8 @@
   gap: 2px;
 }
 .gradient-span{
-  padding-right: 5px;
-  height: 20px;
+  padding-right: 10px;
+  height: 24px;
   border-right: 1px solid #FD9308;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 8, 0.14) 33.65%);
   background-size: 70%;
@@ -57,9 +57,10 @@ letter-spacing: -0.24px;
   font-size: 28px;
   font-weight: 500;
   letter-spacing: -0.015em;
-  line-height: 65%;
+  line-height: 25.2px;
   margin: 0;
   width: 70%;
+  font-family: "Baloo Bhaijaan 2" !important;
 }
 .lp-help__title-highlight{
   color: #003665;
@@ -170,7 +171,7 @@ letter-spacing: -0.24px;
 }
 
 .lp-help__faq-summary {
-  padding: 16px;
+  padding: 16px 16px 8px 16px;
   list-style: none;
   display: flex;
   justify-content: space-between;

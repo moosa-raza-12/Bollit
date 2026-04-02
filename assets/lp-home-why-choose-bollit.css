@@ -36,7 +36,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
   background-position: right;
   background-repeat: no-repeat;
   transform: rotate(-.47deg);
-  padding-right: 5px;
+  padding-right: 10px;
   display: flex;
   align-items: center;
   max-height: 22px;
@@ -51,10 +51,14 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
 }
 
 .lp-why-choose__subheading {
+  color: #003665;
+  text-align: center;
+  font-family: "Source Serif Pro";
   font-size: 16px;
-  color: var(--color-primary);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
   letter-spacing: -0.24px;
-  line-height: 1.5;
 }
 
 .lp-why-choose__divider {
@@ -165,7 +169,7 @@ background: #FFF;
 }
 
 .lp-why-choose__item-content-inner {
-  padding: 8px 16px 16px 16px;
+  padding: 5px 16px 16px 16px;
   display: flex;
   flex-direction: column;
   gap: 24px;

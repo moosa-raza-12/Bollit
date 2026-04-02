@@ -5,10 +5,13 @@
   --text-white: #FFFFFF;
   --text-nav: rgba(31, 31, 31, 0.7);
   font-family: sans-serif;
+  background: var(--bg-main);
+  padding: 8px 8px 0;
 }
 .lp-header__top-bar {
   background: var(--bg-top-bar);
-  padding: 6px 16px;
+  padding: 6px;
+  border-radius: 8px;
   color: var(--text-white);
 }
 .lp-header__top-container {
@@ -132,7 +135,7 @@
     display: none;
   }
   .lp-header__main-bar {
-    padding: 8px 100px;
+    padding: 10px 100px;
   }
   .lp-header__mobile-controls {
     display: none;
@@ -159,6 +162,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    letter-spacing: 0px;
   }
   .lp-header__action-search {
     display: flex;
