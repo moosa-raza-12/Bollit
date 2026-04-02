@@ -10,6 +10,18 @@
     {%- for link in section.settings.menu.links -%}
       <li>
         {%- if link.links != blank -%}
+
+          {%- liquid
+            assign has_custom_child = false
+            for childlink in link.links
+              assign childlink_title_downcase = childlink.title | downcase
+              if childlink_title_downcase == 'custom' or childlink_title_downcase == 'custom-product' or childlink_title_downcase == 'custom-best-seller'
+                assign has_custom_child = true
+                break
+              endif
+            endfor
+          -%}
+
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}">
               <summary
@@ -25,58 +37,264 @@
                 </span>
                 {{- 'icon-caret.svg' | inline_asset_content -}}
               </summary>
-              <ul
-                id="HeaderMenu-MenuList-{{ forloop.index }}"
-                class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
-                role="list"
-                tabindex="-1"
-              >
-                {%- for childlink in link.links -%}
-                  <li>
-                    {%- if childlink.links == blank -%}
-                      <a
-                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                        href="{{ childlink.url }}"
-                        class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
-                        {% if childlink.current %}
-                          aria-current="page"
-                        {% endif %}
-                      >
-                        {{ childlink.title | escape }}
-                      </a>
+
+              {%- if has_custom_child -%}
+                <div
+                  id="HeaderMenu-CustomDropdown-{{ forloop.index }}"
+                  class="header__submenu header__custom-dropdown color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                  tabindex="-1"
+                >
+                  {%- for childlink in link.links -%}
+                    {%- assign childlink_title_downcase = childlink.title | downcase -%}
+
+                    {%- if childlink_title_downcase == 'custom' -%}
+                      <div class="header__custom-block header__custom-block--custom">
+                        {%- assign found_block = false -%}
+                        {%- for block in section.blocks -%}
+                          {%- if block.type == 'custom_dropdown' -%}
+                            {%- assign block_title = block.settings.childlink_title | downcase -%}
+                            {%- if block_title == 'custom' -%}
+                              {%- assign found_block = true -%}
+                              <div class="header__custom-grid" {{ block.shopify_attributes }}>
+                                {%- for i in (1..6) -%}
+                                  {%- assign image_key = 'card_' | append: i | append: '_image' -%}
+                                  {%- assign title_key = 'card_' | append: i | append: '_title' -%}
+                                  {%- assign url_key = 'card_' | append: i | append: '_url' -%}
+                                  {%- assign card_image = block.settings[image_key] -%}
+                                  {%- assign card_title = block.settings[title_key] -%}
+                                  {%- assign card_url = block.settings[url_key] -%}
+                                  {%- if card_image != blank or card_title != blank -%}
+                                    <a href="{{ card_url | default: '#' }}" class="header__custom-card">
+                                      {%- if card_image != blank -%}
+                                        <div class="header__custom-card-image">
+                                          <img
+                                            src="{{ card_image | image_url: width: 300 }}"
+                                            alt="{{ card_title | escape }}"
+                                            width="150"
+                                            height="150"
+                                            loading="lazy"
+                                          >
+                                        </div>
+                                      {%- endif -%}
+                                      {%- if card_title != blank -%}
+                                        <span class="header__custom-card-title">{{ card_title }}</span>
+                                      {%- endif -%}
+                                    </a>
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                        {%- unless found_block -%}
+                          <div class="header__custom-placeholder">
+                            <p>moosa</p>
+                          </div>
+                        {%- endunless -%}
+                      </div>
+
+                    {%- elsif childlink_title_downcase == 'custom-best-seller' -%}
+                      <div class="header__custom-block header__custom-block--custom">
+                        {%- assign found_block = false -%}
+                        {%- for block in section.blocks -%}
+                          {%- if block.type == 'custom_bestseller' -%}
+                            {%- assign block_title = block.settings.childlink_title | downcase -%}
+                            {%- if block_title == 'custom-best-seller' -%}
+                              {%- assign found_block = true -%}
+                              <div class="header__custom-grid" {{ block.shopify_attributes }}>
+                                {%- for i in (1..6) -%}
+                                  {%- assign image_key = 'card_' | append: i | append: '_image' -%}
+                                  {%- assign title_key = 'card_' | append: i | append: '_title' -%}
+                                  {%- assign url_key = 'card_' | append: i | append: '_url' -%}
+                                  {%- assign card_image = block.settings[image_key] -%}
+                                  {%- assign card_title = block.settings[title_key] -%}
+                                  {%- assign card_url = block.settings[url_key] -%}
+                                  {%- if card_image != blank or card_title != blank -%}
+                                    <a href="{{ card_url | default: '#' }}" class="header__custom-card">
+                                      {%- if card_image != blank -%}
+                                        <div class="header__custom-card-image">
+                                          <img
+                                            src="{{ card_image | image_url: width: 300 }}"
+                                            alt="{{ card_title | escape }}"
+                                            width="150"
+                                            height="150"
+                                            loading="lazy"
+                                          >
+                                        </div>
+                                      {%- endif -%}
+                                      {%- if card_title != blank -%}
+                                        <span class="header__custom-card-title">{{ card_title }}</span>
+                                      {%- endif -%}
+                                    </a>
+                                  {%- endif -%}
+                                {%- endfor -%}
+                              </div>
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                        {%- unless found_block -%}
+                          <div class="header__custom-placeholder">
+                            <p>Custom Best Seller content</p>
+                          </div>
+                        {%- endunless -%}
+                      </div>
+
+                    {%- elsif childlink_title_downcase == 'custom-product' -%}
+                      <div class="header__custom-block header__custom-block--product">
+                        {%- assign found_block = false -%}
+                        {%- for block in section.blocks -%}
+                          {%- if block.type == 'custom_product_dropdown' -%}
+                            {%- assign block_title = block.settings.childlink_title | downcase -%}
+                            {%- if block_title == 'custom-product' -%}
+                              {%- assign found_block = true -%}
+                              <div class="header__product-slider-wrapper" {{ block.shopify_attributes }}>
+                                {%- if block.settings.slider_heading != blank -%}
+                                  <p class="header__product-slider-heading">{{ block.settings.slider_heading }}</p>
+                                {%- endif -%}
+                                <div class="header__product-slider">
+                                  <button type="button" class="header__product-slider-btn header__product-slider-btn--prev" aria-label="Previous">
+                                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                                  </button>
+                                  <div class="header__product-slider-track">
+                                    {%- for i in (1..10) -%}
+                                      {%- assign product_key = 'product_' | append: i -%}
+                                      {%- assign slider_product = block.settings[product_key] -%}
+                                      {%- if slider_product != blank -%}
+                                        <div class="header__product-slide">
+                                          <a href="{{ slider_product.url }}">
+                                            {%- if slider_product.featured_image != blank -%}
+                                              <img
+                                                src="{{ slider_product.featured_image | image_url: width: 300 }}"
+                                                alt="{{ slider_product.title | escape }}"
+                                                width="150"
+                                                height="150"
+                                                loading="lazy"
+                                              >
+                                            {%- endif -%}
+                                            <span>{{ slider_product.title }}</span>
+                                            {%- if slider_product.price -%}
+                                              <span class="header__product-slide-price">{{ slider_product.price | money }}</span>
+                                            {%- endif -%}
+                                          </a>
+                                        </div>
+                                      {%- endif -%}
+                                    {%- endfor -%}
+                                  </div>
+                                  <button type="button" class="header__product-slider-btn header__product-slider-btn--next" aria-label="Next">
+                                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                                  </button>
+                                </div>
+                              </div>
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                        {%- unless found_block -%}
+                          <div class="header__custom-placeholder">
+                            <p>mateen</p>
+                          </div>
+                        {%- endunless -%}
+                      </div>
+
                     {%- else -%}
-                      <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
-                        <summary
+                      {%- comment -%} Normal submenu items still render {%- endcomment -%}
+                      {%- if childlink.links == blank -%}
+                        <a
                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                          class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                          href="{{ childlink.url }}"
+                          class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
                         >
-                          <span>{{ childlink.title | escape }}</span>
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
-                        </summary>
-                        <ul
-                          id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                          class="header__submenu list-menu motion-reduce"
-                        >
-                          {%- for grandchildlink in childlink.links -%}
-                            <li>
-                              <a
-                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                href="{{ grandchildlink.url }}"
-                                class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
-                                {% if grandchildlink.current %}
-                                  aria-current="page"
-                                {% endif %}
-                              >
-                                {{ grandchildlink.title | escape }}
-                              </a>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                      </details>
+                          {{ childlink.title | escape }}
+                        </a>
+                      {%- else -%}
+                        <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                          <summary
+                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                            class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                          >
+                            <span>{{ childlink.title | escape }}</span>
+                            {{- 'icon-caret.svg' | inline_asset_content -}}
+                          </summary>
+                          <ul
+                            id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}"
+                            class="header__submenu list-menu motion-reduce"
+                          >
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </details>
+                      {%- endif -%}
                     {%- endif -%}
-                  </li>
-                {%- endfor -%}
-              </ul>
+                  {%- endfor -%}
+                </div>
+              {%- else -%}
+                <ul
+                  id="HeaderMenu-MenuList-{{ forloop.index }}"
+                  class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+                  role="list"
+                  tabindex="-1"
+                >
+                  {%- for childlink in link.links -%}
+                    <li>
+                      {%- if childlink.links == blank -%}
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+                      {%- else -%}
+                        <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
+                          <summary
+                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                            class="header__menu-item link link--text list-menu__item focus-inset caption-large"
+                          >
+                            <span>{{ childlink.title | escape }}</span>
+                            {{- 'icon-caret.svg' | inline_asset_content -}}
+                          </summary>
+                          <ul
+                            id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                            class="header__submenu list-menu motion-reduce"
+                          >
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </details>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
             </details>
           </header-menu>
         {%- else -%}
