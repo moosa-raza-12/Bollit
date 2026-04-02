@@ -400,13 +400,35 @@
             "reviewer_name": "Margreet",
             "reviewer_avatar": "shopify://shop_images/Ellipse_159.png"
           }
+        },
+        "testimonial_RcRFnk": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png"
+          }
+        },
+        "testimonial_wHFjM3": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png"
+          }
         }
       },
       "block_order": [
         "block_lp-home-join-happier-homes_0",
         "block_lp-home-join-happier-homes_1",
         "block_lp-home-join-happier-homes_2",
-        "block_lp-home-join-happier-homes_3"
+        "block_lp-home-join-happier-homes_3",
+        "testimonial_RcRFnk",
+        "testimonial_wHFjM3"
       ],
       "settings": {
         "reviews_text": "4.5/5 (1,450+ Reviews)",
