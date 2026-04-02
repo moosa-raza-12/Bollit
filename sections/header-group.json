@@ -38,6 +38,25 @@
             "product_10": ""
           }
         },
+        "custom_dropdown_6itmX7": {
+          "type": "custom_dropdown",
+          "settings": {
+            "menu_handle": "",
+            "childlink_title": "Custom",
+            "card_1_title": "",
+            "card_1_url": "",
+            "card_2_title": "",
+            "card_2_url": "",
+            "card_3_title": "",
+            "card_3_url": "",
+            "card_4_title": "",
+            "card_4_url": "",
+            "card_5_title": "",
+            "card_5_url": "",
+            "card_6_title": "",
+            "card_6_url": ""
+          }
+        },
         "custom_dropdown_EdVCem": {
           "type": "custom_dropdown",
           "settings": {
@@ -62,31 +81,12 @@
             "card_6_title": "Accessories",
             "card_6_url": ""
           }
-        },
-        "custom_dropdown_6itmX7": {
-          "type": "custom_dropdown",
-          "settings": {
-            "menu_handle": "",
-            "childlink_title": "Custom",
-            "card_1_title": "",
-            "card_1_url": "",
-            "card_2_title": "",
-            "card_2_url": "",
-            "card_3_title": "",
-            "card_3_url": "",
-            "card_4_title": "",
-            "card_4_url": "",
-            "card_5_title": "",
-            "card_5_url": "",
-            "card_6_title": "",
-            "card_6_url": ""
-          }
         }
       },
       "block_order": [
         "custom_product_dropdown_wgBKA8",
-        "custom_dropdown_EdVCem",
-        "custom_dropdown_6itmX7"
+        "custom_dropdown_6itmX7",
+        "custom_dropdown_EdVCem"
       ],
       "settings": {
         "logo_position": "middle-left",
