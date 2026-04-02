@@ -20,13 +20,13 @@
     "header": {
       "type": "header",
       "blocks": {
-        "custom_dropdown_4fc9HX": {
+        "custom_dropdown_NVnrCi": {
           "type": "custom_dropdown",
           "settings": {
             "menu_handle": "",
-            "childlink_title": "Shop by Category",
+            "childlink_title": "Custom",
             "card_1_image": "shopify://shop_images/Recommendation_image.png",
-            "card_1_title": "sds",
+            "card_1_title": "sdasasd",
             "card_1_url": "",
             "card_2_title": "",
             "card_2_url": "",
@@ -85,7 +85,7 @@
         }
       },
       "block_order": [
-        "custom_dropdown_4fc9HX",
+        "custom_dropdown_NVnrCi",
         "custom_bestseller_Q3dLRC",
         "custom_product_dropdown_wgBKA8"
       ],
