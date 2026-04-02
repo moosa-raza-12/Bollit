@@ -1,16 +1,12 @@
-{% comment %}
-  Renders a header drawer menu for mobile and desktop.
-
-  Usage:
-  {% render 'header-drawer' %}
+{% comment %} 
+    Renders a header drawer menu for mobile and desktop. 
+    Usage: 
+    {% render 'header-drawer' %}
 {% endcomment %}
 
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
-    <summary
-      class="header__icon header__icon--menu header__icon--summary link focus-inset"
-      aria-label="{{ 'sections.header.menu' | t }}"
-    >
+    <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
       <span>
         {{- 'icon-hamburger.svg' | inline_asset_content -}}
         {{- 'icon-close.svg' | inline_asset_content -}}
@@ -19,6 +15,7 @@
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
+          {%- render 'header-drawer-search' -%}
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu list-menu" role="list">
               {%- for link in section.settings.menu.links -%}
@@ -27,8 +24,7 @@
                     <button
                       type="button"
                       class="drawer-accordion__toggle menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
-                      aria-expanded="false"
-                    >
+                      aria-expanded="false">
                       {{ link.title | escape }}
                       <span class="svg-wrapper drawer-accordion__icon">
                         {{- 'icon-caret.svg' | inline_asset_content -}}
@@ -63,8 +59,7 @@
                                                 alt="{{ card_title | escape }}"
                                                 width="80"
                                                 height="80"
-                                                loading="lazy"
-                                              >
+                                                loading="lazy">
                                             {%- endif -%}
                                             {%- if card_title != blank -%}
                                               <span>{{ card_title }}</span>
@@ -105,8 +100,7 @@
                                                 alt="{{ card_title | escape }}"
                                                 width="80"
                                                 height="80"
-                                                loading="lazy"
-                                              >
+                                                loading="lazy">
                                             {%- endif -%}
                                             {%- if card_title != blank -%}
                                               <span>{{ card_title }}</span>
@@ -147,8 +141,7 @@
                                                   alt="{{ slider_product.title | escape }}"
                                                   width="80"
                                                   height="80"
-                                                  loading="lazy"
-                                                >
+                                                  loading="lazy">
                                               {%- endif -%}
                                               <span>{{ slider_product.title }}</span>
                                               {%- if slider_product.price -%}
@@ -173,11 +166,22 @@
                                 <button
                                   type="button"
                                   class="drawer-accordion__toggle menu-drawer__menu-item link link--text list-menu__item focus-inset"
-                                  aria-expanded="false"
-                                >
+                                  aria-expanded="false">
                                   {{ childlink.title | escape }}
                                   <span class="svg-wrapper drawer-accordion__icon">
                                     {{- 'icon-caret.svg' | inline_asset_content -}}
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      width="16"
+                                      height="16"
+                                      viewBox="0 0 16 16"
+                                      fill="none">
+                                      <path
+                                        d="M13 10L8 5L3 10"
+                                        stroke="#808080"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    </svg>
                                   </span>
                                 </button>
                                 <div class="drawer-accordion__content">
@@ -189,9 +193,8 @@
                                           href="{{ grandchildlink.url }}"
                                           class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
                                           {% if grandchildlink.current %}
-                                            aria-current="page"
-                                          {% endif %}
-                                        >
+                                          aria-current="page"
+                                          {% endif %}>
                                           {{ grandchildlink.title | escape }}
                                         </a>
                                       </li>
@@ -206,9 +209,8 @@
                                   href="{{ childlink.url }}"
                                   class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
                                   {% if childlink.current %}
-                                    aria-current="page"
-                                  {% endif %}
-                                >
+                                  aria-current="page"
+                                  {% endif %}>
                                   {{ childlink.title | escape }}
                                 </a>
                               </li>
@@ -225,9 +227,8 @@
                       href="{{ link.url }}"
                       class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
                       {% if link.current %}
-                        aria-current="page"
-                      {% endif %}
-                    >
+                      aria-current="page"
+                      {% endif %}>
                       {{ link.title | escape }}
                     </a>
                   </li>
@@ -240,8 +241,7 @@
               <a
                 href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
                 class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide"
-                rel="nofollow"
-              >
+                rel="nofollow">
                 {%- if section.settings.enable_customer_avatar -%}
                   <account-icon>
                     {%- if customer and customer.has_avatar? -%}
@@ -270,12 +270,15 @@
               <div class="menu-drawer__localization header-localization">
                 {%- if localization.available_countries and localization.available_countries.size > 1 -%}
                   <localization-form>
-                    {%- form 'localization', id: 'HeaderCountryMobileForm', class: 'localization-form' -%}
+                    {%- form 'localization'
+                      , id: 'HeaderCountryMobileForm'
+                      , class: 'localization-form' -%}
                       <div>
                         <h2 class="visually-hidden" id="HeaderCountryMobileLabel">
                           {{ 'localization.country_label' | t }}
                         </h2>
-                        {%- render 'country-localization', localPosition: 'HeaderCountryMobile' -%}
+                        {%- render 'country-localization'
+                          , localPosition: 'HeaderCountryMobile' -%}
                       </div>
                     {%- endform -%}
                   </localization-form>
@@ -283,12 +286,15 @@
 
                 {%- if localization.available_languages and localization.available_languages.size > 1 -%}
                   <localization-form>
-                    {%- form 'localization', id: 'HeaderLanguageMobileForm', class: 'localization-form' -%}
+                    {%- form 'localization'
+                      , id: 'HeaderLanguageMobileForm'
+                      , class: 'localization-form' -%}
                       <div>
                         <h2 class="visually-hidden" id="HeaderLanguageMobileLabel">
                           {{ 'localization.language_label' | t }}
                         </h2>
-                        {%- render 'language-localization', localPosition: 'HeaderLanguageMobile' -%}
+                        {%- render 'language-localization'
+                          , localPosition: 'HeaderLanguageMobile' -%}
                       </div>
                     {%- endform -%}
                   </localization-form>

@@ -74,14 +74,48 @@ details[open].menu-opening > .menu-drawer__submenu {
 .menu-drawer__inner-container {
   position: relative;
   height: 100%;
+  padding: 20px;
 }
 
 .menu-drawer__navigation-container {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr auto;
   align-content: space-between;
   overflow-y: auto;
   height: 100%;
+}
+
+.menu-drawer__search {
+  display: flex;
+  padding: 10px 16px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 18px;
+background: #FFF;
+margin: 0 auto;
+}
+@media screen and(max-width:748px) {
+  .field__button{
+  display: none;
+}
+}
+.menu-drawer__search predictive-search {
+  position: relative;
+  display: block;
+}.search__input.field__input {
+  border: none;
+  outline: none;
+  height: 40px;
+}
+
+/* Optional: Remove focus ring as well */
+.search__input.field__input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.menu-drawer__search + .menu-drawer__navigation {
+  padding-top: 1.5rem;
 }
 
 .menu-drawer__navigation {
@@ -98,6 +132,10 @@ details[open].menu-opening > .menu-drawer__submenu {
   margin-bottom: 0.2rem;
 }
 
+.menu-drawer__menu.list-menu > li:not(:last-child) {
+  border-bottom: 1px solid rgba(204, 204, 204, 0.4);
+}
+
 .menu-drawer__menu-item {
   padding: 1.1rem 3rem;
   text-decoration: none;
@@ -108,7 +146,6 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding-right: 5.2rem;
 }
 
-.menu-drawer__menu-item--active,
 .menu-drawer__menu-item:focus,
 .menu-drawer__close-button:focus,
 .menu-drawer__menu-item:hover,
@@ -125,11 +162,16 @@ details[open].menu-opening > .menu-drawer__submenu {
   display: none;
 }
 
+/* Accordion toggles use the same icon-caret asset; re-show it (rule above targets legacy summary rows only). */
+.js .menu-drawer__menu-item.drawer-accordion__toggle .icon-caret {
+  display: block;
+}
+
 .menu-drawer__menu-item > .svg-wrapper {
   width: 15px;
   position: absolute;
   right: 3rem;
-  top: 50%;
+  /* top: 50%; */
   transform: translateY(-50%);
 }
 
@@ -180,6 +222,16 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 @media screen and (max-width: 749px) {
+  .menu-drawer__menu-item>.svg-wrapper {
+    width: 15px;
+    position: absolute;
+    right: 3rem;
+    /* top: 50%; */
+    transform: translateY(-50%);
+  }
+  .menu-drawer__search+.menu-drawer__navigation{    padding-top: 1.5rem;
+    width: 100vw;
+}
   .header--has-account:where(:not(.header--has-social):not(.header--has-localizations)) .menu-drawer__utility-links {
     padding: 2rem 3rem;
   }

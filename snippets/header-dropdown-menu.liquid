@@ -1,8 +1,7 @@
-{% comment %}
-  Renders a standard dropdown style menu for the header.
-
-  Usage:
-  {% render 'header-dropdown-menu' %}
+{% comment %} 
+                Renders a standard dropdown style menu for the header. 
+                Usage: 
+                {% render 'header-dropdown-menu' %}
 {% endcomment %}
 
 <nav class="header__inline-menu">
@@ -24,26 +23,23 @@
 
           <header-menu>
             <details id="Details-HeaderMenu-{{ forloop.index }}">
-              <summary
-                id="HeaderMenu-{{ link.handle }}"
-                class="header__menu-item list-menu__item link focus-inset"
-              >
-                <span
-                  {%- if link.child_active %}
+              <summary id="HeaderMenu-{{ link.handle }}" class="header__menu-item list-menu__item link focus-inset">
+                <div>
+                  <span
+                    {%- if link.child_active %}
                     class="header__active-menu-item"
-                  {% endif %}
-                >
-                  {{- link.title | escape -}}
-                </span>
-                {{- 'icon-caret.svg' | inline_asset_content -}}
+                    {% endif %}>
+                    {{- link.title | escape -}}
+                  </span>
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </div>
               </summary>
 
               {%- if has_custom_child -%}
                 <div
                   id="HeaderMenu-CustomDropdown-{{ forloop.index }}"
-                  class="header__submenu header__custom-dropdown color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
-                  tabindex="-1"
-                >
+                  class="header__submenu header__custom-dropdown color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup header__custom"
+                  tabindex="-1">
                   {%- for childlink in link.links -%}
                     {%- assign childlink_title_downcase = childlink.title | downcase -%}
 
@@ -55,6 +51,7 @@
                             {%- assign block_title = block.settings.childlink_title | downcase -%}
                             {%- if block_title == 'custom' -%}
                               {%- assign found_block = true -%}
+
                               <div class="header__custom-grid" {{ block.shopify_attributes }}>
                                 {%- for i in (1..6) -%}
                                   {%- assign image_key = 'card_' | append: i | append: '_image' -%}
@@ -72,8 +69,7 @@
                                             alt="{{ card_title | escape }}"
                                             width="150"
                                             height="150"
-                                            loading="lazy"
-                                          >
+                                            loading="lazy">
                                         </div>
                                       {%- endif -%}
                                       {%- if card_title != blank -%}
@@ -94,13 +90,23 @@
                       </div>
 
                     {%- elsif childlink_title_downcase == 'custom-best-seller' -%}
-                      <div class="header__custom-block header__custom-block--custom">
+                      <div class="header__custom-block header__custom-block--custom" style="position: relative;">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="23"
+                          height="7"
+                          viewBox="0 0 23 7"
+                          fill="none">
+
+                          <path d="M9.13514 0.674441L0 6.78027H22.2826L13.6557 0.725853C12.304 -0.222831 10.5081 -0.243255 9.13514 0.674441Z" fill="white" />
+                        </svg>
                         {%- assign found_block = false -%}
                         {%- for block in section.blocks -%}
                           {%- if block.type == 'custom_bestseller' -%}
                             {%- assign block_title = block.settings.childlink_title | downcase -%}
                             {%- if block_title == 'custom-best-seller' -%}
                               {%- assign found_block = true -%}
+
                               <div class="header__custom-grid" {{ block.shopify_attributes }}>
                                 {%- for i in (1..6) -%}
                                   {%- assign image_key = 'card_' | append: i | append: '_image' -%}
@@ -118,8 +124,7 @@
                                             alt="{{ card_title | escape }}"
                                             width="150"
                                             height="150"
-                                            loading="lazy"
-                                          >
+                                            loading="lazy">
                                         </div>
                                       {%- endif -%}
                                       {%- if card_title != blank -%}
@@ -140,7 +145,15 @@
                       </div>
 
                     {%- elsif childlink_title_downcase == 'custom-product' -%}
-                      <div class="header__custom-block header__custom-block--product">
+                      {% comment %} <div class="header__custom-block header__custom-block--product"> {% endcomment %}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="21"
+                          height="7"
+                          viewBox="0 0 21 7"
+                          fill="none">
+                          <path d="M8.22616 0.671794L0 6.1559H20.5L12.7388 0.723066C11.3888 -0.221963 9.59732 -0.242316 8.22616 0.671794Z" fill="white" />
+                        </svg>
                         {%- assign found_block = false -%}
                         {%- for block in section.blocks -%}
                           {%- if block.type == 'custom_product_dropdown' -%}
@@ -152,7 +165,10 @@
                                   <p class="header__product-slider-heading">{{ block.settings.slider_heading }}</p>
                                 {%- endif -%}
                                 <div class="header__product-slider">
-                                  <button type="button" class="header__product-slider-btn header__product-slider-btn--prev" aria-label="Previous">
+                                  <button
+                                    type="button"
+                                    class="header__product-slider-btn header__product-slider-btn--prev"
+                                    aria-label="Previous">
                                     {{- 'icon-caret.svg' | inline_asset_content -}}
                                   </button>
                                   <div class="header__product-slider-track">
@@ -168,8 +184,7 @@
                                                 alt="{{ slider_product.title | escape }}"
                                                 width="150"
                                                 height="150"
-                                                loading="lazy"
-                                              >
+                                                loading="lazy">
                                             {%- endif -%}
                                             <span>{{ slider_product.title }}</span>
                                             {%- if slider_product.price -%}
@@ -180,10 +195,13 @@
                                       {%- endif -%}
                                     {%- endfor -%}
                                   </div>
-                                  <button type="button" class="header__product-slider-btn header__product-slider-btn--next" aria-label="Next">
+                                  <button
+                                    type="button"
+                                    class="header__product-slider-btn header__product-slider-btn--next"
+                                    aria-label="Next">
                                     {{- 'icon-caret.svg' | inline_asset_content -}}
                                   </button>
-                                </div>
+                                {% comment %} </div> {% endcomment %}
                               </div>
                             {%- endif -%}
                           {%- endif -%}
@@ -203,24 +221,17 @@
                           href="{{ childlink.url }}"
                           class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
                           {% if childlink.current %}
-                            aria-current="page"
-                          {% endif %}
-                        >
+                          aria-current="page"
+                          {% endif %}>
                           {{ childlink.title | escape }}
                         </a>
                       {%- else -%}
                         <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
-                          <summary
-                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                            class="header__menu-item link link--text list-menu__item focus-inset caption-large"
-                          >
+                          <summary id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}" class="header__menu-item link link--text list-menu__item focus-inset caption-large">
                             <span>{{ childlink.title | escape }}</span>
                             {{- 'icon-caret.svg' | inline_asset_content -}}
                           </summary>
-                          <ul
-                            id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}"
-                            class="header__submenu list-menu motion-reduce"
-                          >
+                          <ul id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}" class="header__submenu list-menu motion-reduce">
                             {%- for grandchildlink in childlink.links -%}
                               <li>
                                 <a
@@ -228,9 +239,8 @@
                                   href="{{ grandchildlink.url }}"
                                   class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
                                   {% if grandchildlink.current %}
-                                    aria-current="page"
-                                  {% endif %}
-                                >
+                                  aria-current="page"
+                                  {% endif %}>
                                   {{ grandchildlink.title | escape }}
                                 </a>
                               </li>
@@ -246,8 +256,7 @@
                   id="HeaderMenu-MenuList-{{ forloop.index }}"
                   class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
                   role="list"
-                  tabindex="-1"
-                >
+                  tabindex="-1">
                   {%- for childlink in link.links -%}
                     <li>
                       {%- if childlink.links == blank -%}
@@ -256,24 +265,17 @@
                           href="{{ childlink.url }}"
                           class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"
                           {% if childlink.current %}
-                            aria-current="page"
-                          {% endif %}
-                        >
+                          aria-current="page"
+                          {% endif %}>
                           {{ childlink.title | escape }}
                         </a>
                       {%- else -%}
                         <details id="Details-HeaderSubMenu-{{ link.handle }}-{{ childlink.handle }}">
-                          <summary
-                            id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                            class="header__menu-item link link--text list-menu__item focus-inset caption-large"
-                          >
+                          <summary id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}" class="header__menu-item link link--text list-menu__item focus-inset caption-large">
                             <span>{{ childlink.title | escape }}</span>
                             {{- 'icon-caret.svg' | inline_asset_content -}}
                           </summary>
-                          <ul
-                            id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                            class="header__submenu list-menu motion-reduce"
-                          >
+                          <ul id="HeaderMenu-SubMenuList-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}" class="header__submenu list-menu motion-reduce">
                             {%- for grandchildlink in childlink.links -%}
                               <li>
                                 <a
@@ -281,9 +283,8 @@
                                   href="{{ grandchildlink.url }}"
                                   class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"
                                   {% if grandchildlink.current %}
-                                    aria-current="page"
-                                  {% endif %}
-                                >
+                                  aria-current="page"
+                                  {% endif %}>
                                   {{ grandchildlink.title | escape }}
                                 </a>
                               </li>
@@ -303,14 +304,12 @@
             href="{{ link.url }}"
             class="header__menu-item list-menu__item link link--text focus-inset"
             {% if link.current %}
-              aria-current="page"
-            {% endif %}
-          >
+            aria-current="page"
+            {% endif %}>
             <span
               {%- if link.current %}
-                class="header__active-menu-item"
-              {% endif %}
-            >
+              class="header__active-menu-item"
+              {% endif %}>
               {{- link.title | escape -}}
             </span>
           </a>
