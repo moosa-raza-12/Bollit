@@ -39,7 +39,9 @@
       >
        
       <label class="field__label menu-drawer__search-label" for="Search-In-Drawer">
-       
+        <span class="svg-wrapper menu-drawer__search-icon">
+          {{- 'icon-search.svg' | inline_asset_content -}}
+        </span>
         <span class="menu-drawer__search-label-text">{{ 'general.search.search' | t }}</span>
       </label>
       <input type="hidden" name="options[prefix]" value="last">

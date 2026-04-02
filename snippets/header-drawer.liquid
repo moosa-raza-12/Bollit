@@ -143,20 +143,23 @@
                                                   height="80"
                                                   loading="lazy">
                                               {%- endif -%}
-                                              <span>{{ slider_product.title }}</span>
+                                              <div class="drawer-accordion__product-card-content">
+                                              <span class="drawer-accordion__product-card-title">{{ slider_product.title }}</span>
                                               {%- if slider_product.price -%}
                                                 <span class="drawer-accordion__product-price">{{ slider_product.price | money }}</span>
+                                                
                                               {%- endif -%}
+                                              </div>
                                             </a>
                                           {%- endif -%}
                                         {%- endfor -%}
                                       </div>
+                                
                                       <div class="drawer-accordion__slider-scrollbar" aria-hidden="true">
                                         <div class="drawer-accordion__slider-scrollbar-track">
                                           <div class="drawer-accordion__slider-scrollbar-thumb"></div>
                                         </div>
                                       </div>
-                                    </div>
                                   {%- endif -%}
                                 {%- endif -%}
                               {%- endfor -%}

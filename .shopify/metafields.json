@@ -1,7 +1,6 @@
 {
   "article": [],
   "blog": [],
-  "brand": [],
   "collection": [],
   "company": [],
   "company_location": [],
@@ -9,7 +8,78 @@
   "market": [],
   "order": [],
   "page": [],
-  "product": [],
+  "product": [
+    {
+      "key": "test_product_badge",
+      "namespace": "custom",
+      "name": "test product badge ",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "feature_1_title",
+      "namespace": "custom",
+      "name": "Feature 1 Title",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "feature_1_description",
+      "namespace": "custom",
+      "name": "Feature 1 Description",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "feature_2_title",
+      "namespace": "custom",
+      "name": "Feature 2 Title",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "feature_2_description",
+      "namespace": "custom",
+      "name": "Feature 2 Description",
+      "description": "",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "feature_3_title",
+      "namespace": "custom",
+      "name": "Feature 3 Title",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "feature_3_description",
+      "namespace": "custom",
+      "name": "Feature 3 Description",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    }
+  ],
   "variant": [],
   "shop": []
 }
