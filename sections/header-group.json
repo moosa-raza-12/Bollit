@@ -20,6 +20,26 @@
     "header": {
       "type": "header",
       "blocks": {
+        "custom_dropdown_NVnrCi": {
+          "type": "custom_dropdown",
+          "settings": {
+            "menu_handle": "",
+            "childlink_title": "Custom",
+            "card_1_image": "shopify://shop_images/Recommendation_image.png",
+            "card_1_title": "sdasasd",
+            "card_1_url": "",
+            "card_2_title": "",
+            "card_2_url": "",
+            "card_3_title": "",
+            "card_3_url": "",
+            "card_4_title": "",
+            "card_4_url": "",
+            "card_5_title": "",
+            "card_5_url": "",
+            "card_6_title": "",
+            "card_6_url": ""
+          }
+        },
         "custom_bestseller_Q3dLRC": {
           "type": "custom_bestseller",
           "settings": {
@@ -65,6 +85,7 @@
         }
       },
       "block_order": [
+        "custom_dropdown_NVnrCi",
         "custom_bestseller_Q3dLRC",
         "custom_product_dropdown_wgBKA8"
       ],

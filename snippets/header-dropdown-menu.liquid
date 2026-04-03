@@ -254,9 +254,13 @@
               {%- else -%}
                 <ul
                   id="HeaderMenu-MenuList-{{ forloop.index }}"
-                  class="header__submenu list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
+                  class="header__submenue list-menu list-menu--disclosure color-{{ section.settings.menu_color_scheme }} gradient caption-large motion-reduce global-settings-popup"
                   role="list"
                   tabindex="-1">
+                  <span class="header__submenu-icon">
+                  <svg  xmlns="http://www.w3.org/2000/svg" width="21" height="7" viewBox="0 0 21 7" fill="none">
+  <path d="M8.22616 0.671794L0 6.1559H20.5L12.7388 0.723066C11.3888 -0.221963 9.59732 -0.242316 8.22616 0.671794Z" fill="white"/>
+</svg></span>
                   {%- for childlink in link.links -%}
                     <li>
                       {%- if childlink.links == blank -%}
