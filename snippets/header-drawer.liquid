@@ -132,21 +132,32 @@
                                       <div class="drawer-accordion__slider-track">
                                         {%- for i in (1..10) -%}
                                           {%- assign product_key = 'product_' | append: i -%}
+                                          {%- assign title_key = 'product_' | append: i | append: '_title' -%}
                                           {%- assign desc_key = 'product_' | append: i | append: '_description' -%}
                                           {%- assign slider_product = block.settings[product_key] -%}
+                                          {%- assign slide_title = block.settings[title_key] -%}
                                           {%- assign slide_description = block.settings[desc_key] -%}
                                           {%- if slider_product != blank -%}
+                                            {%- liquid
+                                              if slide_title != blank
+                                                assign slide_display_title = slide_title
+                                              elsif block.settings.override_title and block.settings.custom_title != blank
+                                                assign slide_display_title = block.settings.custom_title
+                                              else
+                                                assign slide_display_title = slider_product.title
+                                              endif
+                                            -%}
                                             <a href="{{ slider_product.url }}" class="drawer-accordion__product-card">
                                               {%- if slider_product.featured_image != blank -%}
                                                 <img
                                                   src="{{ slider_product.featured_image | image_url: width: 200 }}"
-                                                  alt="{{ slider_product.title | escape }}"
+                                                  alt="{{ slide_display_title | escape }}"
                                                   width="80"
                                                   height="80"
                                                   loading="lazy">
                                               {%- endif -%}
                                               <div class="drawer-accordion__product-card-content">
-                                              <span class="drawer-accordion__product-card-title">{{ slider_product.title }}</span>
+                                              <span class="drawer-accordion__product-card-title">{{ slide_display_title }}</span>
                                               {%- if slide_description != blank -%}
                                                 <span class="header__product-description drawer-accordion__product-description">{{ slide_description }}</span>
                                               {%- elsif block.settings.override_description and block.settings.custom_description != blank -%}

@@ -82,11 +82,11 @@
                             {%- endif -%}
                           {%- endif -%}
                         {%- endfor -%}
-                        {%- unless found_block -%}
+                        {% comment %} {%- unless found_block -%}
                           <div class="header__custom-placeholder">
                             <p>moosa</p>
                           </div>
-                        {%- endunless -%}
+                        {%- endunless -%} {% endcomment %}
                       </div>
 
                     {%- elsif childlink_title_downcase == 'custom-best-seller' -%}
@@ -174,25 +174,32 @@
                                   <div class="header__product-slider-track">
                                     {%- for i in (1..10) -%}
                                       {%- assign product_key = 'product_' | append: i -%}
+                                      {%- assign title_key = 'product_' | append: i | append: '_title' -%}
                                       {%- assign desc_key = 'product_' | append: i | append: '_description' -%}
                                       {%- assign slider_product = block.settings[product_key] -%}
+                                      {%- assign slide_title = block.settings[title_key] -%}
                                       {%- assign slide_description = block.settings[desc_key] -%}
                                       {%- if slider_product != blank -%}
+                                        {%- liquid
+                                          if slide_title != blank
+                                            assign slide_display_title = slide_title
+                                          elsif block.settings.override_title and block.settings.custom_title != blank
+                                            assign slide_display_title = block.settings.custom_title
+                                          else
+                                            assign slide_display_title = slider_product.title
+                                          endif
+                                        -%}
                                         <div class="header__product-slide">
                                           <a href="{{ slider_product.url }}">
                                             {%- if slider_product.featured_image != blank -%}
                                               <img
                                                 src="{{ slider_product.featured_image | image_url: width: 300 }}"
-                                                alt="{{ slider_product.title | escape }}"
+                                                alt="{{ slide_display_title | escape }}"
                                                 width="150"
                                                 height="150"
                                                 loading="lazy">
                                             {%- endif -%}
-                                            {% if block.settings.override_title and block.settings.custom_title != blank %}
-                                              <span class="header__product-slide-title">{{ block.settings.custom_title }}</span>
-                                            {% else %}
-                                              <span class="header__product-slide-title">{{ slider_product.title }}</span>
-                                            {% endif %}
+                                            <span class="header__product-slide-title">{{ slide_display_title }}</span>
                                             
                                             {%- if slide_description != blank -%}
                                               <span class="header__product-description">{{ slide_description }}</span>
