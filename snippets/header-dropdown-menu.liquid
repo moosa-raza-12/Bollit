@@ -174,7 +174,9 @@
                                   <div class="header__product-slider-track">
                                     {%- for i in (1..10) -%}
                                       {%- assign product_key = 'product_' | append: i -%}
+                                      {%- assign desc_key = 'product_' | append: i | append: '_description' -%}
                                       {%- assign slider_product = block.settings[product_key] -%}
+                                      {%- assign slide_description = block.settings[desc_key] -%}
                                       {%- if slider_product != blank -%}
                                         <div class="header__product-slide">
                                           <a href="{{ slider_product.url }}">
@@ -192,11 +194,13 @@
                                               <span class="header__product-slide-title">{{ slider_product.title }}</span>
                                             {% endif %}
                                             
-                                            {% if block.settings.override_description and block.settings.custom_description != blank %}
+                                            {%- if slide_description != blank -%}
+                                              <span class="header__product-description">{{ slide_description }}</span>
+                                            {%- elsif block.settings.override_description and block.settings.custom_description != blank -%}
                                               <span class="header__product-description">{{ block.settings.custom_description }}</span>
-                                            {% else %}
-                                              <span class="header__product-description">{{ slider_product.description }}</span>
-                                            {% endif %}
+                                            {%- elsif slider_product.description != blank -%}
+                                              <span class="header__product-description">{{ slider_product.description | strip_html }}</span>
+                                            {%- endif -%}
                                             {%- if slider_product.price -%}
                                               <span class="header__product-slide-price">{{ slider_product.price | money }}</span>
                                             {%- endif -%}
