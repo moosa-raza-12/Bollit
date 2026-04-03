@@ -191,6 +191,7 @@
                                         -%}
                                         <div class="header__product-slide">
                                           <a href="{{ slider_product.url }}">
+                                            <div class="header__product-slide-image">
                                             {%- if slider_product.featured_image != blank -%}
                                               <img
                                                 src="{{ slider_product.featured_image | image_url: width: 300 }}"
@@ -199,6 +200,7 @@
                                                 height="150"
                                                 loading="lazy">
                                             {%- endif -%}
+                                            </div>
                                             <span class="header__product-slide-title">{{ slide_display_title }}</span>
                                             
                                             {%- if slide_description != blank -%}
