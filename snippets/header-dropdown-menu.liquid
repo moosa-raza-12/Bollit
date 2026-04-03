@@ -186,7 +186,17 @@
                                                 height="150"
                                                 loading="lazy">
                                             {%- endif -%}
-                                            <span>{{ slider_product.title }}</span>
+                                            {% if block.settings.override_title and block.settings.custom_title != blank %}
+                                              <span class="header__product-slide-title">{{ block.settings.custom_title }}</span>
+                                            {% else %}
+                                              <span class="header__product-slide-title">{{ slider_product.title }}</span>
+                                            {% endif %}
+                                            
+                                            {% if block.settings.override_description and block.settings.custom_description != blank %}
+                                              <span class="header__product-description">{{ block.settings.custom_description }}</span>
+                                            {% else %}
+                                              <span class="header__product-description">{{ slider_product.description }}</span>
+                                            {% endif %}
                                             {%- if slider_product.price -%}
                                               <span class="header__product-slide-price">{{ slider_product.price | money }}</span>
                                             {%- endif -%}

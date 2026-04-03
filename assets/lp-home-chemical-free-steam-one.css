@@ -3,8 +3,6 @@
   --rating-bg: rgba(232, 132, 0, 0.13);
   position: relative;
   width: 100%;
-  /* Anchor scroll offset; desktop adds padding-top in @media (min-width: 768px) */
-  scroll-margin-top: var(--header-height, 0px);
   height: 548px;
   background-image: var(--bg-image-desktop);
   background-size: cover;
@@ -155,10 +153,7 @@ background: linear-gradient(180deg, rgba(24, 12, 0, 0.85) 44.71%, rgba(0, 2, 8, 
 /* Tablet and desktop styles */
 @media (min-width: 768px) {
   .lp-product-image-frame {
-    height: auto;
-    min-height: calc(595px + var(--header-height, 0px));
-    padding-top: var(--header-height, 0px);
-    box-sizing: border-box;
+    height: 595px;
   }
 
   .lp-product-image-frame__container {
