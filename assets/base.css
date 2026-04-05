@@ -148,11 +148,11 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 @media screen and (min-width: 990px) {
   .header:not(.drawer-menu).page-width {
     padding: 0 !important;
-    margin: 0 200px;
+    /* margin: 0 200px; */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-self: stretch;
+    align-self: stretch;o
     max-height: 40px;
 
   }
@@ -2922,7 +2922,11 @@ details-disclosure > details {
   background: rgb(var(--color-background));
   background: var(--gradient-background);
   background-attachment: fixed;
-padding-bottom:8px !important;
+/* padding-bottom:8px !important; */
+
+}
+.header-wrapper{
+  padding: 0 8px 8px !important;
 }
 
 @media screen and (forced-colors: active) {

@@ -203,10 +203,10 @@
                                             </div>
                                             <span class="header__product-slide-title">{{ slide_display_title }}</span>
                                             
-                                            {%- if slide_description != blank -%}
-                                              <span class="header__product-description">{{ slide_description }}</span>
-                                            {%- elsif block.settings.override_description and block.settings.custom_description != blank -%}
+                                            {%- if block.settings.override_description and block.settings.custom_description != blank -%}
                                               <span class="header__product-description">{{ block.settings.custom_description }}</span>
+                                            {%- elsif slide_description != blank -%}
+                                              <span class="header__product-description">{{ slide_description }}</span>
                                             {%- elsif slider_product.description != blank -%}
                                               <span class="header__product-description">{{ slider_product.description | strip_html }}</span>
                                             {%- endif -%}

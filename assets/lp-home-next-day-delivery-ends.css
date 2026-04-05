@@ -10,7 +10,7 @@
 }
 .lp-header__top-bar {
   background: var(--bg-top-bar);
-  padding: 6px;
+  padding: 6px 20px;
   border-radius: 8px;
   color: var(--text-white);
 }
@@ -24,7 +24,12 @@
 .lp-header__delivery-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+}
+@media (max-width: 749px) {
+  .lp-header__delivery-info {
+    gap: 12px;
+  }
 }
 .lp-header__countdown {
   display: flex;
@@ -32,8 +37,11 @@
   gap: 8px;
 }
 .lp-header__countdown-text {
-  font-size: 12px;
+  color: var(--White, #FFF);
+  text-align: center;
+  font-size: 16px;
   font-weight: 400;
+  letter-spacing: 0px;
 }
 .lp-header__timer {
   display: flex;
@@ -48,20 +56,35 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 4px;
+  padding: 3px;
 }
 .lp-header__timer-num {
   font-size: 12px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 8px;
+  letter-spacing: 0px;
 }
 .lp-header__timer-unit {
   font-size: 7px;
   font-weight: 400;
   opacity: 0.9;
+  line-height: 6px;
 }
 .lp-header__chevron-mobile {
   display: flex;
   align-items: center;
+}
+a.lp-header__chevron-mobile,
+.lp-header__chevron-mobile--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+a.lp-header__chevron-mobile:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
 }
 .lp-header__main-bar {
   background: var(--bg-main);
@@ -131,9 +154,9 @@
   .lp-header__timer-unit {
     font-size: 8px;
   }
-  .lp-header__chevron-mobile {
+  /* .lp-header__chevron-mobile {
     display: none;
-  }
+  } */
   .lp-header__main-bar {
     padding: 10px 100px;
   }

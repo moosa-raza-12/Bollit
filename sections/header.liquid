@@ -118,7 +118,6 @@ gap: 12px;
   .list-menu {
     list-style: none;
     padding-top: 8px;
-    padding-bottom: 8px;
     margin: 0;
     padding-right: 0;
     padding-left: 0;
@@ -1742,7 +1741,7 @@ line-height: 120%; /* 19.2px */}
           "type": "textarea",
           "id": "custom_description",
           "label": "Custom description",
-          "info": "Used when \"Override product description\" is enabled"
+          "info": "When override is on, this text is shown for every slide (per-slide descriptions are ignored)."
         },
         {
           "type": "product",
@@ -1858,7 +1857,7 @@ line-height: 120%; /* 19.2px */}
         },
         {
           "type": "paragraph",
-          "content": "Optional text for each slide. If set, it is used instead of the product body. Otherwise the global override below applies, then the product description."
+          "content": "If global override is on and custom description is filled, that single text is used for every slide and these per-slide fields are ignored. Otherwise, per-slide text is used when set, then the product description."
         },
         {
           "type": "textarea",
