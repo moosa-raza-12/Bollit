@@ -1,71 +1,63 @@
 {{ 'lp-home-sold-in-total.css' | asset_url | stylesheet_tag }}
 
 <section class="lp-best-sellers" id="lp-best-sellers-{{ section.id }}">
-  <div class="lp-best-sellers__container">
-    <div class="lp-best-sellers__header-wrapper">
-      <div class="lp-best-sellers__header">
-        <div class="lp-best-sellers__badge-row">
-          <div class="gradient-span3">
-            <span class="lp-best-sellers__badge-text">{{ section.settings.sub_header }}</span>
+  <div class="lp-best-sellers__header-wrap">
+    <div class="lp-best-sellers__container">
+      <div class="lp-best-sellers__header-wrapper">
+        <div class="lp-best-sellers__header">
+          <div class="lp-best-sellers__badge-row">
+            <div class="gradient-span3">
+              <span class="lp-best-sellers__badge-text">{{ section.settings.sub_header }}</span>
+            </div>
           </div>
+          <h2 class="lp-best-sellers__title">{{ section.settings.title }}</h2>
         </div>
-        <h2 class="lp-best-sellers__title">{{ section.settings.title }}</h2>
-      </div>
-      <div class="lp-best-sellers__nav">
-        <button class="lp-best-sellers__nav-btn lp-best-sellers__nav-btn--prev" aria-label="Previous">
-          <svg
-            width="6"
-            height="12"
-            viewBox="0 0 6 12"
-            fill="none"><path
-              d="M5 1L1 6L5 11"
-              stroke="#1F1F1F"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round" /></svg>
-        </button>
-        <button class="lp-best-sellers__nav-btn lp-best-sellers__nav-btn--next" aria-label="Next">
-          <svg
-            width="6"
-            height="12"
-            viewBox="0 0 6 12"
-            fill="none"><path
-              d="M1 1L5 6L1 11"
-              stroke="#1F1F1F"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round" /></svg>
-        </button>
+        <div class="lp-best-sellers__nav">
+          <button class="lp-best-sellers__nav-btn lp-best-sellers__nav-btn--prev" aria-label="Previous">
+            <svg
+              width="6"
+              height="12"
+              viewBox="0 0 6 12"
+              fill="none"><path
+                d="M5 1L1 6L5 11"
+                stroke="#1F1F1F"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round" /></svg>
+          </button>
+          <button class="lp-best-sellers__nav-btn lp-best-sellers__nav-btn--next" aria-label="Next">
+            <svg
+              width="6"
+              height="12"
+              viewBox="0 0 6 12"
+              fill="none"><path
+                d="M1 1L5 6L1 11"
+                stroke="#1F1F1F"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round" /></svg>
+          </button>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="lp-best-sellers__grid" data-carousel>
+  <div class="lp-best-sellers__slider-area">
+    <div class="swiper lp-best-sellers__swiper" data-best-sellers-swiper="{{ section.id }}">
+      <div class="swiper-wrapper">
       {% if section.blocks.size > 0 %}
         {% for block in section.blocks %}
-          {% assign product = all_products[block.settings.product] %}
+          {% if block.type == 'product' %}
+            {% assign product = all_products[block.settings.product] %}
             {% if product != blank %}
 
-            {%- comment -%} ── Resolve overridable values (block > metafield/product default) ── {%- endcomment -%}
-
             {%- assign display_title = block.settings.custom_title | default: product.title -%}
-
-            {%- assign display_badge = block.settings.custom_badge -%}
-            {%- if display_badge == blank -%}
-              {%- assign display_badge = product.metafields.custom.test_product_badge.value -%}
-            {%- endif -%}
-            {%- if display_badge == blank -%}
-              {%- assign display_badge = section.settings.discount_badge_text | default: 'Sale' -%}
-            {%- endif -%}
-
+            {%- assign display_badge = block.settings.custom_badge | default: section.settings.discount_badge_text -%}
             {%- assign display_image = block.settings.custom_image | default: product.featured_image -%}
+            {%- assign display_rating = block.settings.custom_rating | default: '4.5/5' -%}
+            {%- assign display_rating_count = block.settings.custom_rating_count | default: '0' -%}
 
-            {%- assign display_rating = block.settings.custom_rating | default: product.metafields.reviews.rating -%}
-            {%- assign display_rating_count = block.settings.custom_rating_count | default: product.metafields.reviews.rating_count -%}
-            {%- if display_rating == blank -%}
-              {%- assign display_rating = '4.5/5' -%}{%- endif -%}
-            {%- if display_rating_count == blank -%}
-              {%- assign display_rating_count = '0' -%}{%- endif -%}
-
+            <div class="swiper-slide lp-best-sellers__slide">
             <div class="lp-best-sellers__card" {{ block.shopify_attributes }}>
               <div class="lp-best-sellers__image-container">
                 <span class="lp-best-sellers__card-badge">{{ display_badge }}</span>
@@ -135,6 +127,16 @@
                   </button>
                 </form>
 
+                {% assign has_features = false %}
+                {% for i in (1..4) %}
+                  {% assign title_key = 'feature_' | append: i | append: '_title' %}
+                  {% if block.settings[title_key] != blank %}
+                    {% assign has_features = true %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+
+                {% if has_features %}
                 <details class="lp-best-sellers__accordion">
                   <summary class="lp-best-sellers__accordion-header">
                     See capabilities
@@ -150,132 +152,94 @@
                   </summary>
                   <div class="lp-best-sellers__accordion-content">
                     <div class="lp-best-sellers__features">
-
-                      {%- comment -%} Feature 1 — block override > metafield {%- endcomment -%}
-                      {%- assign f1_title = block.settings.feature_1_title | default: product.metafields.custom.feature_1_title -%}
-                      {%- assign f1_desc = block.settings.feature_1_desc | default: product.metafields.custom.feature_1_description -%}
-                      {% if f1_title != blank %}
-                        <div class="lp-best-sellers__feature">
-                          <div class="lp-best-sellers__feature-icon">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="17"
-                              height="17"
-                              viewBox="0 0 17 17"
-                              fill="none">
-                              <path d="M5.3956 14.7841L8.23636 9.84671L2.81226 9.2109L10.7248 2.09668H11.5097L8.60139 7.04674L14.0656 7.66919L6.15309 14.7834L5.3956 14.7841ZM7.39236 12.672L12.4416 8.19247L7.46762 7.63543L9.50869 4.18488L4.43625 8.67847L9.39264 9.27209L7.39236 12.672Z" fill="#003665" />
-                            </svg>
+                      {% for i in (1..4) %}
+                        {% assign title_key = 'feature_' | append: i | append: '_title' %}
+                        {% assign desc_key = 'feature_' | append: i | append: '_desc' %}
+                        {% assign icon_key = 'feature_' | append: i | append: '_icon' %}
+                        {% assign f_title = block.settings[title_key] %}
+                        {% assign f_desc = block.settings[desc_key] %}
+                        {% assign f_icon = block.settings[icon_key] %}
+                        {% if f_title != blank %}
+                          <div class="lp-best-sellers__feature">
+                            <div class="lp-best-sellers__feature-icon">
+                              {% if f_icon != blank %}
+                                {{ f_icon | image_url: width: 34 | image_tag: loading: 'lazy', class: 'lp-best-sellers__feature-icon-img' }}
+                              {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                                  <path d="M5.3956 14.7841L8.23636 9.84671L2.81226 9.2109L10.7248 2.09668H11.5097L8.60139 7.04674L14.0656 7.66919L6.15309 14.7834L5.3956 14.7841ZM7.39236 12.672L12.4416 8.19247L7.46762 7.63543L9.50869 4.18488L4.43625 8.67847L9.39264 9.27209L7.39236 12.672Z" fill="#003665" />
+                                </svg>
+                              {% endif %}
+                            </div>
+                            <div class="lp-best-sellers__feature-text">
+                              <h2 class="featured-title">{{ f_title }}</h2>
+                              <p class="featured-desc">{{ f_desc }}</p>
+                            </div>
                           </div>
-                          <div class="lp-best-sellers__feature-text">
-                            <h2 class="featured-title">{{ f1_title }}</h2>
-                            <p class="featured-desc">{{ f1_desc }}</p>
-                          </div>
-                        </div>
-                      {% endif %}
-
-                      {%- comment -%} Feature 2 — block override > metafield {%- endcomment -%}
-                      {%- assign f2_title = block.settings.feature_2_title | default: product.metafields.custom.feature_2_title -%}
-                      {%- assign f2_desc = block.settings.feature_2_desc | default: product.metafields.custom.feature_2_description -%}
-                      {% if f2_title != blank %}
-                        <div class="lp-best-sellers__feature">
-                          <div class="lp-best-sellers__feature-icon">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="17"
-                              height="17"
-                              viewBox="0 0 17 17"
-                              fill="none">
-                              <path
-                                d="M14.0667 1.40674V3.60958C14.0667 3.65493 14.0527 3.69917 14.0266 3.73628C14.0006 3.7734 13.9637 3.80159 13.9211 3.81703C13.8785 3.83247 13.8321 3.83441 13.7883 3.82259C13.7445 3.81077 13.7055 3.78576 13.6764 3.75095C13.0178 3.01268 12.2104 2.42213 11.3073 2.01811C10.4043 1.61409 9.4259 1.40573 8.43655 1.40674C4.55415 1.40674 1.40674 4.55557 1.40674 8.44007C1.40674 11.2239 3.0237 13.6307 5.36861 14.7701M8.62646 15.4734C8.29823 15.4734 7.97564 15.4518 7.65867 15.4087M15.287 6.09587C15.3658 6.37532 15.4279 6.65713 15.4734 6.94127M15.4488 9.5225C15.3996 9.80384 15.3356 10.0819 15.2568 10.3567M14.1842 12.6573C14.0168 12.9065 13.835 13.1458 13.6398 13.374M11.6543 15.0233C11.4058 15.1653 11.1472 15.2936 10.8785 15.408"
-                                stroke="#003665"
-                                stroke-width="0.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            </svg>
-                          </div>
-                          <div class="lp-best-sellers__feature-text">
-                            <h2 class="featured-title">{{ f2_title }}</h2>
-                            <p class="featured-desc">{{ f2_desc }}</p>
-                          </div>
-                        </div>
-                      {% endif %}
-
-                      {%- comment -%} Feature 3 — block override > metafield {%- endcomment -%}
-                      {%- assign f3_title = block.settings.feature_3_title | default: product.metafields.custom.feature_3_title -%}
-                      {%- assign f3_desc = block.settings.feature_3_desc | default: product.metafields.custom.feature_3_description -%}
-                      {% if f3_title != blank %}
-                        <div class="lp-best-sellers__feature">
-                          <div class="lp-best-sellers__feature-icon">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="17"
-                              height="17"
-                              viewBox="0 0 17 17"
-                              fill="none">
-                              <path
-                                d="M14.7706 2.11011L11.1808 5.69992C12.8371 7.40339 14.3458 9.05201 13.3119 11.5327C12.5038 13.4781 10.5457 14.7701 8.4406 14.7701C6.77651 14.7701 5.20386 13.962 4.21849 12.6622M4.21849 12.6622L11.1815 5.69922M4.21849 12.6622L2.1106 14.7701M9.50193 3.86844C9.06656 3.32195 8.69098 2.74311 8.43708 2.11011C7.15209 5.33137 2.71406 7.13894 3.27954 10.5501"
-                                stroke="#003665"
-                                stroke-width="0.812741"
-                                stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            </svg>
-                          </div>
-                          <div class="lp-best-sellers__feature-text">
-                            <h2 class="featured-title">{{ f3_title }}</h2>
-                            <p class="featured-desc">{{ f3_desc }}</p>
-                          </div>
-                        </div>
-                      {% endif %}
-                      {%- assign f4_title = block.settings.feature_4_title | default: product.metafields.custom.feature_4_title -%}
-                      {%- assign f4_desc = block.settings.feature_4_desc | default: product.metafields.custom.feature_4_description -%}
-                      {% if f4_title != blank %}
-                        <div class="lp-best-sellers__feature">
-                          <div class="lp-best-sellers__feature-icon">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              width="17"
-                              height="17"
-                              viewBox="0 0 17 17"
-                              fill="none">
-                              <path d="M8.43955 2.11004L8.57811 1.7865C8.53432 1.76773 8.48719 1.75806 8.43955 1.75806C8.39191 1.75806 8.34478 1.76773 8.30099 1.7865L8.43955 2.11004ZM8.43955 14.77L8.26512 15.0753C8.31825 15.1056 8.37837 15.1216 8.43955 15.1216C8.50073 15.1216 8.56085 15.1056 8.61398 15.0753L8.43955 14.77ZM8.30029 1.7865L3.80388 3.71364L4.08099 4.3607L8.57811 2.43357L8.30029 1.7865ZM3.16455 4.68424V9.5077H3.86788V4.68424H3.16455ZM5.46797 13.4773L8.26512 15.0753L8.61398 14.4648L5.81682 12.8661L5.46797 13.4773ZM8.61398 15.0753L11.4111 13.4773L11.0623 12.8661L8.26512 14.4648L8.61398 15.0753ZM13.7146 9.5077V4.68424H13.0112V9.5091L13.7146 9.5077ZM13.0745 3.71434L8.57811 1.7865L8.30099 2.43357L12.7981 4.3607L13.0745 3.71434ZM13.7146 4.68424C13.7144 4.47778 13.6537 4.27521 13.5399 4.10293C13.4261 3.93066 13.2643 3.79554 13.0745 3.71434L12.7981 4.3607C12.8614 4.38784 12.9153 4.43296 12.9532 4.49048C12.9911 4.54799 13.0113 4.61537 13.0112 4.68424H13.7146ZM11.4111 13.4773C12.1109 13.0774 12.6926 12.4996 13.0971 11.8025C13.5016 11.1054 13.7146 10.3137 13.7146 9.5077H13.0112C13.0112 10.1896 12.8309 10.8594 12.4887 11.4492C12.1464 12.0389 11.6543 12.5278 11.0623 12.8661L11.4111 13.4773ZM3.16455 9.5077C3.16449 10.3137 3.37752 11.1054 3.78203 11.8025C4.18655 12.4996 4.76818 13.0774 5.46797 13.4773L5.81682 12.8661C5.22478 12.5278 4.7327 12.0389 4.39044 11.4492C4.04819 10.8594 3.86791 10.1896 3.86788 9.5077H3.16455ZM3.80458 3.71434C3.61477 3.79554 3.45296 3.93066 3.33919 4.10293C3.22542 4.27521 3.1647 4.47778 3.16455 4.68424H3.86788C3.86788 4.54357 3.95228 4.41697 4.08099 4.3607L3.80458 3.71434Z" fill="#003665" />
-                            </svg>
-                          </div>
-                          <div class="lp-best-sellers__feature-text">
-                            <h2 class="featured-title">{{ f4_title }}</h2>
-                            <p class="featured-desc">{{ f4_desc }}</p>
-                          </div>
-                        </div>
-                      {% endif %}
+                        {% endif %}
+                      {% endfor %}
                     </div>
                   </div>
                 </details>
+                {% endif %}
               </div>
             </div>
+            </div>
+            {% endif %}
           {% endif %}
         {% endfor %}
       {% else %}
-        <div class="lp-best-sellers__empty">
-          <p>No products added. Please add product blocks in the section settings.</p>
+        <div class="swiper-slide lp-best-sellers__slide">
+          <div class="lp-best-sellers__empty">
+            <p>No products added. Please add product blocks in the section settings.</p>
+          </div>
         </div>
       {% endif %}
+      </div>
     </div>
   </div>
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const section = document.querySelector('#lp-best-sellers-{{ section.id }}');
-    const grid = section.querySelector('[data-carousel]');
-    const prevBtn = section.querySelector('.lp-best-sellers__nav-btn--prev');
-    const nextBtn = section.querySelector('.lp-best-sellers__nav-btn--next');
-  
-    if (prevBtn && nextBtn && grid) {
-      const scrollAmount = 300;
-      prevBtn.addEventListener('click', () => {
-        grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  document.addEventListener('DOMContentLoaded', function () {
+    var sectionEl = document.querySelector('#lp-best-sellers-{{ section.id }}');
+    if (!sectionEl) return;
+
+    var swiperEl = sectionEl.querySelector('[data-best-sellers-swiper]');
+    var prevBtn = sectionEl.querySelector('.lp-best-sellers__nav-btn--prev');
+    var nextBtn = sectionEl.querySelector('.lp-best-sellers__nav-btn--next');
+
+    var bestSellersSwiper = new Swiper(swiperEl, {
+      slidesPerView: 'auto',
+      spaceBetween: 24,
+      grabCursor: true,
+      initialSlide: 1,
+      speed: 800,
+      freeMode: {
+        enabled: true,
+        momentum: true,
+        momentumRatio: 0.8,
+      },
+      breakpoints: {
+        0: {
+          spaceBetween: 16,
+        },
+        768: {
+          spaceBetween: 20,
+        },
+        1024: {
+          spaceBetween: 24,
+        },
+      },
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        bestSellersSwiper.slidePrev();
       });
-      nextBtn.addEventListener('click', () => {
-        grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        bestSellersSwiper.slideNext();
       });
     }
   });
@@ -295,12 +259,11 @@
         "id": "sub_header",
         "label": "Sub-heading",
         "default": "5,000+ sold in total"
-      }, {
+      },       {
         "type": "text",
         "id": "discount_badge_text",
-        "label": "Discount Badge Text",
-        "default": "Sale",
-        "info": "Shown when product has no custom badge metafield"
+        "label": "Default Badge Text",
+        "default": "Sale"
       }
     ],
     "blocks": [
@@ -315,70 +278,110 @@
           },
           {
             "type": "header",
-            "content": "Overrides (leave blank to use product defaults)"
+            "content": "Card Overrides"
           },
           {
             "type": "text",
             "id": "custom_title",
-            "label": "Custom Title"
+            "label": "Custom Title",
+            "info": "Leave blank to use product title"
           },
           {
             "type": "image_picker",
             "id": "custom_image",
-            "label": "Custom Image"
-          }, {
+            "label": "Custom Image",
+            "info": "Leave blank to use product image"
+          },
+          {
             "type": "text",
             "id": "custom_badge",
-            "label": "Custom Badge Text"
-          }, {
+            "label": "Badge Text",
+            "info": "Leave blank to use section default"
+          },
+          {
             "type": "text",
             "id": "custom_rating",
-            "label": "Rating (e.g. 4.8/5)"
-          }, {
+            "label": "Rating (e.g. 4.8/5)",
+            "default": "4.5/5"
+          },
+          {
             "type": "text",
             "id": "custom_rating_count",
-            "label": "Review Count"
-          }, {
+            "label": "Review Count",
+            "default": "0"
+          },
+          {
             "type": "header",
-            "content": "Feature 1 Override"
-          }, {
+            "content": "Capability 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "feature_1_icon",
+            "label": "Icon"
+          },
+          {
             "type": "text",
             "id": "feature_1_title",
             "label": "Title"
-          }, {
+          },
+          {
             "type": "textarea",
             "id": "feature_1_desc",
             "label": "Description"
-          }, {
+          },
+          {
             "type": "header",
-            "content": "Feature 2 Override"
-          }, {
+            "content": "Capability 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "feature_2_icon",
+            "label": "Icon"
+          },
+          {
             "type": "text",
             "id": "feature_2_title",
             "label": "Title"
-          }, {
+          },
+          {
             "type": "textarea",
             "id": "feature_2_desc",
             "label": "Description"
-          }, {
+          },
+          {
             "type": "header",
-            "content": "Feature 3 Override"
-          }, {
+            "content": "Capability 3"
+          },
+          {
+            "type": "image_picker",
+            "id": "feature_3_icon",
+            "label": "Icon"
+          },
+          {
             "type": "text",
             "id": "feature_3_title",
             "label": "Title"
-          }, {
+          },
+          {
             "type": "textarea",
             "id": "feature_3_desc",
             "label": "Description"
-          }, {
+          },
+          {
             "type": "header",
-            "content": "Feature 4 Override"
-          }, {
+            "content": "Capability 4"
+          },
+          {
+            "type": "image_picker",
+            "id": "feature_4_icon",
+            "label": "Icon"
+          },
+          {
             "type": "text",
             "id": "feature_4_title",
             "label": "Title"
-          }, {
+          },
+          {
             "type": "textarea",
             "id": "feature_4_desc",
             "label": "Description"

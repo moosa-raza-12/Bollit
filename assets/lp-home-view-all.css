@@ -9,7 +9,7 @@
 }
 
 .lp-view-all__container {
-  max-width: 1440px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
@@ -196,7 +196,7 @@ letter-spacing: -0.42px;
 letter-spacing: -0.24px;
   }
   .lp-view-all__container {
-    padding: 0 40px;
+    /* padding: 0 40px; */
     gap: 42px;
   }
   .lp-view-all__title {
@@ -231,6 +231,6 @@ letter-spacing: -0.24px;
 
 @media (min-width: 1200px) {
   .lp-view-all__container {
-    padding: 0 200px;
+    /* padding: 0 200px; */
   }
 }
