@@ -73,8 +73,11 @@ gap: 12px;
 
   .list-menu {
     list-style: none;
-    padding: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
     margin: 0;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   .list-menu--inline {
@@ -809,7 +812,7 @@ line-height: 120%; /* 19.2px */}
       </div>
       {% render 'header-search', input_id: 'Search-In-Modal' %}
 
-      {%- if shop.customer_accounts_enabled -%}
+      {% comment %} {%- if shop.customer_accounts_enabled -%}
         <a
           href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
           class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
@@ -836,7 +839,7 @@ line-height: 120%; /* 19.2px */}
             -%}
           </span>
         </a>
-      {%- endif -%}
+      {%- endif -%} {% endcomment %}
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}
