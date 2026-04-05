@@ -76,7 +76,7 @@
             "menu_handle": "",
             "childlink_title": "Custom-Product",
             "slider_heading": "",
-            "override_title": false,
+            "override_title": true,
             "custom_title": "",
             "override_description": true,
             "custom_description": "",
