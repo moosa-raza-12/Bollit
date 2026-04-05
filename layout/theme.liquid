@@ -255,6 +255,7 @@
       }
     {% endstyle %}
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
@@ -372,5 +373,57 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-happier-homes-swiper]').forEach(function (el) {
+          var sectionId = el.getAttribute('data-happier-homes-swiper');
+          var fillBar = document.querySelector('[data-scrollbar-fill="' + sectionId + '"]');
+
+          var isDesktop = window.innerWidth >= 768;
+          new Swiper(el, {
+            slidesPerView: 'auto',
+            spaceBetween: 16,
+            grabCursor: true,
+            initialSlide: isDesktop ? 1 : 0,
+            freeMode: {
+              enabled: true,
+              momentum: true,
+              momentumRatio: 0.8,
+            },
+            breakpoints: {
+              1024: {
+                spaceBetween: 24,
+              },
+            },
+            on: {
+              init: function () {
+                if (!fillBar) return;
+                var s = this;
+                var totalSlides = s.slides.length;
+                if (totalSlides > 0) {
+                  fillBar.style.width = ((1 / totalSlides) * 100) + '%';
+                }
+              },
+              slideChange: function () {
+                if (!fillBar) return;
+                var s = this;
+                var minPct = s.slides.length > 0 ? (1 / s.slides.length) * 100 : 0;
+                var pct = Math.min(Math.max(s.progress, 0), 1) * 100;
+                fillBar.style.width = Math.max(pct, minPct) + '%';
+              },
+              setTranslate: function () {
+                if (!fillBar) return;
+                var s = this;
+                var minPct = s.slides.length > 0 ? (1 / s.slides.length) * 100 : 0;
+                var pct = Math.min(Math.max(s.progress, 0), 1) * 100;
+                fillBar.style.width = Math.max(pct, minPct) + '%';
+              },
+            },
+          });
+        });
+      });
+    </script>
   </body>
 </html>

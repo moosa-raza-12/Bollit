@@ -36,7 +36,7 @@ letter-spacing: 0px;
 }
 
 .lp-best-sellers__container {
-  max-width: none;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -139,7 +139,7 @@ border: 0.952px solid rgba(0, 54, 101, 0.23);
     padding: 64px 0;
   }
   .lp-best-sellers__container {
-    padding: 0 0 0 100px;
+    /* padding: 0 0 0 100px; */
   }
   .lp-best-sellers__header-wrapper {
     padding-right: 100px;
@@ -248,7 +248,7 @@ letter-spacing: -0.33px;
 
 @media (min-width: 1024px) {
   .lp-best-sellers__container {
-    padding: 0 0 0 200px;
+    /* padding: 0 0 0 200px; */
   }
   .lp-best-sellers__header-wrapper {
     padding-right: 200px;
