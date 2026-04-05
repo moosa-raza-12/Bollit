@@ -36,11 +36,55 @@
     }
   {%- endif -%}
 
-  /* Search lives in the menu drawer on narrow viewports; hide the header search trigger. */
+  .header__mobile-search-trigger {
+    display: none;
+  }
+
   @media screen and (max-width: 989px) {
+    .header {
+      padding: 8px 20px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header-drawer {
+      margin-left: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
     .header .header__search {
       display: none !important;
     }
+
+    .header__mobile-search-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    /* Hide search icon when menu drawer is open */
+    header-drawer .menu-drawer-container[open] ~ .header__mobile-search-trigger {
+      display: none;
+    }
+
+    /* Hide hamburger icon when drawer is open, show close icon */
+    .menu-drawer-container[open] > .header__icon--menu .icon-close {
+      display: block;
+    }
+    .menu-drawer-container:not([open]) > .header__icon--menu .icon-close {
+      display: none;
+    }
+    .menu-drawer-container[open] > .header__icon--menu > span > svg:not(.icon-close) {
+      display: none;
+    }
+
     .drawer-accordion__product-card{
       flex: 0 0 auto;
     width: 288px;
@@ -641,7 +685,7 @@ line-height: 120%; /* 19.2px */}
 
 {%- style -%}
   .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
+    padding: 8px 20px;
   }
 
   .section-header {
@@ -985,8 +1029,12 @@ line-height: 120%; /* 19.2px */}
     }
 
     closeSearchModal() {
-      this.searchModal = this.searchModal || this.header.querySelector('details-modal');
-      this.searchModal.close(false);
+      var searchContainer = this.header.querySelector('[data-header-search]');
+      if (searchContainer) {
+        searchContainer.classList.remove('is-expanded');
+        var input = searchContainer.querySelector('.header__search-bar-input');
+        if (input) input.value = '';
+      }
     }
   }
 
@@ -1096,6 +1144,64 @@ line-height: 120%; /* 19.2px */}
 
       updateCustomScrollbar();
     });
+  });
+
+  document.querySelectorAll('.header__mobile-search-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var headerDrawer = btn.closest('header-drawer');
+      if (!headerDrawer) return;
+      var summary = headerDrawer.querySelector('summary');
+      if (!summary) return;
+      var details = summary.parentElement;
+      if (details && !details.open) {
+        summary.click();
+        setTimeout(function() {
+          var searchInput = headerDrawer.querySelector('.menu-drawer__search input[type="search"]');
+          if (searchInput) searchInput.focus();
+        }, 350);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-header-search]').forEach(function(searchContainer) {
+    var toggleBtn = searchContainer.querySelector('[data-search-toggle]');
+    var closeBtn = searchContainer.querySelector('[data-search-close]');
+    var searchInput = searchContainer.querySelector('.header__search-bar-input');
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchContainer.classList.add('is-expanded');
+        if (searchInput) {
+          setTimeout(function() { searchInput.focus(); }, 100);
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchContainer.classList.remove('is-expanded');
+        if (searchInput) searchInput.value = '';
+      });
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!searchContainer.contains(e.target) && searchContainer.classList.contains('is-expanded')) {
+        searchContainer.classList.remove('is-expanded');
+        if (searchInput) searchInput.value = '';
+      }
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Escape') {
+          searchContainer.classList.remove('is-expanded');
+          searchInput.value = '';
+          if (toggleBtn) toggleBtn.focus();
+        }
+      });
+    }
   });
 {% endjavascript %}
 

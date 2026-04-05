@@ -8,7 +8,9 @@
   <details id="Details-menu-drawer-container" class="menu-drawer-container">
     <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
       <span>
-        {{- 'icon-hamburger.svg' | inline_asset_content -}}
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12" fill="none">
+  <path d="M0 11.8575V10.7325H18V11.8575H0ZM0 6.49125V5.36625H18V6.49125H0ZM0 1.125V0H18V1.125H0Z" fill="#1F1F1F"/>
+</svg>
         {{- 'icon-close.svg' | inline_asset_content -}}
       </span>
     </summary>
@@ -426,4 +428,9 @@
       </div>
     </div>
   </details>
+  <button type="button" class="header__icon header__mobile-search-trigger link focus-inset" aria-label="{{ 'general.search.search' | t }}">
+    <span class="svg-wrapper">
+      {{- 'icon-search.svg' | inline_asset_content -}}
+    </span>
+  </button>
 </header-drawer>
