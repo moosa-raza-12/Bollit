@@ -4,15 +4,10 @@
   --desc-opacity: 0.7;
   --separator-color: #e5e5e5;
   background-color: var(--bg-color);
-  padding: 24px 20px;
   width: 100%;
   overflow: hidden;
 }
 
-.lp-features-bar__container {
-  max-width: 1440px;
-  margin: 0 auto;
-}
 
 .lp-features-bar__inner {
   display: flex;
