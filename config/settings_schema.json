@@ -1441,15 +1441,109 @@
        {
         "type": "text",
         "id": "empty_cart_heading",
-        "label": "Empy Cart Heading",
+        "label": "Empty Cart Heading",
         "default": "Your cart is empty :("
       },
       {
         "type": "text",
         "id": "empty_cart_sub_heading",
-        "label": "Empy Cart Sub Heading",
+        "label": "Empty Cart Sub Heading",
         "default": "Start with a category to find the right cleaner faster."
       },
+
+      {
+        "type": "image_picker",
+        "id": "cart_collection_image_1",
+        "label": "Collection Image 1",
+      },
+      {
+        "type": "text",
+        "id": "cart_collection_heading_1",
+        "label": "Collection Heading 1",
+      },
+      {
+        "type": "collection",
+        "id": "cart_collection_1",
+        "label": "Select Collection 1",
+      },
+
+       {
+        "type": "image_picker",
+        "id": "cart_collection_image_2",
+        "label": "Collection Image 2",
+      },
+      {
+        "type": "text",
+        "id": "cart_collection_heading_2",
+        "label": "Collection Heading 2",
+      },
+      {
+        "type": "collection",
+        "id": "cart_collection_2",
+        "label": "Select Collection 2",
+      },
+
+       {
+        "type": "image_picker",
+        "id": "cart_collection_image_3",
+        "label": "Collection Image 3",
+      },
+      {
+        "type": "text",
+        "id": "cart_collection_heading_3",
+        "label": "Collection Heading 3",
+      },
+      {
+        "type": "collection",
+        "id": "cart_collection_3",
+        "label": "Select Collection 3",
+      },
+       {
+        "type": "image_picker",
+        "id": "cart_collection_image_4",
+        "label": "Collection Image 4",
+      },
+      {
+        "type": "text",
+        "id": "cart_collection_heading_4",
+        "label": "Collection Heading 4",
+      },
+      {
+        "type": "collection",
+        "id": "cart_collection_4",
+        "label": "Select Collection 4",
+      },
+       {
+        "type": "image_picker",
+        "id": "cart_collection_image_5",
+        "label": "Collection Image 5",
+      },
+      {
+        "type": "text",
+        "id": "cart_collection_heading_5",
+        "label": "Collection Heading 5",
+      },
+      {
+        "type": "collection",
+        "id": "cart_collection_5",
+        "label": "Select Collection 5",
+      },
+       {
+        "type": "image_picker",
+        "id": "cart_collection_image_6",
+        "label": "Collection Image 6",
+      },
+      {
+        "type": "text",
+        "id": "cart_collection_heading_6",
+        "label": "Collection Heading 6",
+      },
+      {
+        "type": "collection",
+        "id": "cart_collection_6",
+        "label": "Select Collection 6",
+      },
+
       {
         "type": "header",
         "content": "t:settings_schema.cart.settings.cart_drawer.header"
