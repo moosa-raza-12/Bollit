@@ -270,9 +270,12 @@
             // Preferred Dawn flow: add.js returns sections when requested above.
             if (cartDrawer && typeof cartDrawer.renderContents === 'function' && responseData.sections) {
               cartDrawer.renderContents(responseData);
-              if (typeof responseData.item_count === 'number' && responseData.item_count > 0) {
-                cartDrawer.classList.remove('is-empty');
-              }
+              // Force-clear Dawn empty state classes that can persist after first add.
+              cartDrawer.classList.remove('is-empty');
+              var emptyClassNodes = cartDrawer.querySelectorAll('.is-empty');
+              emptyClassNodes.forEach(function (node) {
+                node.classList.remove('is-empty');
+              });
               return;
             }
 
