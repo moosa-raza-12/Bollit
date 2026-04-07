@@ -114,6 +114,12 @@ gap: 12px;
   .lp-features-bar__separator {
     height: 86px;
   }
+  .lp-features-bar__inner {
+      padding: 0px 16px;
+  }
+  .lp-feature-items:last-child .lp-feature-item__title {
+      padding-right: 20px;
+  }
 }
 
 @media (min-width: 1024px) {
