@@ -47,7 +47,140 @@
                   <div class="kv-empty-cart-middle">
 
                     <div class="kv-empty-cart-collection">
-                      <div class="kv-empty-cart-collection-box"></div>
+                      
+                                              
+                        {% if settings.cart_collection_1 %}
+                          <div class="kv-empty-cart-collection-box">
+                          <a href="{{ settings.cart_collection_1.url }}">
+                            
+                            {% if settings.cart_collection_image_1 %}
+                              <span class="kv-empty-cart-collection-image">
+                                <img 
+                                  src="{{ settings.cart_collection_image_1 | image_url: width: 300 }}" 
+                                  alt="{{ settings.cart_collection_heading_1 | escape }}"
+                                >
+                              </span>
+                            {% endif %}
+
+                            {% if settings.cart_collection_heading_1 %}
+                              <h5>{{ settings.cart_collection_heading_1 }}</h5>
+                            {% endif %}
+
+                          </a></div>
+                        {% endif %}
+
+
+
+
+                        {% if settings.cart_collection_2 %}
+                          <div class="kv-empty-cart-collection-box">
+                          <a href="{{ settings.cart_collection_2.url }}">
+                            
+                            {% if settings.cart_collection_image_2 %}
+                              <span class="kv-empty-cart-collection-image">
+                                <img 
+                                  src="{{ settings.cart_collection_image_2 | image_url: width: 300 }}" 
+                                  alt="{{ settings.cart_collection_heading_2 | escape }}"
+                                >
+                              </span>
+                            {% endif %}
+
+                            {% if settings.cart_collection_heading_2 %}
+                              <h5>{{ settings.cart_collection_heading_2 }}</h5>
+                            {% endif %}
+
+                          </a></div>
+                        {% endif %}
+
+
+
+                        {% if settings.cart_collection_3 %}
+                          <div class="kv-empty-cart-collection-box">
+                          <a href="{{ settings.cart_collection_3.url }}">
+                            
+                            {% if settings.cart_collection_image_3 %}
+                              <span class="kv-empty-cart-collection-image">
+                                <img 
+                                  src="{{ settings.cart_collection_image_3 | image_url: width: 300 }}" 
+                                  alt="{{ settings.cart_collection_heading_3 | escape }}"
+                                >
+                              </span>
+                            {% endif %}
+
+                            {% if settings.cart_collection_heading_3 %}
+                              <h5>{{ settings.cart_collection_heading_3 }}</h5>
+                            {% endif %}
+
+                          </a></div>
+                        {% endif %}
+
+
+
+
+                        {% if settings.cart_collection_4 %}
+                          <div class="kv-empty-cart-collection-box">
+                          <a href="{{ settings.cart_collection_4.url }}">
+                            
+                            {% if settings.cart_collection_image_4 %}
+                              <span class="kv-empty-cart-collection-image">
+                                <img 
+                                  src="{{ settings.cart_collection_image_4 | image_url: width: 300 }}" 
+                                  alt="{{ settings.cart_collection_heading_4 | escape }}"
+                                >
+                              </span>
+                            {% endif %}
+
+                            {% if settings.cart_collection_heading_4 %}
+                              <h5>{{ settings.cart_collection_heading_4 }}</h5>
+                            {% endif %}
+
+                          </a></div>
+                        {% endif %}
+
+
+
+                        {% if settings.cart_collection_5 %}
+                          <div class="kv-empty-cart-collection-box">
+                          <a href="{{ settings.cart_collection_5.url }}">
+                            
+                            {% if settings.cart_collection_image_5 %}
+                              <span class="kv-empty-cart-collection-image">
+                                <img 
+                                  src="{{ settings.cart_collection_image_5 | image_url: width: 300 }}" 
+                                  alt="{{ settings.cart_collection_heading_5 | escape }}"
+                                >
+                              </span>
+                            {% endif %}
+
+                            {% if settings.cart_collection_heading_5 %}
+                              <h5>{{ settings.cart_collection_heading_5 }}</h5>
+                            {% endif %}
+
+                          </a></div>
+                        {% endif %}
+
+
+
+                        {% if settings.cart_collection_6 %}
+                          <div class="kv-empty-cart-collection-box">
+                          <a href="{{ settings.cart_collection_6.url }}">
+                            
+                            {% if settings.cart_collection_image_6 %}
+                              <span class="kv-empty-cart-collection-image">
+                                <img 
+                                  src="{{ settings.cart_collection_image_6 | image_url: width: 300 }}" 
+                                  alt="{{ settings.cart_collection_heading_6 | escape }}"
+                                >
+                              </span>
+                            {% endif %}
+
+                            {% if settings.cart_collection_heading_6 %}
+                              <h5>{{ settings.cart_collection_heading_6 }}</h5>
+                            {% endif %}
+
+                          </a></div>
+                        {% endif %}
+
                     </div>
                   
                    </div>
