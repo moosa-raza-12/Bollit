@@ -141,7 +141,7 @@ letter-spacing: 0px;
   .lp-product-image-frame {
     display: flex;
 height: 548px;
-padding: 36px 20px;
+padding: 36px 0px;
 flex-direction: column;
 align-items: flex-start;
 gap: 10px;
@@ -157,7 +157,7 @@ background: linear-gradient(180deg, rgba(24, 12, 0, 0.85) 44.71%, rgba(0, 2, 8, 
   }
 
   .lp-product-image-frame__container {
-    padding: 64px 200px;
+    padding: 64px 0px;
   }
 
   .lp-product-info-container {
