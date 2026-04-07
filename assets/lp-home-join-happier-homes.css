@@ -183,7 +183,7 @@
   height: 4px;
   background-color: #e5e7eb;
   border-radius: 16px;
-  margin-top: 20px;
+  margin-top: 70px;
   overflow: hidden;
 }
 
@@ -240,13 +240,12 @@
   }
 
   .lp-happier-homes__scrollbar {
-    margin-top: 42px;
     /* margin-right: 200px; */
   }
 }
 
 @media (max-width: 767px) {
   .lp-happier-homes__scrollbar {
-    margin-top: 70px;
+    margin-top: 36px;
   }
 }
