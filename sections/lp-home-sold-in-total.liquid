@@ -240,6 +240,20 @@
         if (submitButton) submitButton.disabled = true;
 
         var formData = new FormData(form);
+        var cartDrawer = document.querySelector('cart-drawer');
+
+        // Match Dawn product-form behavior for reliable drawer refresh (including empty cart state).
+        if (cartDrawer && typeof cartDrawer.getSectionsToRender === 'function') {
+          var sectionIds = cartDrawer
+            .getSectionsToRender()
+            .map(function (section) {
+              return section.id;
+            })
+            .join(',');
+          formData.append('sections', sectionIds);
+          formData.append('sections_url', window.location.pathname);
+        }
+
         fetch('/cart/add.js', {
           method: 'POST',
           headers: {
@@ -252,25 +266,11 @@
             if (!response.ok) throw new Error('Failed to add item to cart');
             return response.json();
           })
-          .then(function () {
-            var cartDrawer = document.querySelector('cart-drawer');
-
-            // Preferred Dawn flow: render fresh drawer sections then open.
-            if (cartDrawer && typeof cartDrawer.getSectionsToRender === 'function' && typeof cartDrawer.renderContents === 'function') {
-              var sectionIds = cartDrawer
-                .getSectionsToRender()
-                .map(function (section) {
-                  return section.id;
-                })
-                .join(',');
-
-              return fetch('/?sections=' + encodeURIComponent(sectionIds))
-                .then(function (res) {
-                  return res.json();
-                })
-                .then(function (sections) {
-                  cartDrawer.renderContents({ sections: sections });
-                });
+          .then(function (responseData) {
+            // Preferred Dawn flow: add.js returns sections when requested above.
+            if (cartDrawer && typeof cartDrawer.renderContents === 'function' && responseData.sections) {
+              cartDrawer.renderContents(responseData);
+              return;
             }
 
             // Fallback for Dawn setups that open drawer from cart icon click.
