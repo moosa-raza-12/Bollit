@@ -19,3 +19,7 @@
     font-family: "Manrope", sans-serif;
     font-weight: 400;
 }
+
+section.kv-section{
+    padding: 64px 0;
+}
