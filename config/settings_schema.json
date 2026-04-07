@@ -1438,6 +1438,18 @@
         "type": "header",
         "content": "Empty Cart"
       },
+       {
+        "type": "text",
+        "id": "empty_cart_heading",
+        "label": "Empy Cart Heading",
+        "default": "Your cart is empty :("
+      },
+      {
+        "type": "text",
+        "id": "empty_cart_sub_heading",
+        "label": "Empy Cart Sub Heading",
+        "default": "Start with a category to find the right cleaner faster."
+      },
       {
         "type": "header",
         "content": "t:settings_schema.cart.settings.cart_drawer.header"
