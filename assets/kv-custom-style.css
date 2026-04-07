@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-
 .kv-custom-container {
     max-width: 1080px;
     margin: 0 auto;
@@ -18,8 +16,9 @@
 
 
 .kv-font-38 em,.kv-font-38 i{
-    font-family: "Manrope", sans-serif;
+    font-family: "Source Serif Pro" !important;
     font-weight: 400;
+    color: #003665;
 }
 
 section.kv-section{
