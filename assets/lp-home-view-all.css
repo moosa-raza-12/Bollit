@@ -4,13 +4,10 @@
   --lp-text-black: #1f1f1f;
   --lp-card-radius: 20px;
   background-color: #ffffff;
-  padding: 36px 0;
   overflow: hidden;
 }
 
 .lp-view-all__container {
-  max-width: 1080px;
-  margin: 0 auto;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
@@ -188,7 +185,6 @@ letter-spacing: -0.42px;
     gap: 20px;
   }
   .lp-view-all {
-    padding: 64px 0;
   }
   .lp-view-all__subtitle{
     font-size: 18px;
