@@ -23,3 +23,9 @@
 section.kv-section{
     padding: 64px 0;
 }
+
+@media (max-width: 767px) {
+    section.kv-section{
+        padding: 36px 0;
+    }
+}
