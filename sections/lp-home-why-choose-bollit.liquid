@@ -67,7 +67,7 @@
           {% if block.settings.image != blank %}
             <div class="lp-why-choose__desktop-image-wrapper" data-index="{{ forloop.index }}">
               <img
-                src="{{ block.settings.image | image_url: width: 1000 }}"
+                src="{{ block.settings.image | image_url: width: master }}"
                 alt="{{ block.settings.title }}"
                 class="lp-why-choose__desktop-image"
                 loading="lazy">
