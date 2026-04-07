@@ -63,27 +63,12 @@
                   <div class="lp-happier-homes__reviewer-name-wrap">
                     <span class="lp-happier-homes__reviewer-name">~ {{ block.settings.reviewer_name }}</span>
                     <div class="lp-happier-homes__flag">
-                      <svg
-                        width="20"
-                        height="14"
-                        viewBox="0 0 20 14"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <rect
-                          width="20"
-                          height="4.66"
-                          fill="#AE1C28" />
-                        <rect
-                          y="4.66"
-                          width="20"
-                          height="4.66"
-                          fill="#FFFFFF" />
-                        <rect
-                          y="9.32"
-                          width="20"
-                          height="4.66"
-                          fill="#21468B" />
-                      </svg>
+                      {% if block.settings.reviewer_country_img %}
+                        <img 
+                          src="{{ block.settings.reviewer_country_img | image_url: width: master }}" 
+                          alt="Reviewer Country"
+                        >
+                      {% endif %}
                     </div>
                   </div>
                 </div>
@@ -150,6 +135,11 @@
             "type": "image_picker",
             "id": "reviewer_avatar",
             "label": "Reviewer Avatar"
+          },
+          {
+            "type": "image_picker",
+            "id": "reviewer_country_img",
+            "label": "Reviewer Country img"
           }
         ]
       }
