@@ -5,9 +5,9 @@
       <div class="lp-header__top-container">
         <div class="lp-header__delivery-info">
           <span class="lp-header__icon-truck">
-            {% if block.settings.icon %}
+            {% if section.settings.icon %}
               <img 
-                src="{{ block.settings.icon | image_url: width: master }}" 
+                src="{{ section.settings.icon | image_url: width: master }}" 
                 alt="Reviewer Country"
               >
             {% endif %}
