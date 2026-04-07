@@ -78,7 +78,7 @@ letter-spacing: -0.24px;
 .lp-help__description {
   color: var(--lp-muted-color);
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 27px;
   max-width: 390px;
   margin: 0;
   letter-spacing: 0px;
@@ -341,3 +341,8 @@ color: #003665;
 }
 
 
+@media (max-width: 767.98px) {
+.lp-help__description {
+      line-height: 24px;
+}
+}
