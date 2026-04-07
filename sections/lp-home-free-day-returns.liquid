@@ -1,6 +1,6 @@
 {{ 'lp-home-free-day-returns.css' | asset_url | stylesheet_tag }}
 
-<section class="lp-features-bar" id="lp-section-{{ section.id }}">
+<section class="kv-section lp-features-bar" id="lp-section-{{ section.id }}">
   <div class="kv-custom-container">
     <div class="lp-features-bar__inner">
       {%- for block in section.blocks -%}
@@ -71,6 +71,14 @@
     </div>
   </div>
 </section>
+
+<style>
+  @media (max-width: 767.98px) {
+  .kv-section.lp-features-bar {
+      padding: 24px 0px;
+  }
+  }
+</style>
 
 {% schema %}
   {
