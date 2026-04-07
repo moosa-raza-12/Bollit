@@ -5,7 +5,7 @@
   --color-bg-active: #f0f8ff;
   --transition: all 0.3s ease;
   background: #ffffff;
-  padding: 36px 20px;
+  padding: 36px 0px;
   overflow: hidden;
 }
 
@@ -34,6 +34,7 @@ background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 
   background-position: right;
   background-repeat: no-repeat;
   transform: rotate(-.47deg);
+  padding-left: 10px;
   padding-right: 10px;
   display: flex;
   align-items: center;
@@ -247,7 +248,7 @@ background: #FFF;
     gap: 20px;
   }
   .lp-why-choose {
-    padding: 64px 200px;
+    padding: 64px 0px;
   }
 
   .lp-why-choose__container {
