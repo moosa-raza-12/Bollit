@@ -136,9 +136,7 @@
   .lp-best-sellers {
     padding: 64px 0;
   }
-  .lp-best-sellers__header-wrapper {
-    padding-right: 100px;
-  }
+
   .lp-best-sellers__nav {
     display: flex;
     position: absolute;
@@ -153,9 +151,7 @@
 }
 
 @media (min-width: 1024px) {
-  .lp-best-sellers__header-wrapper {
-    padding-right: 200px;
-  }
+
   .lp-best-sellers__nav {
     right: 200px;
   }
