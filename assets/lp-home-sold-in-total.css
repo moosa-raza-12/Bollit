@@ -329,6 +329,7 @@
   line-height: 2px;
   letter-spacing: 0px;
   margin-bottom: 12px;
+  box-sizing: border-box;
 }
 
 .lp-best-sellers__atc:hover {
