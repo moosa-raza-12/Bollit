@@ -35,6 +35,9 @@ body header.header.page-width, .header:not(.drawer-menu).page-width {
 .header__icon .cart-count-bubble span {
     margin-right: 0;
 }
+span.lp-header__icon-truck svg {
+    display: block;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
