@@ -49,6 +49,7 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: 42px;
+  position: relative;
 }
 
 .lp-best-sellers__header {
