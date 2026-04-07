@@ -167,7 +167,7 @@ background: linear-gradient(180deg, rgba(24, 12, 0, 0.85) 44.71%, rgba(0, 2, 8, 
 
   .lp-reviews-badge__text {
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 100%;
   }
 
   .lp-feature-content {
