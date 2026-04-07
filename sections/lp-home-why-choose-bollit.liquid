@@ -1,83 +1,85 @@
 {{ 'lp-home-why-choose-bollit.css' | asset_url | stylesheet_tag }}
 
+
 <section class="lp-why-choose" id="lp-why-choose-{{ section.id }}">
   <div class="kv-custom-container">
-  <div class="lp-why-choose__container">
-    <header class="lp-why-choose__header">
-      <div class="lp-why-choose__subheading-wrapper">
-        <div class="gradient-span3">
-          <span class="lp-why-choose__subheading">{{ section.settings.subheading }}</span>
-        </div>
-        <div class="lp-why-choose__divider"></div>
-      </div>
-      <h2 class="lp-why-choose__heading">{{ section.settings.heading }}<br><span class="special-words">{{ section.settings.special_heading }}</span></h2>
-    </header>
+	  <div class="lp-why-choose__container">
+		<header class="lp-why-choose__header">
+		  <div class="lp-why-choose__subheading-wrapper">
+			<div class="gradient-span3">
+			  <span class="lp-why-choose__subheading">{{ section.settings.subheading }}</span>
+			</div>
+			<div class="lp-why-choose__divider"></div>
+		  </div>
+		  <h2 class="lp-why-choose__heading">{{ section.settings.heading }}<br><span class="special-words">{{ section.settings.special_heading }}</span></h2>
+		</header>
 
-    <div class="lp-why-choose__grid">
-      <div class="lp-why-choose__accordion">
-        {% for block in section.blocks %}
-          <input
-            type="radio"
-            name="why-choose-tabs-{{ section.id }}"
-            id="tab-{{ section.id }}-{{ forloop.index }}"
-            class="lp-why-choose__radio"
-            {% if forloop.first %}
-            checked{% endif %}>
-          <div class="lp-why-choose__item" {{ block.shopify_attributes }}>
-            <label for="tab-{{ section.id }}-{{ forloop.index }}" class="lp-why-choose__item-header">
-              <div class="lp-why-choose__item-title-group">
-                <div class="lp-why-choose__icon-container">
-                  {% if block.settings.icon_svg != blank %}
-                    {{ block.settings.icon_svg }}
-                  {% elsif block.settings.icon_image != blank %}
-                    <img
-                      src="{{ block.settings.icon_image | image_url: width: 400 }}"
-                      alt=""
-                      width="20"
-                      height="20"
-                      loading="lazy">
-                  {% endif %}
-                </div>
-                <h3 class="lp-why-choose__item-title">{{ block.settings.title }}</h3>
-              </div>
-              <span class="lp-why-choose__chevron">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M4.86646 7.99178L9.58312 12.7084L14.2998 7.99178L13.7081 7.40845L9.58312 11.5334L5.45812 7.40845L4.86646 7.99178Z" fill="#41464B"/>
-                </svg>
-              </span>
-            </label>
-            <div class="lp-why-choose__item-content">
-              <div class="lp-why-choose__item-content-inner">
-                <p class="lp-why-choose__item-description">{{ block.settings.description }}</p>
-                {% if block.settings.image != blank %}
-                  <div class="lp-why-choose__mobile-image">
-                    <img
-                      src="{{ block.settings.image | image_url: width: 800 }}"
-                      alt="{{ block.settings.title }}"
-                      loading="lazy">
-                  </div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+		<div class="lp-why-choose__grid">
+		  <div class="lp-why-choose__accordion">
+			{% for block in section.blocks %}
+			  <input
+				type="radio"
+				name="why-choose-tabs-{{ section.id }}"
+				id="tab-{{ section.id }}-{{ forloop.index }}"
+				class="lp-why-choose__radio"
+				{% if forloop.first %}
+				checked{% endif %}>
+			  <div class="lp-why-choose__item" {{ block.shopify_attributes }}>
+				<label for="tab-{{ section.id }}-{{ forloop.index }}" class="lp-why-choose__item-header">
+				  <div class="lp-why-choose__item-title-group">
+					<div class="lp-why-choose__icon-container">
+					  {% if block.settings.icon_svg != blank %}
+						{{ block.settings.icon_svg }}
+					  {% elsif block.settings.icon_image != blank %}
+						<img
+						  src="{{ block.settings.icon_image | image_url: width: 400 }}"
+						  alt=""
+						  width="20"
+						  height="20"
+						  loading="lazy">
+					  {% endif %}
+					</div>
+					<h3 class="lp-why-choose__item-title">{{ block.settings.title }}</h3>
+				  </div>
+				  <span class="lp-why-choose__chevron">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+					  <path d="M4.86646 7.99178L9.58312 12.7084L14.2998 7.99178L13.7081 7.40845L9.58312 11.5334L5.45812 7.40845L4.86646 7.99178Z" fill="#41464B"/>
+					</svg>
+				  </span>
+				</label>
+				<div class="lp-why-choose__item-content">
+				  <div class="lp-why-choose__item-content-inner">
+					<p class="lp-why-choose__item-description">{{ block.settings.description }}</p>
+					{% if block.settings.image != blank %}
+					  <div class="lp-why-choose__mobile-image">
+						<img
+						  src="{{ block.settings.image | image_url: width: 800 }}"
+						  alt="{{ block.settings.title }}"
+						  loading="lazy">
+					  </div>
+					{% endif %}
+				  </div>
+				</div>
+			  </div>
+			{% endfor %}
+		  </div>
 
-      <div class="lp-why-choose__desktop-media">
-        {% for block in section.blocks %}
-          {% if block.settings.image != blank %}
-            <div class="lp-why-choose__desktop-image-wrapper" data-index="{{ forloop.index }}">
-              <img
-                src="{{ block.settings.image | image_url: width: master }}"
-                alt="{{ block.settings.title }}"
-                class="lp-why-choose__desktop-image"
-                loading="lazy">
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-    </div>
+		  <div class="lp-why-choose__desktop-media">
+			{% for block in section.blocks %}
+			  {% if block.settings.image != blank %}
+				<div class="lp-why-choose__desktop-image-wrapper" data-index="{{ forloop.index }}">
+				  <img
+					src="{{ block.settings.image | image_url: width: master }}"
+					alt="{{ block.settings.title }}"
+					class="lp-why-choose__desktop-image"
+					loading="lazy">
+				</div>
+			  {% endif %}
+			{% endfor %}
+		  </div>
+		</div>
+		</div>
+	</div>
   </section>
   <script>
       (function () {
