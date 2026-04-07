@@ -1,7 +1,7 @@
 {{ 'lp-home-free-day-returns.css' | asset_url | stylesheet_tag }}
 
 <section class="lp-features-bar" id="lp-section-{{ section.id }}">
-  <div class="lp-features-bar__container">
+  <div class="kv-custom-container">
     <div class="lp-features-bar__inner">
       {%- for block in section.blocks -%}
         <div class="lp-feature-items" {{ block.shopify_attributes }}>
