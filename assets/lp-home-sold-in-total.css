@@ -139,8 +139,9 @@
   .lp-best-sellers__nav {
     display: flex;
     position: absolute;
-    right: 100px;
-    top: 90px;
+    right: 0px;
+    transform: translate(0%, -50%);
+    top: 50%;
   }
   .lp-best-sellers__nav-btn {
     width: 40px;
@@ -151,9 +152,7 @@
 
 @media (min-width: 1024px) {
 
-  .lp-best-sellers__nav {
-    right: 200px;
-  }
+
 }
 
 /* ── Swiper slider area — bleeds right, aligns left to container ── */
