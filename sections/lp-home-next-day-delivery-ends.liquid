@@ -1,5 +1,5 @@
 {{ 'lp-home-next-day-delivery-ends.css' | asset_url | stylesheet_tag }}
-<header class="lp-header" id="lp-section-{{ section.id }}">
+<div class="lp-header" id="lp-section-{{ section.id }}">
   <div class="lp-header__top-bar">
     <div class="lp-header__top-container">
       <div class="lp-header__delivery-info">
@@ -26,26 +26,14 @@
           </div>
         </div>
         {% if section.settings.chevron_mobile_link != blank %}
-          <a
-            href="{{ section.settings.chevron_mobile_link }}"
-            class="lp-header__chevron-mobile lp-header__chevron-mobile--link"
-            aria-label="{{ section.settings.chevron_mobile_link_label | default: 'Learn more' | escape }}"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M1 2H3.5V3H1V7H5V4.5H6V7C6 7.26522 5.89464 7.51957 5.70711 7.70711C5.51957 7.89464 5.26522 8 5 8H1C0.734784 8 0.48043 7.89464 0.292893 7.70711C0.105357 7.51957 0 7.26522 0 7V3C0 2.73478 0.105357 2.48043 0.292893 2.29289C0.48043 2.10536 0.734784 2 1 2ZM6.307 1H4V0H8V4H7V1.721L4.332 4.389L3.625 3.682L6.307 1Z" fill="white"/>
-            </svg>
-          </a>
-        {% else %}
-          <span class="lp-header__chevron-mobile">
-            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M1 2H3.5V3H1V7H5V4.5H6V7C6 7.26522 5.89464 7.51957 5.70711 7.70711C5.51957 7.89464 5.26522 8 5 8H1C0.734784 8 0.48043 7.89464 0.292893 7.70711C0.105357 7.51957 0 7.26522 0 7V3C0 2.73478 0.105357 2.48043 0.292893 2.29289C0.48043 2.10536 0.734784 2 1 2ZM6.307 1H4V0H8V4H7V1.721L4.332 4.389L3.625 3.682L6.307 1Z" fill="white"/>
-            </svg>
-          </span>
+         <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M1 2H3.5V3H1V7H5V4.5H6V7C6 7.26522 5.89464 7.51957 5.70711 7.70711C5.51957 7.89464 5.26522 8 5 8H1C0.734784 8 0.48043 7.89464 0.292893 7.70711C0.105357 7.51957 0 7.26522 0 7V3C0 2.73478 0.105357 2.48043 0.292893 2.29289C0.48043 2.10536 0.734784 2 1 2ZM6.307 1H4V0H8V4H7V1.721L4.332 4.389L3.625 3.682L6.307 1Z" fill="white"/>
+        </svg>
         {% endif %}
       </div>
     </div>
   </div>
-</header>
+</div>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const timer = document.querySelector('#lp-section-{{ section.id }} [data-timer]');
@@ -73,8 +61,8 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "logo",
-      "label": "Logo Image"
+      "id": "icon",
+      "label": "Icon"
     },
     {
       "type": "text",
@@ -83,22 +71,11 @@
       "default": "Next-day delivery ends in"
     },
     {
-      "type": "header",
-      "content": "Mobile chevron"
-    },
-    {
       "type": "url",
       "id": "chevron_mobile_link",
-      "label": "Chevron link",
-      "info": "Optional. When set, the mobile chevron opens this URL (chevron is hidden on large screens)."
+      "label": "Link"
     },
-    {
-      "type": "text",
-      "id": "chevron_mobile_link_label",
-      "label": "Chevron link label",
-      "default": "Learn more",
-      "info": "Shown to screen readers when the chevron is a link."
-    }
+  
   ],
   "blocks": [
     {
