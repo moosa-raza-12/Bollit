@@ -102,6 +102,7 @@
   letter-spacing: 0px;
   gap: 10px;
   height: 44px;
+  justify-content: space-between;
 }
 
 .lp-footer__input {
