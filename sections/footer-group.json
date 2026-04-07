@@ -11,6 +11,51 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "lp_home_quick_links_nm64F6": {
+      "type": "lp-home-quick-links",
+      "blocks": {
+        "column_LCE9TF": {
+          "type": "column",
+          "settings": {
+            "title": "Products",
+            "menu": "products",
+            "custom_content": ""
+          }
+        },
+        "column_xE7hRt": {
+          "type": "column",
+          "settings": {
+            "title": "Quick Links",
+            "menu": "quick-links",
+            "custom_content": ""
+          }
+        },
+        "column_JDMmCA": {
+          "type": "column",
+          "settings": {
+            "title": "Contact",
+            "menu": "",
+            "custom_content": "helpbollit@gmail.com"
+          }
+        }
+      },
+      "block_order": [
+        "column_LCE9TF",
+        "column_xE7hRt",
+        "column_JDMmCA"
+      ],
+      "settings": {
+        "description": "Bollit builds powerful, chemical-free cleaning systems made for real homes. Designed for performance.",
+        "newsletter_title": "get 10% off",
+        "newsletter_desc": "Sign up for expert advice on cleaning, healthy home",
+        "email_placeholder": "E-mail",
+        "subscribe_button_text": "Subscribe",
+        "terms_url": "shopify://policies/privacy-policy",
+        "privacy_url": "shopify://pages/contact",
+        "copyright_text": "Bollit.",
+        "show_background_graphic": true
+      }
+    },
     "footer": {
       "type": "footer",
       "disabled": true,
@@ -31,6 +76,7 @@
     }
   },
   "order": [
+    "lp_home_quick_links_nm64F6",
     "footer"
   ]
 }

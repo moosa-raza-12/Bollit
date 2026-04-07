@@ -688,51 +688,6 @@
         "contact_title": "Need more help?",
         "contact_text": "<p>We’re happy to help. Whether it’s about your product, delivery, or setup. Contact our customer service at <strong>helpbollit@gmail.com</strong></p>"
       }
-    },
-    "lp-home-quick-links": {
-      "type": "lp-home-quick-links",
-      "blocks": {
-        "block_lp-home-quick-links_0": {
-          "type": "column",
-          "settings": {
-            "title": "Products",
-            "menu": "products",
-            "custom_content": ""
-          }
-        },
-        "block_lp-home-quick-links_1": {
-          "type": "column",
-          "settings": {
-            "title": "Quick Links",
-            "menu": "quick-links",
-            "custom_content": ""
-          }
-        },
-        "block_lp-home-quick-links_2": {
-          "type": "column",
-          "settings": {
-            "title": "Contact",
-            "menu": "",
-            "custom_content": "helpbollit@gmail.com"
-          }
-        }
-      },
-      "block_order": [
-        "block_lp-home-quick-links_0",
-        "block_lp-home-quick-links_1",
-        "block_lp-home-quick-links_2"
-      ],
-      "settings": {
-        "description": "Bollit builds powerful, chemical-free cleaning systems made for real homes. Designed for performance.",
-        "newsletter_title": "get 10% off",
-        "newsletter_desc": "Sign up for expert advice on cleaning, healthy home",
-        "email_placeholder": "E-mail",
-        "subscribe_button_text": "Subscribe",
-        "terms_url": "shopify://policies/privacy-policy",
-        "privacy_url": "shopify://pages/contact",
-        "copyright_text": "Bollit.",
-        "show_background_graphic": true
-      }
     }
   },
   "order": [
@@ -743,7 +698,6 @@
     "lp-home-sold-in-total",
     "lp-home-why-choose-bollit",
     "lp-home-join-happier-homes",
-    "lp-home-need-some-help",
-    "lp-home-quick-links"
+    "lp-home-need-some-help"
   ]
 }
