@@ -231,7 +231,7 @@ background: #FFF;
 /* Radio Interaction */
 .lp-why-choose__radio:checked + .lp-why-choose__item {
   background: var(--color-bg-active);
-  border-color: transparent;
+  border-color: #003665;
 }
 
 .lp-why-choose__radio:checked + .lp-why-choose__item .lp-why-choose__item-content {
