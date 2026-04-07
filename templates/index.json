@@ -63,7 +63,9 @@
       "disabled": true,
       "settings": {
         "logo": "shopify://shop_images/Layer_1_8b71749d-4c7f-440c-a09c-a0a1f3b535eb.png",
-        "countdown_text": "Next-day delivery ends in"
+        "countdown_text": "Next-day delivery ends in",
+        "chevron_mobile_link": "",
+        "chevron_mobile_link_label": "Learn more"
       }
     },
     "lp-home-chemical-free-steam-one": {
@@ -354,7 +356,7 @@
             "icon_image": "shopify://shop_images/Mop_Image.png",
             "title": "Chemical-free power",
             "description": "High-temperature steam deep cleans and sanitizes without harsh chemicals. Safe for children, pets, and your home.",
-            "image": "shopify://shop_images/Mop_Image.png"
+            "image": "shopify://shop_images/Mop_Image_a595664d-222d-4751-8152-f636fee4c7cf.png"
           }
         },
         "block_lp-home-why-choose-bollit_1": {
@@ -721,7 +723,6 @@
         "block_lp-home-quick-links_2"
       ],
       "settings": {
-        "logo": "shopify://shop_images/Layer_1.png",
         "description": "Bollit builds powerful, chemical-free cleaning systems made for real homes. Designed for performance.",
         "newsletter_title": "get 10% off",
         "newsletter_desc": "Sign up for expert advice on cleaning, healthy home",
