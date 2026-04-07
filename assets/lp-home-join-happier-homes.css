@@ -92,7 +92,6 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  height: 100%;
 }
 
 .lp-happier-homes__card-image-wrapper {
@@ -243,7 +242,7 @@
   }
 
   .lp-happier-homes__scrollbar {
-    margin-top: 70px;
+    margin-top: 42px;
     /* margin-right: 200px; */
   }
 }
