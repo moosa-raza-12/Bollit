@@ -293,7 +293,7 @@ background: #FFF;
 
   .lp-why-choose__item-description {
     font-size: 16px;
-    /* line-height: 1.6; */
+    line-height: 24px;
   }
 
   .lp-why-choose__mobile-image {
