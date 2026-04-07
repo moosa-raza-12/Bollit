@@ -7,7 +7,6 @@
   --card-bg: #F8F8F6;
   --radius: 20px;
   background: var(--bg-color);
-  padding: 36px 0;
   overflow: hidden;
   position: relative;
 }
@@ -134,7 +133,6 @@
 
 @media (min-width: 768px) {
   .lp-best-sellers {
-    padding: 64px 0;
   }
 
   .lp-best-sellers__nav {
