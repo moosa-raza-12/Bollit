@@ -224,6 +224,9 @@
   .lp-happier-homes__slide {
     width: 300px;
   }
+  .lp-happier-homes__card-desc {
+    font-size: 18px;
+  }
 }
 
 @media (min-width: 1024px) {
