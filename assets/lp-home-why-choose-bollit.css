@@ -336,3 +336,10 @@ background: #FFF;
     z-index: 1;
   }
 }
+
+
+@media (max-width: 767.98px) {
+.gradient-span3{
+  padding-left:0px;
+}
+}
