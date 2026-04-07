@@ -230,6 +230,61 @@
         bestSellersSwiper.slideNext();
       });
     }
+
+    var atcForms = sectionEl.querySelectorAll('form[action="/cart/add"]');
+    atcForms.forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        var submitButton = form.querySelector('button[type="submit"]');
+        if (submitButton) submitButton.disabled = true;
+
+        var formData = new FormData(form);
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            Accept: 'application/json',
+          },
+          body: formData,
+        })
+          .then(function (response) {
+            if (!response.ok) throw new Error('Failed to add item to cart');
+            return response.json();
+          })
+          .then(function () {
+            var cartDrawer = document.querySelector('cart-drawer');
+
+            // Preferred Dawn flow: render fresh drawer sections then open.
+            if (cartDrawer && typeof cartDrawer.getSectionsToRender === 'function' && typeof cartDrawer.renderContents === 'function') {
+              var sectionIds = cartDrawer
+                .getSectionsToRender()
+                .map(function (section) {
+                  return section.id;
+                })
+                .join(',');
+
+              return fetch('/?sections=' + encodeURIComponent(sectionIds))
+                .then(function (res) {
+                  return res.json();
+                })
+                .then(function (sections) {
+                  cartDrawer.renderContents({ sections: sections });
+                });
+            }
+
+            // Fallback for Dawn setups that open drawer from cart icon click.
+            var cartIconBubble = document.querySelector('#cart-icon-bubble');
+            if (cartIconBubble) cartIconBubble.click();
+          })
+          .catch(function (error) {
+            console.error(error);
+          })
+          .finally(function () {
+            if (submitButton) submitButton.disabled = false;
+          });
+      });
+    });
   });
 </script>
 
