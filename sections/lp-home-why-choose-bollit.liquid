@@ -1,7 +1,8 @@
 {{ 'lp-home-why-choose-bollit.css' | asset_url | stylesheet_tag }}
 
 <section class="lp-why-choose" id="lp-why-choose-{{ section.id }}">
-  <div class="kv-custom-container lp-why-choose__container">
+  <div class="kv-custom-container">
+  <div class="lp-why-choose__container">
     <header class="lp-why-choose__header">
       <div class="lp-why-choose__subheading-wrapper">
         <div class="gradient-span3">
@@ -76,7 +77,8 @@
         {% endfor %}
       </div>
     </div>
-  </div>
+    </div>
+  </section>
   <script>
       (function () {
     const section = document.querySelector('#lp-why-choose-{{ section.id }}');
