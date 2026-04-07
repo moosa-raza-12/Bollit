@@ -10,16 +10,14 @@
 }
 
 .lp-why-choose__container {
-  max-width: 1040px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 36px 16px 16px 16px;
-align-items: center;
+  align-items: center;
   gap: 36px;
   border-radius: 20px;
-border: 1px solid #F3F2F2;
-background: linear-gradient(180deg, rgba(220, 125, 0, 0.12) 19.71%, rgba(169, 167, 164, 0.12) 100%);
+  border: 1px solid #F3F2F2;
+  background: linear-gradient(180deg, rgba(220, 125, 0, 0.12) 19.71%, rgba(169, 167, 164, 0.12) 100%);
 }
 
 .lp-why-choose__header {
