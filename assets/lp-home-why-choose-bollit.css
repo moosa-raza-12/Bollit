@@ -283,6 +283,7 @@ background: #FFF;
 
   .lp-why-choose__item-title {
     font-size: 20px;
+    line-height: 140%;
   }
 
   .lp-why-choose__item-content-inner {
