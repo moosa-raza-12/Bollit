@@ -367,7 +367,7 @@ details[open] .lp-best-sellers__chevron {
 .lp-best-sellers__features {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   padding: 12px;
   border-radius: 20px;
   border: 1px solid rgba(204, 204, 204, 0.36);
