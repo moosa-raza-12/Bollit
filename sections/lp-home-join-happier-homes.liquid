@@ -29,7 +29,7 @@
               <div class="lp-happier-homes__card">
                 <div class="lp-happier-homes__card-image-wrapper">
                   {% if block.settings.product_image != blank %}
-                    {{ block.settings.product_image | image_url: width: 400 | image_tag: class: 'lp-happier-homes__card-image', loading: 'lazy' }}
+                    {{ block.settings.product_image | image_url: width: master | image_tag: class: 'lp-happier-homes__card-image', loading: 'lazy' }}
                   {% else %}
                     {{ 'product-1' | placeholder_svg_tag: 'lp-happier-homes__card-image' }}
                   {% endif %}
