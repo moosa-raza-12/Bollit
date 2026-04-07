@@ -9,65 +9,6 @@
  */
 {
   "sections": {
-    "lp-home-next-day-delivery-ends": {
-      "type": "lp-home-next-day-delivery-ends",
-      "blocks": {
-        "block_lp-home-next-day-delivery-ends_0": {
-          "type": "nav_item",
-          "settings": {
-            "text": "Shop by category",
-            "url": "#",
-            "has_dropdown": true
-          }
-        },
-        "block_lp-home-next-day-delivery-ends_1": {
-          "type": "nav_item",
-          "settings": {
-            "text": "Best sellers",
-            "url": "#",
-            "has_dropdown": true
-          }
-        },
-        "block_lp-home-next-day-delivery-ends_2": {
-          "type": "nav_item",
-          "settings": {
-            "text": "Collection",
-            "url": "#",
-            "has_dropdown": false
-          }
-        },
-        "block_lp-home-next-day-delivery-ends_3": {
-          "type": "nav_item",
-          "settings": {
-            "text": "Track your order",
-            "url": "#",
-            "has_dropdown": false
-          }
-        },
-        "block_lp-home-next-day-delivery-ends_4": {
-          "type": "nav_item",
-          "settings": {
-            "text": "Company",
-            "url": "#",
-            "has_dropdown": true
-          }
-        }
-      },
-      "block_order": [
-        "block_lp-home-next-day-delivery-ends_0",
-        "block_lp-home-next-day-delivery-ends_1",
-        "block_lp-home-next-day-delivery-ends_2",
-        "block_lp-home-next-day-delivery-ends_3",
-        "block_lp-home-next-day-delivery-ends_4"
-      ],
-      "disabled": true,
-      "settings": {
-        "logo": "shopify://shop_images/Layer_1_8b71749d-4c7f-440c-a09c-a0a1f3b535eb.png",
-        "countdown_text": "Next-day delivery ends in",
-        "chevron_mobile_link": "",
-        "chevron_mobile_link_label": "Learn more"
-      }
-    },
     "lp-home-chemical-free-steam-one": {
       "type": "lp-home-chemical-free-steam-one",
       "blocks": {
@@ -691,7 +632,6 @@
     }
   },
   "order": [
-    "lp-home-next-day-delivery-ends",
     "lp-home-chemical-free-steam-one",
     "lp-home-free-day-returns",
     "lp-home-view-all",
