@@ -301,10 +301,13 @@ letter-spacing: 0px;
 
   .lp-footer__legal-link, .lp-footer__copyright {
     color: var(--White, #FFF);
-font-size: 14px;
-letter-spacing: 0px;
-font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0px;
+    font-weight: 400;
   }
+    .lp-footer__legal-link{
+      color:#ccc;
+    }
 
   .lp-footer__graphic {
     top: 10px;
