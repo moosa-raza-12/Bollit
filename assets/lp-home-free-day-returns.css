@@ -102,7 +102,7 @@ gap: 12px;
   gap: 16px;
   }
   .lp-features-bar {
-    padding: 64px 0px;
+
   }
   .lp-features-bar__inner {
     gap: 32px;
@@ -124,7 +124,7 @@ gap: 12px;
 
 @media (min-width: 1024px) {
   .lp-features-bar {
-    padding: 64px 0px;
+
   }
   .lp-features-bar__inner {
     gap: 64px;
