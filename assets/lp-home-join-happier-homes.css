@@ -5,7 +5,6 @@
   --text-secondary: #555555;
   --accent-color: #003665;
   background-color: var(--bg-color);
-  padding: 36px 0;
   overflow: hidden;
 }
 
@@ -202,7 +201,6 @@
 
 @media (min-width: 768px) {
   .lp-happier-homes {
-    padding: 64px 0;
   }
   .lp-happier-homes__header {
     /* padding-right: 100px; */
