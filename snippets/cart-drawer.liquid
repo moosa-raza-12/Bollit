@@ -35,12 +35,12 @@
               <div class="kv-empty-cart">
                 <div class="kv-empty-cart-top">
                    
-                      {% if setting.empty_cart_heading != blank  %}
-                        <h4>{{ setting.empty_cart_heading }}</h4>
+                      {% if settings.empty_cart_heading != blank  %}
+                        <h4>{{ settings.empty_cart_heading }}</h4>
                       {% endif %}
 
-                      {% if setting.empty_cart_sub_heading  %}
-                        <p>{{ setting.empty_cart_sub_heading }}</p>
+                      {% if settings.empty_cart_sub_heading != blank  %}
+                        <p>{{ settings.empty_cart_sub_heading }}</p>
                       {% endif %}
                    
                    </div>
@@ -50,7 +50,7 @@
                     <div class="kv-empty-cart-bottom">
                     </div>
               </div>
-              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
+              
               <button
                 class="drawer__close"
                 type="button"
