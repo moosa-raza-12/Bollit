@@ -11,10 +11,13 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "lp_home_next_day_delivery_ends_G6kNhL": {
+      "type": "lp-home-next-day-delivery-ends",
+      "disabled": true,
       "settings": {
-        "countdown_text": "Next-day delivery ends in"
+        "icon": "shopify://shop_images/truck-fast.svg",
+        "countdown_text": "Next-day delivery ends in",
+        "chevron_mobile_link": "#"
       }
     },
     "header": {
@@ -137,7 +140,7 @@
     }
   },
   "order": [
-    "announcement-bar",
+    "lp_home_next_day_delivery_ends_G6kNhL",
     "header"
   ]
 }
