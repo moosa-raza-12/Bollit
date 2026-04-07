@@ -4,7 +4,7 @@
   class="lp-product-image-frame"
   id="lp-section-{{ section.id }}"
   style="--bg-image-desktop: url('{{ section.settings.background_image_desktop | image_url: width: 2000 }}'); --bg-image-mobile: url('{{ section.settings.background_image_mobile | image_url: width: 1000 }}');">
-  <div class="lp-product-image-frame__container">
+  <div class="kv-custom-container"> 
     <div class="lp-product-info-container">
       {% if section.settings.rating_text != blank %}
         <div class="lp-reviews-badge">
