@@ -44,4 +44,8 @@ span.lp-header__icon-truck svg {
     section.kv-section, footer.kv-footer{
         padding: 36px 0;
     }
+    footer.kv-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 }
