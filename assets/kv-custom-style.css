@@ -68,6 +68,7 @@ span.lp-header__icon-truck svg {
     width: 100%;
     box-sizing: border-box;
     width: calc(100% - 24px);
+    text-align: left;
 }
 
 @media (max-width: 767px) {
