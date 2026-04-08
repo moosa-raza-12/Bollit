@@ -131,6 +131,24 @@ input.kv-cart-search-input:focus{
     outline:none;
     box-shadow:none;
 }
+.kv-empty-cart-top h4 {
+    color: #1F1F1F;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.42px;
+    margin: 0;
+}
+
+.kv-empty-cart-top p {
+    color: rgba(31, 31, 31, 0.60);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
