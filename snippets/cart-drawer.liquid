@@ -256,7 +256,11 @@
                    </div>
                     <div class="kv-empty-cart-bottom">
                       {% if settings.empty_cart_btn_text %}
-                        <a href="{{ settings.empty_cart_btn_url }}" class="kv-blue-btn">{{ settings.empty_cart_btn_text }}</a>
+                        <a href="{{ settings.empty_cart_btn_url }}" class="kv-blue-btn">{{ settings.empty_cart_btn_text }}
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3.33301 10H13.5413L9.16634 5.625L9.71634 5L15.133 10.4167L9.71634 15.8333L9.16634 15.2083L13.5413 10.8333H3.33301V10Z" fill="white"/>
+                          </svg>
+                        </a>
                       {% endif %}
 
                       <div class="kv-cart-footer-small-text">
