@@ -112,6 +112,22 @@ form.kv-cart-search-bar-form {
     align-self: stretch;
     width: 100%;
 }
+input.kv-cart-search-input {
+    color: #808080;
+    text-align: left;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    border: none;
+    padding: 0;
+    width: 100%;
+}
+
+input.kv-cart-search-input:focus{
+    outline:none;
+    box-shadow:none;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
