@@ -123,6 +123,9 @@ input.kv-cart-search-input {
     padding: 0;
     width: 100%;
 }
+.kv-cart-search-bar-form input::placeholder {
+  color: #808080;
+}
 
 input.kv-cart-search-input:focus{
     outline:none;
