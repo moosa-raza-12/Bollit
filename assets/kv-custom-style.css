@@ -150,8 +150,12 @@ input.kv-cart-search-input:focus{
     line-height: normal;
     margin: 0;
 }
+
 .kv-empty-cart-top {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 @media (max-width: 767px) {
