@@ -247,6 +247,10 @@ a.kv-blue-btn:hover {
     font-weight: 400;
     line-height: normal;
 }
+.cart-drawer .drawer__inner.gradient {
+    max-width: 430px;
+    width: 100%;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
