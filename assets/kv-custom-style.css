@@ -73,6 +73,13 @@ span.lp-header__icon-truck svg {
     align-items: center;
     justify-content: space-between;
 }
+.kv-empty-cart-collection-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
