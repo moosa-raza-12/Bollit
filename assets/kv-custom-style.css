@@ -221,9 +221,31 @@ a.kv-blue-btn:hover {
     opacity:.9;
 }
 
+
 .kv-empty-cart-middle {
   flex: 1 1 auto;
   overflow-y: auto; /* scroll only this area */
+}
+.kv-cart-footer-small-text {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.kv-cart-footer-small-text span {
+    border-radius: 100px;
+    background: #FFF8EF;
+    display: flex;
+    padding: 4px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #808080;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 @media (max-width: 767px) {
