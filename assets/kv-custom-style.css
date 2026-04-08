@@ -223,8 +223,10 @@ a.kv-blue-btn:hover {
 
 
 .kv-empty-cart-middle {
-  flex: 1 1 auto;
-  overflow-y: auto; /* scroll only this area */
+    flex: 1 1 auto;
+    overflow-y: auto;
+    background: #fff;
+    padding: 24px;
 }
 .kv-cart-footer-small-text {
     display: flex;
@@ -250,6 +252,9 @@ a.kv-blue-btn:hover {
 .cart-drawer .drawer__inner.gradient {
     max-width: 430px;
     width: 100%;
+}
+.drawer__inner-empty {
+    padding: 0;
 }
 
 @media (max-width: 767px) {
