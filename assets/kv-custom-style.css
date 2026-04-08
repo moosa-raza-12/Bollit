@@ -157,15 +157,25 @@ input.kv-cart-search-input:focus{
     flex-direction: column;
     gap: 16px;
 }
-.kv-empty-cart-middle {
-    overflow: auto;
-    flex: 1;
-}
+
+
 .kv-empty-cart {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* or parent height */
+}
+
+.kv-empty-cart-top {
+  flex: 0 0 auto; /* fixed height */
+}
+
+.kv-empty-cart-bottom {
+  flex: 0 0 auto; /* fixed height */
+}
+
+.kv-empty-cart-middle {
+  flex: 1 1 auto;
+  overflow-y: auto; /* scroll only this area */
 }
 
 @media (max-width: 767px) {
