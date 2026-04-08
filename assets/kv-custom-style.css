@@ -113,7 +113,7 @@ form.kv-cart-search-bar-form {
     width: 100%;
 }
 input.kv-cart-search-input {
-    color: #808080;
+    color: #000;
     text-align: left;
     font-size: 14px;
     font-style: normal;
