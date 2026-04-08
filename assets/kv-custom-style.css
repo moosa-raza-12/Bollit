@@ -89,6 +89,7 @@ span.lp-header__icon-truck svg {
     align-items: flex-start;
     gap: 8px;
     align-self: stretch;
+    margin-bottom: 24px;
 }
 
 .kv-empty-cart-search h6 {
