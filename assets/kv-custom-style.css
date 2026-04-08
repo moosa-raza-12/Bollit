@@ -52,6 +52,22 @@ span.lp-header__icon-truck svg {
     overflow: hidden;
     height: 151px;
     display: block;
+    position: relative;
+}
+.kv-empty-cart-collection-box h5 {
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    position: absolute;
+    bottom: 16px;
+    margin: 0;
+    left: 12px;
+    right: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    width: calc(100% - 24px);
 }
 
 @media (max-width: 767px) {
