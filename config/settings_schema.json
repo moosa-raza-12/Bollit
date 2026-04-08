@@ -1462,9 +1462,9 @@
         "label": "Collection Heading 1",
       },
       {
-        "type": "collection",
+        "type": "url",
         "id": "cart_collection_1",
-        "label": "Select Collection 1",
+        "label": "Collection URL 1",
       },
 
        {
@@ -1478,9 +1478,9 @@
         "label": "Collection Heading 2",
       },
       {
-        "type": "collection",
+        "type": "url",
         "id": "cart_collection_2",
-        "label": "Select Collection 2",
+        "label": "Collection URL 2",
       },
 
        {
@@ -1494,9 +1494,9 @@
         "label": "Collection Heading 3",
       },
       {
-        "type": "collection",
+        "type": "url",
         "id": "cart_collection_3",
-        "label": "Select Collection 3",
+        "label": "Collection URL 3",
       },
        {
         "type": "image_picker",
@@ -1509,9 +1509,9 @@
         "label": "Collection Heading 4",
       },
       {
-        "type": "collection",
+        "type": "url",
         "id": "cart_collection_4",
-        "label": "Select Collection 4",
+        "label": "Collection URL 4",
       },
        {
         "type": "image_picker",
@@ -1524,9 +1524,9 @@
         "label": "Collection Heading 5",
       },
       {
-        "type": "collection",
+        "type": "url",
         "id": "cart_collection_5",
-        "label": "Select Collection 5",
+        "label": "Collection URL 5",
       },
        {
         "type": "image_picker",
@@ -1539,9 +1539,9 @@
         "label": "Collection Heading 6",
       },
       {
-        "type": "collection",
+        "type": "url",
         "id": "cart_collection_6",
-        "label": "Select Collection 6",
+        "label": "Collection URL 6",
       },
 
       {
