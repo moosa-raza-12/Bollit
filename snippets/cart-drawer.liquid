@@ -77,16 +77,7 @@
                                     {%- endif -%}
                                   >
                                   <input type="hidden" name="options[prefix]" value="last">
-                                  <button
-                                    type="button"
-                                    class="header__search-bar-close"
-                                    aria-label="{{ 'accessibility.close' | t }}"
-                                    data-search-close
-                                  >
-                                    <span class="svg-wrapper">
-                                      {{- 'icon-close.svg' | inline_asset_content -}}
-                                    </span>
-                                  </button>
+                               
                                 </div>
 
                                 {%- if settings.predictive_search_enabled -%}
