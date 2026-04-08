@@ -39,6 +39,20 @@ body header.header.page-width, .header:not(.drawer-menu).page-width {
 span.lp-header__icon-truck svg {
     display: block;
 }
+.kv-empty-cart-collection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.kv-empty-cart-collection-box {
+    width: calc(50% - 4px);
+}
+.kv-empty-cart-collection-box a {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 151px;
+    display: block;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
