@@ -125,6 +125,11 @@
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
+    "cart_collection_image_1": "shopify://shop_images/collection-img-0.png",
+    "cart_collection_image_2": "shopify://shop_images/collection-img-1.png",
+    "cart_collection_image_3": "shopify://shop_images/collection-img-2.png",
+    "cart_collection_image_4": "shopify://shop_images/collection-img-3.png",
+    "cart_collection_image_5": "shopify://shop_images/collection-img-4.png",
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1",
     "sections": {
