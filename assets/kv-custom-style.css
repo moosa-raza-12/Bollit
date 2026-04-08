@@ -148,6 +148,7 @@ input.kv-cart-search-input:focus{
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin: 0;
 }
 
 @media (max-width: 767px) {
