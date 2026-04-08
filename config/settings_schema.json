@@ -1558,6 +1558,18 @@
         "id": "empty_cart_btn_url",
         "label": "Empty Cart Button URL",
       },
+        {
+        "type": "text",
+        "id": "warranty_text",
+        "label": "2-year warranty text",
+        "default": "2-year warranty",
+      },
+        {
+        "type": "text",
+        "id": "returns_text",
+        "label": "30-day returns text",
+        "default": "30-day returns",
+      },
 
       {
         "type": "header",
