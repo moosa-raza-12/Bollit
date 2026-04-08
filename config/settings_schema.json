@@ -1543,6 +1543,21 @@
         "id": "cart_collection_6",
         "label": "Collection URL 6",
       },
+      {
+        "type": "header",
+        "content": "Empty Cart Button"
+      },
+      {
+        "type": "text",
+        "id": "empty_cart_btn_text",
+        "label": "Empty Cart Button text",
+        "default": "Start Shopping",
+      },
+       {
+        "type": "url",
+        "id": "empty_cart_btn_url",
+        "label": "Empty Cart Button URL",
+      },
 
       {
         "type": "header",
