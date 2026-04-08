@@ -215,6 +215,7 @@ a.kv-blue-btn {
     font-weight: 500;
     line-height: normal;
     text-decoration: none;
+    transition: opacity .3s ease;
 }
 a.kv-blue-btn:hover {
     opacity:.9;
