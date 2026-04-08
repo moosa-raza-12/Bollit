@@ -79,7 +79,26 @@ span.lp-header__icon-truck svg {
     object-fit: cover;
 }
 
+.kv-empty-cart-search {
+    border-radius: 20px;
+    background: #F8F8F6;
+    display: flex;
+    padding: 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
 
+.kv-empty-cart-search h6 {
+    color: #1F1F1F;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
