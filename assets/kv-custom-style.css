@@ -99,6 +99,19 @@ span.lp-header__icon-truck svg {
     line-height: normal;
     margin: 0;
 }
+form.kv-cart-search-bar-form {
+    width: 100%;
+}
+.kv-empty-cart-search-form {
+    border-radius: 18px;
+    background: #FFF;
+    display: flex;
+    padding: 10px 16px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    width: 100%;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
