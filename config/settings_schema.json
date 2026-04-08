@@ -1452,6 +1452,17 @@
       },
 
       {
+        "type": "header",
+        "content": "Empty Cart Search"
+      },
+       {
+        "type": "text",
+        "id": "search_heading",
+        "label": "Search Heading",
+        "default": "Search for a product directly:"
+      },
+
+      {
         "type": "image_picker",
         "id": "cart_collection_image_1",
         "label": "Collection Image 1",
