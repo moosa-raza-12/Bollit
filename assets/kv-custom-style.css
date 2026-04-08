@@ -157,6 +157,16 @@ input.kv-cart-search-input:focus{
     flex-direction: column;
     gap: 16px;
 }
+.kv-empty-cart-middle {
+    overflow: auto;
+    flex: 1;
+}
+.kv-empty-cart {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
