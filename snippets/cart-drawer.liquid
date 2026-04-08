@@ -51,51 +51,6 @@
                           {% if settings.search_heading %}
                               <h6>{{ settings.search_heading }}                            
                               </h6>
-                              <form action="{{ routes.search_url }}" method="get" role="search" class="header__search-bar-form">
-                                <div class="kv-empty-cart-search">
-                                  <span class="header__search-bar-icon svg-wrapper">
-                                    {{- 'icon-search.svg' | inline_asset_content -}}
-                                  </span>
-                                  <input
-                                    class="header__search-bar-input"
-                                    id="{{ input_id }}"
-                                    type="search"
-                                    name="q"
-                                    value="{{ search.terms | escape }}"
-                                    placeholder="{{ 'general.search.search' | t }}"
-                                    {%- if settings.predictive_search_enabled -%}
-                                      role="combobox"
-                                      aria-expanded="false"
-                                      aria-owns="predictive-search-results-{{ input_id }}"
-                                      aria-controls="predictive-search-results-{{ input_id }}"
-                                      aria-haspopup="listbox"
-                                      aria-autocomplete="list"
-                                      autocorrect="off"
-                                      autocomplete="off"
-                                      autocapitalize="off"
-                                      spellcheck="false"
-                                    {%- endif -%}
-                                  >
-                                  <input type="hidden" name="options[prefix]" value="last">
-                                  <button
-                                    type="button"
-                                    class="header__search-bar-close"
-                                    aria-label="{{ 'accessibility.close' | t }}"
-                                    data-search-close
-                                  >
-                                    <span class="svg-wrapper">
-                                      {{- 'icon-close.svg' | inline_asset_content -}}
-                                    </span>
-                                  </button>
-                                </div>
-
-                                {%- if settings.predictive_search_enabled -%}
-                                  <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search id="predictive-search-results-{{ input_id }}">
-                                    {%- render 'loading-spinner', class: 'predictive-search__loading-state' -%}
-                                  </div>
-                                  <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
-                                {%- endif -%}
-                              </form>
                             {% endif %} 
                      </div>
 
