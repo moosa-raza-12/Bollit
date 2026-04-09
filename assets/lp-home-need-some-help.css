@@ -345,4 +345,7 @@ color: #003665;
 .lp-help__description {
       line-height: 24px;
 }
+.lp-help .kv-section-head .kv-font-38 em {
+    display: block;
+}
 }
