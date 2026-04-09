@@ -108,8 +108,7 @@
         "feature_item_wgfW8m": {
           "type": "feature_item",
           "settings": {
-            "title": "4 cleaning modes",
-            "description": "From gentle care to turbo power and steam boost, each mode adapts for controlled, effective cleaning."
+            "image": "shopify://shop_images/featured-image1.png"
           }
         }
       },

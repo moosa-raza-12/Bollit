@@ -11,8 +11,8 @@
                         <img src="{{ block.settings.image | img_url: '400x400' }}" alt="">
                     </div>
                     <div class="kv-features-grid-item-content">
-                        <span class="kv-features-grid-item-title">{{ block.settings.title }}</span>
-                        <span class="kv-features-grid-item-description">{{ block.settings.description }}</span>
+                        <span class="kv-features-grid-item-title">{{ block.settings.feature_title }}</span>
+                        <span class="kv-features-grid-item-description">{{ block.settings.feature_description }}</span>
                     </div>
                 </div>
             {% endfor %}
@@ -55,13 +55,13 @@
         },
         {
           "type": "text",
-          "id": "title",
+          "id": "feature_title",
           "label": "Feature Title",
           "default": "Feature Title"
         },
         {
           "type": "textarea",
-          "id": "description",
+          "id": "feature_description",
           "label": "Feature Description",
           "default": "Feature description."
         }
