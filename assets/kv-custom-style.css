@@ -458,6 +458,7 @@ span.metafield-single_line_text_field {
 .kv-section-head {
     width: 100%;
     text-align: center;
+    padding-bottom: 42px;
 }
 .kv-section-head .kv-font-38 {
     margin: 0;
