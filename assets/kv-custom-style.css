@@ -308,6 +308,10 @@ span.empty-cart-bubble {
     justify-content: center;
     position: initial;
 }
+.cart-drawer cart-drawer-items {
+    background: #fff;
+    padding: 24px 20px;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
