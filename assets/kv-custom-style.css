@@ -350,6 +350,10 @@ span.metafield-single_line_text_field {
     letter-spacing: 0;
     display: block;
 }
+.cart-drawer button.quantity__button svg {
+    width: 20px;
+    height: 20px;
+}
 
 .kv-line-item-description {
     margin-top: 0;

@@ -117,7 +117,8 @@
       "settings": {
         "title": "Real homes, <em>visible results</em>",
         "description": "See how homeowners transform their homes with effortless cleaning, no filters, just results.",
-        "others_title": "Others"
+        "others_title": "Others",
+        "background_color": "#fdfcfc"
       }
     }
   },
