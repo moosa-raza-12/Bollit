@@ -19,7 +19,12 @@
   justify-content: center;
   align-items: center;
 }
-
+.lp-view-all__header-container .kv-section-head {
+    padding-bottom: 0;
+}
+.lp-view-all__header-container {
+    margin-bottom: 42px;
+}
 .lp-view-all__header {
   text-align: center;
   max-width: 600px;
