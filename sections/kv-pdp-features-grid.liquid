@@ -8,7 +8,7 @@
             {% for block in section.blocks %}
                 <div class="kv-features-grid-item">
                     <div class="kv-features-grid-item-image">
-                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                        <img src="{{ block.settings.image | img_url: '400x400' }}" alt="">
                     </div>
                     <div class="kv-features-grid-item-content">
                         <span class="kv-features-grid-item-title">{{ block.settings.title }}</span>
@@ -75,3 +75,10 @@
   ]
 }
 {% endschema %}
+
+<style>
+    .kv-features-grid-header {
+    padding: 0 0 64px 0;
+}
+
+</style>
