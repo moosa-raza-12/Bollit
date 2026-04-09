@@ -1436,6 +1436,15 @@
       },
       {
         "type": "header",
+        "content": "Cart Upsell"
+      },
+      {
+        "type": "product_list",
+        "id": "cart_product_upsell",
+        "label": "Select Upsell Products",
+      },
+      {
+        "type": "header",
         "content": "Empty Cart"
       },
        {
