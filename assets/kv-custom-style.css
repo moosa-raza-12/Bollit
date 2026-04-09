@@ -534,5 +534,8 @@ span.metafield-single_line_text_field {
     .kv-section-head {
         padding-bottom: 36px;
     }
+    div#menu-drawer {
+        background: #f2f2f2;
+    }
         
 }
