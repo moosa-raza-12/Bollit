@@ -242,4 +242,7 @@ letter-spacing: -0.24px;
   .lp-view-all__btn {
       margin-top: 36px;
   }
+  .lp-view-all__header-container .kv-section-head .kv-font-38 em {
+    display: block;
+}
 }
