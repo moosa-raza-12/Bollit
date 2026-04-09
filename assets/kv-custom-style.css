@@ -473,9 +473,15 @@ span.metafield-single_line_text_field {
     letter-spacing: -0.27px;
      font-family: "Source Serif 4", serif !important;
     font-style: italic;
+    padding: 0px 10px;
+    position:relative;
+}
+
+.kv-section-head span:after{
+    content:"";
     border-right: 1px solid #FD9308;
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 8, 0.14) 33.65%);
-    padding: 0px 10px;
+
 }
 
 @media (max-width: 1199.98px) { 
