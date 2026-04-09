@@ -13,7 +13,7 @@
   flex-direction: column;
   padding: 36px 16px 16px 16px;
   align-items: center;
-  gap: 36px;
+
   border-radius: 20px;
   border: 1px solid #F3F2F2;
   background: linear-gradient(180deg, rgba(220, 125, 0, 0.12) 19.71%, rgba(169, 167, 164, 0.12) 100%);
@@ -251,7 +251,6 @@ background: #FFF;
   }
 
   .lp-why-choose__container {
-    gap: 42px;
     padding: 36px 64px;
   }
 
