@@ -285,6 +285,22 @@ span.empty-cart-bubble {
     justify-content: center;
     line-height: 24px;
 }
+.kv-empty-cart-head {
+    padding-bottom: 40px;
+}
+
+.kv-empty-cart-head  button.drawer__close {
+    border-radius: 8px;
+    border: 1.016px solid #E8ECEF;
+    background: #FFF;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
