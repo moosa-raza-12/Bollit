@@ -35,7 +35,7 @@
               <div class="kv-empty-cart">
                 <div class="kv-empty-cart-top">
                   <div class="kv-empty-cart-head">
-                    <h3> {{ 'sections.cart.title' | t }} <span class="empty-cart-bubble">{{ cart.item_count }}</span></h3>
+                    <h3> {{ 'sections.cart.title' | t }} <span class="empty-cart-bubble">0</span></h3>
                      <button
                       class="drawer__close"
                       type="button"
@@ -319,7 +319,7 @@
       {%- endif -%}
       <div class="drawer__header">
         <h3 class="drawer__heading">{{ 'sections.cart.title' | t }}
-          <span class="empty-cart-bubble">{{ cart.item_count }}</span>
+          <span class="empty-cart-bubble">0</span>
         </h3>
         <button
           class="drawer__close"
@@ -834,58 +834,3 @@
     </div>
   </div>
 </cart-drawer>
-<script>
-  (function () {
-    function setCartBubbleCount(count) {
-      document.querySelectorAll(".empty-cart-bubble").forEach(function (bubble) {
-        bubble.textContent = count;
-      });
-    }
-
-    function getCountFromDrawer() {
-      var inputs = document.querySelectorAll('#CartDrawer input.quantity__input[name="updates[]"]');
-      if (!inputs.length) return null;
-
-      var total = 0;
-      inputs.forEach(function (input) {
-        var value = parseInt(input.value, 10);
-        if (!isNaN(value) && value > 0) total += value;
-      });
-      return total;
-    }
-
-    function refreshCartBubble() {
-      var drawerCount = getCountFromDrawer();
-      if (drawerCount !== null) {
-        setCartBubbleCount(drawerCount);
-      }
-    }
-
-    document.addEventListener("change", function (event) {
-      if (event.target && event.target.matches('#CartDrawer input.quantity__input[name="updates[]"]')) {
-        refreshCartBubble();
-      }
-    });
-
-    document.addEventListener("click", function (event) {
-      var target = event.target;
-      if (!target) return;
-
-      var qtyButton = target.closest('#CartDrawer .quantity__button');
-      var removeButton = target.closest('#CartDrawer .cart-remove-button');
-      if (qtyButton || removeButton) {
-        window.setTimeout(refreshCartBubble, 0);
-      }
-    });
-
-    var cartDrawer = document.querySelector("#CartDrawer");
-    if (cartDrawer) {
-      var observer = new MutationObserver(function () {
-        refreshCartBubble();
-      });
-      observer.observe(cartDrawer, { childList: true, subtree: true });
-    }
-
-    refreshCartBubble();
-  })();
-</script>
