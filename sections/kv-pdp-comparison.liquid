@@ -1,27 +1,61 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <section class="kv-section kv-pdp-comp-section" style="background-color: {{ section.settings.background_color }};">
     <div class="kv-custom-container">
         <div class="kv-pdp-comp-header">
             <h2 class="kv-font-42">{{ section.settings.title }}</h2>
             <p class="kv-font-18">{{ section.settings.description }}</p>
         </div>
-        <div class="kv-pdp-comp-grid">
-            {% for block in section.blocks %}
-                <div class="kv-pdp-comp-grid-item">
-                    <div class="kv-pdp-comp-grid-item-image others">
-                        <img src="{{ block.settings.image_others | img_url: 'master' }}" alt="">
-                        <span class="kv-pdp-comp-grid-others-badge">{{ section.settings.others_title }}</span>
+        <div class="swiper kv-pdp-comp-swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    <div class="swiper-slide">
+                        <div class="kv-pdp-comp-grid-item">
+                            <div class="kv-pdp-comp-grid-item-image others">
+                                <img src="{{ block.settings.image_others | img_url: 'master' }}" alt="">
+                                <span class="kv-pdp-comp-grid-others-badge">{{ section.settings.others_title }}</span>
+                            </div>
+                            <div class="kv-pdp-comp-grid-item-image bollit">
+                                <img src="{{ block.settings.image_bollit | img_url: 'master' }}" alt="">
+                                <span class="kv-pdp-comp-grid-bollit-badge">
+                                    <img src="{{ section.settings.bollit_icon | img_url: '100x100' }}" alt="">
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="kv-pdp-comp-grid-item-image bollit">
-                        <img src="{{ block.settings.image_bollit | img_url: 'master' }}" alt="">
-                        <span class="kv-pdp-comp-grid-bollit-badge">
-                            <img src="{{ section.settings.bollit_icon | img_url: '100x100' }}" alt="">
-                        </span>
-                    </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="kv-pdp-comp-progressbar-wrap">
+                <div class="swiper-pagination kv-pdp-comp-progressbar"></div>
+            </div>
         </div>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.kv-pdp-comp-swiper', {
+            slidesPerView: 1.15,
+            spaceBetween: 16,
+            grabCursor: true,
+            pagination: {
+                el: '.kv-pdp-comp-progressbar',
+                type: 'progressbar',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2.15,
+                    spaceBetween: 16,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                },
+            },
+        });
+    });
+</script>
 
 {% schema %}
 {
@@ -86,11 +120,8 @@
 
 <style>
 
-
-.kv-pdp-comp-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+.kv-pdp-comp-swiper {
+    overflow: hidden;
 }
 
 .kv-pdp-comp-header {
@@ -102,9 +133,10 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    height: 100%;
 }
 
-.kv-pdp-comp-grid-item-image{
+.kv-pdp-comp-grid-item-image {
     position: relative;
 }
 
@@ -133,6 +165,7 @@
     height: 100%;
     display: block;
     max-width: 100%;
+    object-fit: cover;
 }
 
 .kv-pdp-comp-grid-bollit-badge {
@@ -147,6 +180,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.kv-pdp-comp-progressbar-wrap {
+    margin-top: 32px;
+    position: relative;
+    height: 4px;
+    border-radius: 4px;
+    background: #E0E0E0;
+    overflow: hidden;
+}
+
+.kv-pdp-comp-progressbar-wrap .swiper-pagination-progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.kv-pdp-comp-progressbar-wrap .swiper-pagination-progressbar-fill {
+    background: #0A3D6B;
+    border-radius: 4px;
 }
 
 </style>
