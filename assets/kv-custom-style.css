@@ -387,6 +387,9 @@ span.metafield-single_line_text_field {
 .cart-drawer .quantity__button .svg-wrapper {
     width: auto;
 }
+.cart-drawer .cart-item__quantity {
+    padding-top: 12px !important;
+}
 
 
 @media (max-width: 767px) {
