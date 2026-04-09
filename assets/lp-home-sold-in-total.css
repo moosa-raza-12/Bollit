@@ -421,4 +421,11 @@ details[open] .lp-best-sellers__chevron {
 .lp-best-sellers__rating-pill {
   font-size: 12px;
 }
+.lp-best-sellers__nav {
+    bottom: 36px;
+}
+.lp-best-sellers__container .kv-section-head {
+    text-align: left;
+    align-items: flex-start;
+}
 }
