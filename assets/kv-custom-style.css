@@ -146,7 +146,8 @@ input.kv-cart-search-input {
     padding: 0;
     width: 100%;
 }
-.kv-cart-search-bar-form input::placeholder {
+.kv-cart-search-bar-form input::placeholder,
+.menu-drawer__search .search__input.field__input::placeholder {
   color: #808080;
 }
 
