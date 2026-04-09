@@ -283,7 +283,7 @@ span.empty-cart-bubble {
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 24px;
+    line-height: 16.8px;
 }
 .kv-empty-cart-head {
     padding-bottom: 40px;
