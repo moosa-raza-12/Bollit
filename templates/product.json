@@ -104,6 +104,15 @@
     },
     "kv_pdp_comparison_K3iwhT": {
       "type": "kv-pdp-comparison",
+      "blocks": {
+        "comparison_item_aJ9efR": {
+          "type": "comparison_item",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "comparison_item_aJ9efR"
+      ],
       "name": "KV PDP Comparison",
       "settings": {
         "title": "Real homes, <em>visible results</em>",

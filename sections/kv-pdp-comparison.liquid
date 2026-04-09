@@ -1,4 +1,4 @@
-<section class="kv-section kv-pdp-comp-section">
+<section class="kv-section kv-pdp-comp-section" style="background-color: {{ section.settings.background_color }};">
     <div class="kv-custom-container">
         <div class="kv-pdp-comp-header">
             <h2 class="kv-font-42">{{ section.settings.title }}</h2>
@@ -49,6 +49,12 @@
       "id": "others_title",
       "label": "Others Badge Title",
       "default": "Others"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f5f5f5"
     }
   ],
   "blocks": [
