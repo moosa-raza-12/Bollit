@@ -54,6 +54,7 @@
 
   .header predictive-search {
     position: relative;
+    right: 16px;
   }
 }
 
