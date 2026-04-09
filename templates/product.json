@@ -102,6 +102,14 @@
         "padding_bottom": 28
       }
     },
+    "kv_pdp_features_grid_4n76kn": {
+      "type": "kv-pdp-features-grid",
+      "name": "KV PDP Features Grid",
+      "settings": {
+        "title": "Designed to target <em>stubborn surfaces</em>",
+        "description": "Clears tough dirt at the source, leaving surfaces cleaner, fresher, and visibly renewed."
+      }
+    },
     "kv_pdp_comparison_K3iwhT": {
       "type": "kv-pdp-comparison",
       "blocks": {
@@ -153,6 +161,7 @@
   "order": [
     "main",
     "related-products",
+    "kv_pdp_features_grid_4n76kn",
     "kv_pdp_comparison_K3iwhT"
   ]
 }
