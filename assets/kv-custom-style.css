@@ -477,11 +477,14 @@ span.metafield-single_line_text_field {
     position:relative;
 }
 
-.kv-section-head span:after{
-    content:"";
+.kv-section-head span:after {
+    content: "";
     border-right: 1px solid #FD9308;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 8, 0.14) 33.65%);
-
+    background: linear-gradient(90deg, #ffffff24, #fd930824 33.65%);
+    width: 55%;
+    height: 100%;
+    position: absolute;
+    right: 0;
 }
 
 @media (max-width: 1199.98px) { 
