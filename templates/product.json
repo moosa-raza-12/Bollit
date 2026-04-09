@@ -105,15 +105,44 @@
     "kv_pdp_features_grid_4n76kn": {
       "type": "kv-pdp-features-grid",
       "blocks": {
-        "feature_item_wgfW8m": {
+        "feature_item_tNhnkx": {
           "type": "feature_item",
           "settings": {
-            "image": "shopify://shop_images/featured-image1.png"
+            "image": "shopify://shop_images/featured-image1.png",
+            "feature_title": "4 cleaning modes",
+            "feature_description": "From gentle care to turbo power and steam boost, each mode adapts for controlled, effective cleaning."
+          }
+        },
+        "feature_item_Rcwe7y": {
+          "type": "feature_item",
+          "settings": {
+            "image": "shopify://shop_images/featured-image2.png",
+            "feature_title": "4 cleaning modes",
+            "feature_description": "From gentle care to turbo power and steam boost, each mode adapts for controlled, effective cleaning."
+          }
+        },
+        "feature_item_ziDRat": {
+          "type": "feature_item",
+          "settings": {
+            "image": "shopify://shop_images/featured-image3.png",
+            "feature_title": "4 cleaning modes",
+            "feature_description": "From gentle care to turbo power and steam boost, each mode adapts for controlled, effective cleaning."
+          }
+        },
+        "feature_item_U7fMNf": {
+          "type": "feature_item",
+          "settings": {
+            "image": "shopify://shop_images/featured-image4.png",
+            "feature_title": "4 cleaning modes",
+            "feature_description": "From gentle care to turbo power and steam boost, each mode adapts for controlled, effective cleaning."
           }
         }
       },
       "block_order": [
-        "feature_item_wgfW8m"
+        "feature_item_tNhnkx",
+        "feature_item_Rcwe7y",
+        "feature_item_ziDRat",
+        "feature_item_U7fMNf"
       ],
       "name": "KV PDP Features Grid",
       "settings": {
