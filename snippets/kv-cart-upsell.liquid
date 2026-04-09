@@ -26,15 +26,16 @@
                                     <a href="{{ upsell_product.url }}" class="kv-cart-upsell-item__title">
                                         {{ upsell_product.title | escape }}
                                     </a>
-                                    <div class="kv-cart-upsell-item__price">
-                                        {{ upsell_product.price | money }}
-                                    </div>
                                     {% assign upsell_description = upsell_product.metafields.custom.cart_line_item_description %}
                                     {% if upsell_description != blank %}
                                         <div class="kv-cart-upsell-item__description">
                                             {{ upsell_description | metafield_tag }}
                                         </div>
                                     {% endif %}
+                                    <div class="kv-cart-upsell-item__price">
+                                        {{ upsell_product.price | money }}
+                                    </div>
+                                  
                                 </div>
                             </div>
                         </div>
