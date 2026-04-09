@@ -356,6 +356,33 @@ span.metafield-single_line_text_field {
     border: none;
     box-shadow: none;
 }
+.cart-drawer .cart-drawer .price {
+    color: #1F1F1F;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+.cart-drawer button.quantity__button {
+    border-radius: 8px;
+    border: 1.25px solid #E8ECEF;
+    background: #FFF;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-drawer .quantity__input {
+    color: #1F1F1F;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
 
 
 @media (max-width: 767px) {
