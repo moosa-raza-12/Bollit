@@ -12,18 +12,7 @@
         </div>
 
 
-      <div class="lp-view-all__header">
-        {% if section.settings.subtitle != blank %}
-          <div class="lp-view-all__subtitle-pill">
-            <span class="lp-view-all__subtitle">{{ section.settings.subtitle }}</span>
-          </div>
-        {% endif %}
-        {% if section.settings.title != blank %}
-          <h2 class="lp-view-all__title">{{ section.settings.title }}
-            <span class="lp-view-all__special-text">{{ section.settings.special_text }}</span>
-          </h2>
-        {% endif %}
-      </div>
+
       {% if section.settings.button_text != blank %}
         <a href="{{ section.settings.button_link }}" class="lp-view-all__btn lp-view-all__btn--desktop">
           {{ section.settings.button_text }}
