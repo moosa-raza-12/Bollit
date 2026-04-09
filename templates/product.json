@@ -104,6 +104,18 @@
     },
     "kv_pdp_features_grid_4n76kn": {
       "type": "kv-pdp-features-grid",
+      "blocks": {
+        "feature_item_wgfW8m": {
+          "type": "feature_item",
+          "settings": {
+            "title": "4 cleaning modes",
+            "description": "From gentle care to turbo power and steam boost, each mode adapts for controlled, effective cleaning."
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_wgfW8m"
+      ],
       "name": "KV PDP Features Grid",
       "settings": {
         "title": "Designed to target <em>stubborn surfaces</em>",
