@@ -257,6 +257,19 @@ a.kv-blue-btn:hover {
 .drawer__inner-empty {
     padding: 0;
 }
+.kv-empty-cart-head h3 {
+    color: #1F1F1F;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+}
+
+
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
