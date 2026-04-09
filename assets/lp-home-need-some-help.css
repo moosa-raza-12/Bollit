@@ -183,7 +183,7 @@ letter-spacing: -0.24px;
   font-size: 18px;
   font-weight: 500;
   color: var(--lp-text-color);
-  line-height: 150%;
+  line-height: 27px;
   letter-spacing: 0px;
   align-items: start;
 }
