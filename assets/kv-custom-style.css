@@ -287,6 +287,9 @@ span.empty-cart-bubble {
 }
 .kv-empty-cart-head {
     padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .kv-empty-cart-head  button.drawer__close {
@@ -300,6 +303,7 @@ span.empty-cart-bubble {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: initial;
 }
 
 @media (max-width: 767px) {
