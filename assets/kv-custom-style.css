@@ -269,7 +269,22 @@ a.kv-blue-btn:hover {
     margin: 0;
 }
 
-
+span.empty-cart-bubble {
+    border-radius: 100px;
+    background: #003665;
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.21px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 24px;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
