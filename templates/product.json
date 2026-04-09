@@ -197,12 +197,22 @@
         "others_title": "Others",
         "background_color": "#fdfcfc"
       }
+    },
+    "kv_pdp_hightlight_carousel_tCiMk8": {
+      "type": "kv-pdp-hightlight-carousel",
+      "name": "KV PDP Highlight Carousel",
+      "settings": {
+        "title": "Power that adapts <em>to every surface</em>",
+        "description": "From hardwood to tile, Bollit delivers powerful, controlled cleaning wherever life happens.",
+        "background_color": "#fffbf5"
+      }
     }
   },
   "order": [
     "main",
     "related-products",
     "kv_pdp_features_grid_4n76kn",
-    "kv_pdp_comparison_K3iwhT"
+    "kv_pdp_comparison_K3iwhT",
+    "kv_pdp_hightlight_carousel_tCiMk8"
   ]
 }
