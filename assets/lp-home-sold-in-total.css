@@ -428,4 +428,7 @@ details[open] .lp-best-sellers__chevron {
     text-align: left;
     align-items: flex-start;
 }
+.lp-best-sellers__container .kv-section-head span {
+    padding-left: 0;
+}
 }
