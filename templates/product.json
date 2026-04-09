@@ -213,15 +213,15 @@
           "type": "highlight_item",
           "settings": {
             "image": "shopify://shop_images/product-highlight-carousel.png",
-            "title": "Floor",
-            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+            "title": "Furniture",
+            "description": "Removes dirt from upholstery and fabric with controlled power."
           }
         },
         "highlight_item_kkTwqk": {
           "type": "highlight_item",
           "settings": {
             "image": "shopify://shop_images/product-highlight-carousel.png",
-            "title": "Floor",
+            "title": "Curtain",
             "description": "From hardwood to tile, deep cleans without damaging surfaces."
           }
         },
@@ -229,8 +229,8 @@
           "type": "highlight_item",
           "settings": {
             "image": "shopify://shop_images/product-highlight-carousel.png",
-            "title": "Floor",
-            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+            "title": "Vehicle",
+            "description": "Lifts dirt from car seats, mats, and interior fabrics.Lifts dirt from car seats, mats, and interior fabrics."
           }
         },
         "highlight_item_pnEVE3": {
