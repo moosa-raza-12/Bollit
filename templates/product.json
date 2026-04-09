@@ -107,7 +107,8 @@
       "name": "KV PDP Features Grid",
       "settings": {
         "title": "Designed to target <em>stubborn surfaces</em>",
-        "description": "Clears tough dirt at the source, leaving surfaces cleaner, fresher, and visibly renewed."
+        "description": "Clears tough dirt at the source, leaving surfaces cleaner, fresher, and visibly renewed.",
+        "background_color": "#f0f8ff"
       }
     },
     "kv_pdp_comparison_K3iwhT": {
