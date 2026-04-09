@@ -238,6 +238,7 @@ input.kv-cart-search-input:focus{
     line-height: normal;
     text-decoration: none;
     transition: opacity .3s ease;
+    letter-spacing: 0;
 }
 .kv-blue-btn:hover {
     opacity:.9;
