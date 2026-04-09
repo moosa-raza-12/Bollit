@@ -26,6 +26,16 @@
     text-align: center;
 }
 
+.kv-font-18{
+    color: rgba(31, 31, 31, 0.70);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+    text-align: center;
+}
+
 
 .kv-font-38 em,.kv-font-38 i, .kv-font-42 em, .kv-font-42 i{
     font-family: "Source Serif Pro" !important;
