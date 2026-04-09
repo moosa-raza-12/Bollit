@@ -454,10 +454,17 @@ span.metafield-single_line_text_field {
     letter-spacing: 0;
 }
 
-@media (max-width: 991.98px) { 
+@media (max-width: 1199.98px) { 
     .kv-font-42{
         font-size: 38px;
         letter-spacing: -0.48px;
+    }
+ }
+
+
+ @media (max-width: 1199.98px) { 
+    .kv-font-42{
+        font-size: 34px;
     }
  }
 
