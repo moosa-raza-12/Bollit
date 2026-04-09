@@ -6,7 +6,9 @@
       <div class="lp-best-sellers__header-wrapper">
 
         <div class="kv-section-head">
-            <span>{{ section.settings.sub_header }}</span>          
+            {% if section.settings.sub_header != blank %}
+             <span>{{ section.settings.sub_header }}</span> 
+            {% endif %}   
             <h2 class="kv-font-38">{{ section.settings.title }}</h2>
         </div>
 
