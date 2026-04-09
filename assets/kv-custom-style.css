@@ -352,12 +352,11 @@ span.metafield-single_line_text_field {
 .cart-drawer .quantity {
     min-height: auto;
     width: auto;
-}
-.cart-drawer .quantity  quantity-input.quantity.cart-quantity {
     background: none;
     border: none;
     box-shadow: none;
 }
+
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
