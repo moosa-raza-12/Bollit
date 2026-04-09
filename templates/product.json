@@ -119,6 +119,13 @@
             "image_bollit": "shopify://shop_images/bollit-after.png"
           }
         },
+        "comparison_item_eeNYDq": {
+          "type": "comparison_item",
+          "settings": {
+            "image_others": "shopify://shop_images/bollit-before.png",
+            "image_bollit": "shopify://shop_images/bollit-after.png"
+          }
+        },
         "comparison_item_a4x4FT": {
           "type": "comparison_item",
           "settings": {
@@ -130,6 +137,7 @@
       "block_order": [
         "comparison_item_aJ9efR",
         "comparison_item_tdAeeL",
+        "comparison_item_eeNYDq",
         "comparison_item_a4x4FT"
       ],
       "name": "KV PDP Comparison",
