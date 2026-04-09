@@ -125,6 +125,11 @@
     "cart_type": "drawer",
     "show_vendor": false,
     "show_cart_note": false,
+    "cart_product_upsell": [
+      "handheld-steamer",
+      "steam-cleaner",
+      "steam-scrubber"
+    ],
     "cart_collection_image_1": "shopify://shop_images/collection-img-0.png",
     "cart_collection_heading_1": "Tapijtreinigers",
     "cart_collection_1": "#",
