@@ -368,7 +368,7 @@ span.metafield-single_line_text_field {
     border: none;
     box-shadow: none;
 }
-.cart-drawer .cart-drawer .price {
+.cart-drawer  .price {
     color: #1F1F1F;
     font-size: 16px;
     font-style: normal;
@@ -376,7 +376,20 @@ span.metafield-single_line_text_field {
     line-height: normal;
     letter-spacing: 0;
 }
-
+.cart-drawer .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+.cart-drawer .cart-item__media {
+    border-radius: 7.934px;
+    background: #F8F8F6;
+    width: 96px;
+    height: 96px;
+    overflow: hidden;
+    padding: 8px;
+}
 .cart-drawer button.quantity__button {
     border-radius: 8px;
     border: 1.25px solid #E8ECEF;
