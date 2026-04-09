@@ -253,6 +253,7 @@ a.kv-blue-btn:hover {
 .cart-drawer .drawer__inner.gradient {
     max-width: 430px;
     width: 100%;
+    padding: 0;
 }
 .drawer__inner-empty {
     padding: 0;
