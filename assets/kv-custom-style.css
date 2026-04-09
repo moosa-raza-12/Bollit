@@ -469,12 +469,13 @@ span.metafield-single_line_text_field {
     text-align: center;
     font-size: 18px;
     font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.27px;
-     font-family: "Source Serif 4", serif !important;
+    line-height: 22px;
+    letter-spacing: -.27px;
+    font-family: "Source Serif 4", serif !important;
     font-style: italic;
-    padding: 0px 10px;
-    position:relative;
+    padding: 0 10px;
+    position: relative;
+    display: inline-block;
 }
 
 .kv-section-head span:after {
