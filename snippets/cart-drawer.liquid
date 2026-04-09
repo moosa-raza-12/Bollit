@@ -34,6 +34,19 @@
 
               <div class="kv-empty-cart">
                 <div class="kv-empty-cart-top">
+                  <div class="kv-empty-cart-head">
+                    <h3> Your cart <span class="empty-cart-bubble">0</span></h3>
+                     <button
+                      class="drawer__close"
+                      type="button"
+                      onclick="this.closest('cart-drawer').close()"
+                      aria-label="{{ 'accessibility.close' | t }}"
+                    >
+                      <span class="svg-wrapper">
+                        {{- 'icon-close.svg' | inline_asset_content -}}
+                      </span>
+              </button>
+                  </div>
                    
                       {% if settings.empty_cart_heading != blank  %}
                         <h4>{{ settings.empty_cart_heading }}</h4>
@@ -282,16 +295,7 @@
                     </div>
               </div>
               
-              <button
-                class="drawer__close"
-                type="button"
-                onclick="this.closest('cart-drawer').close()"
-                aria-label="{{ 'accessibility.close' | t }}"
-              >
-                <span class="svg-wrapper">
-                  {{- 'icon-close.svg' | inline_asset_content -}}
-                </span>
-              </button>
+             
               <a href="{{ routes.all_products_collection_url }}" class="button">
                 {{ 'general.continue_shopping' | t }}
               </a>
