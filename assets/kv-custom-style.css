@@ -345,7 +345,7 @@ span.metafield-single_line_text_field {
     padding: 0;
     margin: 0;
 }
-.cart-drawer .quantity:before{
+.cart-drawer .quantity:before, .cart-drawer .quantity:after{
 	display:none;
 }
 
