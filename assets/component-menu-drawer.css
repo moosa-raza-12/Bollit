@@ -205,6 +205,9 @@ details[open].menu-opening > .menu-drawer__submenu {
   padding:0px;
   letter-spacing: 0;
 }
+.js .menu-drawer__menu li {
+    margin-bottom: 0;
+}
 .menu-drawer__menu.list-menu > li:not(:last-child) {
   border-bottom: 1px solid rgba(204, 204, 204, 0.4);
 }
