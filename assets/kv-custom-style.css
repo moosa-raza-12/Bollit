@@ -433,6 +433,9 @@ span.metafield-single_line_text_field {
     padding: 20px;
     border: none;
 }
+.drawer__footer .kv-cart-footer-small-text {
+    padding-top: 16px;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
