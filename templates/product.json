@@ -106,7 +106,7 @@
       "type": "kv-pdp-comparison",
       "name": "KV PDP Comparison",
       "settings": {
-        "title": "Real homes, visible results",
+        "title": "Real homes, <em>visible results</em>",
         "description": "See how homeowners transform their homes with effortless cleaning, no filters, just results.",
         "others_title": "Others"
       }
