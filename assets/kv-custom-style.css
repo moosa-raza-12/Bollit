@@ -330,7 +330,7 @@ span.empty-cart-bubble {
     justify-content: center;
     position: initial;
 }
-.cart-drawer cart-drawer-items {
+.cart-drawer #CartDrawer-Form {
     background: #fff;
     padding: 24px 20px;
 }
