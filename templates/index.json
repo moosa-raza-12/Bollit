@@ -135,8 +135,7 @@
       ],
       "settings": {
         "subtitle": "Shop by category",
-        "title": "Find what fits",
-        "special_text": "your space",
+        "title": "Find what fits <strong>your space</strong>",
         "button_text": "View All",
         "button_link": ""
       }
