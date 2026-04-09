@@ -460,6 +460,10 @@ span.metafield-single_line_text_field {
     width: 100%;
     text-align: center;
     padding-bottom: 42px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .kv-section-head .kv-font-38 {
     margin: 0;
