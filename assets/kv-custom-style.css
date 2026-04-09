@@ -455,6 +455,28 @@ span.metafield-single_line_text_field {
     margin: 0;
     letter-spacing: 0;
 }
+.kv-section-head {
+    width: 100%;
+    text-align: center;
+}
+.kv-section-head .kv-font-38 {
+    margin: 0;
+}
+
+
+.kv-section-head span {
+    color: #003665;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.27px;
+    font-family: "Source Serif Pro" !important;
+    font-style: italic;
+    border-right: 1px solid #FD9308;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0%, rgba(253, 147, 8, 0.14) 33.65%);
+    padding: 0px 10px;
+}
 
 @media (max-width: 1199.98px) { 
     .kv-font-42{
