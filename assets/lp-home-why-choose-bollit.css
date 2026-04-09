@@ -18,6 +18,9 @@
   border: 1px solid #F3F2F2;
   background: linear-gradient(180deg, rgba(220, 125, 0, 0.12) 19.71%, rgba(169, 167, 164, 0.12) 100%);
 }
+.lp-why-choose .kv-font-38 em {
+    display: block;
+}
 
 .lp-why-choose__header {
   text-align: center;
