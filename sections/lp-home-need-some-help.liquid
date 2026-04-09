@@ -2,23 +2,14 @@
 
 <section class="kv-section lp-help" id="lp-help-{{ section.id }}">
   <div class="kv-custom-container">
-    <header class="lp-help__header">
-      <div class="lp-help__badge-wrapper">
-        <div class="gradient-span">
-          <span class="lp-help__badge">{{ section.settings.subtitle }}</span>
-        </div>
-      {% comment %} <div class="lp-help__badge-divider">
-                                                                          <svg
-                                                                            width="82"
-                                                                            height="21"
-                                                                            viewBox="0 0 82 21"
-                                                                            fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg"><path d="M0 10.5H82" stroke="#003665" /></svg>
-                                                        </div> {% endcomment %}
+    <div class="kv-section-head">
+          {% if section.settings.subtitle != blank %}
+            <span>{{ section.settings.subtitle }}</span> 
+          {% endif %}   
+          <h2 class="kv-font-38">{{ section.settings.title }}</h2>
+           <p class="lp-help__description">{{ section.settings.description }}</p>
       </div>
-      <h2 class="lp-help__title">{{ section.settings.title }}</h2>
-      <p class="lp-help__description">{{ section.settings.description }}</p>
-    </header>
+   
 
     <div class="lp-help__tabs-container">
       {% for block in section.blocks %}
