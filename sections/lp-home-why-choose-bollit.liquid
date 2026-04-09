@@ -3,15 +3,14 @@
 <section class="kv-section lp-why-choose" id="lp-why-choose-{{ section.id }}">
   <div class="kv-custom-container">
    <div class="lp-why-choose__container"> 
-    <header class="lp-why-choose__header">
-      <div class="lp-why-choose__subheading-wrapper">
-        <div class="gradient-span3">
-          <span class="lp-why-choose__subheading">{{ section.settings.subheading }}</span>
-        </div>
-        <div class="lp-why-choose__divider"></div>
+
+     <div class="kv-section-head">
+          {% if section.settings.subheading != blank %}
+            <span>{{ section.settings.subheading }}</span> 
+          {% endif %}   
+          <h2 class="kv-font-38">{{ section.settings.heading }}</h2>
       </div>
-      <h2 class="lp-why-choose__heading">{{ section.settings.heading }}<br><span class="special-words">{{ section.settings.special_heading }}</span></h2>
-    </header>
+  
 
     <div class="lp-why-choose__grid">
       <div class="lp-why-choose__accordion">
@@ -117,15 +116,10 @@
         "label": "Subheading",
         "default": "Why choose Bollit?"
       }, {
-        "type": "textarea",
+        "type": "inline_richtext",
         "id": "heading",
         "label": "Heading",
         "default": "Why Bollit is everyone’s"
-      }, {
-        "type": "textarea",
-        "id": "special_heading",
-        "label": "Special Words",
-        "default": "\ntop choice"
       }
     ],
     "blocks": [
