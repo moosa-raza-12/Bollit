@@ -1,0 +1,73 @@
+<div class="kv-sectipn kv-pdp-comp-section">
+    <div class="kv-custom-container">
+        <div class="kv-pdp-comp-header">
+            <h2 class="kv-font-42">{{ section.settings.title }}</h2>
+            <p class="kv-font-18">{{ section.settings.description }}</p>
+        </div>
+        <div class="kv-pdp-comp-grid">
+            {% for block in section.blocks %}
+                <div class="kv-pdp-comp-grid-item">
+                    <div class="kv-pdp-comp-grid-item-image others">
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                        <span class="kv-pdp-comp-grid-others-badge">{{ section.settings.others_title }}</span>
+                    </div>
+                    <div class="kv-pdp-comp-grid-item-image bollit">
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                        <span class="kv-pdp-comp-grid-bollit-badge">
+                            <img src="{{ section.settings.bollit_icon | img_url: 'master' }}" alt="">
+                        </span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "KV PDP Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Your Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Your section description."
+    },
+    {
+      "type": "image_picker",
+      "id": "bollit_icon",
+      "label": "Bollit Icon"
+    },
+    {
+      "type": "text",
+      "id": "others_title",
+      "label": "Others Badge Title",
+      "default": "Others"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison_item",
+      "name": "Comparison Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Item Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV PDP Comparison"
+    }
+  ]
+}
+{% endschema %}

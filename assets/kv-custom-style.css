@@ -383,6 +383,9 @@ span.metafield-single_line_text_field {
     font-weight: 400;
     line-height: 120%;
 }
+.cart-drawer .quantity__button .svg-wrapper {
+    width: auto;
+}
 
 
 @media (max-width: 767px) {
