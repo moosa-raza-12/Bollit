@@ -1,0 +1,71 @@
+<section class="kv-section kv-pdp-hightlight-carousel-section">
+    <div class="kv-custom-container">
+        <div class="kv-pdp-hightlight-carousel-header">
+            <h2 class="kv-font-42">{{ section.settings.title }}</h2>
+            <p class="kv-font-18">{{ section.settings.description }}</p>
+        </div>
+        <div class="kv-pdp-hightlight-carousel-main">
+            {% for block in section.blocks %}
+                <div class="kv-pdp-hightlight-carousel-item">
+                    <div class="kv-pdp-hightlight-carousel-item-image">
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                    </div>
+                    <div class="kv-pdp-hightlight-carousel-item-content">
+                        <h3 class="kv-pdp-hightlight-carousel-item-title">{{ block.settings.title }}</h3>
+                        <p class="kv-pdp-hightlight-carousel-item-description">{{ block.settings.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "KV PDP Highlight Carousel",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Your Section Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Your section description."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight_item",
+      "name": "Highlight Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Highlight Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Highlight Title",
+          "default": "Highlight Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Highlight Description",
+          "default": "Highlight description."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV PDP Highlight Carousel"
+    }
+  ]
+}
+{% endschema %}
