@@ -286,14 +286,14 @@ span.empty-cart-bubble {
     justify-content: center;
     line-height: 16.8px;
 }
-.kv-empty-cart-head {
+.kv-empty-cart-head, .cart-drawer .drawer__header {
     padding-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.kv-empty-cart-head  button.drawer__close {
+.kv-empty-cart-head  button.drawer__close, .cart-drawer .drawer__header .drawer__close {
     border-radius: 8px;
     border: 1.016px solid #E8ECEF;
     background: #FFF;
