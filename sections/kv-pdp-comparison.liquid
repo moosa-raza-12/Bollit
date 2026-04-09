@@ -8,11 +8,11 @@
             {% for block in section.blocks %}
                 <div class="kv-pdp-comp-grid-item">
                     <div class="kv-pdp-comp-grid-item-image others">
-                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                        <img src="{{ block.settings.image_others | img_url: 'master' }}" alt="">
                         <span class="kv-pdp-comp-grid-others-badge">{{ section.settings.others_title }}</span>
                     </div>
                     <div class="kv-pdp-comp-grid-item-image bollit">
-                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                        <img src="{{ block.settings.image_bollit | img_url: 'master' }}" alt="">
                         <span class="kv-pdp-comp-grid-bollit-badge">
                             <img src="{{ section.settings.bollit_icon | img_url: 'master' }}" alt="">
                         </span>
@@ -58,7 +58,12 @@
       "settings": [
         {
           "type": "image_picker",
-          "id": "image",
+          "id": "image_others",
+          "label": "Item Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_bollit",
           "label": "Item Image"
         }
       ]
