@@ -329,6 +329,18 @@ span.empty-cart-bubble {
     line-height: 120%;
     letter-spacing: 0;
 }
+span.metafield-single_line_text_field {
+    color: rgba(31, 31, 31, 0.80);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+.kv-line-item-description {
+    margin-top: 0;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
