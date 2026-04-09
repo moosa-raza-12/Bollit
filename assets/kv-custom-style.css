@@ -330,4 +330,8 @@ span.empty-cart-bubble {
         padding-left: 16px;
         padding-right: 16px;
     }
+    .kv-font-42{
+        font-size: 32px;
+        letter-spacing: -0.48px;
+    }
 }
