@@ -221,7 +221,7 @@ input.kv-cart-search-input:focus{
     gap: 16px;
 }
 
-a.kv-blue-btn {
+.kv-blue-btn {
     border-radius: 100px;
     background: #003665;
     display: flex;
@@ -239,7 +239,7 @@ a.kv-blue-btn {
     text-decoration: none;
     transition: opacity .3s ease;
 }
-a.kv-blue-btn:hover {
+.kv-blue-btn:hover {
     opacity:.9;
 }
 
@@ -428,7 +428,10 @@ span.metafield-single_line_text_field {
 .cart-drawer .cart-item__quantity {
     padding-top: 12px !important;
 }
-
+.cart-drawer .drawer__footer {
+    padding: 20px;
+    border: none;
+}
 
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
