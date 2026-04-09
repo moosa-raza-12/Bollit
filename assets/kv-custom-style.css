@@ -436,12 +436,21 @@ span.metafield-single_line_text_field {
 .drawer__footer .kv-cart-footer-small-text {
     padding-top: 16px;
 }
-.cart-drawer .totals__total-value {
+.cart-drawer__footer .totals__total-value {
     color: #1F1F1F;
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    letter-spacing: 0;
+}
+.cart-drawer__footer h2.totals__total {
+    color: #808080;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin: 0;
     letter-spacing: 0;
 }
 
