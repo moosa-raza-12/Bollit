@@ -130,17 +130,17 @@
 .lp-best-sellers__nav-btn:hover {
   transform: scale(1.1);
 }
-
-@media (min-width: 768px) {
-  .lp-best-sellers {
-  }
-
   .lp-best-sellers__nav {
     display: flex;
     position: absolute;
     right: 0px;
     bottom: 42px;
   }
+@media (min-width: 768px) {
+  .lp-best-sellers {
+  }
+
+
   .lp-best-sellers__nav-btn {
     width: 40px;
     height: 40px;
