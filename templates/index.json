@@ -135,7 +135,7 @@
       ],
       "settings": {
         "subtitle": "Shop by category",
-        "title": "Find what fits <em>your space</em>",
+        "Heading": "Find what fits",
         "button_text": "View All",
         "button_link": ""
       }
@@ -281,8 +281,8 @@
         "product_FHf68K"
       ],
       "settings": {
-        "title": "Best sellers",
         "sub_header": "5,000+ sold in total",
+        "title": "Best sellers",
         "discount_badge_text": "Sale"
       }
     },
@@ -418,8 +418,7 @@
       ],
       "settings": {
         "reviews_text": "4.5/5 (1,450+ Reviews)",
-        "title": "Join 2,000+",
-        "title_highlight": "happier homes"
+        "title": "Join 2,000+ <em>happier homes</em>"
       }
     },
     "lp-home-need-some-help": {
