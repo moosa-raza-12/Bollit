@@ -51,23 +51,65 @@
 </div>
 
 <script>
-const swiper = new Swiper(".kv-cart-upsell-slider", {
-  slidesPerView: 1.5,
-  spaceBetween: 12,
-  loop: false,
+(function () {
+  function initCartUpsellSwiper(root) {
+    if (typeof Swiper === "undefined") return;
 
-  pagination: {
-    el: ".swiper-pagination",
-    type: "progressbar",
-  },
+    var scope = root || document;
+    var sliders = scope.querySelectorAll(".kv-cart-upsell-slider");
+    if (!sliders.length) return;
 
-  breakpoints: {
-    768: {
-      slidesPerView: 1.5
-    },
-    1024: {
-      slidesPerView: 1.5
-    }
+    sliders.forEach(function (sliderEl) {
+      if (sliderEl.classList.contains("swiper-initialized")) return;
+
+      var container = sliderEl.closest(".kv-cart-upsell");
+      var paginationEl = container ? container.querySelector(".swiper-pagination") : null;
+
+      new Swiper(sliderEl, {
+        slidesPerView: 1.5,
+        spaceBetween: 12,
+        loop: false,
+        pagination: {
+          el: paginationEl,
+          type: "progressbar",
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 1.5,
+          },
+          1024: {
+            slidesPerView: 1.5,
+          },
+        },
+      });
+    });
   }
-});
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      initCartUpsellSwiper(document);
+    });
+  } else {
+    initCartUpsellSwiper(document);
+  }
+
+  var cartDrawer = document.querySelector("cart-drawer");
+  if (cartDrawer && !cartDrawer.dataset.kvUpsellObserverAttached) {
+    cartDrawer.dataset.kvUpsellObserverAttached = "true";
+
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (!mutation.addedNodes || !mutation.addedNodes.length) return;
+        mutation.addedNodes.forEach(function (node) {
+          if (!(node instanceof Element)) return;
+          if (node.matches(".kv-cart-upsell") || node.querySelector(".kv-cart-upsell")) {
+            initCartUpsellSwiper(node);
+          }
+        });
+      });
+    });
+
+    observer.observe(cartDrawer, { childList: true, subtree: true });
+  }
+})();
 </script>
