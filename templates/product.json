@@ -111,15 +111,32 @@
             "image_others": "shopify://shop_images/bollit-before.png",
             "image_bollit": "shopify://shop_images/bollit-after.png"
           }
+        },
+        "comparison_item_tdAeeL": {
+          "type": "comparison_item",
+          "settings": {
+            "image_others": "shopify://shop_images/bollit-before.png",
+            "image_bollit": "shopify://shop_images/bollit-after.png"
+          }
+        },
+        "comparison_item_a4x4FT": {
+          "type": "comparison_item",
+          "settings": {
+            "image_others": "shopify://shop_images/bollit-before.png",
+            "image_bollit": "shopify://shop_images/bollit-after.png"
+          }
         }
       },
       "block_order": [
-        "comparison_item_aJ9efR"
+        "comparison_item_aJ9efR",
+        "comparison_item_tdAeeL",
+        "comparison_item_a4x4FT"
       ],
       "name": "KV PDP Comparison",
       "settings": {
         "title": "Real homes, <em>visible results</em>",
         "description": "See how homeowners transform their homes with effortless cleaning, no filters, just results.",
+        "bollit_icon": "shopify://shop_images/bollit-after-logo.svg",
         "others_title": "Others",
         "background_color": "#fdfcfc"
       }
