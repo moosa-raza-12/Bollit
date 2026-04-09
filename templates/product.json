@@ -200,6 +200,55 @@
     },
     "kv_pdp_hightlight_carousel_tCiMk8": {
       "type": "kv-pdp-hightlight-carousel",
+      "blocks": {
+        "highlight_item_xgnxDc": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/product-highlight-carousel.png",
+            "title": "Floor",
+            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+          }
+        },
+        "highlight_item_KBjRCU": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/product-highlight-carousel.png",
+            "title": "Floor",
+            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+          }
+        },
+        "highlight_item_kkTwqk": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/product-highlight-carousel.png",
+            "title": "Floor",
+            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+          }
+        },
+        "highlight_item_RC9Ri6": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/product-highlight-carousel.png",
+            "title": "Floor",
+            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+          }
+        },
+        "highlight_item_pnEVE3": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/product-highlight-carousel.png",
+            "title": "Floor",
+            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+          }
+        }
+      },
+      "block_order": [
+        "highlight_item_xgnxDc",
+        "highlight_item_KBjRCU",
+        "highlight_item_kkTwqk",
+        "highlight_item_RC9Ri6",
+        "highlight_item_pnEVE3"
+      ],
       "name": "KV PDP Highlight Carousel",
       "settings": {
         "title": "Power that adapts <em>to every surface</em>",
