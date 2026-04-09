@@ -1,24 +1,74 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <section class="kv-section kv-pdp-hightlight-carousel-section" style="background-color: {{ section.settings.background_color }};">
     <div class="kv-custom-container">
         <div class="kv-pdp-hightlight-carousel-header">
             <h2 class="kv-font-42">{{ section.settings.title }}</h2>
             <p class="kv-font-18">{{ section.settings.description }}</p>
         </div>
-        <div class="kv-pdp-hightlight-carousel-main">
-            {% for block in section.blocks %}
-                <div class="kv-pdp-hightlight-carousel-item">
-                    <div class="kv-pdp-hightlight-carousel-item-image">
-                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+        <div class="swiper kv-pdp-hightlight-carousel-swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    <div class="swiper-slide">
+                        <div class="kv-pdp-hightlight-carousel-item">
+                            <div class="kv-pdp-hightlight-carousel-item-image">
+                                <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
+                            </div>
+                            <div class="kv-pdp-hightlight-carousel-item-content">
+                                <h3 class="kv-pdp-hightlight-carousel-item-title">{{ block.settings.title }}</h3>
+                                <p class="kv-pdp-hightlight-carousel-item-description">{{ block.settings.description }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="kv-pdp-hightlight-carousel-item-content">
-                        <h3 class="kv-pdp-hightlight-carousel-item-title">{{ block.settings.title }}</h3>
-                        <p class="kv-pdp-hightlight-carousel-item-description">{{ block.settings.description }}</p>
-                    </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
+            <div class="kv-pdp-hightlight-carousel-progressbar-wrap">
+                <div class="swiper-pagination kv-pdp-hightlight-carousel-progressbar"></div>
+            </div>
         </div>
     </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('.kv-pdp-hightlight-carousel-swiper', {
+            slidesPerView: 3,
+            spaceBetween: 16,
+            grabCursor: true,
+            pagination: {
+                el: '.kv-pdp-hightlight-carousel-progressbar',
+                type: 'progressbar',
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                    spaceBetween: 12,
+                },
+                380: {
+                    slidesPerView: 1.15,
+                    spaceBetween: 12,
+                },
+                479: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 12,
+                },
+                639: {
+                    slidesPerView: 2,
+                    spaceBetween: 12,
+                },
+                768: {
+                    slidesPerView: 2.5,
+                    spaceBetween: 16,
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 16,
+                },
+            },
+        });
+    });
+</script>
 
 {% schema %}
 {
@@ -78,14 +128,12 @@
 
 
 <style>
-.kv-pdp-hightlight-carousel-header {
-    padding: 0 0 64px 0;
+.kv-pdp-hightlight-carousel-swiper {
+    overflow: hidden;
 }
 
-.kv-pdp-hightlight-carousel-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+.kv-pdp-hightlight-carousel-header {
+    padding: 0 0 64px 0;
 }
 
 .kv-pdp-hightlight-carousel-item {
@@ -98,6 +146,7 @@
 
 .kv-pdp-hightlight-carousel-item-image {
     display: flex;
+    height: 100%;
 }
 
 .kv-pdp-hightlight-carousel-item-image img {
@@ -105,6 +154,7 @@
     width: 100%;
     max-width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .kv-pdp-hightlight-carousel-item-content {
@@ -137,4 +187,43 @@
     margin: 0;
 }
 
+.kv-pdp-hightlight-carousel-progressbar-wrap {
+    margin-top: 64px;
+    position: relative;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(204, 204, 204, 0.40);
+}
+
+.kv-pdp-hightlight-carousel-progressbar-wrap .swiper-pagination-progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.kv-pdp-hightlight-carousel-progressbar-wrap .swiper-pagination-progressbar-fill {
+    border-radius: 16px;
+    background: #003665;
+}
+
+@media (max-width: 991.98px) {
+    .swiper.kv-pdp-hightlight-carousel-swiper {
+        margin: 0 -20px;
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .kv-pdp-hightlight-carousel-header {
+        padding: 0 0 36px 0;
+    }
+
+    .kv-pdp-hightlight-carousel-progressbar-wrap {
+        margin-top: 36px;
+    }
+}
 </style>
