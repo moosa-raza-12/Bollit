@@ -1,32 +1,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-<section class="kv-section kv-pdp-comp-section" style="background-color: {{ section.settings.background_color }};">
+<section class="kv-section kv-pdp-hightlight-carousel-section" style="background-color: {{ section.settings.background_color }};">
     <div class="kv-custom-container">
-        <div class="kv-pdp-comp-header">
+        <div class="kv-pdp-hightlight-carousel-header">
             <h2 class="kv-font-42">{{ section.settings.title }}</h2>
             <p class="kv-font-18">{{ section.settings.description }}</p>
         </div>
-        <div class="swiper kv-pdp-comp-swiper">
+        <div class="swiper kv-pdp-hightlight-carousel-swiper">
             <div class="swiper-wrapper">
                 {% for block in section.blocks %}
                     <div class="swiper-slide">
-                        <div class="kv-pdp-comp-grid-item">
-                            <div class="kv-pdp-comp-grid-item-image others">
-                                <img src="{{ block.settings.image_others | img_url: 'master' }}" alt="">
-                                <span class="kv-pdp-comp-grid-others-badge">{{ section.settings.others_title }}</span>
+                        <div class="kv-pdp-hightlight-carousel-item">
+                            <div class="kv-pdp-hightlight-carousel-item-image">
+                                <img src="{{ block.settings.image | img_url: 'master' }}" alt="">
                             </div>
-                            <div class="kv-pdp-comp-grid-item-image bollit">
-                                <img src="{{ block.settings.image_bollit | img_url: 'master' }}" alt="">
-                                <span class="kv-pdp-comp-grid-bollit-badge">
-                                    <img src="{{ section.settings.bollit_icon | img_url: '100x100' }}" alt="">
-                                </span>
+                            <div class="kv-pdp-hightlight-carousel-item-content">
+                                <h3 class="kv-pdp-hightlight-carousel-item-title">{{ block.settings.title }}</h3>
+                                <p class="kv-pdp-hightlight-carousel-item-description">{{ block.settings.description }}</p>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
-            <div class="kv-pdp-comp-progressbar-wrap">
-                <div class="swiper-pagination kv-pdp-comp-progressbar"></div>
+            <div class="kv-pdp-hightlight-carousel-progressbar-wrap">
+                <div class="swiper-pagination kv-pdp-hightlight-carousel-progressbar"></div>
             </div>
         </div>
     </div>
@@ -35,13 +32,13 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        new Swiper('.kv-pdp-comp-swiper', {
-            slidesPerView: 1.15,
+        new Swiper('.kv-pdp-hightlight-carousel-swiper', {
+            slidesPerView: 3,
             spaceBetween: 16,
             grabCursor: true,
             loop: true,
             pagination: {
-                el: '.kv-pdp-comp-progressbar',
+                el: '.kv-pdp-hightlight-carousel-progressbar',
                 type: 'progressbar',
             },
             breakpoints: {
@@ -50,15 +47,15 @@
                     spaceBetween: 12,
                 },
                 380: {
-                    slidesPerView: 1.05,
+                    slidesPerView: 1.15,
                     spaceBetween: 12,
                 },
                 479: {
-                    slidesPerView: 1.25,
+                    slidesPerView: 1.5,
                     spaceBetween: 12,
                 },
                 639: {
-                    slidesPerView: 1.5,
+                    slidesPerView: 2,
                     spaceBetween: 12,
                 },
                 768: {
@@ -76,7 +73,7 @@
 
 {% schema %}
 {
-  "name": "KV PDP Comparison",
+  "name": "KV PDP Highlight Carousel",
   "settings": [
     {
       "type": "textarea",
@@ -91,17 +88,6 @@
       "default": "Your section description."
     },
     {
-      "type": "image_picker",
-      "id": "bollit_icon",
-      "label": "Bollit Icon"
-    },
-    {
-      "type": "text",
-      "id": "others_title",
-      "label": "Others Badge Title",
-      "default": "Others"
-    },
-    {
       "type": "color",
       "id": "background_color",
       "label": "Background Color",
@@ -110,25 +96,32 @@
   ],
   "blocks": [
     {
-      "type": "comparison_item",
-      "name": "Comparison Item",
+      "type": "highlight_item",
+      "name": "Highlight Item",
       "settings": [
         {
           "type": "image_picker",
-          "id": "image_others",
-          "label": "Item Image Others"
+          "id": "image",
+          "label": "Highlight Image"
         },
         {
-          "type": "image_picker",
-          "id": "image_bollit",
-          "label": "Item Image Bollit"
+          "type": "text",
+          "id": "title",
+          "label": "Highlight Title",
+          "default": "Highlight Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Highlight Description",
+          "default": "Highlight description."
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "KV PDP Comparison"
+      "name": "KV PDP Highlight Carousel"
     }
   ]
 }
@@ -136,70 +129,70 @@
 
 
 <style>
+.kv-pdp-hightlight-carousel-swiper {
+    overflow: visible;
+}
 
-.kv-pdp-comp-swiper {
+.kv-pdp-hightlight-carousel-section{
     overflow: hidden;
 }
 
-.kv-pdp-comp-header {
+.kv-pdp-hightlight-carousel-header {
     padding: 0 0 64px 0;
 }
 
-.kv-pdp-comp-grid-item {
-    border-radius: 20px;
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 100%;
-}
-
-.kv-pdp-comp-grid-item-image {
+.kv-pdp-hightlight-carousel-item {
     position: relative;
-}
-
-.kv-pdp-comp-grid-item-image.others {
-    display: flex;
-    border-right: 1px solid #E9E9E9;
-}
-
-.kv-pdp-comp-grid-others-badge {
-    position: absolute;
     border-radius: 18px;
-    background: #fff;
-    padding: 4px 15px;
-    color: #808080;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
+    border: 1px solid #FFF;
+    overflow: hidden;
+    aspect-ratio: 1/1;
 }
 
-.kv-pdp-comp-grid-item-image img {
-    width: 100%;
+.kv-pdp-hightlight-carousel-item-image {
+    display: flex;
     height: 100%;
-    display: block;
+}
+
+.kv-pdp-hightlight-carousel-item-image img {
+    display: flex;
+    width: 100%;
     max-width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-.kv-pdp-comp-grid-bollit-badge {
+.kv-pdp-hightlight-carousel-item-content {
     position: absolute;
-    bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 18px;
-    background: #F0F8FF;
-    padding: 7px 16px;
-    max-height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 16px;
+    background: rgba(41, 41, 41, 0.48);
+    backdrop-filter: blur(2px);
+    padding: 8px 12px;
+    z-index: 1;
+    left: 12px;
+    bottom: 12px;
+    right: 12px;
 }
 
-.kv-pdp-comp-progressbar-wrap {
+.kv-pdp-hightlight-carousel-item-title {
+    color: #FFF;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+}
+
+.kv-pdp-hightlight-carousel-item-description {
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.kv-pdp-hightlight-carousel-progressbar-wrap {
     margin-top: 64px;
     position: relative;
     height: 3px;
@@ -208,7 +201,7 @@
     background: rgba(204, 204, 204, 0.40);
 }
 
-.kv-pdp-comp-progressbar-wrap .swiper-pagination-progressbar {
+.kv-pdp-hightlight-carousel-progressbar-wrap .swiper-pagination-progressbar {
     position: absolute;
     top: 0;
     left: 0;
@@ -217,61 +210,25 @@
     background: transparent;
 }
 
-.kv-pdp-comp-progressbar-wrap .swiper-pagination-progressbar-fill {
+.kv-pdp-hightlight-carousel-progressbar-wrap .swiper-pagination-progressbar-fill {
     border-radius: 16px;
     background: #003665;
 }
 
-@media (max-width: 1399.98px) {  }
-
-
-@media (max-width: 1199.98px) {  }
-
-
-@media (max-width: 991.98px) { 
-
-
-.swiper.kv-pdp-comp-swiper {
-    margin: 0 -20px;
-    padding: 0 20px;
+@media (max-width: 991.98px) {
+    .swiper.kv-pdp-hightlight-carousel-swiper {
+        margin: 0 -20px;
+        padding: 0 20px;
+    }
 }
 
+@media (max-width: 767.98px) {
+    .kv-pdp-hightlight-carousel-header {
+        padding: 0 0 36px 0;
+    }
 
- }
-
-
-@media (max-width: 767.98px) { 
-
-    .kv-pdp-comp-header {
-    padding: 0 0 36px 0;
+    .kv-pdp-hightlight-carousel-progressbar-wrap {
+        margin-top: 36px;
+    }
 }
-
-.kv-pdp-comp-progressbar-wrap {
-    margin-top: 36px;
-}
-
-
- }
-
-
-
-@media (max-width: 639px) {
-
-.kv-pdp-comp-header .kv-font-42 {
-    margin: 0 0 12px 0;
-}
-
-  }
-
-
-  @media (max-width: 479px) {
-
-    .kv-pdp-comp-grid-item-image {
-    height: 300px;
-}
-
-  }
-
-
-
 </style>
