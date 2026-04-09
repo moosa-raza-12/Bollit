@@ -149,6 +149,7 @@ input.kv-cart-search-input {
 .kv-cart-search-bar-form input::placeholder,
 .menu-drawer__search input::placeholder {
   color: #808080;
+  opacity: 1;
 }
 
 input.kv-cart-search-input:focus{
