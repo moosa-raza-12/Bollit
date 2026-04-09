@@ -292,7 +292,9 @@ span.empty-cart-bubble {
     align-items: center;
     justify-content: space-between;
 }
-
+.cart-drawer .drawer__header {
+    padding: 20px;
+}
 .kv-empty-cart-head  button.drawer__close, .cart-drawer .drawer__header .drawer__close {
     border-radius: 8px;
     border: 1.016px solid #E8ECEF;
