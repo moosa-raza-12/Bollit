@@ -454,6 +454,13 @@ span.metafield-single_line_text_field {
     letter-spacing: 0;
 }
 
+@media (max-width: 991.98px) { 
+    .kv-font-42{
+        font-size: 38px;
+        letter-spacing: -0.48px;
+    }
+ }
+
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
         padding: 36px 0;
@@ -464,6 +471,6 @@ span.metafield-single_line_text_field {
     }
     .kv-font-42{
         font-size: 32px;
-        letter-spacing: -0.48px;
     }
+    
 }
