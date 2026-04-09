@@ -227,7 +227,7 @@ a.kv-blue-btn:hover {
     flex: 1 1 auto;
     overflow-y: auto;
     background: #fff;
-    padding: 24px;
+    padding: 24px 24px 32px 24px;
 }
 .kv-cart-footer-small-text {
     display: flex;
