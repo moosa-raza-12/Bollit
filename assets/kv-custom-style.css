@@ -526,5 +526,8 @@ span.metafield-single_line_text_field {
         font-size: 28px;
         letter-spacing: -.42px;
     }
+    .kv-section-head {
+        padding-bottom: 36px;
+    }
         
 }
