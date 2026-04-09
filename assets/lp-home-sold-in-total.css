@@ -139,7 +139,7 @@
     display: flex;
     position: absolute;
     right: 0px;
-    bottom: 0;
+    bottom: 42px;
   }
   .lp-best-sellers__nav-btn {
     width: 40px;
