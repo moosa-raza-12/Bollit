@@ -481,5 +481,9 @@ span.metafield-single_line_text_field {
     .kv-font-42{
         font-size: 32px;
     }
+
+    .kv-font-18{
+    font-size: 16px;
+}
     
 }
