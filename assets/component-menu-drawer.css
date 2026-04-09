@@ -198,11 +198,12 @@ details[open].menu-opening > .menu-drawer__submenu {
   margin-bottom: 0.2rem;
 }
 .menu-drawer__menu-item{
-color: rgba(31, 31, 31, 0.70);
-font-size: 16px !important;
-font-weight: 400;
-line-height: normal;
-padding:0px;
+  color: rgba(31, 31, 31, 0.70);
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: normal;
+  padding:0px;
+  letter-spacing: 0;
 }
 .menu-drawer__menu.list-menu > li:not(:last-child) {
   border-bottom: 1px solid rgba(204, 204, 204, 0.4);
