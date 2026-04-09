@@ -240,6 +240,14 @@
             "title": "Floor",
             "description": "From hardwood to tile, deep cleans without damaging surfaces."
           }
+        },
+        "highlight_item_rjYUak": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/product-highlight-carousel.png",
+            "title": "Curtain",
+            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+          }
         }
       },
       "block_order": [
@@ -247,7 +255,8 @@
         "highlight_item_KBjRCU",
         "highlight_item_kkTwqk",
         "highlight_item_RC9Ri6",
-        "highlight_item_pnEVE3"
+        "highlight_item_pnEVE3",
+        "highlight_item_rjYUak"
       ],
       "name": "KV PDP Highlight Carousel",
       "settings": {
