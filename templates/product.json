@@ -107,7 +107,10 @@
       "blocks": {
         "comparison_item_aJ9efR": {
           "type": "comparison_item",
-          "settings": {}
+          "settings": {
+            "image_others": "shopify://shop_images/bollit-before.png",
+            "image_bollit": "shopify://shop_images/bollit-after.png"
+          }
         }
       },
       "block_order": [
