@@ -400,6 +400,13 @@ span.metafield-single_line_text_field {
     align-items: center;
     justify-content: center;
 }
+.cart-drawer .cart-item__totals.right {
+    width: 100px;
+    text-align: right;
+}
+.cart-drawer .cart-item__details {
+    width: calc(100% - 220px);
+}
 
 .cart-drawer .quantity__input {
     color: #1F1F1F;
