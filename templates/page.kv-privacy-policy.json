@@ -28,32 +28,40 @@
     "kv_privacy_policy_aAP8fR": {
       "type": "kv-privacy-policy",
       "blocks": {
-        "section_item_W4zETK": {
-          "type": "section_item",
-          "settings": {
-            "title": "Privacy policy overview",
-            "content": "<p>Describe this policy section here.</p>"
-          }
-        },
         "section_item_6Yjiqc": {
           "type": "section_item",
           "settings": {
-            "title": "Privacy policy overview",
-            "content": "<p>Describe this policy section here.</p>"
+            "title": "Privacy policy <em>overview</em>",
+            "content": "<p>Bollit B.V. cares a lot about your privacy. We therefore only process data that we need for (improving) our services and handle the information we have collected about you and your use of our services with care. We never make your data available to third parties for commercial purposes. <br/>This privacy policy applies to the use of the website and the services provided by Achaté B.V.. The effective date for the validity of these conditions is 21/06/2023, with the publication of a new version the validity of all previous versions expires. This privacy policy describes what data about you is collected by us, what this data is used for and with whom and under what conditions this data may be shared with third parties. <br/>We also explain to you how we store your data and how we protect your data against misuse and what rights you have with regard to the information you provide to us personal data. <br/>If you have any questions about our privacy policy, please contact our privacy contact, you will find the contact details at the end of our privacy policy. </p>"
           }
         },
-        "section_item_46Dg6h": {
+        "section_item_Ae7HMg": {
           "type": "section_item",
           "settings": {
-            "title": "Privacy policy overview",
-            "content": "<p>Describe this policy section here.</p>"
+            "title": "Data <em>processing</em>",
+            "content": "<p>Below you can read how we process your data, where we store it or have it stored, which security techniques we use and for whom the data is transparent. </p>"
+          }
+        },
+        "section_item_AKAmA8": {
+          "type": "section_item",
+          "settings": {
+            "title": "Shopify <em>integration</em>",
+            "content": "<p>Our webshop is developed with software from Shopify. Personal data that you make available to us for the purpose of our services will be shared with this party. Shopify has access to your data to provide us with (technical) support, they will never use your data for any other purpose. <br/>Shopify is obliged to take appropriate security measures on the basis of the agreement we have concluded with them. These security measures consist of the application of SSL encryption and a strong password policy. Shopify is a certified credit card processor. Shopify uses cookies to collect technical information related to your use of the software, no personal data is collected and / or stored.Shopify reserves the right to share collected data within its own group in order to further improve the service.<br/>Shopify takes into account the applicable legal retention periods for ( person ) data. The EU / US Privacy Shield applies, your data may be processed in the United States.</p>"
+          }
+        },
+        "section_item_tf8JrR": {
+          "type": "section_item",
+          "settings": {
+            "title": "Email & mailing <em>listings</em>",
+            "content": "<p>Our website uses Klaviyo, a third party that handles the e-mail traffic from our website and the sending of any newsletters. All confirmation emails you receive from our website and web forms are sent through the servers of Klaviyo.<br/>Klaviyo  will never use your name and email address for your own purposes. At the bottom of every email sent automatically via our website you will see the ‘ unsubscribe ’ link. If you click on this you will no longer receive an email from our website. This can seriously reduce the functionality of our website! Your personal <br/>data is transferred by Klaviyo  stored securely. <br/>Klaviyo uses cookies and other internet technologies that provide insight into whether emails are opened and read. Klaviyo reserves the right to use your data to further improve the service and to share information with third parties in this context. <br/>We use the services of Gmail for our regular business e-mail traffic. This party has taken appropriate technical and organizational measures to prevent misuse, loss and corruption of your and our data as much as possible. Gmail does not have access to our mailbox and we treat all our e-mail traffic confidentially.</p><p></p>"
           }
         }
       },
       "block_order": [
-        "section_item_W4zETK",
         "section_item_6Yjiqc",
-        "section_item_46Dg6h"
+        "section_item_Ae7HMg",
+        "section_item_AKAmA8",
+        "section_item_tf8JrR"
       ],
       "name": "KV Privacy Policy",
       "settings": {
