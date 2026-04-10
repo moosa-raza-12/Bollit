@@ -1,58 +1,60 @@
 
 <section class="kv-privacy" id="kv-privacy-{{ section.id }}">
-  <div class="kv-privacy__container page-width">
-    <aside class="kv-privacy__toc" aria-label="Table of contents">
-      <div class="kv-toc">
-        {% if section.settings.toc_title != blank %}
-          <h3 class="kv-toc__title">{{ section.settings.toc_title }}</h3>
-        {% endif %}
-        <ul class="kv-toc__list">
-          {% for block in section.blocks %}
-            {% if block.type == 'section_item' and block.settings.title != blank %}
-              <li class="kv-toc__item" {{ block.shopify_attributes }}>
-                <a class="kv-toc__link" href="#kv-section-{{ block.id }}">
-                  {{ forloop.index }}. {{ block.settings.title }}
-                </a>
-              </li>
+  <div class="kv-custom-container">
+      <div class="kv-privacy-in">
+        <aside class="kv-privacy__toc" aria-label="Table of contents">
+        <div class="kv-toc">
+            {% if section.settings.toc_title != blank %}
+            <h3 class="kv-toc__title">{{ section.settings.toc_title }}</h3>
             {% endif %}
-          {% endfor %}
-        </ul>
-      </div>
-    </aside>
+            <ul class="kv-toc__list">
+            {% for block in section.blocks %}
+                {% if block.type == 'section_item' and block.settings.title != blank %}
+                <li class="kv-toc__item" {{ block.shopify_attributes }}>
+                    <a class="kv-toc__link" href="#kv-section-{{ block.id }}">
+                    {{ forloop.index }}. {{ block.settings.title }}
+                    </a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+        </aside>
 
-    <div class="kv-privacy__content">
+        <div class="kv-privacy__content">
 
 
 
-      {% for block in section.blocks %}
-        {% if block.type == 'section_item' %}
-          <article class="kv-section-card" id="kv-section-{{ block.id }}" {{ block.shopify_attributes }}>
-            {% if block.settings.title != blank %}
-              <h2 class="kv-section-card__title">{{ forloop.index }}. {{ block.settings.title }}</h2>
+        {% for block in section.blocks %}
+            {% if block.type == 'section_item' %}
+            <article class="kv-section-card" id="kv-section-{{ block.id }}" {{ block.shopify_attributes }}>
+                {% if block.settings.title != blank %}
+                <h2 class="kv-section-card__title">{{ forloop.index }}. {{ block.settings.title }}</h2>
+                {% endif %}
+                {% if block.settings.content_1 != blank %}
+                <div class="kv-section-card__content rte">
+                        {% if block.settings.image_1 %}
+                        <img src="{{ block.settings.image_1 | image_url: width: master }}" alt="">
+                        {% endif %}
+                        {{ block.settings.content_1 }}
+
+                        {% if block.settings.image_2 %}
+                        <img src="{{ block.settings.image_2 | image_url: width: master }}" alt="">
+                        {% endif %}
+
+                        {{ block.settings.content_2 }}
+
+                        {% if block.settings.image_3 %}
+                        <img src="{{ block.settings.image_3 | image_url: width: master }}" alt="">
+                        {% endif %}
+
+                        {{ block.settings.content_3 }}
+                </div>
+                {% endif %}
+            </article>
             {% endif %}
-            {% if block.settings.content_1 != blank %}
-              <div class="kv-section-card__content rte">
-                    {% if block.settings.image_1 %}
-                     <img src="{{ block.settings.image_1 | image_url: width: master }}" alt="">
-                    {% endif %}
-                    {{ block.settings.content_1 }}
-
-                     {% if block.settings.image_2 %}
-                     <img src="{{ block.settings.image_2 | image_url: width: master }}" alt="">
-                    {% endif %}
-
-                    {{ block.settings.content_2 }}
-
-                     {% if block.settings.image_3 %}
-                     <img src="{{ block.settings.image_3 | image_url: width: master }}" alt="">
-                    {% endif %}
-
-                    {{ block.settings.content_3 }}
-              </div>
-            {% endif %}
-          </article>
-        {% endif %}
-      {% endfor %}
+        {% endfor %}
+        </div>
     </div>
   </div>
 </section>
@@ -62,29 +64,31 @@
     padding: 32px 0;
   }
 
-  .kv-privacy__container {
+  .kv-privacy-in {
     display: grid;
-    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
-    gap: 32px;
+    grid-template-columns: minmax(220px, 390px) minmax(0, 1fr);
+    gap: 64px;
     align-items: start;
   }
 
   .kv-privacy__toc {
     position: sticky;
-    top: 24px;
+    top: 64px;
   }
 
   .kv-toc {
-    background: #eef5ff;
-    border-radius: 14px;
-    padding: 18px;
+    background: #F0F8FF;
+    border-radius: 20px;
+    padding: 20px;
   }
 
   .kv-toc__title {
-    margin: 0 0 10px;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    color: #003665;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom:12px;
   }
 
   .kv-toc__list {
@@ -92,14 +96,15 @@
     padding: 0;
     list-style: none;
     display: grid;
-    gap: 8px;
+    gap: 12px;
   }
 
   .kv-toc__link {
-    text-decoration: none;
-    color: inherit;
-    opacity: 0.8;
-    transition: opacity 0.2s ease;
+    color: rgba(31, 31, 31, 0.90);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 
   .kv-toc__link:hover,
@@ -120,25 +125,14 @@
     margin-bottom: 20px;
   }
 
-  .kv-section-card {
-    scroll-margin-top: 90px;
-    background: #f7f7f7;
-    border-radius: 14px;
-    padding: 18px;
-    margin-bottom: 18px;
+  .kv-section-card__content {
+    {% comment %} scroll-margin-top: 90px; {% endcomment %}
+    border-radius: 20px;
+    background: #F8F8F6;
+    padding: 16px 20px;
   }
 
-  .kv-section-card__title {
-    margin: 0 0 12px;
-  }
-
-  .kv-section-card__content > :first-child {
-    margin-top: 0;
-  }
-
-  .kv-section-card__content > :last-child {
-    margin-bottom: 0;
-  }
+  
 
   @media screen and (max-width: 989px) {
     .kv-privacy__container {
