@@ -533,6 +533,11 @@ span.metafield-single_line_text_field {
     }
  }
 
+@media (max-width: 1023.98px) {
+ .kv-font-44 {
+    font-size: 38px;
+ }
+}
 @media (max-width: 767px) {
     section.kv-section, footer.kv-footer{
         padding: 36px 0;
