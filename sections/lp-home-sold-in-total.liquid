@@ -47,6 +47,7 @@
             <div class="swiper-slide lp-best-sellers__slide">
             <div class="lp-best-sellers__card" {{ block.shopify_attributes }}>
               <div class="lp-best-sellers__image-container">
+                <a href="{{ product.url }}" class="lp-best-sellers__image-link">
                 <span class="lp-best-sellers__card-badge">{{ display_badge }}</span>
 
                 <div class="lp-best-sellers__image-inner">
@@ -56,6 +57,7 @@
                     {{ 'product-1' | placeholder_svg_tag: 'lp-best-sellers__placeholder' }}
                   {% endif %}
                 </div>
+              </a>
               </div>
 
               <div class="lp-best-sellers__content">
