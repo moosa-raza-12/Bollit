@@ -1,7 +1,7 @@
 <section class="kv-section kv-default-hero">
     <div class="kv-custom-container">
        <div class="kv-default-hero-in">
-         <h1 class="kv-font-42">{{ section.settings.page_title }}</h1>    
+         <h1 class="kv-font-44">{{ section.settings.page_title }}</h1>    
     </div>  
     </div>
 
@@ -10,6 +10,12 @@
 <style>
 .kv-default-hero{
     background: {{ section.settings.bg_color }};
+}
+
+@media (max-width: 767px) {
+section.kv-section.kv-default-hero {
+    padding: 48px 0px;
+}
 }
 </style>
 {% schema %}
