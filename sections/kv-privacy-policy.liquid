@@ -1,4 +1,4 @@
-{% assign kv_heading_tag = section.settings.heading_tag | default: 'h1' %}
+
 <section class="kv-privacy" id="kv-privacy-{{ section.id }}">
   <div class="kv-privacy__container page-width">
     <aside class="kv-privacy__toc" aria-label="Table of contents">
@@ -21,15 +21,8 @@
     </aside>
 
     <div class="kv-privacy__content">
-      {% if section.settings.page_title != blank %}
-        <{{ kv_heading_tag }} class="kv-privacy__title">{{ section.settings.page_title }}</{{ kv_heading_tag }}>
-      {% endif %}
 
-      {% if section.settings.intro_text != blank %}
-        <div class="kv-privacy__intro rte">
-          {{ section.settings.intro_text }}
-        </div>
-      {% endif %}
+
 
       {% for block in section.blocks %}
         {% if block.type == 'section_item' %}
@@ -195,35 +188,13 @@
   "tag": "section",
   "class": "section",
   "settings": [
-    {
-      "type": "text",
-      "id": "page_title",
-      "label": "Page title",
-      "default": "Privacy policy"
-    },
-    {
-      "type": "select",
-      "id": "heading_tag",
-      "label": "Heading tag",
-      "default": "h1",
-      "options": [
-        { "value": "h1", "label": "H1" },
-        { "value": "h2", "label": "H2" },
-        { "value": "h3", "label": "H3" }
-      ]
-    },
+   
     {
       "type": "text",
       "id": "toc_title",
       "label": "Table of contents title",
       "default": "TABLE OF CONTENT"
     },
-    {
-      "type": "richtext",
-      "id": "intro_text",
-      "label": "Intro text",
-      "default": "<p>Use this section to explain how data is processed and protected.</p>"
-    }
   ],
   "blocks": [
     {
@@ -231,21 +202,19 @@
       "name": "Policy section",
       "settings": [
         {
-          "type": "text",
+          "type": "inline_richtext",
           "id": "title",
-          "label": "Section title",
-          "default": "Privacy policy overview"
+          "label": "Heading",
         },
         {
           "type": "richtext",
           "id": "content",
-          "label": "Section content",
+          "label": "Content",
           "default": "<p>Describe this policy section here.</p>"
         }
       ]
     }
   ],
-  "max_blocks": 20,
   "presets": [
     {
       "name": "KV Privacy Policy",
