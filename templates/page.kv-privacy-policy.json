@@ -16,9 +16,48 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "kv_privacy_policy_aAP8fR": {
+      "type": "kv-privacy-policy",
+      "blocks": {
+        "section_item_W4zETK": {
+          "type": "section_item",
+          "settings": {
+            "title": "Privacy policy overview",
+            "content": "<p>Describe this policy section here.</p>"
+          }
+        },
+        "section_item_6Yjiqc": {
+          "type": "section_item",
+          "settings": {
+            "title": "Privacy policy overview",
+            "content": "<p>Describe this policy section here.</p>"
+          }
+        },
+        "section_item_46Dg6h": {
+          "type": "section_item",
+          "settings": {
+            "title": "Privacy policy overview",
+            "content": "<p>Describe this policy section here.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "section_item_W4zETK",
+        "section_item_6Yjiqc",
+        "section_item_46Dg6h"
+      ],
+      "name": "KV Privacy Policy",
+      "settings": {
+        "page_title": "Privacy policy",
+        "heading_tag": "h1",
+        "toc_title": "TABLE OF CONTENT",
+        "intro_text": "<p>Use this section to explain how data is processed and protected.</p>"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "kv_privacy_policy_aAP8fR"
   ]
 }
