@@ -29,7 +29,7 @@
             {% if block.type == 'section_item' %}
             <article class="kv-section-card" id="kv-section-{{ block.id }}" {{ block.shopify_attributes }}>
                 {% if block.settings.title != blank %}
-                <h2 class="kv-section-card__title">{{ forloop.index }}. {{ block.settings.title }}</h2>
+                <h2 class="kv-section-card__title kv-font-30">{{ forloop.index }}. {{ block.settings.title }}</h2>
                 {% endif %}
                 {% if block.settings.content_1 != blank %}
                 <div class="kv-section-card__content rte">
