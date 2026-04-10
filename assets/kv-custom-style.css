@@ -6,6 +6,17 @@
     width: 100%;
 }
 
+.kv-font-30{
+    color: #1f1f1f;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.45px;
+    display: block;
+}
+
+
 .kv-font-38{
     color: #1f1f1f;
     text-align: center;
@@ -50,7 +61,7 @@
 }
 
 
-.kv-font-38 em,.kv-font-38 i, .kv-font-42 em, .kv-font-42 i, .kv-font-44 em, .kv-font-44 i{
+.kv-font-38 em,.kv-font-38 i, .kv-font-42 em, .kv-font-42 i, .kv-font-44 em, .kv-font-44 i, .kv-font-30 em{
     font-family: "Source Serif Pro" !important;
     font-weight: 400;
     color: #003665;
