@@ -232,6 +232,7 @@
   line-height: 1.5;
   margin: 0;
   letter-spacing: -0.33px;
+  text-decoration: none;
 }
 a.lp-best-sellers__image-link {
     display: flex;
