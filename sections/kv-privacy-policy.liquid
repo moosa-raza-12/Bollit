@@ -30,9 +30,24 @@
             {% if block.settings.title != blank %}
               <h2 class="kv-section-card__title">{{ forloop.index }}. {{ block.settings.title }}</h2>
             {% endif %}
-            {% if block.settings.content != blank %}
+            {% if block.settings.content_1 != blank %}
               <div class="kv-section-card__content rte">
-                {{ block.settings.content }}
+                    {% if block.settings.image_1 %}
+                     <img src="{{ block.settings.image_1 | image_url: width: master }}" alt="">
+                    {% endif %}
+                    {{ block.settings.content_1 }}
+
+                     {% if block.settings.image_2 %}
+                     <img src="{{ block.settings.image_2 | image_url: width: master }}" alt="">
+                    {% endif %}
+
+                    {{ block.settings.content_2 }}
+
+                     {% if block.settings.image_3 %}
+                     <img src="{{ block.settings.image_3 | image_url: width: master }}" alt="">
+                    {% endif %}
+
+                    {{ block.settings.content_3 }}
               </div>
             {% endif %}
           </article>
@@ -207,9 +222,36 @@
           "label": "Heading",
         },
         {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1",
+        },
+        {
           "type": "richtext",
-          "id": "content",
-          "label": "Content",
+          "id": "content_1",
+          "label": "Content 1",
+          "default": "<p>Describe this policy section here.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2",
+        },
+        {
+          "type": "richtext",
+          "id": "content_2",
+          "label": "Content 2",
+          "default": "<p>Describe this policy section here.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 3",
+        },
+        {
+          "type": "richtext",
+          "id": "content_3",
+          "label": "Content 3",
           "default": "<p>Describe this policy section here.</p>"
         }
       ]
