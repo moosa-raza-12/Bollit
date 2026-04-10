@@ -59,7 +59,7 @@
           "type": "section_item",
           "settings": {
             "title": "Email & mailing <em>listings</em>",
-            "image_1": "shopify://shop_images/Email_services_image.png",
+            "image_1": "shopify://shop_images/Klaviyo-logo.png",
             "content_1": "<p>Our website uses Klaviyo, a third party that handles the e-mail traffic from our website and the sending of any newsletters. All confirmation emails you receive from our website and web forms are sent through the servers of Klaviyo.<br/>Klaviyo  will never use your name and email address for your own purposes. At the bottom of every email sent automatically via our website you will see the ‘ unsubscribe ’ link. If you click on this you will no longer receive an email from our website. This can seriously reduce the functionality of our website! Your personal<br/>data is transferred by Klaviyo  stored securely. <br/>Klaviyo uses cookies and other internet technologies that provide insight into whether emails are opened and read. Klaviyo reserves the right to use your data to further improve the service and to share information with third parties in this context. </p>",
             "image_2": "shopify://shop_images/Email_services_image-1.png",
             "content_2": "<p>We use the services of Gmail for our regular business e-mail traffic. This party has taken appropriate technical and organizational measures to prevent misuse, loss and corruption of your and our data as much as possible. Gmail does not have access to our mailbox and we treat all our e-mail traffic confidentially.</p>",
