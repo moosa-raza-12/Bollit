@@ -57,10 +57,7 @@
       ],
       "name": "KV Privacy Policy",
       "settings": {
-        "page_title": "Privacy policy",
-        "heading_tag": "h1",
-        "toc_title": "TABLE OF CONTENT",
-        "intro_text": "<p>Use this section to explain how data is processed and protected.</p>"
+        "toc_title": "TABLE OF CONTENT"
       }
     }
   },
