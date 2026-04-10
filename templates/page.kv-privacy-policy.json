@@ -17,6 +17,14 @@
         "padding_bottom": 28
       }
     },
+    "kv_default_hero_banner_V9yXYb": {
+      "type": "kv-default-hero-banner",
+      "name": "KV Default Hero",
+      "settings": {
+        "page_title": "{{ page.title }}",
+        "bg_color": "#dbe9f0"
+      }
+    },
     "kv_privacy_policy_aAP8fR": {
       "type": "kv-privacy-policy",
       "blocks": {
@@ -58,6 +66,7 @@
   },
   "order": [
     "main",
+    "kv_default_hero_banner_V9yXYb",
     "kv_privacy_policy_aAP8fR"
   ]
 }
