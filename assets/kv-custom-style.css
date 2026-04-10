@@ -551,6 +551,10 @@ span.metafield-single_line_text_field {
     div#menu-drawer {
         background: #f2f2f2;
     }
+    .kv-font-44 {
+        letter-spacing: -0.51px;
+        font-size: 34px;
+    }
         
 }
 
