@@ -1,0 +1,260 @@
+{% assign kv_heading_tag = section.settings.heading_tag | default: 'h1' %}
+<section class="kv-privacy" id="kv-privacy-{{ section.id }}">
+  <div class="kv-privacy__container page-width">
+    <aside class="kv-privacy__toc" aria-label="Table of contents">
+      <div class="kv-toc">
+        {% if section.settings.toc_title != blank %}
+          <h3 class="kv-toc__title">{{ section.settings.toc_title }}</h3>
+        {% endif %}
+        <ul class="kv-toc__list">
+          {% for block in section.blocks %}
+            {% if block.type == 'section_item' and block.settings.title != blank %}
+              <li class="kv-toc__item" {{ block.shopify_attributes }}>
+                <a class="kv-toc__link" href="#kv-section-{{ block.id }}">
+                  {{ forloop.index }}. {{ block.settings.title }}
+                </a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </aside>
+
+    <div class="kv-privacy__content">
+      {% if section.settings.page_title != blank %}
+        <{{ kv_heading_tag }} class="kv-privacy__title">{{ section.settings.page_title }}</{{ kv_heading_tag }}>
+      {% endif %}
+
+      {% if section.settings.intro_text != blank %}
+        <div class="kv-privacy__intro rte">
+          {{ section.settings.intro_text }}
+        </div>
+      {% endif %}
+
+      {% for block in section.blocks %}
+        {% if block.type == 'section_item' %}
+          <article class="kv-section-card" id="kv-section-{{ block.id }}" {{ block.shopify_attributes }}>
+            {% if block.settings.title != blank %}
+              <h2 class="kv-section-card__title">{{ forloop.index }}. {{ block.settings.title }}</h2>
+            {% endif %}
+            {% if block.settings.content != blank %}
+              <div class="kv-section-card__content rte">
+                {{ block.settings.content }}
+              </div>
+            {% endif %}
+          </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .kv-privacy {
+    padding: 32px 0;
+  }
+
+  .kv-privacy__container {
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .kv-privacy__toc {
+    position: sticky;
+    top: 24px;
+  }
+
+  .kv-toc {
+    background: #eef5ff;
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  .kv-toc__title {
+    margin: 0 0 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .kv-toc__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 8px;
+  }
+
+  .kv-toc__link {
+    text-decoration: none;
+    color: inherit;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+  }
+
+  .kv-toc__link:hover,
+  .kv-toc__link:focus-visible,
+  .kv-toc__link.is-active {
+    opacity: 1;
+  }
+
+  .kv-privacy__content {
+    min-width: 0;
+  }
+
+  .kv-privacy__title {
+    margin: 0 0 18px;
+  }
+
+  .kv-privacy__intro {
+    margin-bottom: 20px;
+  }
+
+  .kv-section-card {
+    scroll-margin-top: 90px;
+    background: #f7f7f7;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 18px;
+  }
+
+  .kv-section-card__title {
+    margin: 0 0 12px;
+  }
+
+  .kv-section-card__content > :first-child {
+    margin-top: 0;
+  }
+
+  .kv-section-card__content > :last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .kv-privacy__container {
+      grid-template-columns: 1fr;
+    }
+
+    .kv-privacy__toc {
+      position: static;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const sectionRoot = document.getElementById('kv-privacy-{{ section.id }}');
+    if (!sectionRoot) return;
+
+    const links = Array.from(sectionRoot.querySelectorAll('.kv-toc__link'));
+    if (!links.length) return;
+
+    links.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        const hash = link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') return;
+
+        const target = sectionRoot.querySelector(hash);
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', hash);
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          const activeId = '#' + entry.target.id;
+          links.forEach(function(link) {
+            link.classList.toggle('is-active', link.getAttribute('href') === activeId);
+          });
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-35% 0px -55% 0px',
+        threshold: 0
+      }
+    );
+
+    links.forEach(function(link) {
+      const target = sectionRoot.querySelector(link.getAttribute('href'));
+      if (target) observer.observe(target);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KV Privacy Policy",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Page title",
+      "default": "Privacy policy"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "default": "h1",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "toc_title",
+      "label": "Table of contents title",
+      "default": "TABLE OF CONTENT"
+    },
+    {
+      "type": "richtext",
+      "id": "intro_text",
+      "label": "Intro text",
+      "default": "<p>Use this section to explain how data is processed and protected.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "section_item",
+      "name": "Policy section",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section title",
+          "default": "Privacy policy overview"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Section content",
+          "default": "<p>Describe this policy section here.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "KV Privacy Policy",
+      "blocks": [
+        { "type": "section_item" },
+        { "type": "section_item" },
+        { "type": "section_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
