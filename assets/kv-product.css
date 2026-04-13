@@ -392,9 +392,21 @@ body .kv-main-product  .product.grid {
   margin-bottom: 0;
 }
 
+.kv-tabs__scroll-btn.kv-tabs__scroll-btn--left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 9;
+}
 
-
-
+.kv-tabs__scroll-btn.kv-tabs__scroll-btn--right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 9;
+}
 
 
 
