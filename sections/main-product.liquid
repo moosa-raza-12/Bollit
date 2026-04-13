@@ -1132,6 +1132,44 @@
             nav.scrollBy({ left: 150, behavior: 'smooth' });
           });
         }
+
+        if (nav) {
+          var isDown = false;
+          var startX, scrollLeft;
+
+          nav.addEventListener('mousedown', function (e) {
+            isDown = true;
+            nav.style.cursor = 'grabbing';
+            nav.style.scrollSnapType = 'none';
+            startX = e.pageX - nav.offsetLeft;
+            scrollLeft = nav.scrollLeft;
+            e.preventDefault();
+          });
+
+          nav.addEventListener('mouseleave', function () {
+            if (!isDown) return;
+            isDown = false;
+            nav.style.cursor = 'grab';
+            nav.style.scrollSnapType = 'x mandatory';
+          });
+
+          nav.addEventListener('mouseup', function () {
+            if (!isDown) return;
+            isDown = false;
+            nav.style.cursor = 'grab';
+            nav.style.scrollSnapType = 'x mandatory';
+          });
+
+          nav.addEventListener('mousemove', function (e) {
+            if (!isDown) return;
+            e.preventDefault();
+            var x = e.pageX - nav.offsetLeft;
+            var walk = (x - startX) * 1.5;
+            nav.scrollLeft = scrollLeft - walk;
+          });
+
+          nav.style.cursor = 'grab';
+        }
       }
     });
   </script>
