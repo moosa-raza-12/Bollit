@@ -29,8 +29,17 @@
       "type": "kv-default-heading-with-content",
       "name": "KV Heading With Content",
       "settings": {
+        "bg_color": "#ffffff",
+        "heading": "About <em>Shipping </em>",
+        "content": "<p>Bollit Express orders are shipped with <strong>POSTNL, DHL or FedEX</strong> couriers.<br/><br/>A tracking number from Bollit is sent from our warehouse via email 24 hours after the order has been processed.</p>"
+      }
+    },
+    "kv_default_heading_with_content_YrNb6H": {
+      "type": "kv-default-heading-with-content",
+      "name": "KV Heading With Content",
+      "settings": {
         "bg_color": "#F0F8FF",
-        "heading": "",
+        "heading": "Shipping <em>time</em>",
         "content": ""
       }
     }
@@ -38,6 +47,7 @@
   "order": [
     "main",
     "kv_default_hero_banner_V9yXYb",
-    "kv_default_heading_with_content_UFeUQF"
+    "kv_default_heading_with_content_UFeUQF",
+    "kv_default_heading_with_content_YrNb6H"
   ]
 }
