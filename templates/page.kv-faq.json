@@ -28,99 +28,55 @@
     "kv_faq_tab_JFwWFk": {
       "type": "kv-faq-tab",
       "blocks": {
-        "about_PrxnKp": {
-          "type": "about",
+        "faq_tab_zNXehD": {
+          "type": "faq_tab",
           "settings": {
-            "question": "What is Bollit?",
-            "answer": "<p>Bollit creates modern cleaning tools designed for real life—simple to use, easy to store, and built to last.</p>"
+            "target": "about",
+            "custom_handle": "",
+            "label": "About Bollit",
+            "heading": "",
+            "heading_accent": ""
           }
         },
-        "about_daVJfd": {
-          "type": "about",
+        "faq_item_tBAJY8": {
+          "type": "faq_item",
           "settings": {
-            "question": "Where are Bollit products made?",
-            "answer": "<p>We partner with trusted manufacturers and share country of origin on each product page.</p>"
+            "category": "about",
+            "custom_handle": "",
+            "question": "Your question?",
+            "answer": "<p>Your answer.</p>"
           }
         },
-        "about_4GreMw": {
-          "type": "about",
+        "faq_tab_7KJFwQ": {
+          "type": "faq_tab",
           "settings": {
-            "question": "What makes Bollit different?",
-            "answer": "<p>We focus on design, durability, and a calm, uncluttered experience in every product.</p>"
+            "target": "about",
+            "custom_handle": "ssss",
+            "label": "About Bollit",
+            "heading": "",
+            "heading_accent": ""
           }
         },
-        "about_3QdDd6": {
-          "type": "about",
+        "faq_item_NJbYnB": {
+          "type": "faq_item",
           "settings": {
-            "question": "Where does Bollit ship to?",
-            "answer": "<p>We ship to many countries; availability is shown at checkout.</p>"
-          }
-        },
-        "product_LxVNmP": {
-          "type": "product",
-          "settings": {
-            "question": "What materials are used in Bollit products?",
-            "answer": "<p>Materials vary by product; each listing describes plastics, metals, fibers, and care instructions.</p>"
-          }
-        },
-        "product_bQtaxP": {
-          "type": "product",
-          "settings": {
-            "question": "Are Bollit products easy to use?",
-            "answer": "<p>Yes—ergonomics and clear instructions are part of every design.</p>"
-          }
-        },
-        "product_dgjK6B": {
-          "type": "product",
-          "settings": {
-            "question": "How durable are Bollit cleaning tools?",
-            "answer": "<p>We test for regular home use; warranty terms apply where stated.</p>"
-          }
-        },
-        "product_3xdRBh": {
-          "type": "product",
-          "settings": {
-            "question": "Do Bollit products require assembly?",
-            "answer": "<p>Most items are ready to use; any assembly steps are noted on the product page.</p>"
-          }
-        },
-        "tracking_QfFAic": {
-          "type": "tracking",
-          "settings": {
-            "question": "How can I track my order?",
-            "answer": "<p>Use the tracking link in your shipping confirmation email.</p>"
-          }
-        },
-        "shipping_Uagne9": {
-          "type": "shipping",
-          "settings": {
-            "question": "How long does shipping take?",
-            "answer": "<p>Delivery times depend on your location and method; estimates appear at checkout.</p>"
-          }
-        },
-        "returns_7fzftV": {
-          "type": "returns",
-          "settings": {
-            "question": "What is your return policy?",
-            "answer": "<p>Unused items in original packaging may be returned within the period stated on our returns page.</p>"
+            "category": "about",
+            "custom_handle": "ssss",
+            "question": "Your question?",
+            "answer": "<p>Your answer.</p>"
           }
         }
       },
       "block_order": [
-        "about_PrxnKp",
-        "about_daVJfd",
-        "about_4GreMw",
-        "about_3QdDd6",
-        "product_LxVNmP",
-        "product_bQtaxP",
-        "product_dgjK6B",
-        "product_3xdRBh",
-        "tracking_QfFAic",
-        "shipping_Uagne9",
-        "returns_7fzftV"
+        "faq_tab_zNXehD",
+        "faq_item_tBAJY8",
+        "faq_tab_7KJFwQ",
+        "faq_item_NJbYnB"
       ],
       "name": "KV FAQ tabs",
-      "settings": {}
+      "settings": {
+        "header_offset": 0
+      }
     }
   },
   "order": [
