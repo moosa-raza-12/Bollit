@@ -96,27 +96,20 @@
           aria-labelledby="kv-faq-heading-{{ sec_handle }}-{{ section.id }}"
         >
           <h2 class="kv-faq-block__title" id="kv-faq-heading-{{ sec_handle }}-{{ section.id }}">
-            {% if block.settings.heading != blank or block.settings.heading_accent != blank %}
-              {{- block.settings.heading | escape -}}
-              {% if block.settings.heading_accent != blank %}
-                <em>{{ block.settings.heading_accent | escape }}</em>
-              {% endif %}
-            {% else %}
-              {% case sec_handle %}
-                {% when 'about' %}
-                  About <em>Bollit</em>
-                {% when 'product' %}
-                  Product <em>design & detail</em>
-                {% when 'tracking' %}
-                  Tracking <em>& use</em>
-                {% when 'shipping' %}
-                  Shipping
-                {% when 'returns' %}
-                  Returns <em>& warranty</em>
-                {% else %}
-                  {{ sec_handle | replace: '-', ' ' | capitalize }}
-              {% endcase %}
-            {% endif %}
+            {% case sec_handle %}
+              {% when 'about' %}
+                About <em>Bollit</em>
+              {% when 'product' %}
+                Product <em>design & detail</em>
+              {% when 'tracking' %}
+                Tracking <em>& use</em>
+              {% when 'shipping' %}
+                Shipping
+              {% when 'returns' %}
+                Returns <em>& warranty</em>
+              {% else %}
+                {{ sec_handle | replace: '-', ' ' | capitalize }}
+            {% endcase %}
           </h2>
           <div class="kv-faq-accordion" data-kv-faq-accordion>
             {% assign first_faq = true %}
@@ -663,18 +656,6 @@
           "id": "label",
           "label": "Tab label",
           "info": "Optional. Blank uses a default label."
-        },
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Section heading (main text)",
-          "info": "Optional. Shown above that section's FAQs. Blank uses a default for preset sections."
-        },
-        {
-          "type": "text",
-          "id": "heading_accent",
-          "label": "Section heading accent",
-          "info": "Optional. Shown in italic next to the main heading (e.g. brand name)."
         }
       ]
     },
@@ -718,12 +699,12 @@
     {
       "name": "KV FAQ tabs",
       "blocks": [
-        { "type": "faq_tab", "settings": { "target": "all", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
-        { "type": "faq_tab", "settings": { "target": "about", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
-        { "type": "faq_tab", "settings": { "target": "product", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
-        { "type": "faq_tab", "settings": { "target": "tracking", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
-        { "type": "faq_tab", "settings": { "target": "shipping", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
-        { "type": "faq_tab", "settings": { "target": "returns", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
+        { "type": "faq_tab", "settings": { "target": "all", "custom_handle": "", "label": "" } },
+        { "type": "faq_tab", "settings": { "target": "about", "custom_handle": "", "label": "" } },
+        { "type": "faq_tab", "settings": { "target": "product", "custom_handle": "", "label": "" } },
+        { "type": "faq_tab", "settings": { "target": "tracking", "custom_handle": "", "label": "" } },
+        { "type": "faq_tab", "settings": { "target": "shipping", "custom_handle": "", "label": "" } },
+        { "type": "faq_tab", "settings": { "target": "returns", "custom_handle": "", "label": "" } },
         {
           "type": "faq_item",
           "settings": {
