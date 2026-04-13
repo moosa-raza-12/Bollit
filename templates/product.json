@@ -12,6 +12,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "kv_review_badge_yyQcFF": {
+          "type": "kv_review_badge",
+          "settings": {
+            "rating_text": "4.5/5",
+            "review_count": "1,450+",
+            "review_label": "Reviews"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -23,6 +31,17 @@
         "price": {
           "type": "price",
           "settings": {}
+        },
+        "kv_usp_icons_gWAjHN": {
+          "type": "kv_usp_icons",
+          "settings": {
+            "icon_1": "bolt",
+            "heading_1": "1500W high-performance",
+            "icon_2": "refresh",
+            "heading_2": "Dual rotating cleaning",
+            "icon_3": "check_mark",
+            "heading_3": "Chemical-free steam"
+          }
         },
         "variant_picker": {
           "type": "variant_picker",
@@ -46,9 +65,11 @@
         }
       },
       "block_order": [
+        "kv_review_badge_yyQcFF",
         "title",
         "description_KDf6Q4",
         "price",
+        "kv_usp_icons_gWAjHN",
         "variant_picker",
         "quantity_selector",
         "buy_buttons"
