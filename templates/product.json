@@ -62,7 +62,11 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": false,
-            "show_gift_card_recipient": false
+            "show_gift_card_recipient": false,
+            "trust_badge_1_icon": "shopify://shop_images/warranty-atc.svg",
+            "trust_badge_1_text": "2-year warranty",
+            "trust_badge_2_icon": "shopify://shop_images/returns-atc.svg",
+            "trust_badge_2_text": "30-day returns"
           }
         }
       },
