@@ -436,13 +436,13 @@ body .kv-main-product  .product.grid {
   border-radius: 16px;
   padding: 24px;
   margin: 16px 0 0 0;
+  overflow: hidden;
 }
 
 .kv-tabs__nav-wrapper {
   position: relative;
   display: flex;
   align-items: center;
-  max-width: 100%;
 }
 
 .kv-tabs__nav {
@@ -454,8 +454,9 @@ body .kv-main-product  .product.grid {
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-behavior: smooth;
-  flex: 1 1 0%;
+  flex: 1 1 0;
   min-width: 0;
+  width: 0;
 }
 
 .kv-tabs__nav::-webkit-scrollbar {
