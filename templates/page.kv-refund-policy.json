@@ -48,12 +48,22 @@
         "enable_second_content": false,
         "content_2": "<h4>Germany</h4><p>1-2 working days</p><h4>Rest of the world</h4><p>5-6 working days</p>"
       }
+    },
+    "kv_icon_with_info_fFLQcN": {
+      "type": "kv-icon-with-info",
+      "name": "KV Icon With Info",
+      "settings": {
+        "bg_color": "#F0F8FF",
+        "icon": "shopify://shop_images/icon.svg",
+        "content": "<p>If your order is not recognized in our return portal or if you have exceeded the return period, please contact us at <a href=\"mailto:info@bollitgoods.com\" title=\"mailto:info@bollitgoods.com\">info@bollitgoods.com</a> for further assistance.</p>"
+      }
     }
   },
   "order": [
     "main",
     "kv_default_hero_banner_V9yXYb",
     "kv_default_heading_with_content_UFeUQF",
-    "kv_default_heading_with_content_YrNb6H"
+    "kv_default_heading_with_content_YrNb6H",
+    "kv_icon_with_info_fFLQcN"
   ]
 }
