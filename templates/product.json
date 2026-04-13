@@ -89,6 +89,13 @@
             "heading": "Delivery time",
             "content": "<p>delivery time</p>"
           }
+        },
+        "kv_tab_jdfdF9": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "Returns & Shipping",
+            "content": "<p>Returns & Shipping</p>"
+          }
         }
       },
       "block_order": [
@@ -102,7 +109,8 @@
         "buy_buttons",
         "kv_tab_RpLngJ",
         "kv_tab_BUtBW8",
-        "kv_tab_kpAqQ6"
+        "kv_tab_kpAqQ6",
+        "kv_tab_jdfdF9"
       ],
       "settings": {
         "enable_sticky_info": true,
