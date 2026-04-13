@@ -251,6 +251,16 @@
             "description": "Feature description."
           }
         },
+        "feature_slide_LzttAk": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/collection-img-4.png",
+            "quantity": "2x",
+            "title": "Hard Scrub Pads",
+            "description": "Feature description."
+          }
+        },
         "feature_slide_UPqHqa": {
           "type": "feature_slide",
           "settings": {
@@ -318,6 +328,7 @@
         "feature_slide_7GHCjk",
         "feature_slide_rXUe6p",
         "feature_slide_ptz6V8",
+        "feature_slide_LzttAk",
         "feature_slide_UPqHqa",
         "feature_slide_Xg7Cbc",
         "feature_slide_AganKU",
