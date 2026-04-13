@@ -31,7 +31,7 @@
       "settings": {
         "bg_color": "#ffffff",
         "heading": "About <em>Shipping </em>",
-        "content": "<p>Bollit Express orders are shipped with <strong>POSTNL, DHL or FedEX</strong> couriers.<br/><br/>A tracking number from Bollit is sent from our warehouse via email 24 hours after the order has been processed.</p>",
+        "content": "<p>Bollit Express orders are shipped with <strong>POSTNL, DHL or FedEX</strong> couriers<br/>A tracking number from Bollit is sent from our warehouse via email 24 hours after the order has been processed.</p>",
         "enable_second_content": false,
         "content_2": ""
       }
