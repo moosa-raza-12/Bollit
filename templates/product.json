@@ -35,10 +35,13 @@
         "kv_usp_icons_RfwtAa": {
           "type": "kv-usp-icons",
           "settings": {
+            "icon_image_1": "shopify://shop_images/usp-icon1.svg",
             "icon_1": "bolt",
             "heading_1": "1500W high-performance",
+            "icon_image_2": "shopify://shop_images/usp-icon2.svg",
             "icon_2": "refresh",
             "heading_2": "Dual rotating cleaning",
+            "icon_image_3": "shopify://shop_images/usp-icon3.svg",
             "icon_3": "check_mark",
             "heading_3": "Chemical-free steam"
           }
