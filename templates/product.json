@@ -68,6 +68,27 @@
             "trust_badge_2_icon": "shopify://shop_images/returns-atc.svg",
             "trust_badge_2_text": "30-day returns"
           }
+        },
+        "kv_tab_RpLngJ": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "How it works",
+            "content": "<p>Effortlessly rid your carpets and upholstery of stubborn stains with the revolutionary Bollit Carpet Cleaner! Say goodbye to dirt and welcome a radiant interior. This portable stain cleaner is your secret weapon against unwanted stains, and makes cleaning an easy job.<br/><br/>Effortlessly rid your carpets and upholstery of stubborn stains with the revolutionary Bollit Carpet Cleaner! Say goodbye to dirt and welcome a radiant interior. </p>"
+          }
+        },
+        "kv_tab_BUtBW8": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "Product description",
+            "content": "{{ product.description }}"
+          }
+        },
+        "kv_tab_kpAqQ6": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "Delivery time",
+            "content": "<p>delivery time</p>"
+          }
         }
       },
       "block_order": [
@@ -78,7 +99,10 @@
         "kv_usp_icons_RfwtAa",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "kv_tab_RpLngJ",
+        "kv_tab_BUtBW8",
+        "kv_tab_kpAqQ6"
       ],
       "settings": {
         "enable_sticky_info": true,
