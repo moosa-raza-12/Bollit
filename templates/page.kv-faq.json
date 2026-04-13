@@ -33,9 +33,7 @@
           "settings": {
             "target": "about",
             "custom_handle": "",
-            "label": "About Bolliteee",
-            "heading": "",
-            "heading_accent": ""
+            "label": "About Bollit"
           }
         },
         "faq_item_tBAJY8": {
@@ -43,18 +41,35 @@
           "settings": {
             "category": "about",
             "custom_handle": "",
-            "question": "Your question?",
-            "answer": "<p>Your answer.</p>"
+            "question": "What is Bollit?",
+            "answer": "<p>Bollit is a cleaning-focused brand built around one goal, creating practical, high-performance tools that make everyday cleaning faster, easier, and more effective.</p>"
           }
         },
-        "faq_tab_7KJFwQ": {
-          "type": "faq_tab",
+        "faq_item_ECUWgz": {
+          "type": "faq_item",
           "settings": {
-            "target": "custom",
-            "custom_handle": "ssss",
-            "label": "About Bollit",
-            "heading": "",
-            "heading_accent": ""
+            "category": "about",
+            "custom_handle": "",
+            "question": "Where are Bollit products made?",
+            "answer": "<p>Bollit is a cleaning-focused brand built around one goal, creating practical, high-performance tools that make everyday cleaning faster, easier, and more effective.</p>"
+          }
+        },
+        "faq_item_NWcELg": {
+          "type": "faq_item",
+          "settings": {
+            "category": "about",
+            "custom_handle": "",
+            "question": "What makes Bollit different?",
+            "answer": "<p>Bollit is a cleaning-focused brand built around one goal, creating practical, high-performance tools that make everyday cleaning faster, easier, and more effective.</p>"
+          }
+        },
+        "faq_item_HL7fWV": {
+          "type": "faq_item",
+          "settings": {
+            "category": "about",
+            "custom_handle": "",
+            "question": "Where does Bollit ship to?",
+            "answer": "<p>Bollit is a cleaning-focused brand built around one goal, creating practical, high-performance tools that make everyday cleaning faster, easier, and more effective.</p>"
           }
         },
         "faq_item_NJbYnB": {
@@ -65,13 +80,24 @@
             "question": "Your question?",
             "answer": "<p>Your answer.</p>"
           }
+        },
+        "faq_tab_tV8a8V": {
+          "type": "faq_tab",
+          "settings": {
+            "target": "product",
+            "custom_handle": "",
+            "label": "Product design & detail"
+          }
         }
       },
       "block_order": [
         "faq_tab_zNXehD",
         "faq_item_tBAJY8",
-        "faq_tab_7KJFwQ",
-        "faq_item_NJbYnB"
+        "faq_item_ECUWgz",
+        "faq_item_NWcELg",
+        "faq_item_HL7fWV",
+        "faq_item_NJbYnB",
+        "faq_tab_tV8a8V"
       ],
       "name": "KV FAQ tabs",
       "settings": {
