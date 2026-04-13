@@ -113,57 +113,21 @@
             "video_title": "Customer review"
           }
         },
+        "kv_video_Dtptea": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/dummy_ugc_video_visible.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
         "kv_video_LyQrkb": {
           "type": "kv-video",
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
             "video": "shopify://files/videos/dummy_ugc_video.mp4",
             "video_url": "",
-            "video_title": "Customer review"
-          }
-        },
-        "kv_video_dTVWrT": {
-          "type": "kv-video",
-          "settings": {
-            "section_heading": "Trusted in 2,000+ homes",
-            "video": "shopify://files/videos/dummy_ugc_video.mp4",
-            "video_url": "",
-            "video_title": "Customer review"
-          }
-        },
-        "kv_video_nPhbAH": {
-          "type": "kv-video",
-          "settings": {
-            "section_heading": "Trusted in 2,000+ homes",
-            "video": "shopify://files/videos/dummy_ugc_video.mp4",
-            "video_url": "",
-            "video_title": "Customer review"
-          }
-        },
-        "kv_video_yDFPtH": {
-          "type": "kv-video",
-          "settings": {
-            "section_heading": "Trusted in 2,000+ homes",
-            "video": "shopify://files/videos/dummy_ugc_video.mp4",
-            "video_url": "",
-            "video_title": "Customer review"
-          }
-        },
-        "kv_video_ziden3": {
-          "type": "kv-video",
-          "settings": {
-            "section_heading": "Trusted in 2,000+ homes",
-            "video": "shopify://files/videos/dummy_ugc_video.mp4",
-            "video_url": "",
-            "video_title": "Customer review"
-          }
-        },
-        "kv_video_Dtptea": {
-          "type": "kv-video",
-          "settings": {
-            "section_heading": "Trusted in 2,000+ homes",
-            "video_url": "",
-            "thumbnail": "shopify://shop_images/product-highlight-carousel.png",
             "video_title": "Customer review"
           }
         }
@@ -183,12 +147,8 @@
         "kv_tab_jdfdF9",
         "kv_tab_eEXPz4",
         "kv_video_ThFYJq",
-        "kv_video_LyQrkb",
-        "kv_video_dTVWrT",
-        "kv_video_nPhbAH",
-        "kv_video_yDFPtH",
-        "kv_video_ziden3",
-        "kv_video_Dtptea"
+        "kv_video_Dtptea",
+        "kv_video_LyQrkb"
       ],
       "settings": {
         "enable_sticky_info": true,
