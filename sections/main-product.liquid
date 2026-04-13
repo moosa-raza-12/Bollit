@@ -896,7 +896,7 @@
                 {%- if is_first_tab_block -%}
                   <div class="kv-tabs" id="KvTabs-{{ section.id }}">
                     <div class="kv-tabs__nav-wrapper">
-                      <button type="button" class="kv-tabs__scroll-btn kv-tabs__scroll-btn--left" aria-label="Scroll tabs left" hidden>
+                      <button type="button" class="kv-tabs__scroll-btn kv-tabs__scroll-btn--left kv-hidden" aria-label="Scroll tabs left">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       </button>
                       <div class="kv-tabs__nav" role="tablist">
@@ -925,7 +925,6 @@
                           id="kv-tab-panel-{{ tab_block.id }}"
                           role="tabpanel"
                           data-tab-index="{{ forloop.index0 }}"
-                          {% unless forloop.first %}hidden{% endunless %}
                         >
                           <div class="kv-tabs__content rte">
                             {{ tab_block.settings.content }}
@@ -1119,8 +1118,14 @@
           var atStart = nav.scrollLeft <= 2;
           var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 2;
 
-          if (scrollBtnLeft) scrollBtnLeft.hidden = noOverflow || atStart;
-          if (scrollBtnRight) scrollBtnRight.hidden = noOverflow || atEnd;
+          if (scrollBtnLeft) {
+            scrollBtnLeft.classList.toggle('kv-hidden', noOverflow || atStart);
+            scrollBtnLeft.removeAttribute('hidden');
+          }
+          if (scrollBtnRight) {
+            scrollBtnRight.classList.toggle('kv-hidden', noOverflow || atEnd);
+            scrollBtnRight.removeAttribute('hidden');
+          }
         }
 
         updateScrollBtns();
@@ -1139,12 +1144,10 @@
             });
             tabPanels.forEach(function (p) {
               p.classList.remove('kv-tabs__panel--active');
-              p.hidden = true;
             });
             this.classList.add('kv-tabs__btn--active');
             this.setAttribute('aria-selected', 'true');
             tabPanels[idx].classList.add('kv-tabs__panel--active');
-            tabPanels[idx].hidden = false;
           });
         });
 

@@ -476,7 +476,7 @@ body .kv-main-product  .product.grid {
   cursor: pointer;
   white-space: nowrap;
   position: relative;
-  transition: color 0.2s ease;
+  transition: color 0.3s ease, border-color 0.3s ease;
   border-bottom: 3px solid transparent;
   scroll-snap-align: start;
   flex-shrink: 0;
@@ -503,11 +503,15 @@ body .kv-main-product  .product.grid {
   justify-content: center;
   cursor: pointer;
   color: #1a1a2e;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: scale(1);
 }
 
-.kv-tabs__scroll-btn[hidden] {
-  display: none;
+.kv-tabs__scroll-btn.kv-hidden {
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
 }
 
 .kv-tabs__scroll-btn--left {
@@ -524,14 +528,25 @@ body .kv-main-product  .product.grid {
 
 .kv-tabs__panels {
   margin-top: 20px;
+  position: relative;
 }
 
 .kv-tabs__panel {
-  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  visibility: hidden;
 }
 
 .kv-tabs__panel--active {
-  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  position: relative;
+  visibility: visible;
 }
 
 .kv-tabs__content {
