@@ -34,11 +34,53 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "lp_home_free_day_returns_ptbGFa": {
+      "type": "lp-home-free-day-returns",
+      "blocks": {
+        "feature_WMfHJH": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "return",
+            "icon_svg": "",
+            "title": "Free 30-Day Returns",
+            "description": "Return it within 30 days, no hassle."
+          }
+        },
+        "feature_UPWjBp": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "money",
+            "icon_svg": "",
+            "title": "100% Money-Back Guarantee",
+            "description": "Your purchase is fully protected."
+          }
+        },
+        "feature_ntdE7z": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "truck",
+            "icon_svg": "",
+            "title": "Free Shipping",
+            "description": "Free delivery on orders above €30."
+          }
+        }
+      },
+      "block_order": [
+        "feature_WMfHJH",
+        "feature_UPWjBp",
+        "feature_ntdE7z"
+      ],
+      "name": "KV Features",
+      "settings": {
+        "background_color": "#ffffff"
+      }
     }
   },
   "order": [
     "main",
     "kv_default_hero_banner_3RgHTj",
-    "form"
+    "form",
+    "lp_home_free_day_returns_ptbGFa"
   ]
 }
