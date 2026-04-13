@@ -535,6 +535,89 @@
         "description": "From hardwood to tile, Bollit delivers powerful, controlled cleaning wherever life happens.",
         "background_color": "#fffbf5"
       }
+    },
+    "lp_home_join_happier_homes_zn66gG": {
+      "type": "lp-home-join-happier-homes",
+      "blocks": {
+        "testimonial_XNdGkP": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_a768tj": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_6m4ByX": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_ywUeCq": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_qkG9FH": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_cDQ9xL": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_XNdGkP",
+        "testimonial_a768tj",
+        "testimonial_6m4ByX",
+        "testimonial_ywUeCq",
+        "testimonial_qkG9FH",
+        "testimonial_cDQ9xL"
+      ],
+      "settings": {
+        "reviews_text": "4.5/5 (1,450+ Reviews)",
+        "title": "Join 2,000+ <em>happier homes</em>"
+      }
     }
   },
   "order": [
@@ -543,6 +626,7 @@
     "kv_pdp_features_grid_4n76kn",
     "kv_pdp_comparison_K3iwhT",
     "kv_pdp_features_tab_MdaUtV",
-    "kv_pdp_hightlight_carousel_tCiMk8"
+    "kv_pdp_hightlight_carousel_tCiMk8",
+    "lp_home_join_happier_homes_zn66gG"
   ]
 }
