@@ -201,6 +201,16 @@
     "kv_pdp_features_tab_MdaUtV": {
       "type": "kv-pdp-features-tab",
       "blocks": {
+        "feature_slide_UPqHqa": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Tab Name 2",
+            "image": "shopify://shop_images/featured-image2.png",
+            "quantity": "1x",
+            "title": "Feature Title",
+            "description": "Feature description."
+          }
+        },
         "feature_slide_EhPWjJ": {
           "type": "feature_slide",
           "settings": {
@@ -223,6 +233,7 @@
         }
       },
       "block_order": [
+        "feature_slide_UPqHqa",
         "feature_slide_EhPWjJ",
         "feature_slide_gMbytw"
       ],
