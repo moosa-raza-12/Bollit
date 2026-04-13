@@ -1,0 +1,46 @@
+<section class="kv-default-heading-with-content">
+    <div class="kv-custom-container">
+        <div class="kv-default-heading-with-content-in" style="background:{{ section.settings.bg_color }};">
+            {% if section.settings.heading != blank %}
+                <h4>{{ section.settings.heading }}</h4>
+            {% endif %}
+            {% if section.settings.need_help_content != blank %}
+            <div class="kv-default-heading-with-content-info">{{ section.settings.content }}</div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<style>
+
+@media (max-width: 767.98px) {
+
+}
+</style>
+{% schema %}
+{
+  "name": "KV Heading With Content",
+  "settings": [
+   {
+      "type": "color",
+      "id": "bg_color",
+      "label": "BG Color",
+      "default": "#F0F8FF"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+    },
+  ],
+  "presets": [
+    {
+      "name": "KV Heading With Content",
+    }
+  ]
+}
+{% endschema %}
