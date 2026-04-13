@@ -940,6 +940,50 @@
                     </div>
                   </div>
                 {%- endif -%}
+              {%- when 'kv-video-carousel' -%}
+                <div class="kv-video-carousel" id="KvVideoCarousel-{{ block.id }}" {{ block.shopify_attributes }}>
+                  <div class="kv-video-carousel__header">
+                    <h3 class="kv-video-carousel__heading">{{ block.settings.heading | default: 'Trusted in 2,000+ homes' }}</h3>
+                    <div class="kv-video-carousel__arrows">
+                      <button type="button" class="kv-video-carousel__arrow kv-video-carousel__arrow--left kv-hidden" aria-label="Previous">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <button type="button" class="kv-video-carousel__arrow kv-video-carousel__arrow--right" aria-label="Next">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="kv-video-carousel__track">
+                    {%- for i in (1..6) -%}
+                      {%- assign vid_url_key = 'video_url_' | append: i -%}
+                      {%- assign vid_thumb_key = 'video_thumb_' | append: i -%}
+                      {%- assign vid_url = block.settings[vid_url_key] -%}
+                      {%- assign vid_thumb = block.settings[vid_thumb_key] -%}
+                      {%- if vid_url != blank or vid_thumb != blank -%}
+                        <div class="kv-video-carousel__item" data-video-url="{{ vid_url }}">
+                          <div class="kv-video-carousel__poster">
+                            {%- if vid_thumb != blank -%}
+                              <img
+                                src="{{ vid_thumb | image_url: width: 400 }}"
+                                alt="Video {{ i }}"
+                                width="200"
+                                height="356"
+                                loading="lazy"
+                              >
+                            {%- else -%}
+                              <div class="kv-video-carousel__placeholder"></div>
+                            {%- endif -%}
+                            {%- if vid_url != blank -%}
+                              <button type="button" class="kv-video-carousel__play" aria-label="Play video">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#fff"/></svg>
+                              </button>
+                            {%- endif -%}
+                          </div>
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                </div>
               {%- when 'kv-usp-icons' -%}
                 <div class="kv-usp-row" {{ block.shopify_attributes }}>
                   {%- if block.settings.heading_1 != blank -%}
@@ -2714,6 +2758,104 @@
           "id": "content",
           "label": "Tab content",
           "default": "<p>Add your tab content here.</p>"
+        }
+      ]
+    },
+    {
+      "type": "kv-video-carousel",
+      "name": "KV - Video carousel",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Trusted in 2,000+ homes"
+        },
+        {
+          "type": "header",
+          "content": "Video 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_thumb_1",
+          "label": "Thumbnail 1"
+        },
+        {
+          "type": "text",
+          "id": "video_url_1",
+          "label": "Video URL 1",
+          "info": "YouTube, Vimeo, or direct .mp4 link"
+        },
+        {
+          "type": "header",
+          "content": "Video 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_thumb_2",
+          "label": "Thumbnail 2"
+        },
+        {
+          "type": "text",
+          "id": "video_url_2",
+          "label": "Video URL 2"
+        },
+        {
+          "type": "header",
+          "content": "Video 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_thumb_3",
+          "label": "Thumbnail 3"
+        },
+        {
+          "type": "text",
+          "id": "video_url_3",
+          "label": "Video URL 3"
+        },
+        {
+          "type": "header",
+          "content": "Video 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_thumb_4",
+          "label": "Thumbnail 4"
+        },
+        {
+          "type": "text",
+          "id": "video_url_4",
+          "label": "Video URL 4"
+        },
+        {
+          "type": "header",
+          "content": "Video 5"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_thumb_5",
+          "label": "Thumbnail 5"
+        },
+        {
+          "type": "text",
+          "id": "video_url_5",
+          "label": "Video URL 5"
+        },
+        {
+          "type": "header",
+          "content": "Video 6"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_thumb_6",
+          "label": "Thumbnail 6"
+        },
+        {
+          "type": "text",
+          "id": "video_url_6",
+          "label": "Video URL 6"
         }
       ]
     }
