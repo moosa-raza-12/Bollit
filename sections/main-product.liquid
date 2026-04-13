@@ -864,7 +864,7 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
-              {%- when 'kv_review_badge' -%}
+              {%- when 'kv-review-badge' -%}
                 <div class="kv-review-badge" {{ block.shopify_attributes }}>
                   <span class="kv-review-badge__star">&#9733;</span>
                   <span class="kv-review-badge__text">
@@ -872,7 +872,7 @@
                     ({{ block.settings.review_count | default: '1,450+' }} {{ block.settings.review_label | default: 'Reviews' }})
                   </span>
                 </div>
-              {%- when 'kv_usp_icons' -%}
+              {%- when 'kv-usp-icons' -%}
                 <div class="kv-usp-row" {{ block.shopify_attributes }}>
                   {%- if block.settings.heading_1 != blank -%}
                     <div class="kv-usp-card">
@@ -2395,8 +2395,8 @@
       ]
     },
     {
-      "type": "kv_review_badge",
-      "name": "Review badge",
+      "type": "kv-review-badge",
+      "name": "KV - Review badge",
       "limit": 1,
       "settings": [
         {
@@ -2420,8 +2420,8 @@
       ]
     },
     {
-      "type": "kv_usp_icons",
-      "name": "USP icons",
+      "type": "kv-usp-icons",
+      "name": "KV - USP icons",
       "limit": 1,
       "settings": [
         {
