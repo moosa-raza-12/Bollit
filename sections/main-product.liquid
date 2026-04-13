@@ -15,6 +15,7 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  {{ 'kv-product.css' | asset_url | stylesheet_tag }}
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -76,175 +77,6 @@
   <div class="page-width">
     <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
-        {%- style -%}
-          .kv-media-gallery {
-            position: relative;
-          }
-
-          /* ===== DESKTOP GRID ===== */
-          .kv-media-grid {
-            display: none;
-          }
-
-          @media screen and (min-width: 750px) {
-            .kv-media-grid {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 10px;
-            }
-
-            .kv-media-grid__item--featured {
-              grid-column: 1 / -1;
-            }
-
-            .kv-media-grid__item {
-              border-radius: 12px;
-              overflow: hidden;
-              position: relative;
-              background: #f5f5f5;
-            }
-
-            .kv-media-grid__item img,
-            .kv-media-grid__item model-viewer,
-            .kv-media-grid__item video {
-              display: block;
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-
-            .kv-media-grid__item .kv-deferred-media {
-              display: block;
-              width: 100%;
-              height: 100%;
-            }
-
-            .kv-media-grid__item .kv-deferred-media__poster {
-              display: block;
-              width: 100%;
-              height: 100%;
-              cursor: pointer;
-              position: relative;
-            }
-
-            .kv-media-grid__item .kv-deferred-media__poster img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-            }
-
-            .kv-media-grid__play-btn {
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              width: 60px;
-              height: 60px;
-              background: rgba(0,0,0,0.55);
-              border-radius: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              border: none;
-              cursor: pointer;
-              z-index: 2;
-            }
-
-            .kv-media-grid__play-btn svg {
-              width: 24px;
-              height: 24px;
-              fill: #fff;
-              margin-left: 3px;
-            }
-
-            .kv-media-slider {
-              display: none !important;
-            }
-          }
-
-          /* ===== MOBILE SLIDER ===== */
-          .kv-media-slider {
-            position: relative;
-            overflow: hidden;
-          }
-
-          .kv-media-slider__track {
-            display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            gap: 0;
-          }
-
-          .kv-media-slider__track::-webkit-scrollbar {
-            display: none;
-          }
-
-          .kv-media-slider__slide {
-            flex: 0 0 100%;
-            scroll-snap-align: start;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            background: #f5f5f5;
-          }
-
-          .kv-media-slider__slide img,
-          .kv-media-slider__slide video {
-            display: block;
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-          }
-
-          .kv-media-slider__slide .kv-deferred-media__poster img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-          }
-
-          .kv-media-slider__dots {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
-            padding: 12px 0 4px;
-          }
-
-          .kv-media-slider__dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            border: none;
-            background: #ccc;
-            padding: 0;
-            cursor: pointer;
-            transition: background 0.2s ease, transform 0.2s ease;
-          }
-
-          .kv-media-slider__dot.active {
-            background: #1a1a2e;
-            transform: scale(1.25);
-          }
-
-          @media screen and (min-width: 750px) {
-            .kv-media-slider {
-              display: none !important;
-            }
-          }
-
-          @media screen and (max-width: 749px) {
-            .kv-media-grid {
-              display: none !important;
-            }
-
-            .kv-media-slider {
-              display: block !important;
-            }
-          }
-        {%- endstyle -%}
-
         <div class="kv-media-gallery" id="KvMediaGallery-{{ section.id }}">
           {%- comment -%} DESKTOP: 2-col grid, first image full width {%- endcomment -%}
           <div class="kv-media-grid">
@@ -435,58 +267,6 @@
           </div>
         </div>
 
-        <script>
-          document.addEventListener('DOMContentLoaded', function () {
-            const sectionId = '{{ section.id }}';
-            const track = document.getElementById('KvSliderTrack-' + sectionId);
-            const dotsContainer = document.getElementById('KvSliderDots-' + sectionId);
-            if (!track || !dotsContainer) return;
-
-            const dots = dotsContainer.querySelectorAll('.kv-media-slider__dot');
-            let currentIndex = 0;
-
-            function updateDots(index) {
-              dots.forEach(function (d, i) {
-                d.classList.toggle('active', i === index);
-              });
-              currentIndex = index;
-            }
-
-            dots.forEach(function (dot) {
-              dot.addEventListener('click', function () {
-                var idx = parseInt(this.getAttribute('data-index'), 10);
-                var slide = track.children[idx];
-                if (slide) {
-                  track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
-                  updateDots(idx);
-                }
-              });
-            });
-
-            var scrollTimeout;
-            track.addEventListener('scroll', function () {
-              clearTimeout(scrollTimeout);
-              scrollTimeout = setTimeout(function () {
-                var scrollLeft = track.scrollLeft;
-                var slideWidth = track.children[0] ? track.children[0].offsetWidth : 1;
-                var idx = Math.round(scrollLeft / slideWidth);
-                updateDots(idx);
-              }, 80);
-            });
-
-            /* Deferred media (video / 3D model) play on click */
-            document.querySelectorAll('#KvMediaGallery-' + sectionId + ' [data-deferred-media-btn]').forEach(function (btn) {
-              btn.addEventListener('click', function () {
-                var wrapper = this.closest('.kv-deferred-media');
-                if (!wrapper) return;
-                var tmpl = wrapper.querySelector('template');
-                if (!tmpl) return;
-                this.style.display = 'none';
-                wrapper.appendChild(tmpl.content.firstElementChild.cloneNode(true));
-              });
-            });
-          });
-        </script>
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -1146,6 +926,58 @@
       {{ product | structured_data }}
     </script>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const sectionId = '{{ section.id }}';
+      const track = document.getElementById('KvSliderTrack-' + sectionId);
+      const dotsContainer = document.getElementById('KvSliderDots-' + sectionId);
+      if (!track || !dotsContainer) return;
+
+      const dots = dotsContainer.querySelectorAll('.kv-media-slider__dot');
+      let currentIndex = 0;
+
+      function updateDots(index) {
+        dots.forEach(function (d, i) {
+          d.classList.toggle('active', i === index);
+        });
+        currentIndex = index;
+      }
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var idx = parseInt(this.getAttribute('data-index'), 10);
+          var slide = track.children[idx];
+          if (slide) {
+            track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+            updateDots(idx);
+          }
+        });
+      });
+
+      var scrollTimeout;
+      track.addEventListener('scroll', function () {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(function () {
+          var scrollLeft = track.scrollLeft;
+          var slideWidth = track.children[0] ? track.children[0].offsetWidth : 1;
+          var idx = Math.round(scrollLeft / slideWidth);
+          updateDots(idx);
+        }, 80);
+      });
+
+      document.querySelectorAll('#KvMediaGallery-' + sectionId + ' [data-deferred-media-btn]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var wrapper = this.closest('.kv-deferred-media');
+          if (!wrapper) return;
+          var tmpl = wrapper.querySelector('template');
+          if (!tmpl) return;
+          this.style.display = 'none';
+          wrapper.appendChild(tmpl.content.firstElementChild.cloneNode(true));
+        });
+      });
+    });
+  </script>
 </product-info>
 
 {% schema %}
