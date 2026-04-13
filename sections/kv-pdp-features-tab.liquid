@@ -1,0 +1,432 @@
+<section class="kv-section kv-pdp-ft-section" style="background-color: {{ section.settings.background_color }};">
+    <div class="kv-custom-container">
+        <div class="kv-pdp-ft-header">
+            <h2 class="kv-font-42">{{ section.settings.title }}</h2>
+            <p class="kv-font-18">{{ section.settings.description }}</p>
+        </div>
+
+        {% assign tabs_string = "" %}
+        {% for block in section.blocks %}
+            {% assign tab_name = block.settings.tab_name | strip %}
+            {% assign check_str = tabs_string | prepend: "|||" | append: "|||" %}
+            {% assign tab_match = tab_name | prepend: "|||" | append: "|||" %}
+            {% unless check_str contains tab_match %}
+                {% if tabs_string != "" %}
+                    {% assign tabs_string = tabs_string | append: "|||" %}
+                {% endif %}
+                {% assign tabs_string = tabs_string | append: tab_name %}
+            {% endunless %}
+        {% endfor %}
+        {% assign tab_list = tabs_string | split: "|||" %}
+
+        <div class="kv-pdp-ft-tabs-row">
+            <div class="kv-pdp-ft-tabs">
+                {% for tab in tab_list %}
+                    <button class="kv-pdp-ft-tab{% if forloop.first %} active{% endif %}" data-tab="{{ tab | handleize }}">
+                        {{ tab }}
+                    </button>
+                {% endfor %}
+            </div>
+            {% if section.settings.cta_text != blank %}
+                <a href="{{ section.settings.cta_link }}" class="kv-pdp-ft-cta">
+                    {{ section.settings.cta_text }}
+                    {% if section.settings.cta_badge != blank %}
+                        <span class="kv-pdp-ft-cta-badge">{{ section.settings.cta_badge }}</span>
+                    {% endif %}
+                </a>
+            {% endif %}
+        </div>
+
+        {% for tab in tab_list %}
+            <div class="kv-pdp-ft-swiper-wrap" data-tab-content="{{ tab | handleize }}" {% unless forloop.first %}style="display:none;"{% endunless %}>
+                <div class="swiper kv-pdp-ft-swiper">
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            {% assign block_tab = block.settings.tab_name | strip %}
+                            {% if block_tab == tab %}
+                                <div class="swiper-slide">
+                                    <div class="kv-pdp-ft-card">
+                                        <div class="kv-pdp-ft-card-image">
+                                            <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title }}">
+                                        </div>
+                                        <div class="kv-pdp-ft-card-content">
+                                            <div class="kv-pdp-ft-card-title-row">
+                                                {% if block.settings.quantity != blank %}
+                                                    <span class="kv-pdp-ft-card-qty">{{ block.settings.quantity }}</span>
+                                                {% endif %}
+                                                <span class="kv-pdp-ft-card-title">{{ block.settings.title }}</span>
+                                            </div>
+                                            {% if block.settings.description != blank %}
+                                                <p class="kv-pdp-ft-card-desc">{{ block.settings.description }}</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="kv-pdp-ft-progressbar-wrap">
+                        <div class="swiper-pagination kv-pdp-ft-progressbar"></div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var section = document.querySelector('.kv-pdp-ft-section');
+        if (!section) return;
+
+        var tabs = section.querySelectorAll('.kv-pdp-ft-tab');
+        var swiperInstances = {};
+
+        var swiperConfig = {
+            slidesPerView: 1.15,
+            spaceBetween: 16,
+            grabCursor: true,
+            breakpoints: {
+                480: { slidesPerView: 1.5, spaceBetween: 12 },
+                640: { slidesPerView: 2, spaceBetween: 16 },
+                768: { slidesPerView: 2.5, spaceBetween: 16 },
+                992: { slidesPerView: 3, spaceBetween: 16 },
+                1400: { slidesPerView: 3.15, spaceBetween: 16 }
+            }
+        };
+
+        function initSwiper(tabId) {
+            if (swiperInstances[tabId]) {
+                swiperInstances[tabId].update();
+                return;
+            }
+            var wrap = section.querySelector('[data-tab-content="' + tabId + '"]');
+            if (!wrap) return;
+
+            var config = Object.assign({}, swiperConfig, {
+                pagination: {
+                    el: wrap.querySelector('.kv-pdp-ft-progressbar'),
+                    type: 'progressbar'
+                }
+            });
+            swiperInstances[tabId] = new Swiper(wrap.querySelector('.kv-pdp-ft-swiper'), config);
+        }
+
+        var firstTabId = tabs[0] ? tabs[0].getAttribute('data-tab') : null;
+        if (firstTabId) initSwiper(firstTabId);
+
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                var tabId = this.getAttribute('data-tab');
+
+                tabs.forEach(function (t) { t.classList.remove('active'); });
+                this.classList.add('active');
+
+                section.querySelectorAll('.kv-pdp-ft-swiper-wrap').forEach(function (w) {
+                    w.style.display = 'none';
+                });
+
+                var activeWrap = section.querySelector('[data-tab-content="' + tabId + '"]');
+                if (activeWrap) {
+                    activeWrap.style.display = 'block';
+                    initSwiper(tabId);
+                }
+            });
+        });
+    });
+</script>
+
+{% schema %}
+{
+  "name": "KV PDP Features Tab",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What's in the box?"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Everything you need for deep, effortless cleaning."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "cta_badge",
+      "label": "CTA Badge Text",
+      "default": "Save 24%"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f5f5f5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_slide",
+      "name": "Feature Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_name",
+          "label": "Tab Name",
+          "info": "Slides with the same tab name are grouped under one tab.",
+          "default": "Tab Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "quantity",
+          "label": "Quantity Badge",
+          "info": "e.g. 2x, 1x",
+          "default": "1x"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Slide Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Slide Description",
+          "default": "Feature description."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV PDP Features Tab"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+.kv-pdp-ft-section {
+    overflow: hidden;
+}
+
+.kv-pdp-ft-header {
+    padding: 0 0 40px 0;
+}
+
+.kv-pdp-ft-tabs-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.kv-pdp-ft-tabs {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.kv-pdp-ft-tab {
+    background: none;
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #808080;
+    border-bottom: 2px solid transparent;
+    transition: color 0.25s, border-color 0.25s;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.kv-pdp-ft-tab:hover {
+    color: #003665;
+}
+
+.kv-pdp-ft-tab.active {
+    color: #003665;
+    font-weight: 500;
+    border-bottom-color: #003665;
+}
+
+.kv-pdp-ft-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #003665;
+    color: #fff;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.25s;
+    font-family: inherit;
+    flex-shrink: 0;
+}
+
+.kv-pdp-ft-cta:hover {
+    background: #002a4f;
+    color: #fff;
+}
+
+.kv-pdp-ft-cta-badge {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.kv-pdp-ft-swiper {
+    overflow: visible;
+}
+
+.kv-pdp-ft-card {
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.kv-pdp-ft-card-image {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.kv-pdp-ft-card-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.kv-pdp-ft-card-content {
+    padding: 16px 18px 20px;
+}
+
+.kv-pdp-ft-card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.kv-pdp-ft-card-qty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #003665;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 50px;
+    padding: 3px 10px;
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.kv-pdp-ft-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.kv-pdp-ft-card-desc {
+    font-size: 14px;
+    font-weight: 400;
+    color: #808080;
+    margin: 4px 0 0;
+    line-height: 1.5;
+}
+
+.kv-pdp-ft-progressbar-wrap {
+    margin-top: 48px;
+    position: relative;
+    height: 3px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(204, 204, 204, 0.40);
+}
+
+.kv-pdp-ft-progressbar-wrap .swiper-pagination-progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.kv-pdp-ft-progressbar-wrap .swiper-pagination-progressbar-fill {
+    border-radius: 16px;
+    background: #003665;
+}
+
+@media (max-width: 991.98px) {
+    .kv-pdp-ft-tabs-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .swiper.kv-pdp-ft-swiper {
+        margin: 0 -20px;
+        padding: 0 20px;
+    }
+
+    .kv-pdp-ft-card-title {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .kv-pdp-ft-header {
+        padding: 0 0 28px 0;
+    }
+
+    .kv-pdp-ft-tabs-row {
+        margin-bottom: 24px;
+    }
+
+    .kv-pdp-ft-tabs {
+        gap: 16px;
+    }
+
+    .kv-pdp-ft-tab {
+        font-size: 14px;
+    }
+
+    .kv-pdp-ft-progressbar-wrap {
+        margin-top: 36px;
+    }
+}
+</style>
