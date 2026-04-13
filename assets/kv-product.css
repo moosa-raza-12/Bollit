@@ -162,7 +162,10 @@ body .kv-main-product  .product.grid {
   margin: 0 8px 0 0;
 }
 
-
+.kv-main-product .product__info-wrapper .price {
+  display: flex;
+  align-items: center;
+}
 
 
 
