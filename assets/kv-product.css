@@ -167,9 +167,32 @@ body .kv-main-product  .product.grid {
   align-items: center;
 }
 
+.kv-main-product .product__info-wrapper .product-form__buttons {
+  max-width: 100%;
+}
 
+.kv-add-to-cart-button-icon {
+  display: flex;
+  width: 20px;
+  min-width: 20px;
+}
 
-
+.kv-main-product .product__info-wrapper .product-form__buttons .product-form__submit {
+  margin: 0;
+  border-radius: 100px;
+  background: #003665;
+  padding: 16px;
+  color: #FFF;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0;
+  align-items: end;
+  gap: 12px;
+  border: 1px solid #003665;
+}
 
 
 
