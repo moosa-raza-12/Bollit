@@ -654,6 +654,10 @@ body .kv-main-product  .product.grid {
   background: #d0d8e0;
 }
 
+.kv-videos__thumb[data-video-card] {
+  cursor: pointer;
+}
+
 .kv-videos__play-btn {
   position: absolute;
   bottom: 12px;

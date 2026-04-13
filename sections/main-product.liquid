@@ -1366,13 +1366,16 @@
         video.addEventListener('pause', syncBtn);
         syncBtn();
 
-        btn.addEventListener('click', function (e) {
+        function togglePlay(e) {
           e.preventDefault();
-          if (video.paused) {
-            video.play();
-          } else {
-            video.pause();
-          }
+          e.stopPropagation();
+          if (video.paused) { video.play(); } else { video.pause(); }
+        }
+
+        btn.addEventListener('click', togglePlay);
+        card.addEventListener('click', function (e) {
+          if (e.target.closest('[data-play-btn]')) return;
+          togglePlay(e);
         });
       });
     });
