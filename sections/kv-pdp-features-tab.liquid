@@ -462,7 +462,37 @@
         margin: 0 -20px;
         padding: 0 20px;
     }
+    .kv-pdp-ft-cta {
+    display: none;
+}
 
+.kv-pdp-ft-cta.mobile-cta {
+    display: flex !important;
+    justify-content: center;
+    max-width: 390px;
+    margin: 36px auto 0;
+}
+
+.kv-pdp-ft-tab {
+    font-size: 16px;
+}
+
+.kv-pdp-ft-tabs {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+}
+
+.kv-pdp-ft-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.kv-pdp-ft-tab {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
 
 }
 
