@@ -1,0 +1,48 @@
+<section class="kv-info-with-icon">
+    <div class="kv-custom-container">
+        <div class="kv-info-with-icon-in" style="background:{{ section.settings.bg_color }};">
+
+            {% if block.settings.icon != blank %}
+              {{ block.settings.icon | image_url: width: master  }}
+            {% endif %}
+          
+            {% if section.settings.content != blank %}
+            <div class="kv-need-help-content">{{ section.settings.content }}</div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+<style>
+
+@media (max-width: 767.98px) {
+}
+
+</style>
+{% schema %}
+{
+  "name": "KV Icon With Info",
+  "settings": [
+   {
+      "type": "color",
+      "id": "bg_color",
+      "label": "BG Color",
+      "default": "#F0F8FF"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content",
+    },
+  ],
+  "presets": [
+    {
+      "name": "KV Icon With Info",
+    }
+  ]
+}
+{% endschema %}

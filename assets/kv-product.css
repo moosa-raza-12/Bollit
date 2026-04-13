@@ -660,19 +660,19 @@ body .kv-main-product  .product.grid {
 
 .kv-videos__play-btn {
   position: absolute;
-  bottom: 12px;
-  left: 12px;
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   border: none;
   background: none;
   cursor: pointer;
   z-index: 3;
   opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: scale(.8);
+  transition: opacity .3s ease,transform .3s ease;
   pointer-events: none;
+  inset: 0;
+  margin: auto;
 }
 
 .kv-videos__play-btn--visible {
