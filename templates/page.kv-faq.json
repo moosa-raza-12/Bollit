@@ -310,12 +310,22 @@
       "settings": {
         "background_color": "#ffffff"
       }
+    },
+    "kv_need_more_help_QA43tr": {
+      "type": "kv-need-more-help",
+      "name": "KV Need More Help",
+      "settings": {
+        "bg_color": "#F0F8FF",
+        "need_help_heading": "Need more help?",
+        "need_help_content": "<p>We’re happy to help. Whether it’s about your product, delivery, or setup. Contact our customer service at <a href=\"mailto:helpbollit@gmail.com\" title=\"mailto:helpbollit@gmail.com\"><strong>helpbollit@gmail.com</strong></a></p>"
+      }
     }
   },
   "order": [
     "main",
     "kv_default_hero_banner_V9yXYb",
     "kv_faq_tab_JFwWFk",
-    "lp_home_free_day_returns_qAmidF"
+    "lp_home_free_day_returns_qAmidF",
+    "kv_need_more_help_QA43tr"
   ]
 }
