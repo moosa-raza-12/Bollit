@@ -877,6 +877,61 @@
                     ({{ block.settings.review_count | default: '1,450+' }} {{ block.settings.review_label | default: 'Reviews' }})
                   </span>
                 </div>
+              {%- when 'kv-tab' -%}
+                {%- liquid
+                  assign kv_tab_blocks = section.blocks | where: 'type', 'kv-tab'
+                  assign is_first_tab_block = true
+                  for tb in kv_tab_blocks
+                    if tb.id != block.id
+                      continue
+                    endif
+                    if forloop.first
+                      assign is_first_tab_block = true
+                    else
+                      assign is_first_tab_block = false
+                    endif
+                    break
+                  endfor
+                -%}
+                {%- if is_first_tab_block -%}
+                  <div class="kv-tabs" id="KvTabs-{{ section.id }}">
+                    <div class="kv-tabs__nav-wrapper">
+                      <div class="kv-tabs__nav" role="tablist">
+                        {%- for tab_block in kv_tab_blocks -%}
+                          <button
+                            type="button"
+                            class="kv-tabs__btn{% if forloop.first %} kv-tabs__btn--active{% endif %}"
+                            role="tab"
+                            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+                            aria-controls="kv-tab-panel-{{ tab_block.id }}"
+                            data-tab-index="{{ forloop.index0 }}"
+                            {{ tab_block.shopify_attributes }}
+                          >
+                            {{ tab_block.settings.heading }}
+                          </button>
+                        {%- endfor -%}
+                      </div>
+                      <button type="button" class="kv-tabs__scroll-btn kv-tabs__scroll-btn--right" aria-label="Scroll tabs">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                    </div>
+                    <div class="kv-tabs__panels">
+                      {%- for tab_block in kv_tab_blocks -%}
+                        <div
+                          class="kv-tabs__panel{% if forloop.first %} kv-tabs__panel--active{% endif %}"
+                          id="kv-tab-panel-{{ tab_block.id }}"
+                          role="tabpanel"
+                          data-tab-index="{{ forloop.index0 }}"
+                          {% unless forloop.first %}hidden{% endunless %}
+                        >
+                          <div class="kv-tabs__content rte">
+                            {{ tab_block.settings.content }}
+                          </div>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endif -%}
               {%- when 'kv-usp-icons' -%}
                 <div class="kv-usp-row" {{ block.shopify_attributes }}>
                   {%- if block.settings.heading_1 != blank -%}
@@ -2535,6 +2590,24 @@
           "id": "heading_3",
           "label": "Heading 3",
           "default": "Chemical-free steam"
+        }
+      ]
+    },
+    {
+      "type": "kv-tab",
+      "name": "KV - Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Tab heading",
+          "default": "How it works"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Tab content",
+          "default": "<p>Add your tab content here.</p>"
         }
       ]
     }

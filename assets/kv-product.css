@@ -251,10 +251,6 @@ body .kv-main-product  .product.grid {
   line-height: 1.2;
 }
 
-
-
-
-
 .kv-media-gallery {
   position: relative;
 }
@@ -262,6 +258,21 @@ body .kv-main-product  .product.grid {
 .kv-media-grid {
   display: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (min-width: 767.98px) {
   .kv-media-grid {
