@@ -113,16 +113,52 @@
             "video_title": "Customer review"
           }
         },
-        "kv_video_Dtptea": {
+        "kv_video_LyQrkb": {
           "type": "kv-video",
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
-            "video": "shopify://files/videos/dummy_ugc_video_visible.mp4",
+            "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
             "video_url": "",
             "video_title": "Customer review"
           }
         },
-        "kv_video_LyQrkb": {
+        "kv_video_Q8Npjd": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/dummy_ugc_video.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_KYQAnd": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_qPgzaG": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/dummy_ugc_video.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_Mai9zp": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_nbipen": {
           "type": "kv-video",
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
@@ -147,8 +183,12 @@
         "kv_tab_jdfdF9",
         "kv_tab_eEXPz4",
         "kv_video_ThFYJq",
-        "kv_video_Dtptea",
-        "kv_video_LyQrkb"
+        "kv_video_LyQrkb",
+        "kv_video_Q8Npjd",
+        "kv_video_KYQAnd",
+        "kv_video_qPgzaG",
+        "kv_video_Mai9zp",
+        "kv_video_nbipen"
       ],
       "settings": {
         "enable_sticky_info": true,
