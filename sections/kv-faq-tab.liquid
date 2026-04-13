@@ -1,6 +1,6 @@
 {% comment %}
-  FAQ: tabs pin only after the section scrolls up (unpin when scrolling back to the top area).
-  Click-to-scroll, scrollspy, horizontal tab scroll; accordions animate open/one-at-a-time per block.
+  FAQ: add "Tab" blocks for nav (+ optional section titles) and "FAQ" blocks for Q&A (match Tab section link).
+  Sticky tabs, scrollspy, accordions (one open per group).
 {% endcomment %}
 
 <div
@@ -12,126 +12,234 @@
 >
   <nav class="kv-faq-tabs" aria-label="FAQ categories" data-kv-faq-tabs data-kv-faq-tabs-nav>
     <div class="kv-faq-tabs__track" data-kv-faq-tabs-track>
-      <button type="button" class="kv-faq-tab kv-faq-tab--active" data-kv-faq-tab data-target="all">All</button>
-      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="about">About Bollit</button>
-      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="product">Product details & design</button>
-      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="tracking">Tracking & Use</button>
-      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="shipping">Shipping</button>
-      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="returns">Returns & Warranty</button>
+      {% assign faq_tab_count = 0 %}
+      {% for block in section.blocks %}
+        {% if block.type == 'faq_tab' %}
+          {% assign faq_tab_count = faq_tab_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      {% if faq_tab_count == 0 %}
+        {% if request.design_mode %}
+          <p class="kv-faq-editor-hint">Add <strong>Tab</strong> blocks for navigation, then <strong>FAQ</strong> blocks for questions (same section link on each).</p>
+        {% endif %}
+      {% else %}
+        {% assign tab_is_first = true %}
+        {% for block in section.blocks %}
+          {% if block.type == 'faq_tab' %}
+            {% assign t = block.settings.target %}
+            {% if t == 'custom' %}
+              {% assign tab_slug = block.settings.custom_handle | default: 'section' | handleize %}
+            {% else %}
+              {% assign tab_slug = t %}
+            {% endif %}
+            {% assign tab_title = block.settings.label | strip %}
+            {% if tab_title == blank %}
+              {% case t %}
+                {% when 'all' %}
+                  {% assign tab_title = 'All' %}
+                {% when 'about' %}
+                  {% assign tab_title = 'About Bollit' %}
+                {% when 'product' %}
+                  {% assign tab_title = 'Product details & design' %}
+                {% when 'tracking' %}
+                  {% assign tab_title = 'Tracking & Use' %}
+                {% when 'shipping' %}
+                  {% assign tab_title = 'Shipping' %}
+                {% when 'returns' %}
+                  {% assign tab_title = 'Returns & Warranty' %}
+                {% when 'custom' %}
+                  {% assign tab_title = block.settings.custom_handle | default: 'Section' %}
+                {% else %}
+                  {% assign tab_title = tab_slug %}
+              {% endcase %}
+            {% endif %}
+            <button
+              type="button"
+              class="kv-faq-tab{% if tab_is_first %} kv-faq-tab--active{% endif %}"
+              data-kv-faq-tab
+              data-target="{{ tab_slug | escape }}"
+              {{ block.shopify_attributes }}
+            >
+              {{- tab_title | escape -}}
+            </button>
+            {% assign tab_is_first = false %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
     </div>
   </nav>
 
   <div class="kv-faq-content" data-kv-faq-content>
     <div class="kv-faq-anchor" id="kv-faq-top-{{ section.id }}" data-kv-faq-section="all" aria-hidden="true"></div>
 
-    <section class="kv-faq-block" id="kv-faq-about-{{ section.id }}" data-kv-faq-section="about" aria-labelledby="kv-faq-heading-about-{{ section.id }}">
-      <h2 class="kv-faq-block__title" id="kv-faq-heading-about-{{ section.id }}">About <em>Bollit</em></h2>
-      <div class="kv-faq-accordion" data-kv-faq-accordion>
-        {% for block in section.blocks %}
-          {% if block.type == 'about' %}
-            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
-              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
-                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
-                <span class="kv-faq-item__icon" aria-hidden="true"></span>
-              </button>
-              <div class="kv-faq-item__panel">
-                <div class="kv-faq-item__panel-inner">
-                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
+    {% assign rendered_sec = '' %}
+    {% for block in section.blocks %}
+      {% if block.type == 'faq_tab' %}
+        {% assign tt = block.settings.target %}
+        {% if tt == 'all' %}
+          {% continue %}
+        {% endif %}
+        {% if tt == 'custom' %}
+          {% assign sec_handle = block.settings.custom_handle | default: 'section' | handleize %}
+        {% else %}
+          {% assign sec_handle = tt %}
+        {% endif %}
+        {% assign sec_mark = sec_handle | prepend: '|' | append: '|' %}
+        {% if rendered_sec contains sec_mark %}
+          {% continue %}
+        {% endif %}
+        {% assign rendered_sec = rendered_sec | append: sec_mark %}
+        <section
+          class="kv-faq-block"
+          id="kv-faq-{{ sec_handle }}-{{ section.id }}"
+          data-kv-faq-section="{{ sec_handle | escape }}"
+          aria-labelledby="kv-faq-heading-{{ sec_handle }}-{{ section.id }}"
+        >
+          <h2 class="kv-faq-block__title" id="kv-faq-heading-{{ sec_handle }}-{{ section.id }}">
+            {% if block.settings.heading != blank or block.settings.heading_accent != blank %}
+              {{- block.settings.heading | escape -}}
+              {% if block.settings.heading_accent != blank %}
+                <em>{{ block.settings.heading_accent | escape }}</em>
+              {% endif %}
+            {% else %}
+              {% case sec_handle %}
+                {% when 'about' %}
+                  About <em>Bollit</em>
+                {% when 'product' %}
+                  Product <em>design & detail</em>
+                {% when 'tracking' %}
+                  Tracking <em>& use</em>
+                {% when 'shipping' %}
+                  Shipping
+                {% when 'returns' %}
+                  Returns <em>& warranty</em>
+                {% else %}
+                  {{ sec_handle | replace: '-', ' ' | capitalize }}
+              {% endcase %}
+            {% endif %}
+          </h2>
+          <div class="kv-faq-accordion" data-kv-faq-accordion>
+            {% assign first_faq = true %}
+            {% for b in section.blocks %}
+              {% if b.type == 'faq_item' %}
+                {% assign cat = b.settings.category %}
+                {% if cat == 'custom' %}
+                  {% assign item_handle = b.settings.custom_handle | default: 'section' | handleize %}
+                {% else %}
+                  {% assign item_handle = cat %}
+                {% endif %}
+                {% if item_handle == sec_handle %}
+                  <div
+                    class="kv-faq-item{% if first_faq %} kv-faq-item--open{% endif %}"
+                    {{ b.shopify_attributes }}
+                  >
+                    <button
+                      type="button"
+                      class="kv-faq-item__trigger"
+                      aria-expanded="{% if first_faq %}true{% else %}false{% endif %}"
+                    >
+                      <span class="kv-faq-item__question">{{ b.settings.question | escape }}</span>
+                      <span class="kv-faq-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="kv-faq-item__panel">
+                      <div class="kv-faq-item__panel-inner">
+                        <div class="kv-faq-item__answer rte">{{ b.settings.answer }}</div>
+                      </div>
+                    </div>
+                  </div>
+                  {% assign first_faq = false %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+    {% endfor %}
 
-    <section class="kv-faq-block" id="kv-faq-product-{{ section.id }}" data-kv-faq-section="product" aria-labelledby="kv-faq-heading-product-{{ section.id }}">
-      <h2 class="kv-faq-block__title" id="kv-faq-heading-product-{{ section.id }}">Product <em>design & detail</em></h2>
-      <div class="kv-faq-accordion" data-kv-faq-accordion>
-        {% for block in section.blocks %}
-          {% if block.type == 'product' %}
-            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
-              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
-                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
-                <span class="kv-faq-item__icon" aria-hidden="true"></span>
-              </button>
-              <div class="kv-faq-item__panel">
-                <div class="kv-faq-item__panel-inner">
-                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
-
-    <section class="kv-faq-block" id="kv-faq-tracking-{{ section.id }}" data-kv-faq-section="tracking" aria-labelledby="kv-faq-heading-tracking-{{ section.id }}">
-      <h2 class="kv-faq-block__title" id="kv-faq-heading-tracking-{{ section.id }}">Tracking <em>& use</em></h2>
-      <div class="kv-faq-accordion" data-kv-faq-accordion>
-        {% for block in section.blocks %}
-          {% if block.type == 'tracking' %}
-            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
-              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
-                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
-                <span class="kv-faq-item__icon" aria-hidden="true"></span>
-              </button>
-              <div class="kv-faq-item__panel">
-                <div class="kv-faq-item__panel-inner">
-                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
-
-    <section class="kv-faq-block" id="kv-faq-shipping-{{ section.id }}" data-kv-faq-section="shipping" aria-labelledby="kv-faq-heading-shipping-{{ section.id }}">
-      <h2 class="kv-faq-block__title" id="kv-faq-heading-shipping-{{ section.id }}">Shipping</h2>
-      <div class="kv-faq-accordion" data-kv-faq-accordion>
-        {% for block in section.blocks %}
-          {% if block.type == 'shipping' %}
-            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
-              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
-                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
-                <span class="kv-faq-item__icon" aria-hidden="true"></span>
-              </button>
-              <div class="kv-faq-item__panel">
-                <div class="kv-faq-item__panel-inner">
-                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
-
-    <section class="kv-faq-block" id="kv-faq-returns-{{ section.id }}" data-kv-faq-section="returns" aria-labelledby="kv-faq-heading-returns-{{ section.id }}">
-      <h2 class="kv-faq-block__title" id="kv-faq-heading-returns-{{ section.id }}">Returns <em>& warranty</em></h2>
-      <div class="kv-faq-accordion" data-kv-faq-accordion>
-        {% for block in section.blocks %}
-          {% if block.type == 'returns' %}
-            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
-              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
-                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
-                <span class="kv-faq-item__icon" aria-hidden="true"></span>
-              </button>
-              <div class="kv-faq-item__panel">
-                <div class="kv-faq-item__panel-inner">
-                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
-                </div>
-              </div>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </section>
+    {% for block in section.blocks %}
+      {% if block.type == 'faq_item' %}
+        {% assign cat = block.settings.category %}
+        {% if cat == 'custom' %}
+          {% assign sec_handle = block.settings.custom_handle | default: 'section' | handleize %}
+        {% else %}
+          {% assign sec_handle = cat %}
+        {% endif %}
+        {% assign sec_mark = sec_handle | prepend: '|' | append: '|' %}
+        {% if rendered_sec contains sec_mark %}
+          {% continue %}
+        {% endif %}
+        {% assign rendered_sec = rendered_sec | append: sec_mark %}
+        <section
+          class="kv-faq-block"
+          id="kv-faq-{{ sec_handle }}-{{ section.id }}"
+          data-kv-faq-section="{{ sec_handle | escape }}"
+          aria-labelledby="kv-faq-heading-{{ sec_handle }}-{{ section.id }}"
+        >
+          <h2 class="kv-faq-block__title" id="kv-faq-heading-{{ sec_handle }}-{{ section.id }}">
+            {% case sec_handle %}
+              {% when 'about' %}
+                About <em>Bollit</em>
+              {% when 'product' %}
+                Product <em>design & detail</em>
+              {% when 'tracking' %}
+                Tracking <em>& use</em>
+              {% when 'shipping' %}
+                Shipping
+              {% when 'returns' %}
+                Returns <em>& warranty</em>
+              {% else %}
+                {{ sec_handle | replace: '-', ' ' | capitalize }}
+            {% endcase %}
+          </h2>
+          <div class="kv-faq-accordion" data-kv-faq-accordion>
+            {% assign first_faq = true %}
+            {% for b in section.blocks %}
+              {% if b.type == 'faq_item' %}
+                {% assign c2 = b.settings.category %}
+                {% if c2 == 'custom' %}
+                  {% assign item_handle = b.settings.custom_handle | default: 'section' | handleize %}
+                {% else %}
+                  {% assign item_handle = c2 %}
+                {% endif %}
+                {% if item_handle == sec_handle %}
+                  <div
+                    class="kv-faq-item{% if first_faq %} kv-faq-item--open{% endif %}"
+                    {{ b.shopify_attributes }}
+                  >
+                    <button
+                      type="button"
+                      class="kv-faq-item__trigger"
+                      aria-expanded="{% if first_faq %}true{% else %}false{% endif %}"
+                    >
+                      <span class="kv-faq-item__question">{{ b.settings.question | escape }}</span>
+                      <span class="kv-faq-item__icon" aria-hidden="true"></span>
+                    </button>
+                    <div class="kv-faq-item__panel">
+                      <div class="kv-faq-item__panel-inner">
+                        <div class="kv-faq-item__answer rte">{{ b.settings.answer }}</div>
+                      </div>
+                    </div>
+                  </div>
+                  {% assign first_faq = false %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 
 <style>
+  .kv-faq-editor-hint {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: var(--kv-faq-muted);
+    line-height: 1.45;
+  }
+
   .kv-faq-page {
     --kv-faq-blue: #1e6bb8;
     --kv-faq-blue-soft: #e8f2fa;
@@ -382,6 +490,7 @@
       }
       if (!id) return;
       scrollSpyLock = true;
+      pinAllowed = true;
       setActiveTab(key);
       id.scrollIntoView({ behavior: 'smooth', block: 'start' });
       setTimeout(function () {
@@ -396,12 +505,11 @@
       });
     });
 
-    var sectionKeys = ['about', 'product', 'tracking', 'shipping', 'returns'];
-    var sectionEls = sectionKeys
-      .map(function (k) {
-        return root.querySelector('[data-kv-faq-section="' + k + '"]');
-      })
-      .filter(Boolean);
+    var sectionEls = Array.prototype.slice
+      .call(root.querySelectorAll('[data-kv-faq-section]'))
+      .filter(function (el) {
+        return el.getAttribute('data-kv-faq-section') !== 'all';
+      });
 
     var stickyOffset = headerOffset + 76;
     var scrollSpyTicking = false;
@@ -507,7 +615,7 @@
 
 {% schema %}
 {
-  "name": "KV FAQ Tabs",
+  "name": "KV FAQ tabs",
   "tag": "section",
   "class": "kv-faq-tab-section",
   "settings": [
@@ -525,148 +633,192 @@
   ],
   "blocks": [
     {
-      "type": "about",
-      "name": "About Q&A",
+      "type": "faq_tab",
+      "name": "Tab",
+      "limit": 20,
       "settings": [
-        { "type": "text", "id": "question", "label": "Question", "default": "What is Bollit?" },
         {
-          "type": "richtext",
-          "id": "answer",
-          "label": "Answer",
-          "default": "<p>Bollit designs thoughtful cleaning tools that fit modern homes.</p>"
+          "type": "select",
+          "id": "target",
+          "label": "Section link",
+          "options": [
+            { "value": "all", "label": "All (scroll to top)" },
+            { "value": "about", "label": "About" },
+            { "value": "product", "label": "Product" },
+            { "value": "tracking", "label": "Tracking" },
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "custom", "label": "Custom section" }
+          ],
+          "default": "about"
+        },
+        {
+          "type": "text",
+          "id": "custom_handle",
+          "label": "Custom section ID",
+          "info": "Only for Custom section. Short handle (e.g. warranty-care). Must match FAQ blocks using Custom."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab label",
+          "info": "Optional. Blank uses a default label."
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section heading (main text)",
+          "info": "Optional. Shown above that section's FAQs. Blank uses a default for preset sections."
+        },
+        {
+          "type": "text",
+          "id": "heading_accent",
+          "label": "Section heading accent",
+          "info": "Optional. Shown in italic next to the main heading (e.g. brand name)."
         }
       ]
     },
     {
-      "type": "product",
-      "name": "Product Q&A",
+      "type": "faq_item",
+      "name": "FAQ",
+      "limit": 80,
       "settings": [
-        { "type": "text", "id": "question", "label": "Question", "default": "What materials are used?" },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Section link",
+          "info": "Must match a Tab (not All). Use the same section link as the Tab.",
+          "options": [
+            { "value": "about", "label": "About" },
+            { "value": "product", "label": "Product" },
+            { "value": "tracking", "label": "Tracking" },
+            { "value": "shipping", "label": "Shipping" },
+            { "value": "returns", "label": "Returns" },
+            { "value": "custom", "label": "Custom section" }
+          ],
+          "default": "about"
+        },
+        {
+          "type": "text",
+          "id": "custom_handle",
+          "label": "Custom section ID",
+          "info": "Only when Section link is Custom. Must match the Tab Custom section ID (handle)."
+        },
+        { "type": "text", "id": "question", "label": "Question", "default": "Your question?" },
         {
           "type": "richtext",
           "id": "answer",
           "label": "Answer",
-          "default": "<p>We use durable, easy-clean materials selected for daily use.</p>"
-        }
-      ]
-    },
-    {
-      "type": "tracking",
-      "name": "Tracking & use Q&A",
-      "settings": [
-        { "type": "text", "id": "question", "label": "Question", "default": "How do I track my order?" },
-        {
-          "type": "richtext",
-          "id": "answer",
-          "label": "Answer",
-          "default": "<p>You will receive a tracking link by email when your order ships.</p>"
-        }
-      ]
-    },
-    {
-      "type": "shipping",
-      "name": "Shipping Q&A",
-      "settings": [
-        { "type": "text", "id": "question", "label": "Question", "default": "Where do you ship?" },
-        {
-          "type": "richtext",
-          "id": "answer",
-          "label": "Answer",
-          "default": "<p>We ship to the regions listed at checkout.</p>"
-        }
-      ]
-    },
-    {
-      "type": "returns",
-      "name": "Returns & warranty Q&A",
-      "settings": [
-        { "type": "text", "id": "question", "label": "Question", "default": "What is your return policy?" },
-        {
-          "type": "richtext",
-          "id": "answer",
-          "label": "Answer",
-          "default": "<p>See our returns page for eligibility and time windows.</p>"
+          "default": "<p>Your answer.</p>"
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "KV FAQ Tabs",
+      "name": "KV FAQ tabs",
       "blocks": [
+        { "type": "faq_tab", "settings": { "target": "all", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
+        { "type": "faq_tab", "settings": { "target": "about", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
+        { "type": "faq_tab", "settings": { "target": "product", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
+        { "type": "faq_tab", "settings": { "target": "tracking", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
+        { "type": "faq_tab", "settings": { "target": "shipping", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
+        { "type": "faq_tab", "settings": { "target": "returns", "custom_handle": "", "label": "", "heading": "", "heading_accent": "" } },
         {
-          "type": "about",
+          "type": "faq_item",
           "settings": {
+            "category": "about",
+            "custom_handle": "",
             "question": "What is Bollit?",
             "answer": "<p>Bollit creates modern cleaning tools designed for real life—simple to use, easy to store, and built to last.</p>"
           }
         },
         {
-          "type": "about",
+          "type": "faq_item",
           "settings": {
+            "category": "about",
+            "custom_handle": "",
             "question": "Where are Bollit products made?",
             "answer": "<p>We partner with trusted manufacturers and share country of origin on each product page.</p>"
           }
         },
         {
-          "type": "about",
+          "type": "faq_item",
           "settings": {
+            "category": "about",
+            "custom_handle": "",
             "question": "What makes Bollit different?",
             "answer": "<p>We focus on design, durability, and a calm, uncluttered experience in every product.</p>"
           }
         },
         {
-          "type": "about",
+          "type": "faq_item",
           "settings": {
+            "category": "about",
+            "custom_handle": "",
             "question": "Where does Bollit ship to?",
             "answer": "<p>We ship to many countries; availability is shown at checkout.</p>"
           }
         },
         {
-          "type": "product",
+          "type": "faq_item",
           "settings": {
+            "category": "product",
+            "custom_handle": "",
             "question": "What materials are used in Bollit products?",
             "answer": "<p>Materials vary by product; each listing describes plastics, metals, fibers, and care instructions.</p>"
           }
         },
         {
-          "type": "product",
+          "type": "faq_item",
           "settings": {
+            "category": "product",
+            "custom_handle": "",
             "question": "Are Bollit products easy to use?",
             "answer": "<p>Yes—ergonomics and clear instructions are part of every design.</p>"
           }
         },
         {
-          "type": "product",
+          "type": "faq_item",
           "settings": {
+            "category": "product",
+            "custom_handle": "",
             "question": "How durable are Bollit cleaning tools?",
             "answer": "<p>We test for regular home use; warranty terms apply where stated.</p>"
           }
         },
         {
-          "type": "product",
+          "type": "faq_item",
           "settings": {
+            "category": "product",
+            "custom_handle": "",
             "question": "Do Bollit products require assembly?",
             "answer": "<p>Most items are ready to use; any assembly steps are noted on the product page.</p>"
           }
         },
         {
-          "type": "tracking",
+          "type": "faq_item",
           "settings": {
+            "category": "tracking",
+            "custom_handle": "",
             "question": "How can I track my order?",
             "answer": "<p>Use the tracking link in your shipping confirmation email.</p>"
           }
         },
         {
-          "type": "shipping",
+          "type": "faq_item",
           "settings": {
+            "category": "shipping",
+            "custom_handle": "",
             "question": "How long does shipping take?",
             "answer": "<p>Delivery times depend on your location and method; estimates appear at checkout.</p>"
           }
         },
         {
-          "type": "returns",
+          "type": "faq_item",
           "settings": {
+            "category": "returns",
+            "custom_handle": "",
             "question": "What is your return policy?",
             "answer": "<p>Unused items in original packaging may be returned within the period stated on our returns page.</p>"
           }
