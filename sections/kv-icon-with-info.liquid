@@ -2,12 +2,12 @@
     <div class="kv-custom-container">
         <div class="kv-info-with-icon-in" style="background:{{ section.settings.bg_color }};">
 
-            {% if block.settings.icon != blank %}
-              {{ block.settings.icon | image_url: width: master  }}
+            {% if section.settings.icon != blank %}
+              {{ section.settings.icon | image_url: width: master  }}
             {% endif %}
           
             {% if section.settings.content != blank %}
-            <div class="kv-need-help-content">{{ section.settings.content }}</div>
+            <div class="kv-info-with-icon-content">{{ section.settings.content }}</div>
             {% endif %}
         </div>
     </div>
