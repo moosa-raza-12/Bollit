@@ -106,7 +106,11 @@
                       aria-expanded="{% if first_faq %}true{% else %}false{% endif %}"
                     >
                       <span class="kv-faq-item__question">{{ b.settings.question | escape }}</span>
-                      <span class="kv-faq-item__icon" aria-hidden="true"></span>
+                      <span class="kv-faq-item__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M13 6L8 11L3 6" stroke="#808080" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
                     </button>
                     <div class="kv-faq-item__panel">
                       <div class="kv-faq-item__panel-inner">
@@ -172,7 +176,11 @@
                       aria-expanded="{% if first_faq %}true{% else %}false{% endif %}"
                     >
                       <span class="kv-faq-item__question">{{ b.settings.question | escape }}</span>
-                      <span class="kv-faq-item__icon" aria-hidden="true"></span>
+                      <span class="kv-faq-item__icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M13 6L8 11L3 6" stroke="#808080" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
                     </button>
                     <div class="kv-faq-item__panel">
                       <div class="kv-faq-item__panel-inner">
@@ -340,19 +348,11 @@
 }
 
   .kv-faq-item__icon {
-    flex-shrink: 0;
-    width: 10px;
-    height: 10px;
-    border-right: 2px solid var(--kv-faq-blue);
-    border-bottom: 2px solid var(--kv-faq-blue);
-    transform: rotate(45deg);
-    margin-top: -4px;
     transition: transform 0.25s ease;
   }
 
   .kv-faq-item--open .kv-faq-item__icon {
-    transform: rotate(-135deg);
-    margin-top: 4px;
+    transform: rotate(-180deg);
   }
 
   .kv-faq-item__panel {
