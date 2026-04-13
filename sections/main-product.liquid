@@ -864,6 +864,71 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+              {%- when 'kv_review_badge' -%}
+                <div class="kv-review-badge" {{ block.shopify_attributes }}>
+                  <span class="kv-review-badge__star">&#9733;</span>
+                  <span class="kv-review-badge__text">
+                    {{ block.settings.rating_text | default: '4.5/5' }}
+                    ({{ block.settings.review_count | default: '1,450+' }} {{ block.settings.review_label | default: 'Reviews' }})
+                  </span>
+                </div>
+              {%- when 'kv_usp_icons' -%}
+                <div class="kv-usp-row" {{ block.shopify_attributes }}>
+                  {%- if block.settings.heading_1 != blank -%}
+                    <div class="kv-usp-card">
+                      <div class="kv-usp-card__icon">
+                        {%- if block.settings.icon_image_1 != blank -%}
+                          <img
+                            src="{{ block.settings.icon_image_1 | image_url: width: 80 }}"
+                            alt="{{ block.settings.heading_1 | escape }}"
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                          >
+                        {%- else -%}
+                          {% render 'icon-accordion', icon: block.settings.icon_1 %}
+                        {%- endif -%}
+                      </div>
+                      <p class="kv-usp-card__text">{{ block.settings.heading_1 }}</p>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.heading_2 != blank -%}
+                    <div class="kv-usp-card">
+                      <div class="kv-usp-card__icon">
+                        {%- if block.settings.icon_image_2 != blank -%}
+                          <img
+                            src="{{ block.settings.icon_image_2 | image_url: width: 80 }}"
+                            alt="{{ block.settings.heading_2 | escape }}"
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                          >
+                        {%- else -%}
+                          {% render 'icon-accordion', icon: block.settings.icon_2 %}
+                        {%- endif -%}
+                      </div>
+                      <p class="kv-usp-card__text">{{ block.settings.heading_2 }}</p>
+                    </div>
+                  {%- endif -%}
+                  {%- if block.settings.heading_3 != blank -%}
+                    <div class="kv-usp-card">
+                      <div class="kv-usp-card__icon">
+                        {%- if block.settings.icon_image_3 != blank -%}
+                          <img
+                            src="{{ block.settings.icon_image_3 | image_url: width: 80 }}"
+                            alt="{{ block.settings.heading_3 | escape }}"
+                            width="40"
+                            height="40"
+                            loading="lazy"
+                          >
+                        {%- else -%}
+                          {% render 'icon-accordion', icon: block.settings.icon_3 %}
+                        {%- endif -%}
+                      </div>
+                      <p class="kv-usp-card__text">{{ block.settings.heading_3 }}</p>
+                    </div>
+                  {%- endif -%}
+                </div>
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -2326,6 +2391,119 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "kv_review_badge",
+      "name": "Review badge",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "rating_text",
+          "label": "Rating text",
+          "default": "4.5/5"
+        },
+        {
+          "type": "text",
+          "id": "review_count",
+          "label": "Review count",
+          "default": "1,450+"
+        },
+        {
+          "type": "text",
+          "id": "review_label",
+          "label": "Review label",
+          "default": "Reviews"
+        }
+      ]
+    },
+    {
+      "type": "kv_usp_icons",
+      "name": "USP icons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image_1",
+          "label": "Icon image 1"
+        },
+        {
+          "type": "select",
+          "id": "icon_1",
+          "options": [
+            { "value": "bolt", "label": "Bolt" },
+            { "value": "refresh", "label": "Refresh" },
+            { "value": "check_mark", "label": "Checkmark" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "star", "label": "Star" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "washing", "label": "Washing" }
+          ],
+          "default": "bolt",
+          "label": "Icon 1 (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "heading_1",
+          "label": "Heading 1",
+          "default": "1500W high-performance"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image_2",
+          "label": "Icon image 2"
+        },
+        {
+          "type": "select",
+          "id": "icon_2",
+          "options": [
+            { "value": "bolt", "label": "Bolt" },
+            { "value": "refresh", "label": "Refresh" },
+            { "value": "check_mark", "label": "Checkmark" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "star", "label": "Star" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "washing", "label": "Washing" }
+          ],
+          "default": "refresh",
+          "label": "Icon 2 (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "heading_2",
+          "label": "Heading 2",
+          "default": "Dual rotating cleaning"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image_3",
+          "label": "Icon image 3"
+        },
+        {
+          "type": "select",
+          "id": "icon_3",
+          "options": [
+            { "value": "bolt", "label": "Bolt" },
+            { "value": "refresh", "label": "Refresh" },
+            { "value": "check_mark", "label": "Checkmark" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "star", "label": "Star" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "washing", "label": "Washing" }
+          ],
+          "default": "check_mark",
+          "label": "Icon 3 (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "heading_3",
+          "label": "Heading 3",
+          "default": "Chemical-free steam"
         }
       ]
     }
