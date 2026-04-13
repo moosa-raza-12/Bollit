@@ -348,7 +348,7 @@
       ],
       "name": "KV PDP Features Tab",
       "settings": {
-        "title": "What's in the box?",
+        "title": "What's in the <em>box?</em>",
         "description": "Everything you need for deep, effortless cleaning.",
         "cta_text": "Shop Now",
         "cta_badge": "Save 24%",
