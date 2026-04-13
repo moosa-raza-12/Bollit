@@ -123,8 +123,8 @@ body .kv-main-product  .product.grid {
 }
 
 .kv-main-product .product__info-wrapper .price .price__container {
-  margin: 0;
-  color: #1F1F1F;
+    margin: 0;
+    color: #1F1F1F;
     font-size: 20px;
     font-style: normal;
     font-weight: 500;
@@ -141,6 +141,10 @@ body .kv-main-product  .product.grid {
   text-decoration-line: line-through;
   margin: 0;
   letter-spacing: 0;
+}
+
+.kv-main-product .product__info-wrapper .price .price__container .price-item{
+  margin: 0;
 }
 
 
