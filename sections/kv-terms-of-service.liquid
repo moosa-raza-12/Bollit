@@ -22,7 +22,9 @@
         </aside>
 
         <div class="kv-privacy__content">
-
+            {% if section.settings.top_content != blank %}
+                <div class="kv-top-content">{{ section.settings.top_content }}</div>
+            {% endif %}
 
 
         {% for block in section.blocks %}
@@ -33,22 +35,10 @@
                 {% endif %}
                 {% if block.settings.content_1 != blank %}
                 <div class="kv-section-card__content rte">
-                        {% if block.settings.image_1 %}
-                        <img src="{{ block.settings.image_1 | image_url: width: master }}" alt="">
-                        {% endif %}
+                        
                         {{ block.settings.content_1 }}
 
-                        {% if block.settings.image_2 %}
-                        <img src="{{ block.settings.image_2 | image_url: width: master }}" alt="">
-                        {% endif %}
-
-                        {{ block.settings.content_2 }}
-
-                        {% if block.settings.image_3 %}
-                        <img src="{{ block.settings.image_3 | image_url: width: master }}" alt="">
-                        {% endif %}
-
-                        {{ block.settings.content_3 }}
+                       
                 </div>
                 {% endif %}
             </article>
@@ -274,39 +264,14 @@ a.kv-toc__link em {
           "id": "title",
           "label": "Heading",
         },
-        {
-          "type": "image_picker",
-          "id": "image_1",
-          "label": "Image 1",
-        },
+        
         {
           "type": "richtext",
           "id": "content_1",
           "label": "Content 1",
           "default": "<p>Describe this policy section here.</p>"
         },
-        {
-          "type": "image_picker",
-          "id": "image_2",
-          "label": "Image 2",
-        },
-        {
-          "type": "richtext",
-          "id": "content_2",
-          "label": "Content 2",
-          "default": "<p>Describe this policy section here.</p>"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_3",
-          "label": "Image 3",
-        },
-        {
-          "type": "richtext",
-          "id": "content_3",
-          "label": "Content 3",
-          "default": "<p>Describe this policy section here.</p>"
-        }
+      
       ]
     }
   ],
