@@ -1101,6 +1101,38 @@
           wrapper.appendChild(tmpl.content.firstElementChild.cloneNode(true));
         });
       });
+
+      var tabsContainer = document.getElementById('KvTabs-' + sectionId);
+      if (tabsContainer) {
+        var tabBtns = tabsContainer.querySelectorAll('.kv-tabs__btn');
+        var tabPanels = tabsContainer.querySelectorAll('.kv-tabs__panel');
+        var nav = tabsContainer.querySelector('.kv-tabs__nav');
+        var scrollBtn = tabsContainer.querySelector('.kv-tabs__scroll-btn--right');
+
+        tabBtns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var idx = parseInt(this.getAttribute('data-tab-index'), 10);
+            tabBtns.forEach(function (b) {
+              b.classList.remove('kv-tabs__btn--active');
+              b.setAttribute('aria-selected', 'false');
+            });
+            tabPanels.forEach(function (p) {
+              p.classList.remove('kv-tabs__panel--active');
+              p.hidden = true;
+            });
+            this.classList.add('kv-tabs__btn--active');
+            this.setAttribute('aria-selected', 'true');
+            tabPanels[idx].classList.add('kv-tabs__panel--active');
+            tabPanels[idx].hidden = false;
+          });
+        });
+
+        if (scrollBtn && nav) {
+          scrollBtn.addEventListener('click', function () {
+            nav.scrollBy({ left: 150, behavior: 'smooth' });
+          });
+        }
+      }
     });
   </script>
 </product-info>
