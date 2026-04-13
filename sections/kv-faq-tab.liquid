@@ -406,16 +406,33 @@
     var stickyOffset = headerOffset + 76;
     var scrollSpyTicking = false;
     var lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    var pinAllowed = true;
+    var upEps = 10;
+    var downEps = 2;
 
-    function updateTabsPin(scrollingUp) {
-      if (!tabsNav) return;
-      if (scrollingUp) {
-        tabsNav.classList.remove('kv-faq-tabs--pinned');
+    function applyTabsPinGeometry() {
+      if (!tabsNav || !pinAllowed) {
+        if (tabsNav) tabsNav.classList.remove('kv-faq-tabs--pinned');
         return;
       }
       var rootTop = root.getBoundingClientRect().top;
       var pin = rootTop <= headerOffset + 8;
       tabsNav.classList.toggle('kv-faq-tabs--pinned', pin);
+    }
+
+    function updateTabsPinFromScroll(y) {
+      if (!tabsNav) return;
+      var delta = y - lastScrollY;
+      lastScrollY = y;
+      if (delta < -upEps) {
+        pinAllowed = false;
+        tabsNav.classList.remove('kv-faq-tabs--pinned');
+        return;
+      }
+      if (delta > downEps) {
+        pinAllowed = true;
+      }
+      applyTabsPinGeometry();
     }
 
     function activeSectionFromScroll() {
@@ -439,31 +456,30 @@
       setActiveTab(next);
     }
 
-    function onScrollOrResize(ev) {
+    function onScroll() {
       if (scrollSpyTicking) return;
       scrollSpyTicking = true;
       requestAnimationFrame(function () {
         scrollSpyTicking = false;
         var y = window.scrollY || document.documentElement.scrollTop || 0;
-        var scrollingUp = ev && ev.type === 'scroll' && y + 3 < lastScrollY;
-        lastScrollY = y;
-        updateTabsPin(scrollingUp);
+        updateTabsPinFromScroll(y);
         if (!scrollSpyLock) onScrollSpy();
       });
     }
 
-    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', function () {
       lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+      pinAllowed = true;
       if (scrollSpyTicking) return;
       scrollSpyTicking = true;
       requestAnimationFrame(function () {
         scrollSpyTicking = false;
-        updateTabsPin(false);
+        applyTabsPinGeometry();
         if (!scrollSpyLock) onScrollSpy();
       });
     }, { passive: true });
-    updateTabsPin(false);
+    applyTabsPinGeometry();
     onScrollSpy();
 
     root.querySelectorAll('[data-kv-faq-accordion]').forEach(function (acc) {
