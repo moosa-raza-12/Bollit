@@ -1,0 +1,573 @@
+{% comment %}
+  FAQ: sticky tabs, click-to-scroll, scrollspy + tab strip scroll, one accordion open per block.
+  Add as a section: duplicate to theme sections/kv-faq-tab.liquid and include {% section 'kv-faq-tab' %} or add via theme editor.
+{% endcomment %}
+
+<div class="kv-faq-page" id="kv-faq-page-{{ section.id }}" data-kv-faq-root>
+  <nav class="kv-faq-tabs" aria-label="FAQ categories" data-kv-faq-tabs>
+    <div class="kv-faq-tabs__track" data-kv-faq-tabs-track>
+      <button type="button" class="kv-faq-tab kv-faq-tab--active" data-kv-faq-tab data-target="all">All</button>
+      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="about">About Bollit</button>
+      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="product">Product details & design</button>
+      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="tracking">Tracking & Use</button>
+      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="shipping">Shipping</button>
+      <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="returns">Returns & Warranty</button>
+    </div>
+  </nav>
+
+  <div class="kv-faq-content" data-kv-faq-content>
+    <div class="kv-faq-anchor" id="kv-faq-top-{{ section.id }}" data-kv-faq-section="all" aria-hidden="true"></div>
+
+    <section class="kv-faq-block" id="kv-faq-about-{{ section.id }}" data-kv-faq-section="about" aria-labelledby="kv-faq-heading-about-{{ section.id }}">
+      <h2 class="kv-faq-block__title" id="kv-faq-heading-about-{{ section.id }}">About <em>Bollit</em></h2>
+      <div class="kv-faq-accordion" data-kv-faq-accordion>
+        {% for block in section.blocks %}
+          {% if block.type == 'about' %}
+            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
+              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
+                <span class="kv-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
+                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="kv-faq-block" id="kv-faq-product-{{ section.id }}" data-kv-faq-section="product" aria-labelledby="kv-faq-heading-product-{{ section.id }}">
+      <h2 class="kv-faq-block__title" id="kv-faq-heading-product-{{ section.id }}">Product <em>design & detail</em></h2>
+      <div class="kv-faq-accordion" data-kv-faq-accordion>
+        {% for block in section.blocks %}
+          {% if block.type == 'product' %}
+            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
+              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
+                <span class="kv-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
+                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="kv-faq-block" id="kv-faq-tracking-{{ section.id }}" data-kv-faq-section="tracking" aria-labelledby="kv-faq-heading-tracking-{{ section.id }}">
+      <h2 class="kv-faq-block__title" id="kv-faq-heading-tracking-{{ section.id }}">Tracking <em>& use</em></h2>
+      <div class="kv-faq-accordion" data-kv-faq-accordion>
+        {% for block in section.blocks %}
+          {% if block.type == 'tracking' %}
+            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
+              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
+                <span class="kv-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
+                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="kv-faq-block" id="kv-faq-shipping-{{ section.id }}" data-kv-faq-section="shipping" aria-labelledby="kv-faq-heading-shipping-{{ section.id }}">
+      <h2 class="kv-faq-block__title" id="kv-faq-heading-shipping-{{ section.id }}">Shipping</h2>
+      <div class="kv-faq-accordion" data-kv-faq-accordion>
+        {% for block in section.blocks %}
+          {% if block.type == 'shipping' %}
+            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
+              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
+                <span class="kv-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
+                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="kv-faq-block" id="kv-faq-returns-{{ section.id }}" data-kv-faq-section="returns" aria-labelledby="kv-faq-heading-returns-{{ section.id }}">
+      <h2 class="kv-faq-block__title" id="kv-faq-heading-returns-{{ section.id }}">Returns <em>& warranty</em></h2>
+      <div class="kv-faq-accordion" data-kv-faq-accordion>
+        {% for block in section.blocks %}
+          {% if block.type == 'returns' %}
+            <div class="kv-faq-item{% if forloop.first %} kv-faq-item--open{% endif %}" {{ block.shopify_attributes }}>
+              <button type="button" class="kv-faq-item__trigger" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}">
+                <span class="kv-faq-item__question">{{ block.settings.question }}</span>
+                <span class="kv-faq-item__icon" aria-hidden="true"></span>
+              </button>
+              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
+                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+</div>
+
+<style>
+  .kv-faq-page {
+    --kv-faq-blue: #1e6bb8;
+    --kv-faq-blue-soft: #e8f2fa;
+    --kv-faq-text: #1a1a1a;
+    --kv-faq-muted: #6b6b6b;
+    --kv-faq-radius: 12px;
+    --kv-faq-sticky-top: 0px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+    color: var(--kv-faq-text);
+  }
+
+  .kv-faq-tabs {
+    position: sticky;
+    top: var(--kv-faq-sticky-top);
+    z-index: 10;
+    background: #fff;
+    padding: 0.75rem 0 1rem;
+    margin: 0 -1.25rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .kv-faq-tabs__track {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    padding-bottom: 2px;
+  }
+
+  .kv-faq-tabs__track::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .kv-faq-tab {
+    flex: 0 0 auto;
+    border: none;
+    background: transparent;
+    color: var(--kv-faq-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.55rem 0.9rem 0.65rem;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: inset 0 -3px 0 transparent;
+  }
+
+  .kv-faq-tab:hover {
+    color: var(--kv-faq-text);
+  }
+
+  .kv-faq-tab--active {
+    color: var(--kv-faq-blue);
+    background: var(--kv-faq-blue-soft);
+    box-shadow: inset 0 -3px 0 var(--kv-faq-blue);
+  }
+
+  .kv-faq-anchor {
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+  }
+
+  .kv-faq-content {
+    padding-top: 2.5rem;
+  }
+
+  .kv-faq-block {
+    scroll-margin-top: calc(var(--kv-faq-sticky-top) + 72px);
+    margin-bottom: 3.5rem;
+  }
+
+  .kv-faq-block__title {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 600;
+    margin: 0 0 1.5rem;
+    line-height: 1.2;
+  }
+
+  .kv-faq-block__title em {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: var(--kv-faq-blue);
+  }
+
+  .kv-faq-accordion {
+    background: var(--kv-faq-blue-soft);
+    border-radius: var(--kv-faq-radius);
+    padding: 0.5rem 1rem 1rem;
+  }
+
+  .kv-faq-item {
+    border-bottom: 1px solid rgba(30, 107, 184, 0.12);
+  }
+
+  .kv-faq-item:last-child {
+    border-bottom: none;
+  }
+
+  .kv-faq-item__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: left;
+    padding: 1rem 0.25rem;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .kv-faq-item__question {
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .kv-faq-item__icon {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--kv-faq-blue);
+    border-bottom: 2px solid var(--kv-faq-blue);
+    transform: rotate(45deg);
+    margin-top: -4px;
+    transition: transform 0.25s ease;
+  }
+
+  .kv-faq-item--open .kv-faq-item__icon {
+    transform: rotate(-135deg);
+    margin-top: 4px;
+  }
+
+  .kv-faq-item__panel {
+    padding: 0 0.25rem 1rem;
+  }
+
+  .kv-faq-item__answer {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #333;
+  }
+
+  .kv-faq-item__answer p {
+    margin: 0 0 0.75em;
+  }
+
+  .kv-faq-item__answer p:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-kv-faq-root]');
+    if (!root) return;
+
+    var tabsNav = root.querySelector('[data-kv-faq-tabs]');
+    var track = root.querySelector('[data-kv-faq-tabs-track]');
+    var tabButtons = root.querySelectorAll('[data-kv-faq-tab]');
+    var sections = root.querySelectorAll('[data-kv-faq-section]');
+
+    function scrollTabIntoView(btn) {
+      if (!track || !btn) return;
+      var tr = track.getBoundingClientRect();
+      var br = btn.getBoundingClientRect();
+      var pad = 16;
+      if (br.left < tr.left + pad) {
+        track.scrollLeft += br.left - tr.left - pad;
+      } else if (br.right > tr.right - pad) {
+        track.scrollLeft += br.right - tr.right + pad;
+      }
+    }
+
+    function setActiveTab(key) {
+      tabButtons.forEach(function (b) {
+        var on = b.getAttribute('data-target') === key;
+        b.classList.toggle('kv-faq-tab--active', on);
+        if (on) scrollTabIntoView(b);
+      });
+    }
+
+    var scrollSpyLock = false;
+    function scrollToSection(key) {
+      var id;
+      if (key === 'all') {
+        id = root.querySelector('[data-kv-faq-section="all"]');
+      } else {
+        var el = root.querySelector('[data-kv-faq-section="' + key + '"]');
+        id = el;
+      }
+      if (!id) return;
+      scrollSpyLock = true;
+      setActiveTab(key);
+      id.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function () {
+        scrollSpyLock = false;
+      }, 800);
+    }
+
+    tabButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var key = btn.getAttribute('data-target');
+        if (key) scrollToSection(key);
+      });
+    });
+
+    var sectionKeys = ['about', 'product', 'tracking', 'shipping', 'returns'];
+    var sectionEls = sectionKeys
+      .map(function (k) {
+        return root.querySelector('[data-kv-faq-section="' + k + '"]');
+      })
+      .filter(Boolean);
+
+    if (sectionEls.length && 'IntersectionObserver' in window) {
+      var stickyOffset = 80;
+      var io = new IntersectionObserver(
+        function (entries) {
+          if (scrollSpyLock) return;
+          var best = null;
+          var bestRatio = 0;
+          entries.forEach(function (en) {
+            if (en.isIntersecting && en.intersectionRatio >= bestRatio) {
+              bestRatio = en.intersectionRatio;
+              best = en.target.getAttribute('data-kv-faq-section');
+            }
+          });
+          if (best) setActiveTab(best);
+        },
+        {
+          root: null,
+          rootMargin: '-' + stickyOffset + 'px 0px -55% 0px',
+          threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+        }
+      );
+      sectionEls.forEach(function (el) {
+        io.observe(el);
+      });
+
+      function onScroll() {
+        if (scrollSpyLock) return;
+        var top = root.getBoundingClientRect().top;
+        var firstSection = sectionEls[0];
+        if (firstSection) {
+          var fsTop = firstSection.getBoundingClientRect().top;
+          if (fsTop > stickyOffset + 40) {
+            setActiveTab('all');
+          }
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    root.querySelectorAll('[data-kv-faq-accordion]').forEach(function (acc) {
+      acc.addEventListener('click', function (e) {
+        var trigger = e.target.closest('.kv-faq-item__trigger');
+        if (!trigger || !acc.contains(trigger)) return;
+        var item = trigger.closest('.kv-faq-item');
+        if (!item) return;
+        var panel = item.querySelector('.kv-faq-item__panel');
+        var willOpen = !item.classList.contains('kv-faq-item--open');
+
+        acc.querySelectorAll('.kv-faq-item').forEach(function (other) {
+          var oPanel = other.querySelector('.kv-faq-item__panel');
+          var oTrig = other.querySelector('.kv-faq-item__trigger');
+          other.classList.remove('kv-faq-item--open');
+          if (oPanel) oPanel.hidden = true;
+          if (oTrig) oTrig.setAttribute('aria-expanded', 'false');
+        });
+
+        if (willOpen) {
+          item.classList.add('kv-faq-item--open');
+          if (panel) panel.hidden = false;
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KV FAQ tabs",
+  "tag": "section",
+  "class": "kv-faq-tab-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "about",
+      "name": "About Bollit Q&A",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What is Bollit?" },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Bollit designs thoughtful cleaning tools that fit modern homes.</p>"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "Product Q&A",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What materials are used?" },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We use durable, easy-clean materials selected for daily use.</p>"
+        }
+      ]
+    },
+    {
+      "type": "tracking",
+      "name": "Tracking & use Q&A",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How do I track my order?" },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>You will receive a tracking link by email when your order ships.</p>"
+        }
+      ]
+    },
+    {
+      "type": "shipping",
+      "name": "Shipping Q&A",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Where do you ship?" },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We ship to the regions listed at checkout.</p>"
+        }
+      ]
+    },
+    {
+      "type": "returns",
+      "name": "Returns & warranty Q&A",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What is your return policy?" },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>See our returns page for eligibility and time windows.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV FAQ tabs",
+      "blocks": [
+        {
+          "type": "about",
+          "settings": {
+            "question": "What is Bollit?",
+            "answer": "<p>Bollit creates modern cleaning tools designed for real life—simple to use, easy to store, and built to last.</p>"
+          }
+        },
+        {
+          "type": "about",
+          "settings": {
+            "question": "Where are Bollit products made?",
+            "answer": "<p>We partner with trusted manufacturers and share country of origin on each product page.</p>"
+          }
+        },
+        {
+          "type": "about",
+          "settings": {
+            "question": "What makes Bollit different?",
+            "answer": "<p>We focus on design, durability, and a calm, uncluttered experience in every product.</p>"
+          }
+        },
+        {
+          "type": "about",
+          "settings": {
+            "question": "Where does Bollit ship to?",
+            "answer": "<p>We ship to many countries; availability is shown at checkout.</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "question": "What materials are used in Bollit products?",
+            "answer": "<p>Materials vary by product; each listing describes plastics, metals, fibers, and care instructions.</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "question": "Are Bollit products easy to use?",
+            "answer": "<p>Yes—ergonomics and clear instructions are part of every design.</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "question": "How durable are Bollit cleaning tools?",
+            "answer": "<p>We test for regular home use; warranty terms apply where stated.</p>"
+          }
+        },
+        {
+          "type": "product",
+          "settings": {
+            "question": "Do Bollit products require assembly?",
+            "answer": "<p>Most items are ready to use; any assembly steps are noted on the product page.</p>"
+          }
+        },
+        {
+          "type": "tracking",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>Use the tracking link in your shipping confirmation email.</p>"
+          }
+        },
+        {
+          "type": "shipping",
+          "settings": {
+            "question": "How long does shipping take?",
+            "answer": "<p>Delivery times depend on your location and method; estimates appear at checkout.</p>"
+          }
+        },
+        {
+          "type": "returns",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>Unused items in original packaging may be returned within the period stated on our returns page.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
