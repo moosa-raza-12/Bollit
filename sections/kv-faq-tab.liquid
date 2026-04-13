@@ -10,6 +10,7 @@
   data-kv-header-offset="{{ section.settings.header_offset | default: 0 }}"
   style="--kv-faq-sticky-top: {{ section.settings.header_offset | default: 0 }}px; --kv-faq-scroll-margin: calc({{ section.settings.header_offset | default: 0 }}px + 76px);"
 >
+<div class="kv-custom-container">
   <nav class="kv-faq-tabs" aria-label="FAQ categories" data-kv-faq-tabs data-kv-faq-tabs-nav>
     <div class="kv-faq-tabs__track" data-kv-faq-tabs-track>
       <button type="button" class="kv-faq-tab kv-faq-tab--active" data-kv-faq-tab data-target="all">All</button>
@@ -197,6 +198,7 @@
       {% endif %}
     {% endfor %}
   </div>
+</div>
 </section>
 
 <style>
