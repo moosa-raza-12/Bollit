@@ -103,6 +103,47 @@
             "heading": "Returns & Shipping",
             "content": "<p>Returns & Shipping</p>"
           }
+        },
+        "kv_video_ThFYJq": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_T3LTaq": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_NbweTe": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_jXtpnX": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_Dtptea": {
+          "type": "kv-video",
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "thumbnail": "shopify://shop_images/product-highlight-carousel.png",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
         }
       },
       "block_order": [
@@ -118,7 +159,12 @@
         "kv_tab_BUtBW8",
         "kv_tab_kpAqQ6",
         "kv_tab_jdfdF9",
-        "kv_tab_eEXPz4"
+        "kv_tab_eEXPz4",
+        "kv_video_ThFYJq",
+        "kv_video_T3LTaq",
+        "kv_video_NbweTe",
+        "kv_video_jXtpnX",
+        "kv_video_Dtptea"
       ],
       "settings": {
         "enable_sticky_info": true,
