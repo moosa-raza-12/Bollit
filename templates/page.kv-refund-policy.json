@@ -41,7 +41,7 @@
       "type": "kv-default-heading-with-content",
       "name": "KV Heading With Content",
       "settings": {
-        "padding": "",
+        "padding": "0px",
         "bg_color": "#f0f8ff",
         "heading": "The <em>policy</em>",
         "content": "<ol><li>Cancel your order within <strong>30 days of receipt </strong>without giving a reason.</li><li>Return the product within <strong>30 days of cancellation.</strong></li><li>To initiate a return, click on the following: <span style=\"text-decoration:underline\"><strong>Bollit Return Portal.</strong></span> Here you can easily submit your return and follow the shipping instructions.</li><li>Please note that <strong>sprays cannot be returned.</strong></li></ol>",
@@ -53,7 +53,7 @@
       "type": "kv-icon-with-info",
       "name": "KV Icon With Info",
       "settings": {
-        "bg_color": "#F0F8FF",
+        "bg_color": "#f0f8ff",
         "icon": "shopify://shop_images/icon.svg",
         "content": "<p>If your order is not recognized in our return portal or if you have exceeded the return period, please contact us at <a href=\"mailto:info@bollitgoods.com\" title=\"mailto:info@bollitgoods.com\">info@bollitgoods.com</a> for further assistance.</p>"
       }
