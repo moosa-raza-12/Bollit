@@ -441,19 +441,19 @@ body .kv-main-product  .product.grid {
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  max-width: 100%;
 }
 
 .kv-tabs__nav {
   display: flex;
   gap: 4px;
-  overflow-x: auto;
+  overflow-x: scroll;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-behavior: smooth;
-  flex: 1;
+  flex: 1 1 0%;
   min-width: 0;
 }
 
