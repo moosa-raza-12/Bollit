@@ -405,9 +405,14 @@
 
     var stickyOffset = headerOffset + 76;
     var scrollSpyTicking = false;
+    var lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
 
-    function updateTabsPin() {
+    function updateTabsPin(scrollingUp) {
       if (!tabsNav) return;
+      if (scrollingUp) {
+        tabsNav.classList.remove('kv-faq-tabs--pinned');
+        return;
+      }
       var rootTop = root.getBoundingClientRect().top;
       var pin = rootTop <= headerOffset + 8;
       tabsNav.classList.toggle('kv-faq-tabs--pinned', pin);
@@ -434,19 +439,31 @@
       setActiveTab(next);
     }
 
-    function onScroll() {
+    function onScrollOrResize(ev) {
       if (scrollSpyTicking) return;
       scrollSpyTicking = true;
       requestAnimationFrame(function () {
         scrollSpyTicking = false;
-        updateTabsPin();
+        var y = window.scrollY || document.documentElement.scrollTop || 0;
+        var scrollingUp = ev && ev.type === 'scroll' && y + 3 < lastScrollY;
+        lastScrollY = y;
+        updateTabsPin(scrollingUp);
         if (!scrollSpyLock) onScrollSpy();
       });
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-    updateTabsPin();
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', function () {
+      lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+      if (scrollSpyTicking) return;
+      scrollSpyTicking = true;
+      requestAnimationFrame(function () {
+        scrollSpyTicking = false;
+        updateTabsPin(false);
+        if (!scrollSpyLock) onScrollSpy();
+      });
+    }, { passive: true });
+    updateTabsPin(false);
     onScrollSpy();
 
     root.querySelectorAll('[data-kv-faq-accordion]').forEach(function (acc) {
