@@ -31,16 +31,15 @@
         "faq_tab_zNXehD": {
           "type": "faq_tab",
           "settings": {
-            "target": "about",
-            "custom_handle": "",
+            "section_key": "about-bollit",
+            "heading_inline": "About <em>Bollit</em>",
             "label": "About Bollit"
           }
         },
         "faq_item_tBAJY8": {
           "type": "faq_item",
           "settings": {
-            "category": "about",
-            "custom_handle": "",
+            "section_key": "about-bollit",
             "question": "What is Bollit?",
             "answer": "<p>Bollit is a cleaning-focused brand built around one goal, creating practical, high-performance tools that make everyday cleaning faster, easier, and more effective.</p>"
           }
@@ -48,8 +47,7 @@
         "faq_item_ECUWgz": {
           "type": "faq_item",
           "settings": {
-            "category": "about",
-            "custom_handle": "",
+            "section_key": "about-bollit",
             "question": "Where are Bollit products made?",
             "answer": "<p>Bollit is a cleaning-focused brand built around one goal, creating practical, high-performance tools that make everyday cleaning faster, easier, and more effective.</p>"
           }
@@ -57,8 +55,7 @@
         "faq_item_NWcELg": {
           "type": "faq_item",
           "settings": {
-            "category": "about",
-            "custom_handle": "",
+            "section_key": "about-bollit",
             "question": "What makes Bollit different?",
             "answer": "<p>Bollit is a cleaning-focused brand built around one goal, creating practical, high-performance tools that make everyday cleaning faster, easier, and more effective.</p>"
           }
@@ -66,8 +63,7 @@
         "faq_item_HL7fWV": {
           "type": "faq_item",
           "settings": {
-            "category": "about",
-            "custom_handle": "",
+            "section_key": "about-bollit",
             "question": "Where does Bollit ship to?",
             "answer": "<p>Bollit is a cleaning-focused brand built around one goal, creating practical, high-performance tools that make everyday cleaning faster, easier, and more effective.</p>"
           }
@@ -75,8 +71,7 @@
         "faq_item_NJbYnB": {
           "type": "faq_item",
           "settings": {
-            "category": "about",
-            "custom_handle": "ssss",
+            "section_key": "about-bollit",
             "question": "Your question?",
             "answer": "<p>Your answer.</p>"
           }
@@ -84,9 +79,161 @@
         "faq_tab_tV8a8V": {
           "type": "faq_tab",
           "settings": {
-            "target": "product",
-            "custom_handle": "",
-            "label": "Product design & detail"
+            "section_key": "product-details",
+            "heading_inline": "Product <em>details & design</em>",
+            "label": "Product details & design"
+          }
+        },
+        "faq_item_ytGBgm": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "product-details",
+            "question": "What materials are used in Bollit products?",
+            "answer": "<p>We use durable, high-quality materials designed for long-term use, including reinforced plastics and precision-engineered components.</p>"
+          }
+        },
+        "faq_item_znkp4c": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "product-details",
+            "question": "Are Bollit products easy to use?",
+            "answer": "<p>We use durable, high-quality materials designed for long-term use, including reinforced plastics and precision-engineered components.</p>"
+          }
+        },
+        "faq_item_pch9Cp": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "product-details",
+            "question": "How durable are Bollit cleaning tools?",
+            "answer": "<p>We use durable, high-quality materials designed for long-term use, including reinforced plastics and precision-engineered components.</p>"
+          }
+        },
+        "faq_item_7cL98X": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "product-details",
+            "question": "Do Bollit products require assembly?",
+            "answer": "<p>We use durable, high-quality materials designed for long-term use, including reinforced plastics and precision-engineered components.</p>"
+          }
+        },
+        "faq_tab_hYcURQ": {
+          "type": "faq_tab",
+          "settings": {
+            "section_key": "tracking-use",
+            "heading_inline": "Tracking<em> & use </em>",
+            "label": "Tracking & use"
+          }
+        },
+        "faq_item_PBDypy": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "tracking-use",
+            "question": "How do I track my order?",
+            "answer": "<p>Once your order is shipped, you’ll receive a tracking link via email so you can follow your delivery in real time.</p>"
+          }
+        },
+        "faq_item_WnCnKA": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "tracking-use",
+            "question": "How do I use the product effectively?",
+            "answer": "<p>Once your order is shipped, you’ll receive a tracking link via email so you can follow your delivery in real time.</p>"
+          }
+        },
+        "faq_item_fpAgQm": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "tracking-use",
+            "question": "How do I use the product effectively?",
+            "answer": "<p>Do I need any special maintenance?</p>"
+          }
+        },
+        "faq_tab_rRteXb": {
+          "type": "faq_tab",
+          "settings": {
+            "section_key": "shipping",
+            "heading_inline": "Shipping",
+            "label": "Shipping"
+          }
+        },
+        "faq_item_tpc7m3": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "shipping",
+            "question": "How much does shipping cost?",
+            "answer": "<p>Shipping costs are calculated at checkout based on your location and order size.</p>"
+          }
+        },
+        "faq_item_tk9qJc": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "shipping",
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Shipping costs are calculated at checkout based on your location and order size.</p>"
+          }
+        },
+        "faq_item_Tg4Q6M": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "shipping",
+            "question": "When will my order be shipped?",
+            "answer": "<p>Shipping costs are calculated at checkout based on your location and order size.</p>"
+          }
+        },
+        "faq_item_wDfhQV": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "shipping",
+            "question": "Can I change my shipping address after ordering?",
+            "answer": "<p>Shipping costs are calculated at checkout based on your location and order size.</p>"
+          }
+        },
+        "faq_tab_gqgbeP": {
+          "type": "faq_tab",
+          "settings": {
+            "section_key": "returns-warranty",
+            "heading_inline": "Returns<em> & warranty </em>",
+            "label": "Returns & warranty"
+          }
+        },
+        "faq_item_tmdkXW": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "returns-warranty",
+            "question": "What is your return policy?",
+            "answer": "<p>You can return your product within 30 days of delivery.<br/><br/></p>"
+          }
+        },
+        "faq_item_Pxbh3W": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "returns-warranty",
+            "question": "How do I start a return?",
+            "answer": "<p>You can return your product within 30 days of delivery.<br/><br/></p>"
+          }
+        },
+        "faq_item_38PPn6": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "returns-warranty",
+            "question": "Do Bollit products come with a warranty?",
+            "answer": "<p>You can return your product within 30 days of delivery.<br/><br/></p>"
+          }
+        },
+        "faq_item_MWcnDW": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "returns-warranty",
+            "question": "Can I cancel my order?",
+            "answer": "<p>You can return your product within 30 days of delivery.<br/><br/></p>"
+          }
+        },
+        "faq_item_rtPQ9d": {
+          "type": "faq_item",
+          "settings": {
+            "section_key": "returns-warranty",
+            "question": "What if my product arrives damaged or faulty??",
+            "answer": "<p>You can return your product within 30 days of delivery.<br/><br/></p>"
           }
         }
       },
@@ -97,7 +244,26 @@
         "faq_item_NWcELg",
         "faq_item_HL7fWV",
         "faq_item_NJbYnB",
-        "faq_tab_tV8a8V"
+        "faq_tab_tV8a8V",
+        "faq_item_ytGBgm",
+        "faq_item_znkp4c",
+        "faq_item_pch9Cp",
+        "faq_item_7cL98X",
+        "faq_tab_hYcURQ",
+        "faq_item_PBDypy",
+        "faq_item_WnCnKA",
+        "faq_item_fpAgQm",
+        "faq_tab_rRteXb",
+        "faq_item_tpc7m3",
+        "faq_item_tk9qJc",
+        "faq_item_Tg4Q6M",
+        "faq_item_wDfhQV",
+        "faq_tab_gqgbeP",
+        "faq_item_tmdkXW",
+        "faq_item_Pxbh3W",
+        "faq_item_38PPn6",
+        "faq_item_MWcnDW",
+        "faq_item_rtPQ9d"
       ],
       "name": "KV FAQ tabs",
       "settings": {

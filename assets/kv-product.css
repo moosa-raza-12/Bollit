@@ -37,26 +37,25 @@ body .kv-main-product  .product.grid {
 .kv-review-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: #fef4f0;
-  border-radius: 999px;
-  padding: 6px 16px;
+  gap: 8px;
   margin: 4px 0;
+  padding: 2px 8px;
   border-radius: 100px;
   background: rgba(232, 132, 0, 0.08);
-  padding: 8px;
 }
 
 .kv-review-badge__star {
-  color: #e8910b;
-  font-size: 18px;
-  line-height: 1;
+  display: flex;
+  width: 14px;
+  min-width: 14px;
 }
 
 .kv-review-badge__text {
-  font-size: 14px;
-  color: #6b6b6b;
-  line-height: 1.3;
+  color: #808080;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 /* ===== USP ICONS ROW ===== */
