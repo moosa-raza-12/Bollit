@@ -47,7 +47,7 @@
                                 <div class="swiper-slide">
                                     <div class="kv-pdp-ft-card">
                                         <div class="kv-pdp-ft-card-image">
-                                            <img src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.title }}">
+                                            <img src="{{ block.settings.image | img_url: '600x600' }}" alt="{{ block.settings.title }}">
                                         </div>
                                         <div class="kv-pdp-ft-card-content">
                                             <div class="kv-pdp-ft-card-title-row">
@@ -334,7 +334,6 @@
     flex-direction: column;
     border-radius: 20px;
     position: relative;
-    padding: 12px;
 }
 
 .kv-pdp-ft-card-image {
@@ -348,6 +347,7 @@
     height: 100%;
     display: block;
     object-fit: cover;
+    max-width: 100%;
 }
 
 .kv-pdp-ft-card-content {
