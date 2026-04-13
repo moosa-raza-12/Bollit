@@ -201,6 +201,56 @@
     "kv_pdp_features_tab_MdaUtV": {
       "type": "kv-pdp-features-tab",
       "blocks": {
+        "feature_slide_JX7kYq": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/featured-image4.png",
+            "quantity": "2x",
+            "title": "Hard Scrub Pads",
+            "description": "Feature description."
+          }
+        },
+        "feature_slide_LibD7g": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/featured-image2.png",
+            "quantity": "2x",
+            "title": "Hard Scrub Pads",
+            "description": "Feature description."
+          }
+        },
+        "feature_slide_7GHCjk": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/featured-image4.png",
+            "quantity": "2x",
+            "title": "Hard Scrub Pads",
+            "description": "Feature description."
+          }
+        },
+        "feature_slide_rXUe6p": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/collection-img-4.png",
+            "quantity": "2x",
+            "title": "Hard Scrub Pads",
+            "description": "Feature description."
+          }
+        },
+        "feature_slide_ptz6V8": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/992885ce8c132cd715eca587261765393ebf0280.png",
+            "quantity": "2x",
+            "title": "Hard Scrub Pads",
+            "description": "Feature description."
+          }
+        },
         "feature_slide_UPqHqa": {
           "type": "feature_slide",
           "settings": {
@@ -263,6 +313,11 @@
         }
       },
       "block_order": [
+        "feature_slide_JX7kYq",
+        "feature_slide_LibD7g",
+        "feature_slide_7GHCjk",
+        "feature_slide_rXUe6p",
+        "feature_slide_ptz6V8",
         "feature_slide_UPqHqa",
         "feature_slide_Xg7Cbc",
         "feature_slide_AganKU",
