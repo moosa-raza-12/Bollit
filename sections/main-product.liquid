@@ -959,24 +959,45 @@
                     <div class="kv-videos__header">
                       <h3 class="kv-videos__heading">{{ block.settings.section_heading | default: 'Trusted in 2,000+ homes' }}</h3>
                       <div class="kv-videos__arrows">
-                        <button type="button" class="kv-videos__arrow kv-videos__arrow--left kv-hidden" aria-label="Previous">
+                        <button type="button" class="kv-videos__arrow kv-videos__arrow--prev" aria-label="Previous">
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
-                        <button type="button" class="kv-videos__arrow kv-videos__arrow--right" aria-label="Next">
+                        <button type="button" class="kv-videos__arrow kv-videos__arrow--next" aria-label="Next">
                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                       </div>
                     </div>
-                    <div class="kv-videos__track">
-                      {%- for vid_block in kv_video_blocks -%}
-                        <div class="kv-videos__card" data-index="{{ forloop.index0 }}">
-                          {%- if vid_block.settings.video_url != blank -%}
-                            <a href="{{ vid_block.settings.video_url }}" class="kv-videos__link" target="_blank" rel="noopener">
-                          {%- endif -%}
-                            <div class="kv-videos__thumb">
-                              {%- if vid_block.settings.thumbnail != blank -%}
+                    <div class="swiper kv-videos__swiper">
+                      <div class="swiper-wrapper">
+                        {%- for vid_block in kv_video_blocks -%}
+                          <div class="swiper-slide kv-videos__card">
+                            <div class="kv-videos__thumb" data-video-card>
+                              {%- liquid
+                                assign has_shopify_video = false
+                                assign has_external_video = false
+                                assign poster_src = ''
+
+                                if vid_block.settings.video != blank
+                                  assign has_shopify_video = true
+                                  if vid_block.settings.thumbnail != blank
+                                    assign poster_src = vid_block.settings.thumbnail | image_url: width: 400
+                                  elsif vid_block.settings.video.preview_image
+                                    assign poster_src = vid_block.settings.video.preview_image | image_url: width: 400
+                                  endif
+                                elsif vid_block.settings.video_url != blank
+                                  assign has_external_video = true
+                                  if vid_block.settings.thumbnail != blank
+                                    assign poster_src = vid_block.settings.thumbnail | image_url: width: 400
+                                  endif
+                                elsif vid_block.settings.thumbnail != blank
+                                  assign poster_src = vid_block.settings.thumbnail | image_url: width: 400
+                                endif
+                              -%}
+
+                              {%- if poster_src != blank -%}
                                 <img
-                                  src="{{ vid_block.settings.thumbnail | image_url: width: 400 }}"
+                                  class="kv-videos__poster"
+                                  src="{{ poster_src }}"
                                   alt="{{ vid_block.settings.video_title | escape }}"
                                   width="200"
                                   height="356"
@@ -985,15 +1006,28 @@
                               {%- else -%}
                                 <div class="kv-videos__placeholder"></div>
                               {%- endif -%}
-                              <span class="kv-videos__play">
+
+                              <span class="kv-videos__play" data-play-btn>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#fff"/></svg>
                               </span>
+
+                              {%- if has_shopify_video -%}
+                                <template data-video-template>
+                                  {{ vid_block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: true, playsinline: true }}
+                                </template>
+                              {%- elsif has_external_video -%}
+                                <template data-video-template>
+                                  {%- if vid_block.settings.video_url.type == 'youtube' -%}
+                                    <iframe src="https://www.youtube.com/embed/{{ vid_block.settings.video_url.id }}?autoplay=1&mute=1&loop=1&playsinline=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                  {%- elsif vid_block.settings.video_url.type == 'vimeo' -%}
+                                    <iframe src="https://player.vimeo.com/video/{{ vid_block.settings.video_url.id }}?autoplay=1&muted=1&loop=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                                  {%- endif -%}
+                                </template>
+                              {%- endif -%}
                             </div>
-                          {%- if vid_block.settings.video_url != blank -%}
-                            </a>
-                          {%- endif -%}
-                        </div>
-                      {%- endfor -%}
+                          </div>
+                        {%- endfor -%}
+                      </div>
                     </div>
                   </div>
                 {%- endif -%}
@@ -1307,43 +1341,58 @@
 
   {%- comment -%}
     ============================================
-    KV - Video carousel (arrows, drag-scroll)
-    Horizontal scrollable video thumbnails
+    KV - Video carousel (Swiper + play on click)
+    Horizontal video card slider with Swiper
     ============================================
   {%- endcomment -%}
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var sectionId = '{{ section.id }}';
-      var videosContainer = document.getElementById('KvVideos-' + sectionId);
-      if (!videosContainer) return;
+      var container = document.getElementById('KvVideos-' + sectionId);
+      if (!container) return;
 
-      var vTrack = videosContainer.querySelector('.kv-videos__track');
-      var vArrowRight = videosContainer.querySelector('.kv-videos__arrow--right');
-      var vArrowLeft = videosContainer.querySelector('.kv-videos__arrow--left');
+      var swiperEl = container.querySelector('.kv-videos__swiper');
+      var prevBtn = container.querySelector('.kv-videos__arrow--prev');
+      var nextBtn = container.querySelector('.kv-videos__arrow--next');
 
-      function refreshVideoArrows() {
-        window.kvUpdateArrows(vTrack, vArrowLeft, vArrowRight);
+      var videoSwiper = new Swiper(swiperEl, {
+        slidesPerView: 'auto',
+        spaceBetween: 12,
+        freeMode: true,
+        grabCursor: true,
+        navigation: {
+          prevEl: prevBtn,
+          nextEl: nextBtn
+        },
+        on: {
+          init: function () { updateVideoArrows(this); },
+          slideChange: function () { updateVideoArrows(this); },
+          reachBeginning: function () { updateVideoArrows(this); },
+          reachEnd: function () { updateVideoArrows(this); },
+          fromEdge: function () { updateVideoArrows(this); }
+        }
+      });
+
+      function updateVideoArrows(swiper) {
+        if (prevBtn) prevBtn.classList.toggle('kv-hidden', swiper.isBeginning);
+        if (nextBtn) nextBtn.classList.toggle('kv-hidden', swiper.isEnd);
       }
 
-      refreshVideoArrows();
-
-      if (vTrack) {
-        vTrack.addEventListener('scroll', refreshVideoArrows);
-        window.addEventListener('resize', refreshVideoArrows);
-        window.kvDragScroll(vTrack);
-      }
-
-      if (vArrowRight && vTrack) {
-        vArrowRight.addEventListener('click', function () {
-          vTrack.scrollBy({ left: 200, behavior: 'smooth' });
+      container.querySelectorAll('[data-play-btn]').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          var card = this.closest('[data-video-card]');
+          if (!card) return;
+          var tmpl = card.querySelector('[data-video-template]');
+          if (!tmpl) return;
+          var poster = card.querySelector('.kv-videos__poster');
+          if (poster) poster.style.display = 'none';
+          this.style.display = 'none';
+          var videoEl = tmpl.content.firstElementChild.cloneNode(true);
+          videoEl.classList.add('kv-videos__player');
+          card.appendChild(videoEl);
         });
-      }
-
-      if (vArrowLeft && vTrack) {
-        vArrowLeft.addEventListener('click', function () {
-          vTrack.scrollBy({ left: -200, behavior: 'smooth' });
-        });
-      }
+      });
     });
   </script>
 </product-info>
@@ -2866,14 +2915,22 @@
           "info": "Only shown from the first video block"
         },
         {
-          "type": "image_picker",
-          "id": "thumbnail",
-          "label": "Video thumbnail"
+          "type": "video",
+          "id": "video",
+          "label": "Shopify-hosted video"
         },
         {
-          "type": "url",
+          "type": "video_url",
           "id": "video_url",
-          "label": "Video URL"
+          "accept": ["youtube", "vimeo"],
+          "label": "YouTube / Vimeo URL",
+          "info": "Used if no Shopify video is selected"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Custom thumbnail",
+          "info": "Overrides the video poster"
         },
         {
           "type": "text",
