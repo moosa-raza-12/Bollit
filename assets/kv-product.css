@@ -327,19 +327,19 @@ body .kv-main-product  .product.grid {
 
 .kv-tabs__scroll-btn {
   flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid #ddd;
-  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   color: #1a1a2e;
-  transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+  transition: background .2s ease,opacity .3s ease,transform .3s ease;
   opacity: 1;
   transform: scale(1);
+  width: 24px;
+  height: 24px;
+  border-radius: 56.571px;
+  border: 0.571px solid rgba(0, 54, 101, 0.23);
+  background: #FFF;
 }
 
 .kv-tabs__scroll-btn.kv-hidden {
@@ -348,13 +348,6 @@ body .kv-main-product  .product.grid {
   pointer-events: none;
 }
 
-.kv-tabs__scroll-btn--left {
-  margin-right: 8px;
-}
-
-.kv-tabs__scroll-btn--right {
-  margin-left: 8px;
-}
 
 .kv-tabs__scroll-btn:hover {
   background: #eee;
