@@ -441,6 +441,7 @@ body .kv-main-product  .product.grid {
   position: relative;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .kv-tabs__nav {
