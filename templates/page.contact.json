@@ -35,6 +35,218 @@
         "padding_bottom": 36
       }
     },
+    "lp_home_need_some_help_DM9rPX": {
+      "type": "lp-home-need-some-help",
+      "blocks": {
+        "tab_trtRRJ": {
+          "type": "tab",
+          "settings": {
+            "title": "Product"
+          }
+        },
+        "faq_item_EDeQjW": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "Is the steam mop safe for hardwood floors?",
+            "answer": "Yes. It’s designed for sealed hardwood, tile, laminate, marble, and vinyl surfaces."
+          }
+        },
+        "faq_item_wezCUN": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Warranty",
+            "question": "Does Bollit offer a warranty?",
+            "answer": "Yes. All products come with a warranty for manufacturing defects."
+          }
+        },
+        "faq_item_ejwkwF": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Warranty",
+            "question": "What does the warranty cover?",
+            "answer": "It covers defects in materials and workmanship under normal use."
+          }
+        },
+        "faq_item_tBznkE": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Warranty",
+            "question": "How do I claim a warranty?",
+            "answer": "Contact our support team helpbollit@gmail.com with your order details and we’ll guide you through the process."
+          }
+        },
+        "faq_item_HFfaqd": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How long does delivery take?",
+            "answer": "Most orders are delivered the next day, depending on your order time."
+          }
+        },
+        "tab_h6WrRT": {
+          "type": "tab",
+          "settings": {
+            "title": "Usage"
+          }
+        },
+        "faq_item_FWNjXW": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Usage",
+            "question": "How do I use the steam mop?",
+            "answer": "Fill the water tank, power it on, wait a few seconds to heat up, and start cleaning."
+          }
+        },
+        "faq_item_eKDTn3": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Usage",
+            "question": "What surfaces can I use it on?",
+            "answer": "It’s safe for every floor including wood, tile, laminate, marble, and vinyl."
+          }
+        },
+        "faq_item_erQNbx": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Usage",
+            "question": "Is it safe around children and pets?",
+            "answer": "Yes. It cleans using steam only, without leaving harmful chemical residue so it is safe or pets and children."
+          }
+        },
+        "faq_item_pkkUct": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Usage",
+            "question": "How often should I use it?",
+            "answer": "You can use it as often as needed for everyday cleaning or deep cleaning sessions."
+          }
+        },
+        "tab_7m8RXx": {
+          "type": "tab",
+          "settings": {
+            "title": "Warranty"
+          }
+        },
+        "tab_gaeqJA": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping"
+          }
+        },
+        "faq_item_qfRLYN": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "How long does delivery take?",
+            "answer": "Most orders are delivered the next day, depending on your order time."
+          }
+        },
+        "faq_item_97hWWG": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "Do you offer free shipping?",
+            "answer": "Yes, we offer free shipping on orders above €30."
+          }
+        },
+        "faq_item_NVW3Ag": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Shipping",
+            "question": "Can I track my order?",
+            "answer": "Yes. You’ll receive a tracking link once your order is shipped."
+          }
+        },
+        "faq_item_Xg7eyp": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "Can I return my product?",
+            "answer": "Yes. You can return your product within 30 days of delivery."
+          }
+        },
+        "faq_item_UDLLhM": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Returns",
+            "question": "How do I start a return?",
+            "answer": "You can start your return through our Refund Policy page. Follow the simple steps and we’ll guide you through the process."
+          }
+        },
+        "tab_33VMwx": {
+          "type": "tab",
+          "settings": {
+            "title": "Returns"
+          }
+        },
+        "faq_item_Xi7Et3": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "Is the steam mop safe for hardwood floors?",
+            "answer": "Yes. It’s designed for sealed hardwood, tile, laminate, marble, and vinyl surfaces."
+          }
+        },
+        "faq_item_YVKDxD": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "Does it require cleaning chemicals?",
+            "answer": "No chemicals required. Pure water steam kills 99.9% of bacteria."
+          }
+        },
+        "faq_item_HCKYqm": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "How long does it take to heat up?",
+            "answer": "It typically reaches full steam temperature in 30 seconds."
+          }
+        },
+        "faq_item_eaxMPz": {
+          "type": "faq_item",
+          "settings": {
+            "category": "Product",
+            "question": "How long does the water tank last?",
+            "answer": "A full tank provides approximately 15-20 minutes of continuous steam."
+          }
+        }
+      },
+      "block_order": [
+        "tab_trtRRJ",
+        "faq_item_EDeQjW",
+        "faq_item_wezCUN",
+        "faq_item_ejwkwF",
+        "faq_item_tBznkE",
+        "faq_item_HFfaqd",
+        "tab_h6WrRT",
+        "faq_item_FWNjXW",
+        "faq_item_eKDTn3",
+        "faq_item_erQNbx",
+        "faq_item_pkkUct",
+        "tab_7m8RXx",
+        "tab_gaeqJA",
+        "faq_item_qfRLYN",
+        "faq_item_97hWWG",
+        "faq_item_NVW3Ag",
+        "faq_item_Xg7eyp",
+        "faq_item_UDLLhM",
+        "tab_33VMwx",
+        "faq_item_Xi7Et3",
+        "faq_item_YVKDxD",
+        "faq_item_HCKYqm",
+        "faq_item_eaxMPz"
+      ],
+      "settings": {
+        "subtitle": "Need some help?",
+        "title": "Frequently asked <em>questions</em>",
+        "description": "We’ve answered the most common questions so you can choose with confidence.",
+        "image": "shopify://shop_images/Image.png",
+        "contact_title": "Need more help?",
+        "contact_text": "<p>We’re happy to help. Whether it’s about your product, delivery, or setup. Contact our customer service at <strong>helpbollit@gmail.com</strong></p>"
+      }
+    },
     "lp_home_free_day_returns_ptbGFa": {
       "type": "lp-home-free-day-returns",
       "blocks": {
@@ -81,6 +293,7 @@
     "main",
     "kv_default_hero_banner_3RgHTj",
     "form",
+    "lp_home_need_some_help_DM9rPX",
     "lp_home_free_day_returns_ptbGFa"
   ]
 }
