@@ -96,6 +96,13 @@
             "heading": "Returns & Shipping",
             "content": "<p>Returns & Shipping</p>"
           }
+        },
+        "kv_tab_eEXPz4": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "Returns & Shipping",
+            "content": "<p>Returns & Shipping</p>"
+          }
         }
       },
       "block_order": [
@@ -110,7 +117,8 @@
         "kv_tab_RpLngJ",
         "kv_tab_BUtBW8",
         "kv_tab_kpAqQ6",
-        "kv_tab_jdfdF9"
+        "kv_tab_jdfdF9",
+        "kv_tab_eEXPz4"
       ],
       "settings": {
         "enable_sticky_info": true,
