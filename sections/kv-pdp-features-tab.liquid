@@ -48,17 +48,17 @@
                                     <div class="kv-pdp-ft-card">
                                         <div class="kv-pdp-ft-card-image">
                                             <img src="{{ block.settings.image | img_url: '600x600' }}" alt="{{ block.settings.title }}">
-                                        </div>
-                                        <div class="kv-pdp-ft-card-content">
-                                            <div class="kv-pdp-ft-card-title-row">
-                                                {% if block.settings.quantity != blank %}
-                                                    <span class="kv-pdp-ft-card-qty">{{ block.settings.quantity }}</span>
+                                            <div class="kv-pdp-ft-card-content">
+                                                <div class="kv-pdp-ft-card-title-row">
+                                                    {% if block.settings.quantity != blank %}
+                                                        <span class="kv-pdp-ft-card-qty">{{ block.settings.quantity }}</span>
+                                                    {% endif %}
+                                                    <span class="kv-pdp-ft-card-title">{{ block.settings.title }}</span>
+                                                </div>
+                                                {% if block.settings.description != blank %}
+                                                    <p class="kv-pdp-ft-card-desc">{{ block.settings.description }}</p>
                                                 {% endif %}
-                                                <span class="kv-pdp-ft-card-title">{{ block.settings.title }}</span>
                                             </div>
-                                            {% if block.settings.description != blank %}
-                                                <p class="kv-pdp-ft-card-desc">{{ block.settings.description }}</p>
-                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
