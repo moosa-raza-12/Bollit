@@ -573,3 +573,144 @@ body .kv-main-product  .product.grid {
 
 
 
+/* ===== KV VIDEO CAROUSEL ===== */
+
+.kv-videos {
+  margin: 24px 0 0 0;
+}
+
+.kv-videos__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.kv-videos__heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.kv-videos__arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.kv-videos__arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #1a1a2e;
+  transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.kv-videos__arrow:hover {
+  background: #f0f0f0;
+}
+
+.kv-videos__arrow.kv-hidden {
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+}
+
+.kv-videos__track {
+  display: flex;
+  gap: 12px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.kv-videos__track::-webkit-scrollbar {
+  display: none;
+}
+
+.kv-videos__card {
+  flex: 0 0 auto;
+  width: 180px;
+  scroll-snap-align: start;
+}
+
+.kv-videos__link {
+  display: block;
+  text-decoration: none;
+}
+
+.kv-videos__thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid #1a3a5c;
+  background: #e8ecf0;
+}
+
+.kv-videos__thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kv-videos__placeholder {
+  width: 100%;
+  height: 100%;
+  background: #d0d8e0;
+}
+
+.kv-videos__play {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease;
+}
+
+.kv-videos__play svg {
+  margin-left: 2px;
+}
+
+.kv-videos__card:hover .kv-videos__play {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+@media screen and (max-width: 767.98px) {
+  .kv-videos__heading {
+    font-size: 18px;
+  }
+
+  .kv-videos__card {
+    width: 150px;
+  }
+
+  .kv-videos__arrow {
+    width: 32px;
+    height: 32px;
+  }
+}

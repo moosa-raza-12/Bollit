@@ -940,6 +940,63 @@
                     </div>
                   </div>
                 {%- endif -%}
+              {%- when 'kv-video' -%}
+                {%- liquid
+                  assign kv_video_blocks = section.blocks | where: 'type', 'kv-video'
+                  assign is_first_video_block = true
+                  for vb in kv_video_blocks
+                    if vb.id != block.id
+                      continue
+                    endif
+                    unless forloop.first
+                      assign is_first_video_block = false
+                    endunless
+                    break
+                  endfor
+                -%}
+                {%- if is_first_video_block -%}
+                  <div class="kv-videos" id="KvVideos-{{ section.id }}" {{ block.shopify_attributes }}>
+                    <div class="kv-videos__header">
+                      <h3 class="kv-videos__heading">{{ block.settings.section_heading | default: 'Trusted in 2,000+ homes' }}</h3>
+                      <div class="kv-videos__arrows">
+                        <button type="button" class="kv-videos__arrow kv-videos__arrow--left kv-hidden" aria-label="Previous">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <button type="button" class="kv-videos__arrow kv-videos__arrow--right" aria-label="Next">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="kv-videos__track">
+                      {%- for vid_block in kv_video_blocks -%}
+                        <div class="kv-videos__card" data-index="{{ forloop.index0 }}">
+                          {%- if vid_block.settings.video_url != blank -%}
+                            <a href="{{ vid_block.settings.video_url }}" class="kv-videos__link" target="_blank" rel="noopener">
+                          {%- endif -%}
+                            <div class="kv-videos__thumb">
+                              {%- if vid_block.settings.thumbnail != blank -%}
+                                <img
+                                  src="{{ vid_block.settings.thumbnail | image_url: width: 400 }}"
+                                  alt="{{ vid_block.settings.video_title | escape }}"
+                                  width="200"
+                                  height="356"
+                                  loading="lazy"
+                                >
+                              {%- else -%}
+                                <div class="kv-videos__placeholder"></div>
+                              {%- endif -%}
+                              <span class="kv-videos__play">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#fff"/></svg>
+                              </span>
+                            </div>
+                          {%- if vid_block.settings.video_url != blank -%}
+                            </a>
+                          {%- endif -%}
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                {%- endif -%}
               {%- when 'kv-usp-icons' -%}
                 <div class="kv-usp-row" {{ block.shopify_attributes }}>
                   {%- if block.settings.heading_1 != blank -%}
@@ -1060,21 +1117,87 @@
     </script>
   </div>
 
+  {%- comment -%}
+    ============================================
+    KV - Reusable drag-to-scroll helper
+    Enables mouse drag scrolling on any element
+    ============================================
+  {%- endcomment -%}
+  <script>
+    (function () {
+      window.kvDragScroll = function (el) {
+        if (!el) return;
+        var isDown = false, startX, scrollLeft;
+        el.style.cursor = 'grab';
+
+        el.addEventListener('mousedown', function (e) {
+          isDown = true;
+          el.style.cursor = 'grabbing';
+          el.style.scrollSnapType = 'none';
+          startX = e.pageX - el.offsetLeft;
+          scrollLeft = el.scrollLeft;
+          e.preventDefault();
+        });
+
+        el.addEventListener('mouseleave', function () {
+          if (!isDown) return;
+          isDown = false;
+          el.style.cursor = 'grab';
+          el.style.scrollSnapType = 'x mandatory';
+        });
+
+        el.addEventListener('mouseup', function () {
+          if (!isDown) return;
+          isDown = false;
+          el.style.cursor = 'grab';
+          el.style.scrollSnapType = 'x mandatory';
+        });
+
+        el.addEventListener('mousemove', function (e) {
+          if (!isDown) return;
+          e.preventDefault();
+          var x = e.pageX - el.offsetLeft;
+          el.scrollLeft = scrollLeft - (x - startX) * 1.5;
+        });
+      };
+
+      window.kvUpdateArrows = function (scrollEl, leftBtn, rightBtn) {
+        if (!scrollEl) return;
+        var noOverflow = scrollEl.scrollWidth <= scrollEl.offsetWidth + 2;
+        var atStart = scrollEl.scrollLeft <= 2;
+        var atEnd = scrollEl.scrollLeft + scrollEl.offsetWidth >= scrollEl.scrollWidth - 2;
+
+        if (leftBtn) {
+          leftBtn.classList.toggle('kv-hidden', noOverflow || atStart);
+          leftBtn.removeAttribute('hidden');
+        }
+        if (rightBtn) {
+          rightBtn.classList.toggle('kv-hidden', noOverflow || atEnd);
+          rightBtn.removeAttribute('hidden');
+        }
+      };
+    })();
+  </script>
+
+  {%- comment -%}
+    ============================================
+    KV - Mobile media slider (dot navigation)
+    Handles swipe dot sync on the mobile gallery
+    ============================================
+  {%- endcomment -%}
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const sectionId = '{{ section.id }}';
-      const track = document.getElementById('KvSliderTrack-' + sectionId);
-      const dotsContainer = document.getElementById('KvSliderDots-' + sectionId);
+      var sectionId = '{{ section.id }}';
+      var track = document.getElementById('KvSliderTrack-' + sectionId);
+      var dotsContainer = document.getElementById('KvSliderDots-' + sectionId);
       if (!track || !dotsContainer) return;
 
-      const dots = dotsContainer.querySelectorAll('.kv-media-slider__dot');
-      let currentIndex = 0;
+      var dots = dotsContainer.querySelectorAll('.kv-media-slider__dot');
 
       function updateDots(index) {
         dots.forEach(function (d, i) {
           d.classList.toggle('active', i === index);
         });
-        currentIndex = index;
       }
 
       dots.forEach(function (dot) {
@@ -1092,13 +1215,23 @@
       track.addEventListener('scroll', function () {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(function () {
-          var scrollLeft = track.scrollLeft;
           var slideWidth = track.children[0] ? track.children[0].offsetWidth : 1;
-          var idx = Math.round(scrollLeft / slideWidth);
+          var idx = Math.round(track.scrollLeft / slideWidth);
           updateDots(idx);
         }, 80);
       });
+    });
+  </script>
 
+  {%- comment -%}
+    ============================================
+    KV - Deferred media (video / 3D model)
+    Loads video or model on poster click
+    ============================================
+  {%- endcomment -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var sectionId = '{{ section.id }}';
       document.querySelectorAll('#KvMediaGallery-' + sectionId + ' [data-deferred-media-btn]').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var wrapper = this.closest('.kv-deferred-media');
@@ -1109,103 +1242,107 @@
           wrapper.appendChild(tmpl.content.firstElementChild.cloneNode(true));
         });
       });
+    });
+  </script>
 
+  {%- comment -%}
+    ============================================
+    KV - Tabs (switch, scroll arrows, drag)
+    Tab switching, arrow visibility, drag-scroll
+    ============================================
+  {%- endcomment -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var sectionId = '{{ section.id }}';
       var tabsContainer = document.getElementById('KvTabs-' + sectionId);
-      if (tabsContainer) {
-        var tabBtns = tabsContainer.querySelectorAll('.kv-tabs__btn');
-        var tabPanels = tabsContainer.querySelectorAll('.kv-tabs__panel');
-        var nav = tabsContainer.querySelector('.kv-tabs__nav');
-        var scrollBtnRight = tabsContainer.querySelector('.kv-tabs__scroll-btn--right');
-        var scrollBtnLeft = tabsContainer.querySelector('.kv-tabs__scroll-btn--left');
+      if (!tabsContainer) return;
 
-        function updateScrollBtns() {
-          if (!nav) return;
-          var noOverflow = nav.scrollWidth <= nav.offsetWidth + 2;
-          var atStart = nav.scrollLeft <= 2;
-          var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 2;
+      var tabBtns = tabsContainer.querySelectorAll('.kv-tabs__btn');
+      var tabPanels = tabsContainer.querySelectorAll('.kv-tabs__panel');
+      var nav = tabsContainer.querySelector('.kv-tabs__nav');
+      var arrowRight = tabsContainer.querySelector('.kv-tabs__scroll-btn--right');
+      var arrowLeft = tabsContainer.querySelector('.kv-tabs__scroll-btn--left');
 
-          if (scrollBtnLeft) {
-            scrollBtnLeft.classList.toggle('kv-hidden', noOverflow || atStart);
-            scrollBtnLeft.removeAttribute('hidden');
-          }
-          if (scrollBtnRight) {
-            scrollBtnRight.classList.toggle('kv-hidden', noOverflow || atEnd);
-            scrollBtnRight.removeAttribute('hidden');
-          }
-        }
+      function refreshArrows() {
+        window.kvUpdateArrows(nav, arrowLeft, arrowRight);
+      }
 
-        updateScrollBtns();
+      refreshArrows();
 
-        if (nav) {
-          nav.addEventListener('scroll', updateScrollBtns);
-          window.addEventListener('resize', updateScrollBtns);
-        }
+      if (nav) {
+        nav.addEventListener('scroll', refreshArrows);
+        window.addEventListener('resize', refreshArrows);
+        window.kvDragScroll(nav);
+      }
 
-        tabBtns.forEach(function (btn) {
-          btn.addEventListener('click', function () {
-            var idx = parseInt(this.getAttribute('data-tab-index'), 10);
-            tabBtns.forEach(function (b) {
-              b.classList.remove('kv-tabs__btn--active');
-              b.setAttribute('aria-selected', 'false');
-            });
-            tabPanels.forEach(function (p) {
-              p.classList.remove('kv-tabs__panel--active');
-            });
-            this.classList.add('kv-tabs__btn--active');
-            this.setAttribute('aria-selected', 'true');
-            tabPanels[idx].classList.add('kv-tabs__panel--active');
+      tabBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var idx = parseInt(this.getAttribute('data-tab-index'), 10);
+          tabBtns.forEach(function (b) {
+            b.classList.remove('kv-tabs__btn--active');
+            b.setAttribute('aria-selected', 'false');
           });
+          tabPanels.forEach(function (p) {
+            p.classList.remove('kv-tabs__panel--active');
+          });
+          this.classList.add('kv-tabs__btn--active');
+          this.setAttribute('aria-selected', 'true');
+          tabPanels[idx].classList.add('kv-tabs__panel--active');
         });
+      });
 
-        if (scrollBtnRight && nav) {
-          scrollBtnRight.addEventListener('click', function () {
-            nav.scrollBy({ left: 150, behavior: 'smooth' });
-          });
-        }
+      if (arrowRight && nav) {
+        arrowRight.addEventListener('click', function () {
+          nav.scrollBy({ left: 150, behavior: 'smooth' });
+        });
+      }
 
-        if (scrollBtnLeft && nav) {
-          scrollBtnLeft.addEventListener('click', function () {
-            nav.scrollBy({ left: -150, behavior: 'smooth' });
-          });
-        }
+      if (arrowLeft && nav) {
+        arrowLeft.addEventListener('click', function () {
+          nav.scrollBy({ left: -150, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
 
-        if (nav) {
-          var isDown = false;
-          var startX, scrollLeft;
+  {%- comment -%}
+    ============================================
+    KV - Video carousel (arrows, drag-scroll)
+    Horizontal scrollable video thumbnails
+    ============================================
+  {%- endcomment -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var sectionId = '{{ section.id }}';
+      var videosContainer = document.getElementById('KvVideos-' + sectionId);
+      if (!videosContainer) return;
 
-          nav.addEventListener('mousedown', function (e) {
-            isDown = true;
-            nav.style.cursor = 'grabbing';
-            nav.style.scrollSnapType = 'none';
-            startX = e.pageX - nav.offsetLeft;
-            scrollLeft = nav.scrollLeft;
-            e.preventDefault();
-          });
+      var vTrack = videosContainer.querySelector('.kv-videos__track');
+      var vArrowRight = videosContainer.querySelector('.kv-videos__arrow--right');
+      var vArrowLeft = videosContainer.querySelector('.kv-videos__arrow--left');
 
-          nav.addEventListener('mouseleave', function () {
-            if (!isDown) return;
-            isDown = false;
-            nav.style.cursor = 'grab';
-            nav.style.scrollSnapType = 'x mandatory';
-          });
+      function refreshVideoArrows() {
+        window.kvUpdateArrows(vTrack, vArrowLeft, vArrowRight);
+      }
 
-          nav.addEventListener('mouseup', function () {
-            if (!isDown) return;
-            isDown = false;
-            nav.style.cursor = 'grab';
-            nav.style.scrollSnapType = 'x mandatory';
-          });
+      refreshVideoArrows();
 
-          nav.addEventListener('mousemove', function (e) {
-            if (!isDown) return;
-            e.preventDefault();
-            var x = e.pageX - nav.offsetLeft;
-            var walk = (x - startX) * 1.5;
-            nav.scrollLeft = scrollLeft - walk;
-          });
+      if (vTrack) {
+        vTrack.addEventListener('scroll', refreshVideoArrows);
+        window.addEventListener('resize', refreshVideoArrows);
+        window.kvDragScroll(vTrack);
+      }
 
-          nav.style.cursor = 'grab';
-        }
+      if (vArrowRight && vTrack) {
+        vArrowRight.addEventListener('click', function () {
+          vTrack.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+      }
+
+      if (vArrowLeft && vTrack) {
+        vArrowLeft.addEventListener('click', function () {
+          vTrack.scrollBy({ left: -200, behavior: 'smooth' });
+        });
       }
     });
   </script>
@@ -2714,6 +2851,35 @@
           "id": "content",
           "label": "Tab content",
           "default": "<p>Add your tab content here.</p>"
+        }
+      ]
+    },
+    {
+      "type": "kv-video",
+      "name": "KV - Video",
+      "settings": [
+        {
+          "type": "text",
+          "id": "section_heading",
+          "label": "Section heading",
+          "default": "Trusted in 2,000+ homes",
+          "info": "Only shown from the first video block"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Video thumbnail"
+        },
+        {
+          "type": "url",
+          "id": "video_url",
+          "label": "Video URL"
+        },
+        {
+          "type": "text",
+          "id": "video_title",
+          "label": "Video title",
+          "default": "Customer review"
         }
       ]
     }
