@@ -204,8 +204,52 @@ body .kv-main-product  .product.grid {
   opacity: 0.8;
 }
 
+.kv-main-product .product__info-wrapper .product-form {
+  margin: 32px 0 0 0;
+}
 
+.kv-trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
 
+.kv-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 100px;
+  background: rgba(232, 132, 0, 0.08);
+}
+
+.kv-trust-badge__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4900a;
+}
+
+.kv-trust-badge img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 9.6px;
+  border: 1.2px solid rgba(232, 132, 0, 0.23);
+  background: #FFF;
+  padding: 2.4px;
+}
+
+.kv-trust-badge__text {
+  white-space: nowrap;
+  color: #808080;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.2;
+}
 
 
 
@@ -372,57 +416,3 @@ body .kv-main-product  .product.grid {
     display: block !important;
   }
 }
-
-/* ===== TRUST BADGES ===== */
-
-.kv-trust-badges {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.kv-trust-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #fef8f3;
-  border-radius: 999px;
-  padding: 8px 16px;
-}
-
-.kv-trust-badge__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #d4900a;
-}
-
-.kv-trust-badge img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.kv-trust-badge__text {
-  font-size: 14px;
-  font-weight: 500;
-  color: #1a1a2e;
-  white-space: nowrap;
-}
-
-@media screen and (max-width: 767.98px) {
-  .kv-trust-badges {
-    gap: 8px;
-  }
-
-  .kv-trust-badge {
-    padding: 6px 12px;
-  }
-
-  .kv-trust-badge__text {
-    font-size: 13px;
-  }
-}
-
