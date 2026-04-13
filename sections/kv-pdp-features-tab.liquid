@@ -68,6 +68,14 @@
                     <div class="kv-pdp-ft-progressbar-wrap">
                         <div class="swiper-pagination kv-pdp-ft-progressbar"></div>
                     </div>
+                    {% if section.settings.cta_text != blank %}
+                        <a href="{{ section.settings.cta_link }}" class="kv-pdp-ft-cta mobile-cta" style="display: none;">
+                            {{ section.settings.cta_text }}
+                            {% if section.settings.cta_badge != blank %}
+                                <span class="kv-pdp-ft-cta-badge">{{ section.settings.cta_badge }}</span>
+                            {% endif %}
+                        </a>
+                    {% endif %}
                 </div>
             </div>
         {% endfor %}
@@ -260,8 +268,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 8px;
+    gap: 24px;
     margin-bottom: 64px;
+    flex-wrap: wrap;
 }
 
 .kv-pdp-ft-tabs {
