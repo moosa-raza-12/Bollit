@@ -42,9 +42,9 @@
       "settings": {
         "bg_color": "#f0f8ff",
         "heading": "Shipping <em>time</em>",
-        "content": "<p><strong>Netherlands / Belgium</strong><br/>For 10:00PM ordered = delivered tomorrow<br/><br/><strong>Rest of Europe</strong><br/>2-3 working days</p>",
+        "content": "<h4>Netherlands / Belgium</h4><p>For 10:00PM ordered = delivered tomorrow</p><h4>Rest of Europe</h4><p>2-3 working days</p>",
         "enable_second_content": true,
-        "content_2": "<p><strong>Germany</strong></p><p>1-2 working days<br/><br/><strong>Rest of the world</strong><br/>5-6 working days</p>"
+        "content_2": "<h4>Germany</h4><p>1-2 working days</p><h4>Rest of the world</h4><p>5-6 working days</p>"
       }
     }
   },
