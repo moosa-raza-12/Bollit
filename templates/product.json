@@ -12,8 +12,8 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "kv_review_badge_yyQcFF": {
-          "type": "kv_review_badge",
+        "kv_review_badge_X3BLK6": {
+          "type": "kv-review-badge",
           "settings": {
             "rating_text": "4.5/5",
             "review_count": "1,450+",
@@ -32,8 +32,8 @@
           "type": "price",
           "settings": {}
         },
-        "kv_usp_icons_gWAjHN": {
-          "type": "kv_usp_icons",
+        "kv_usp_icons_RfwtAa": {
+          "type": "kv-usp-icons",
           "settings": {
             "icon_1": "bolt",
             "heading_1": "1500W high-performance",
@@ -65,11 +65,11 @@
         }
       },
       "block_order": [
-        "kv_review_badge_yyQcFF",
+        "kv_review_badge_X3BLK6",
         "title",
         "description_KDf6Q4",
         "price",
-        "kv_usp_icons_gWAjHN",
+        "kv_usp_icons_RfwtAa",
         "variant_picker",
         "quantity_selector",
         "buy_buttons"
