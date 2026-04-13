@@ -1,4 +1,4 @@
-<section class="kv-section kv-default-heading-with-content">
+<section class="kv-section kv-default-heading-with-content" style="padding-bottom:{{ section.settings.padding }}">
   <div class="kv-custom-container">
     <div class="kv-default-heading-with-content-in" >
       {% if section.settings.heading != blank %}
@@ -82,6 +82,11 @@
 {
   "name": "KV Heading With Content",
   "settings": [
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "Section Bottom Padding"
+    },
    {
       "type": "color",
       "id": "bg_color",
