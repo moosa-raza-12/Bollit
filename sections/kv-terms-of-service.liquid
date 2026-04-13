@@ -1,0 +1,324 @@
+
+<section class="kv-section kv-privacy" id="kv-privacy-{{ section.id }}">
+  <div class="kv-custom-container">
+      <div class="kv-privacy-in">
+        <aside class="kv-privacy__toc" aria-label="Table of contents">
+        <div class="kv-toc">
+            {% if section.settings.toc_title != blank %}
+            <h3 class="kv-toc__title">{{ section.settings.toc_title }}</h3>
+            {% endif %}
+            <ul class="kv-toc__list">
+            {% for block in section.blocks %}
+                {% if block.type == 'section_item' and block.settings.title != blank %}
+                <li class="kv-toc__item" {{ block.shopify_attributes }}>
+                    <a class="kv-toc__link" href="#kv-section-{{ block.id }}">
+                    {{ forloop.index }}. {{ block.settings.title }}
+                    </a>
+                </li>
+                {% endif %}
+            {% endfor %}
+            </ul>
+        </div>
+        </aside>
+
+        <div class="kv-privacy__content">
+
+
+
+        {% for block in section.blocks %}
+            {% if block.type == 'section_item' %}
+            <article class="kv-section-card" id="kv-section-{{ block.id }}" {{ block.shopify_attributes }}>
+                {% if block.settings.title != blank %}
+                <h2 class="kv-section-card__title kv-font-30">{{ forloop.index }}. {{ block.settings.title }}</h2>
+                {% endif %}
+                {% if block.settings.content_1 != blank %}
+                <div class="kv-section-card__content rte">
+                        {% if block.settings.image_1 %}
+                        <img src="{{ block.settings.image_1 | image_url: width: master }}" alt="">
+                        {% endif %}
+                        {{ block.settings.content_1 }}
+
+                        {% if block.settings.image_2 %}
+                        <img src="{{ block.settings.image_2 | image_url: width: master }}" alt="">
+                        {% endif %}
+
+                        {{ block.settings.content_2 }}
+
+                        {% if block.settings.image_3 %}
+                        <img src="{{ block.settings.image_3 | image_url: width: master }}" alt="">
+                        {% endif %}
+
+                        {{ block.settings.content_3 }}
+                </div>
+                {% endif %}
+            </article>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+  </div>
+</section>
+
+<style>
+ 
+
+  .kv-privacy-in {
+    display: grid;
+    grid-template-columns: minmax(220px, 390px) minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+  }
+
+  .kv-privacy__toc {
+    position: sticky;
+    top: 24px;
+  }
+
+  .kv-toc {
+    background: #F0F8FF;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .kv-toc__title {
+    color: #003665;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom:12px;
+    margin-top: 0;
+  }
+
+  .kv-toc__list {
+    margin: 0;
+    padding: 0px 10px;
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }
+
+  .kv-toc__link {
+    color: rgba(31, 31, 31, 0.90);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    letter-spacing: 0;
+  }
+
+  .kv-toc__link:hover,
+  .kv-toc__link:focus-visible,
+  .kv-toc__link.is-active {
+    opacity: 1;
+  }
+
+  .kv-privacy__content {
+    min-width: 0;
+  }
+
+  .kv-privacy__title {
+    margin: 0 0 18px;
+  }
+
+  .kv-privacy__intro {
+    margin-bottom: 20px;
+  }
+
+  .kv-section-card__content {
+    {% comment %} scroll-margin-top: 90px; {% endcomment %}
+    border-radius: 20px;
+    background: #F8F8F6;
+    padding: 16px 20px;
+  }
+
+  .kv-section-card .kv-section-card__title {
+    margin-bottom: 8px;
+}
+.kv-section-card__content.rte p {
+    color: rgba(31, 31, 31, 0.90);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0;
+}
+.kv-section-card {
+    margin-bottom: 36px;
+}
+.kv-section-card:last-child {
+    margin-bottom: 0;
+}
+.kv-section-card__content img {
+    height: 40px;
+    display: block;
+    margin: 0;
+    border: none;
+    mix-blend-mode: multiply;
+}
+
+a.kv-toc__link em {
+    font-style: normal;
+}
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+.kv-privacy-in {
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: 24px;
+}
+.kv-section-card__content.rte p {
+    font-size: 17px;
+}
+}
+
+@media (max-width: 767.98px) {
+    .kv-privacy__container {
+      grid-template-columns: 1fr;
+    }
+
+    .kv-privacy__toc {
+      position: static;
+    }
+    .kv-privacy-in {
+        display: flex;
+        gap: 36px;
+        flex-direction: column;
+    }
+    .kv-privacy__toc {
+
+        width: 100%;
+    }
+
+    .kv-toc__title {
+        font-size: 18px;
+    }
+    .kv-section-card__content.rte p {
+        font-size: 16px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const sectionRoot = document.getElementById('kv-privacy-{{ section.id }}');
+    if (!sectionRoot) return;
+
+    const links = Array.from(sectionRoot.querySelectorAll('.kv-toc__link'));
+    if (!links.length) return;
+
+    links.forEach(function(link) {
+      link.addEventListener('click', function(event) {
+        const hash = link.getAttribute('href');
+        if (!hash || hash.charAt(0) !== '#') return;
+
+        const target = sectionRoot.querySelector(hash);
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', hash);
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      function(entries) {
+        entries.forEach(function(entry) {
+          if (!entry.isIntersecting) return;
+          const activeId = '#' + entry.target.id;
+          links.forEach(function(link) {
+            link.classList.toggle('is-active', link.getAttribute('href') === activeId);
+          });
+        });
+      },
+      {
+        root: null,
+        rootMargin: '-35% 0px -55% 0px',
+        threshold: 0
+      }
+    );
+
+    links.forEach(function(link) {
+      const target = sectionRoot.querySelector(link.getAttribute('href'));
+      if (target) observer.observe(target);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KV Terms of service",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+   
+    {
+      "type": "text",
+      "id": "toc_title",
+      "label": "Table of contents title",
+      "default": "TABLE OF CONTENT"
+    },
+    {
+      "type": "richtext",
+      "id": "top_content",
+      "label": "Top Content",
+    },
+  ],
+  "blocks": [
+    {
+      "type": "section_item",
+      "name": "Policy section",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "title",
+          "label": "Heading",
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image 1",
+        },
+        {
+          "type": "richtext",
+          "id": "content_1",
+          "label": "Content 1",
+          "default": "<p>Describe this policy section here.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Image 2",
+        },
+        {
+          "type": "richtext",
+          "id": "content_2",
+          "label": "Content 2",
+          "default": "<p>Describe this policy section here.</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Image 3",
+        },
+        {
+          "type": "richtext",
+          "id": "content_3",
+          "label": "Content 3",
+          "default": "<p>Describe this policy section here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV Terms of service",
+      "blocks": [
+        { "type": "section_item" },
+        { "type": "section_item" },
+        { "type": "section_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}
