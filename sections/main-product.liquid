@@ -896,6 +896,9 @@
                 {%- if is_first_tab_block -%}
                   <div class="kv-tabs" id="KvTabs-{{ section.id }}">
                     <div class="kv-tabs__nav-wrapper">
+                      <button type="button" class="kv-tabs__scroll-btn kv-tabs__scroll-btn--left" aria-label="Scroll tabs left" hidden>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
                       <div class="kv-tabs__nav" role="tablist">
                         {%- for tab_block in kv_tab_blocks -%}
                           <button
@@ -911,7 +914,7 @@
                           </button>
                         {%- endfor -%}
                       </div>
-                      <button type="button" class="kv-tabs__scroll-btn kv-tabs__scroll-btn--right" aria-label="Scroll tabs">
+                      <button type="button" class="kv-tabs__scroll-btn kv-tabs__scroll-btn--right" aria-label="Scroll tabs right">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                       </button>
                     </div>
