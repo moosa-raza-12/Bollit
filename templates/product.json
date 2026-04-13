@@ -115,7 +115,6 @@
         },
         "kv_video_LyQrkb": {
           "type": "kv-video",
-          "disabled": true,
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
             "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
@@ -125,7 +124,6 @@
         },
         "kv_video_Q8Npjd": {
           "type": "kv-video",
-          "disabled": true,
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
             "video": "shopify://files/videos/dummy_ugc_video.mp4",
@@ -135,7 +133,6 @@
         },
         "kv_video_KYQAnd": {
           "type": "kv-video",
-          "disabled": true,
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
             "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
@@ -145,7 +142,6 @@
         },
         "kv_video_qPgzaG": {
           "type": "kv-video",
-          "disabled": true,
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
             "video": "shopify://files/videos/dummy_ugc_video.mp4",
@@ -155,7 +151,6 @@
         },
         "kv_video_Mai9zp": {
           "type": "kv-video",
-          "disabled": true,
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
             "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
@@ -165,7 +160,6 @@
         },
         "kv_video_nbipen": {
           "type": "kv-video",
-          "disabled": true,
           "settings": {
             "section_heading": "Trusted in 2,000+ homes",
             "video": "shopify://files/videos/dummy_ugc_video.mp4",
@@ -214,7 +208,6 @@
     },
     "related-products": {
       "type": "related-products",
-      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",
