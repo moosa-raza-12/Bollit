@@ -1,3 +1,13 @@
+<section class="kv-need-help-section">
+    <div class="kv-need-help-in" style="background:{{ section.settings.bg_color }};">
+        {% if section.settings.need_help_heading != blank %}
+            <h5>{{ section.settings.need_help_heading }}</h5>
+        {% endif %}
+        {% if section.settings.need_help_content != blank %}
+         <div class="kv-need-help-content">{{ section.settings.need_help_content }}</div>
+        {% endif %}
+    </div>
+</section>
 {% schema %}
 {
   "name": "KV Need More Help",
