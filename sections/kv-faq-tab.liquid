@@ -1,10 +1,16 @@
 {% comment %}
-  FAQ: sticky tabs, click-to-scroll, scrollspy + tab strip scroll, one accordion open per block.
-  Add as a section: duplicate to theme sections/kv-faq-tab.liquid and include {% section 'kv-faq-tab' %} or add via theme editor.
+  FAQ: tabs pin only after the section scrolls up (unpin when scrolling back to the top area).
+  Click-to-scroll, scrollspy, horizontal tab scroll; accordions animate open/one-at-a-time per block.
 {% endcomment %}
 
-<div class="kv-faq-page" id="kv-faq-page-{{ section.id }}" data-kv-faq-root>
-  <nav class="kv-faq-tabs" aria-label="FAQ categories" data-kv-faq-tabs>
+<div
+  class="kv-faq-page"
+  id="kv-faq-page-{{ section.id }}"
+  data-kv-faq-root
+  data-kv-header-offset="{{ section.settings.header_offset | default: 0 }}"
+  style="--kv-faq-sticky-top: {{ section.settings.header_offset | default: 0 }}px; --kv-faq-scroll-margin: calc({{ section.settings.header_offset | default: 0 }}px + 76px);"
+>
+  <nav class="kv-faq-tabs" aria-label="FAQ categories" data-kv-faq-tabs data-kv-faq-tabs-nav>
     <div class="kv-faq-tabs__track" data-kv-faq-tabs-track>
       <button type="button" class="kv-faq-tab kv-faq-tab--active" data-kv-faq-tab data-target="all">All</button>
       <button type="button" class="kv-faq-tab" data-kv-faq-tab data-target="about">About Bollit</button>
@@ -28,8 +34,10 @@
                 <span class="kv-faq-item__question">{{ block.settings.question }}</span>
                 <span class="kv-faq-item__icon" aria-hidden="true"></span>
               </button>
-              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
-                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              <div class="kv-faq-item__panel">
+                <div class="kv-faq-item__panel-inner">
+                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+                </div>
               </div>
             </div>
           {% endif %}
@@ -47,8 +55,10 @@
                 <span class="kv-faq-item__question">{{ block.settings.question }}</span>
                 <span class="kv-faq-item__icon" aria-hidden="true"></span>
               </button>
-              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
-                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              <div class="kv-faq-item__panel">
+                <div class="kv-faq-item__panel-inner">
+                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+                </div>
               </div>
             </div>
           {% endif %}
@@ -66,8 +76,10 @@
                 <span class="kv-faq-item__question">{{ block.settings.question }}</span>
                 <span class="kv-faq-item__icon" aria-hidden="true"></span>
               </button>
-              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
-                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              <div class="kv-faq-item__panel">
+                <div class="kv-faq-item__panel-inner">
+                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+                </div>
               </div>
             </div>
           {% endif %}
@@ -85,8 +97,10 @@
                 <span class="kv-faq-item__question">{{ block.settings.question }}</span>
                 <span class="kv-faq-item__icon" aria-hidden="true"></span>
               </button>
-              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
-                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              <div class="kv-faq-item__panel">
+                <div class="kv-faq-item__panel-inner">
+                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+                </div>
               </div>
             </div>
           {% endif %}
@@ -104,8 +118,10 @@
                 <span class="kv-faq-item__question">{{ block.settings.question }}</span>
                 <span class="kv-faq-item__icon" aria-hidden="true"></span>
               </button>
-              <div class="kv-faq-item__panel" {% unless forloop.first %}hidden{% endunless %}>
-                <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+              <div class="kv-faq-item__panel">
+                <div class="kv-faq-item__panel-inner">
+                  <div class="kv-faq-item__answer rte">{{ block.settings.answer }}</div>
+                </div>
               </div>
             </div>
           {% endif %}
@@ -130,15 +146,22 @@
   }
 
   .kv-faq-tabs {
-    position: sticky;
-    top: var(--kv-faq-sticky-top);
+    position: relative;
     z-index: 10;
     background: #fff;
     padding: 0.75rem 0 1rem;
     margin: 0 -1.25rem;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .kv-faq-tabs.kv-faq-tabs--pinned {
+    position: sticky;
+    top: var(--kv-faq-sticky-top);
+    border-bottom-color: #eee;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
   }
 
@@ -195,7 +218,7 @@
   }
 
   .kv-faq-block {
-    scroll-margin-top: calc(var(--kv-faq-sticky-top) + 72px);
+    scroll-margin-top: var(--kv-faq-scroll-margin, calc(var(--kv-faq-sticky-top) + 76px));
     margin-bottom: 3.5rem;
   }
 
@@ -265,7 +288,40 @@
   }
 
   .kv-faq-item__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .kv-faq-item--open .kv-faq-item__panel {
+    grid-template-rows: 1fr;
+  }
+
+  .kv-faq-item__panel-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .kv-faq-item__panel .kv-faq-item__answer {
     padding: 0 0.25rem 1rem;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.35s ease 0.05s, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.05s;
+  }
+
+  .kv-faq-item--open .kv-faq-item__panel .kv-faq-item__answer {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kv-faq-item__panel {
+      transition-duration: 0.01ms;
+    }
+    .kv-faq-item__panel .kv-faq-item__answer {
+      transition-duration: 0.01ms;
+      transition-delay: 0ms;
+    }
   }
 
   .kv-faq-item__answer {
@@ -287,22 +343,24 @@
   (function () {
     var root = document.querySelector('[data-kv-faq-root]');
     if (!root) return;
+    var headerOffset = parseInt(root.getAttribute('data-kv-header-offset'), 10) || 0;
 
-    var tabsNav = root.querySelector('[data-kv-faq-tabs]');
+    var tabsNav = root.querySelector('[data-kv-faq-tabs-nav]');
     var track = root.querySelector('[data-kv-faq-tabs-track]');
     var tabButtons = root.querySelectorAll('[data-kv-faq-tab]');
-    var sections = root.querySelectorAll('[data-kv-faq-section]');
 
     function scrollTabIntoView(btn) {
       if (!track || !btn) return;
       var tr = track.getBoundingClientRect();
       var br = btn.getBoundingClientRect();
       var pad = 16;
+      var left = track.scrollLeft;
       if (br.left < tr.left + pad) {
-        track.scrollLeft += br.left - tr.left - pad;
+        left += br.left - tr.left - pad;
       } else if (br.right > tr.right - pad) {
-        track.scrollLeft += br.right - tr.right + pad;
-      }
+        left += br.right - tr.right + pad;
+      } else return;
+      track.scrollTo({ left: left, behavior: 'smooth' });
     }
 
     function setActiveTab(key) {
@@ -345,45 +403,51 @@
       })
       .filter(Boolean);
 
-    if (sectionEls.length && 'IntersectionObserver' in window) {
-      var stickyOffset = 80;
-      var io = new IntersectionObserver(
-        function (entries) {
-          if (scrollSpyLock) return;
-          var best = null;
-          var bestRatio = 0;
-          entries.forEach(function (en) {
-            if (en.isIntersecting && en.intersectionRatio >= bestRatio) {
-              bestRatio = en.intersectionRatio;
-              best = en.target.getAttribute('data-kv-faq-section');
-            }
-          });
-          if (best) setActiveTab(best);
-        },
-        {
-          root: null,
-          rootMargin: '-' + stickyOffset + 'px 0px -55% 0px',
-          threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
-        }
-      );
-      sectionEls.forEach(function (el) {
-        io.observe(el);
-      });
+    var stickyOffset = headerOffset + 76;
+    var scrollSpyTicking = false;
 
-      function onScroll() {
-        if (scrollSpyLock) return;
-        var top = root.getBoundingClientRect().top;
-        var firstSection = sectionEls[0];
-        if (firstSection) {
-          var fsTop = firstSection.getBoundingClientRect().top;
-          if (fsTop > stickyOffset + 40) {
-            setActiveTab('all');
-          }
+    function updateTabsPin() {
+      if (!tabsNav) return;
+      var rootTop = root.getBoundingClientRect().top;
+      var pin = rootTop <= headerOffset + 8;
+      tabsNav.classList.toggle('kv-faq-tabs--pinned', pin);
+    }
+
+    function activeSectionFromScroll() {
+      if (!sectionEls.length) return 'all';
+      var first = sectionEls[0];
+      if (first.getBoundingClientRect().top > stickyOffset + 32) return 'all';
+      var active = sectionEls[0].getAttribute('data-kv-faq-section');
+      for (var i = 0; i < sectionEls.length; i++) {
+        var el = sectionEls[i];
+        var top = el.getBoundingClientRect().top;
+        if (top <= stickyOffset + 24) {
+          active = el.getAttribute('data-kv-faq-section');
         }
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      return active;
     }
+
+    function onScrollSpy() {
+      if (scrollSpyLock) return;
+      var next = activeSectionFromScroll();
+      setActiveTab(next);
+    }
+
+    function onScroll() {
+      if (scrollSpyTicking) return;
+      scrollSpyTicking = true;
+      requestAnimationFrame(function () {
+        scrollSpyTicking = false;
+        updateTabsPin();
+        if (!scrollSpyLock) onScrollSpy();
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    updateTabsPin();
+    onScrollSpy();
 
     root.querySelectorAll('[data-kv-faq-accordion]').forEach(function (acc) {
       acc.addEventListener('click', function (e) {
@@ -391,20 +455,16 @@
         if (!trigger || !acc.contains(trigger)) return;
         var item = trigger.closest('.kv-faq-item');
         if (!item) return;
-        var panel = item.querySelector('.kv-faq-item__panel');
         var willOpen = !item.classList.contains('kv-faq-item--open');
 
         acc.querySelectorAll('.kv-faq-item').forEach(function (other) {
-          var oPanel = other.querySelector('.kv-faq-item__panel');
           var oTrig = other.querySelector('.kv-faq-item__trigger');
           other.classList.remove('kv-faq-item--open');
-          if (oPanel) oPanel.hidden = true;
           if (oTrig) oTrig.setAttribute('aria-expanded', 'false');
         });
 
         if (willOpen) {
           item.classList.add('kv-faq-item--open');
-          if (panel) panel.hidden = false;
           trigger.setAttribute('aria-expanded', 'true');
         }
       });
@@ -414,10 +474,22 @@
 
 {% schema %}
 {
-  "name": "KV FAQ Tabs",
+  "name": "KV FAQ tabs",
   "tag": "section",
   "class": "kv-faq-tab-section",
-  "settings": [],
+  "settings": [
+    {
+      "type": "range",
+      "id": "header_offset",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Offset below fixed header",
+      "info": "Set to your theme header height so sticky tabs sit below it and scroll-to-section lines up.",
+      "default": 0
+    }
+  ],
   "blocks": [
     {
       "type": "about",
@@ -487,7 +559,7 @@
   ],
   "presets": [
     {
-      "name": "KV FAQ Tabs",
+      "name": "KV FAQ tabs",
       "blocks": [
         {
           "type": "about",
