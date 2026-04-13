@@ -17,12 +17,14 @@
         "padding_bottom": 36
       }
     },
-    "kv_default_hero_banner_3RgHTj": {
-      "type": "kv-default-hero-banner",
-      "name": "KV Default Hero",
+    "kv_contact_page_hero_wVNXPD": {
+      "type": "kv-contact-page-hero",
+      "name": "KV Contact Hero",
       "settings": {
-        "page_title": "{{ page.title }}",
-        "bg_color": "#dbe9f0"
+        "bg_image": "shopify://shop_images/desktop-img.png",
+        "bg_image_mobile": "shopify://shop_images/mobile-img.png",
+        "heading": "Need help?",
+        "content": "<p>We are here to help you, send us a message below.</p>"
       }
     },
     "form": {
@@ -291,7 +293,7 @@
   },
   "order": [
     "main",
-    "kv_default_hero_banner_3RgHTj",
+    "kv_contact_page_hero_wVNXPD",
     "form",
     "lp_home_need_some_help_DM9rPX",
     "lp_home_free_day_returns_ptbGFa"
