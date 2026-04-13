@@ -4,12 +4,33 @@
             {% if section.settings.heading != blank %}
                 <h1>{{ section.settings.heading }}</h1>
             {% endif %}
-            {% if section.settings.need_help_content != blank %}
-            <div class="kv-need-help-content">{{ section.settings.need_help_content }}</div>
+            {% if section.settings.content != blank %}
+            <div class="kv-contact-hero-content">{{ section.settings.content }}</div>
             {% endif %}
         </div>
     </div>
 </section>
+
+<style>
+<style>
+.kv-contact-hero {
+  {% if section.settings.bg_image != blank %}
+    background-image: url('{{ section.settings.bg_image | image_url: width: master }}');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  {% endif %}
+}
+
+@media (max-width: 767.98px) {
+  .kv-contact-hero {
+    {% if section.settings.bg_image_mobile != blank %}
+      background-image: url('{{ section.settings.bg_image_mobile | image_url: width: master }}');
+    {% endif %}
+  }
+}
+</style>
+</style>
 {% schema %}
 {
   "name": "KV Contact Hero",
