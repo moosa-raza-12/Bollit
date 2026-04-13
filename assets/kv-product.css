@@ -362,11 +362,6 @@ body .kv-main-product  .product.grid {
   transform: scale(1.25);
 }
 
-@media screen and (min-width: 767.98px) {
-  .kv-media-slider {
-    display: none !important;
-  }
-}
 
 @media screen and (max-width: 767.98px) {
   .kv-media-grid {
@@ -378,19 +373,3 @@ body .kv-main-product  .product.grid {
   }
 }
 
-/* ===== REVIEW BADGE ===== */
-
-
-@media screen and (max-width: 767.98px) {
-  .kv-usp-row {
-    gap: 8px;
-  }
-
-  .kv-usp-card {
-    padding: 12px 10px;
-  }
-
-  .kv-usp-card__text {
-    font-size: 12px;
-  }
-}
