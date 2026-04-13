@@ -204,7 +204,7 @@
         "feature_slide_UPqHqa": {
           "type": "feature_slide",
           "settings": {
-            "tab_name": "Tab Name 2",
+            "tab_name": "Soft Cleaning Pads",
             "image": "shopify://shop_images/featured-image2.png",
             "quantity": "1x",
             "title": "Feature Title",
@@ -214,7 +214,7 @@
         "feature_slide_Xg7Cbc": {
           "type": "feature_slide",
           "settings": {
-            "tab_name": "Tab Name 2",
+            "tab_name": "Soft Cleaning Pads",
             "image": "shopify://shop_images/featured-image2.png",
             "quantity": "1x",
             "title": "Feature Title",
@@ -224,7 +224,7 @@
         "feature_slide_AganKU": {
           "type": "feature_slide",
           "settings": {
-            "tab_name": "Tab Name 2",
+            "tab_name": "Soft Cleaning Pads",
             "image": "shopify://shop_images/featured-image2.png",
             "quantity": "1x",
             "title": "Feature Title",
@@ -234,7 +234,7 @@
         "feature_slide_MPGFgF": {
           "type": "feature_slide",
           "settings": {
-            "tab_name": "Tab Name 2",
+            "tab_name": "Soft Cleaning Pads",
             "image": "shopify://shop_images/featured-image2.png",
             "quantity": "1x",
             "title": "Feature Title",
@@ -244,7 +244,7 @@
         "feature_slide_xdDe3t": {
           "type": "feature_slide",
           "settings": {
-            "tab_name": "Tab Name 2",
+            "tab_name": "Soft Cleaning Pads",
             "image": "shopify://shop_images/featured-image2.png",
             "quantity": "1x",
             "title": "Feature Title",
@@ -254,28 +254,8 @@
         "feature_slide_LijrAi": {
           "type": "feature_slide",
           "settings": {
-            "tab_name": "Tab Name 2",
-            "image": "shopify://shop_images/featured-image2.png",
-            "quantity": "1x",
-            "title": "Feature Title",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_EhPWjJ": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Tab Name 2",
-            "image": "shopify://shop_images/product-highlight-carousel.png",
-            "quantity": "1x",
-            "title": "Feature Title",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_gMbytw": {
-          "type": "feature_slide",
-          "settings": {
             "tab_name": "Soft Cleaning Pads",
-            "image": "shopify://shop_images/product-highlight-carousel.png",
+            "image": "shopify://shop_images/featured-image2.png",
             "quantity": "1x",
             "title": "Feature Title",
             "description": "Feature description."
@@ -288,9 +268,7 @@
         "feature_slide_AganKU",
         "feature_slide_MPGFgF",
         "feature_slide_xdDe3t",
-        "feature_slide_LijrAi",
-        "feature_slide_EhPWjJ",
-        "feature_slide_gMbytw"
+        "feature_slide_LijrAi"
       ],
       "name": "KV PDP Features Tab",
       "settings": {
