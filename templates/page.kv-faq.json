@@ -50,7 +50,7 @@
         "faq_tab_7KJFwQ": {
           "type": "faq_tab",
           "settings": {
-            "target": "about",
+            "target": "custom",
             "custom_handle": "ssss",
             "label": "About Bollit",
             "heading": "",
