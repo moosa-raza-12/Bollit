@@ -12,6 +12,7 @@
 >
   <nav class="kv-faq-tabs" aria-label="FAQ categories" data-kv-faq-tabs data-kv-faq-tabs-nav>
     <div class="kv-faq-tabs__track" data-kv-faq-tabs-track>
+      <button type="button" class="kv-faq-tab kv-faq-tab--active" data-kv-faq-tab data-target="all">All</button>
       {% assign faq_tab_count = 0 %}
       {% for block in section.blocks %}
         {% if block.type == 'faq_tab' %}
@@ -20,13 +21,15 @@
       {% endfor %}
       {% if faq_tab_count == 0 %}
         {% if request.design_mode %}
-          <p class="kv-faq-editor-hint">Add <strong>Tab</strong> blocks for navigation, then <strong>FAQ</strong> blocks for questions (same section link on each).</p>
+          <p class="kv-faq-editor-hint">Add <strong>Tab</strong> blocks for navigation (All is already fixed first), then <strong>FAQ</strong> blocks for questions (same section link on each).</p>
         {% endif %}
       {% else %}
-        {% assign tab_is_first = true %}
         {% for block in section.blocks %}
           {% if block.type == 'faq_tab' %}
             {% assign t = block.settings.target %}
+            {% if t == 'all' %}
+              {% continue %}
+            {% endif %}
             {% if t == 'custom' %}
               {% assign tab_slug = block.settings.custom_handle | default: 'section' | handleize %}
             {% else %}
@@ -55,14 +58,13 @@
             {% endif %}
             <button
               type="button"
-              class="kv-faq-tab{% if tab_is_first %} kv-faq-tab--active{% endif %}"
+              class="kv-faq-tab"
               data-kv-faq-tab
               data-target="{{ tab_slug | escape }}"
               {{ block.shopify_attributes }}
             >
               {{- tab_title | escape -}}
             </button>
-            {% assign tab_is_first = false %}
           {% endif %}
         {% endfor %}
       {% endif %}
