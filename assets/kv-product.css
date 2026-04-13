@@ -278,7 +278,7 @@ body .kv-main-product  .product.grid {
 
 .kv-tabs__nav {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
@@ -361,7 +361,7 @@ body .kv-main-product  .product.grid {
 }
 
 .kv-tabs__panels {
-  margin-top: 20px;
+  margin-top: 24px;
   position: relative;
 }
 
@@ -384,9 +384,11 @@ body .kv-main-product  .product.grid {
 }
 
 .kv-tabs__content {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #3a3f50;
+  color: rgba(31, 31, 31, 0.70);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
 }
 
 .kv-tabs__content p {

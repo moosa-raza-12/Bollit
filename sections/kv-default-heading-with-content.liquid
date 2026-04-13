@@ -1,4 +1,4 @@
-<section class="kv-default-heading-with-content">
+<section class="kv-section kv-default-heading-with-content">
   <div class="kv-custom-container">
     <div class="kv-default-heading-with-content-in" style="background:{{ section.settings.bg_color }};">
       {% if section.settings.heading != blank %}
@@ -31,6 +31,9 @@
 .kv-default-heading-with-content-grid--two {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
+}
+.kv-default-heading-with-content .kv-custom-container {
+    max-width: 840px;
 }
 
 @media (max-width: 767.98px) {
