@@ -1110,7 +1110,25 @@
         var tabBtns = tabsContainer.querySelectorAll('.kv-tabs__btn');
         var tabPanels = tabsContainer.querySelectorAll('.kv-tabs__panel');
         var nav = tabsContainer.querySelector('.kv-tabs__nav');
-        var scrollBtn = tabsContainer.querySelector('.kv-tabs__scroll-btn--right');
+        var scrollBtnRight = tabsContainer.querySelector('.kv-tabs__scroll-btn--right');
+        var scrollBtnLeft = tabsContainer.querySelector('.kv-tabs__scroll-btn--left');
+
+        function updateScrollBtns() {
+          if (!nav) return;
+          var noOverflow = nav.scrollWidth <= nav.offsetWidth + 2;
+          var atStart = nav.scrollLeft <= 2;
+          var atEnd = nav.scrollLeft + nav.offsetWidth >= nav.scrollWidth - 2;
+
+          if (scrollBtnLeft) scrollBtnLeft.hidden = noOverflow || atStart;
+          if (scrollBtnRight) scrollBtnRight.hidden = noOverflow || atEnd;
+        }
+
+        updateScrollBtns();
+
+        if (nav) {
+          nav.addEventListener('scroll', updateScrollBtns);
+          window.addEventListener('resize', updateScrollBtns);
+        }
 
         tabBtns.forEach(function (btn) {
           btn.addEventListener('click', function () {
@@ -1130,9 +1148,15 @@
           });
         });
 
-        if (scrollBtn && nav) {
-          scrollBtn.addEventListener('click', function () {
+        if (scrollBtnRight && nav) {
+          scrollBtnRight.addEventListener('click', function () {
             nav.scrollBy({ left: 150, behavior: 'smooth' });
+          });
+        }
+
+        if (scrollBtnLeft && nav) {
+          scrollBtnLeft.addEventListener('click', function () {
+            nav.scrollBy({ left: -150, behavior: 'smooth' });
           });
         }
 

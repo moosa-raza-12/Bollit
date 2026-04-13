@@ -503,8 +503,19 @@ body .kv-main-product  .product.grid {
   justify-content: center;
   cursor: pointer;
   color: #1a1a2e;
-  margin-left: 8px;
   transition: background 0.2s ease;
+}
+
+.kv-tabs__scroll-btn[hidden] {
+  display: none;
+}
+
+.kv-tabs__scroll-btn--left {
+  margin-right: 8px;
+}
+
+.kv-tabs__scroll-btn--right {
+  margin-left: 8px;
 }
 
 .kv-tabs__scroll-btn:hover {
