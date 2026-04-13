@@ -573,7 +573,7 @@ body .kv-main-product  .product.grid {
 
 
 
-/* ===== KV VIDEO CAROUSEL ===== */
+/* ===== KV VIDEO CAROUSEL (Swiper) ===== */
 
 .kv-videos {
   margin: 24px 0 0 0;
@@ -611,8 +611,6 @@ body .kv-main-product  .product.grid {
   cursor: pointer;
   color: #1a1a2e;
   transition: background 0.2s ease, opacity 0.3s ease, transform 0.3s ease;
-  opacity: 1;
-  transform: scale(1);
 }
 
 .kv-videos__arrow:hover {
@@ -625,33 +623,12 @@ body .kv-main-product  .product.grid {
   pointer-events: none;
 }
 
-.kv-videos__track {
-  display: flex;
-  gap: 12px;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  scroll-behavior: smooth;
-  cursor: grab;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.kv-videos__track::-webkit-scrollbar {
-  display: none;
+.kv-videos__swiper {
+  overflow: hidden;
 }
 
 .kv-videos__card {
-  flex: 0 0 auto;
-  width: 180px;
-  scroll-snap-align: start;
-}
-
-.kv-videos__link {
-  display: block;
-  text-decoration: none;
+  width: 130px !important;
 }
 
 .kv-videos__thumb {
@@ -664,7 +641,7 @@ body .kv-main-product  .product.grid {
   background: #e8ecf0;
 }
 
-.kv-videos__thumb img {
+.kv-videos__poster {
   display: block;
   width: 100%;
   height: 100%;
@@ -689,7 +666,9 @@ body .kv-main-product  .product.grid {
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(4px);
+  cursor: pointer;
   transition: background 0.2s ease;
+  z-index: 2;
 }
 
 .kv-videos__play svg {
@@ -700,13 +679,28 @@ body .kv-main-product  .product.grid {
   background: rgba(0, 0, 0, 0.65);
 }
 
+.kv-videos__player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.kv-videos__player iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 @media screen and (max-width: 767.98px) {
   .kv-videos__heading {
     font-size: 18px;
   }
 
   .kv-videos__card {
-    width: 150px;
+    width: 150px !important;
   }
 
   .kv-videos__arrow {
