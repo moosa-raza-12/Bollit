@@ -1,0 +1,59 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "kv_default_hero_banner_V9yXYb": {
+      "type": "kv-default-hero-banner",
+      "name": "KV Default Hero",
+      "settings": {
+        "page_title": "{{ page.title }}",
+        "bg_color": "#dbe9f0"
+      }
+    },
+    "kv_default_heading_with_content_UFeUQF": {
+      "type": "kv-default-heading-with-content",
+      "name": "KV Heading With Content",
+      "settings": {
+        "padding": "0px",
+        "bg_color": "#ffffff",
+        "heading": "About <em>Shipping </em>",
+        "content": "<p>Bollit Express orders are shipped with <strong>POSTNL, DHL or FedEX</strong> couriers</p><p></p><p>A tracking number from Bollit is sent from our warehouse via email 24 hours after the order has been processed.</p>",
+        "enable_second_content": false,
+        "content_2": ""
+      }
+    },
+    "kv_default_heading_with_content_YrNb6H": {
+      "type": "kv-default-heading-with-content",
+      "name": "KV Heading With Content",
+      "settings": {
+        "padding": "",
+        "bg_color": "#f0f8ff",
+        "heading": "Shipping <em>time</em>",
+        "content": "<h4>Netherlands / Belgium</h4><p>For 10:00PM ordered = delivered tomorrow</p><h4>Rest of Europe</h4><p>2-3 working days</p>",
+        "enable_second_content": true,
+        "content_2": "<h4>Germany</h4><p>1-2 working days</p><h4>Rest of the world</h4><p>5-6 working days</p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "kv_default_hero_banner_V9yXYb",
+    "kv_default_heading_with_content_UFeUQF",
+    "kv_default_heading_with_content_YrNb6H"
+  ]
+}
