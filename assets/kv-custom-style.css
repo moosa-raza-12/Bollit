@@ -518,6 +518,9 @@ span.metafield-single_line_text_field {
     position: absolute;
     right: 0;
 }
+cart-drawer-items.is-empty .kv-cart-upsell {
+    display: none;
+}
 
 @media (max-width: 1199.98px) { 
     .kv-font-42{
