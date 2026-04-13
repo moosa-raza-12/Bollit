@@ -972,32 +972,18 @@
                         {%- for vid_block in kv_video_blocks -%}
                           <div class="swiper-slide kv-videos__card">
                             <div class="kv-videos__thumb" data-video-card>
-                              {%- liquid
-                                assign has_shopify_video = false
-                                assign has_external_video = false
-                                assign poster_src = ''
-
-                                if vid_block.settings.video != blank
-                                  assign has_shopify_video = true
-                                  if vid_block.settings.thumbnail != blank
-                                    assign poster_src = vid_block.settings.thumbnail | image_url: width: 400
-                                  elsif vid_block.settings.video.preview_image
-                                    assign poster_src = vid_block.settings.video.preview_image | image_url: width: 400
-                                  endif
-                                elsif vid_block.settings.video_url != blank
-                                  assign has_external_video = true
-                                  if vid_block.settings.thumbnail != blank
-                                    assign poster_src = vid_block.settings.thumbnail | image_url: width: 400
-                                  endif
-                                elsif vid_block.settings.thumbnail != blank
-                                  assign poster_src = vid_block.settings.thumbnail | image_url: width: 400
-                                endif
-                              -%}
-
-                              {%- if poster_src != blank -%}
+                              {%- if vid_block.settings.video != blank -%}
+                                {{ vid_block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, class: 'kv-videos__player' }}
+                              {%- elsif vid_block.settings.video_url != blank -%}
+                                {%- if vid_block.settings.video_url.type == 'youtube' -%}
+                                  <iframe class="kv-videos__player" src="https://www.youtube.com/embed/{{ vid_block.settings.video_url.id }}?autoplay=1&mute=1&loop=1&playlist={{ vid_block.settings.video_url.id }}&playsinline=1&controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                                {%- elsif vid_block.settings.video_url.type == 'vimeo' -%}
+                                  <iframe class="kv-videos__player" src="https://player.vimeo.com/video/{{ vid_block.settings.video_url.id }}?autoplay=1&muted=1&loop=1&controls=0&background=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                                {%- endif -%}
+                              {%- elsif vid_block.settings.thumbnail != blank -%}
                                 <img
                                   class="kv-videos__poster"
-                                  src="{{ poster_src }}"
+                                  src="{{ vid_block.settings.thumbnail | image_url: width: 400 }}"
                                   alt="{{ vid_block.settings.video_title | escape }}"
                                   width="200"
                                   height="356"
@@ -1007,23 +993,12 @@
                                 <div class="kv-videos__placeholder"></div>
                               {%- endif -%}
 
-                              <span class="kv-videos__play" data-play-btn>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#fff"/></svg>
-                              </span>
-
-                              {%- if has_shopify_video -%}
-                                <template data-video-template>
-                                  {{ vid_block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: true, playsinline: true }}
-                                </template>
-                              {%- elsif has_external_video -%}
-                                <template data-video-template>
-                                  {%- if vid_block.settings.video_url.type == 'youtube' -%}
-                                    <iframe src="https://www.youtube.com/embed/{{ vid_block.settings.video_url.id }}?autoplay=1&mute=1&loop=1&playsinline=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                                  {%- elsif vid_block.settings.video_url.type == 'vimeo' -%}
-                                    <iframe src="https://player.vimeo.com/video/{{ vid_block.settings.video_url.id }}?autoplay=1&muted=1&loop=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
-                                  {%- endif -%}
-                                </template>
-                              {%- endif -%}
+                              <button type="button" class="kv-videos__play-btn" data-play-btn aria-label="Play / Pause">
+                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <rect width="23" height="23" rx="11.5" fill="#1F1F1F" fill-opacity="0.31"/>
+                                  <path d="M9.12 7.9L15.2 11.55L9.12 15.2V7.9Z" fill="white" stroke="white" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </button>
                             </div>
                           </div>
                         {%- endfor -%}
@@ -1378,19 +1353,26 @@
         if (nextBtn) nextBtn.classList.toggle('kv-hidden', swiper.isEnd);
       }
 
-      container.querySelectorAll('[data-play-btn]').forEach(function (btn) {
+      container.querySelectorAll('[data-video-card]').forEach(function (card) {
+        var video = card.querySelector('video');
+        var btn = card.querySelector('[data-play-btn]');
+        if (!video || !btn) return;
+
+        function syncBtn() {
+          btn.classList.toggle('kv-videos__play-btn--visible', video.paused);
+        }
+
+        video.addEventListener('play', syncBtn);
+        video.addEventListener('pause', syncBtn);
+        syncBtn();
+
         btn.addEventListener('click', function (e) {
           e.preventDefault();
-          var card = this.closest('[data-video-card]');
-          if (!card) return;
-          var tmpl = card.querySelector('[data-video-template]');
-          if (!tmpl) return;
-          var poster = card.querySelector('.kv-videos__poster');
-          if (poster) poster.style.display = 'none';
-          this.style.display = 'none';
-          var videoEl = tmpl.content.firstElementChild.cloneNode(true);
-          videoEl.classList.add('kv-videos__player');
-          card.appendChild(videoEl);
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
         });
       });
     });
