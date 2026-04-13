@@ -1,11 +1,11 @@
 <section class="kv-section kv-default-heading-with-content">
   <div class="kv-custom-container">
-    <div class="kv-default-heading-with-content-in" style="background:{{ section.settings.bg_color }};">
+    <div class="kv-default-heading-with-content-in" >
       {% if section.settings.heading != blank %}
         <h4 class="kv-font-38">{{ section.settings.heading }}</h4>
       {% endif %}
 
-      <div class="kv-default-heading-with-content-grid{% if section.settings.enable_second_content %} kv-default-heading-with-content-grid--two{% endif %}">
+      <div style="background:{{ section.settings.bg_color }};" class="kv-default-heading-with-content-grid{% if section.settings.enable_second_content %} kv-default-heading-with-content-grid--two{% endif %}">
         {% if section.settings.content != blank %}
           <div class="kv-default-heading-with-content-info">
             {{ section.settings.content }}
@@ -37,6 +37,17 @@
 }
 .kv-default-heading-with-content .kv-font-38 {
     margin: 0 0px 42px 0px;
+}
+.kv-default-heading-with-content-info p {
+    color: rgba(31, 31, 31, 0.90);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+.kv-default-heading-with-content-info p strong{
+    font-weight: 600;
 }
 
 @media (max-width: 767.98px) {
