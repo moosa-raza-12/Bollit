@@ -373,3 +373,56 @@ body .kv-main-product  .product.grid {
   }
 }
 
+/* ===== TRUST BADGES ===== */
+
+.kv-trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.kv-trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fef8f3;
+  border-radius: 999px;
+  padding: 8px 16px;
+}
+
+.kv-trust-badge__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4900a;
+}
+
+.kv-trust-badge img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.kv-trust-badge__text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a2e;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 767.98px) {
+  .kv-trust-badges {
+    gap: 8px;
+  }
+
+  .kv-trust-badge {
+    padding: 6px 12px;
+  }
+
+  .kv-trust-badge__text {
+    font-size: 13px;
+  }
+}
+
