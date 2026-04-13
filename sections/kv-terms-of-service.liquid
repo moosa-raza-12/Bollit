@@ -12,7 +12,8 @@
                 {% if block.type == 'section_item' and block.settings.title != blank %}
                 <li class="kv-toc__item" {{ block.shopify_attributes }}>
                     <a class="kv-toc__link" href="#kv-section-{{ block.id }}">
-                    {{ forloop.index }}. {{ block.settings.title }}
+                    {% comment %} {{ forloop.index }}.  {% endcomment %}
+                    {{ block.settings.title }}
                     </a>
                 </li>
                 {% endif %}
@@ -31,7 +32,9 @@
             {% if block.type == 'section_item' %}
             <article class="kv-section-card" id="kv-section-{{ block.id }}" {{ block.shopify_attributes }}>
                 {% if block.settings.title != blank %}
-                <h2 class="kv-section-card__title kv-font-30">{{ forloop.index }}. {{ block.settings.title }}</h2>
+                <h2 class="kv-section-card__title kv-font-30">
+                    {% comment %} {{ forloop.index }}.  {% endcomment %}
+                    {{ block.settings.title }}</h2>
                 {% endif %}
                 {% if block.settings.content_1 != blank %}
                 <div class="kv-section-card__content rte">
