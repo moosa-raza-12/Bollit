@@ -73,6 +73,9 @@
     bottom: 0px;
     border-left: 1px dashed #CCC;
   }
+   .kv-our-story-item::after {
+    content: "";
+   }
 
   .kv-our-story-item:last-child::before {
     display: none;
@@ -129,64 +132,8 @@
     font-weight: 500;
 }
 
-  @media (max-width: 991px) {
-    .kv-our-story {
-      padding: 54px 0;
-    }
-
-    .kv-our-story-title {
-      font-size: 38px;
-    }
-
-    .kv-our-story-grid {
-      grid-template-columns: 1fr;
-      gap: 26px;
-    }
-
-    .kv-our-story-right {
-      order: -1;
-    }
-
-
-  }
 
   @media (max-width: 767px) {
-    .kv-our-story {
-      padding: 44px 0;
-    }
-
-    .kv-our-story-label {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .kv-our-story-title {
-      font-size: 32px;
-    }
-
-    .kv-our-story-card {
-      padding: 22px 18px;
-      border-radius: 14px;
-    }
-
-    .kv-our-story-item {
-      padding-left: 44px;
-      margin-bottom: 20px;
-    }
-
-    .kv-our-story-item::before {
-      left: 14px;
-      top: 24px;
-      bottom: -22px;
-    }
-
-    .kv-our-story-item-icon {
-      width: 28px;
-      height: 28px;
-      font-size: 14px;
-      line-height: 28px;
-    }
-
 
 
 
