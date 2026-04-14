@@ -622,7 +622,16 @@ cart-drawer-items.is-empty .kv-cart-upsell {
 }
 
 .contact.page-width .field:after, .contact.page-width .field:before{
-display:none;
+    display:none;
+}
+.kv-custom-contact-page-outer .contact__button {
+    margin-top: 16px;
+}
+.kv-custom-contact-page-outer  .contact .field {
+    margin-bottom: 12px;
+}
+.kv-custom-contact-page-outer  .contact__fields {
+    display: unset;
 }
 
 @media (max-width: 1199.98px) { 
