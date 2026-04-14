@@ -167,43 +167,39 @@
   (function () {
     var sectionEl = document.getElementById('{{ section_id }}');
     if (!sectionEl) return;
+new Swiper(swiperEl, {
+  speed: 550,
+  grabCursor: true,
+  watchOverflow: false,
+  slidesPerView: 'auto',
+  spaceBetween: 16,
 
-    function initTeamSwiper() {
-      if (typeof Swiper === 'undefined') return false;
-      var swiperEl = sectionEl.querySelector('.kv-our-team-swiper');
-      if (!swiperEl || swiperEl.classList.contains('swiper-initialized')) return true;
+  freeMode: {
+    enabled: true,
+    momentum: true
+  },
 
-      new Swiper(swiperEl, {
-        speed: 550,
-        grabCursor: true,
-        watchOverflow: false,
-        slidesPerView: 'auto',
-        spaceBetween: 16,
-        freeMode: {
-            enabled: true,
-            momentum: true
-        },
+  scrollbar: {
+    el: swiperEl.querySelector('.swiper-scrollbar'), // ✅ safer
+    draggable: true,
+    hide: false
+  },
 
-        scrollbar: {
-          el: sectionEl.querySelector('.swiper-scrollbar'),
-          draggable: true,
-          hide: false
-        },
-        breakpoints: {
-          576: {
-            slidesPerView:'auto',
-            spaceBetween: 16
-          },
-          768: {
-            slidesPerView: 'auto',
-            spaceBetween: 18
-          },
-          992: {
-            slidesPerView: 'auto',
-            spaceBetween: 18
-          }
-        }
-      });
+  breakpoints: {
+    576: {
+      slidesPerView: 'auto',
+      spaceBetween: 16
+    },
+    768: {
+      slidesPerView: 'auto',
+      spaceBetween: 18
+    },
+    992: {
+      slidesPerView: 'auto',
+      spaceBetween: 18
+    }
+  }
+});
 
       return true;
     }
