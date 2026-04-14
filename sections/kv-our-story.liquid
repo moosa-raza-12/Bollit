@@ -189,13 +189,14 @@
       {% endif %}
      <h2 class="kv-font-38">{{ section.settings.heading }}</h2>   
     </div>
+    {% if section.settings.right_content != blank %}
+      <div class="kv-our-story-right-content kv-for-mobile">{{ section.settings.right_content }}</div>
+    {% endif %}
 
   
     <div class="kv-our-story-card">
       <div class="kv-our-story-grid">
-          {% if section.settings.right_content != blank %}
-            <div class="kv-our-story-right-content kv-for-mobile">{{ section.settings.right_content }}</div>
-          {% endif %}
+          
         <div class="kv-our-story-timeline">
           {% for block in section.blocks %}
             <div class="kv-our-story-item" {{ block.shopify_attributes }}>
