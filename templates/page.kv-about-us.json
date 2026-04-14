@@ -35,7 +35,7 @@
         "timeline_item_fbcDq3": {
           "type": "timeline_item",
           "settings": {
-            "icon": "",
+            "icon": "shopify://shop_images/Feature_Icon_Container.svg",
             "title": "THE BEGINNING",
             "text": "<p>Bollit began with a simple goal, to create cleaning tools that combine smart design, strong performance, and everyday practicality. Our focus is on building high-quality products that make cleaning easier while helping create a healthier home environment.</p>"
           }
@@ -43,7 +43,7 @@
         "timeline_item_ntgaXA": {
           "type": "timeline_item",
           "settings": {
-            "icon": "◌",
+            "icon": "shopify://shop_images/Feature_Icon_Container_4344331f-0476-4ac9-b4b0-65febf04aff7.svg",
             "title": "Growing Across Europe",
             "text": "<p>Our products are designed in the Netherlands and produced with trusted partners around the world. Today, Bollit proudly serves customers across the Netherlands, Belgium, and Germany, with plans to grow further across Europe.</p>"
           }
@@ -51,7 +51,7 @@
         "timeline_item_CdrqrJ": {
           "type": "timeline_item",
           "settings": {
-            "icon": "◇",
+            "icon": "shopify://shop_images/Feature_Icon_Container_8360bdb5-328d-434a-9b72-e05eb9aef17b.svg",
             "title": "Built on Real Value",
             "text": "<p>As entrepreneurs, we know how frustrating it is to pay too much for products that don’t truly deliver. That’s why Bollit is built around one principle, powerful cleaning tools that offer real performance and honest value.</p>"
           }
