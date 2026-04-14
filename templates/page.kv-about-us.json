@@ -69,11 +69,80 @@
         "right_content": "<p>Built for powerful, chemical-free cleaning that delivers visible results while keeping your home safe.</p>",
         "image": "shopify://shop_images/img.png"
       }
+    },
+    "kv_our_team_zRmGe3": {
+      "type": "kv-our-team",
+      "blocks": {
+        "member_KxdrVj": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/Team_image.png",
+            "name": "Name",
+            "role": "Role"
+          }
+        },
+        "member_yc7pGm": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/Team_image.png",
+            "name": "Name",
+            "role": "Role"
+          }
+        },
+        "member_NirAcB": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/Team_image.png",
+            "name": "Name",
+            "role": "Role"
+          }
+        },
+        "member_LYAteJ": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/Team_image.png",
+            "name": "Name",
+            "role": "Role"
+          }
+        },
+        "member_jTrmEC": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/Team_image.png",
+            "name": "Name",
+            "role": "Role"
+          }
+        },
+        "member_dyLR6n": {
+          "type": "member",
+          "settings": {
+            "image": "shopify://shop_images/Team_image.png",
+            "name": "Name",
+            "role": "Role"
+          }
+        }
+      },
+      "block_order": [
+        "member_KxdrVj",
+        "member_yc7pGm",
+        "member_NirAcB",
+        "member_LYAteJ",
+        "member_jTrmEC",
+        "member_dyLR6n"
+      ],
+      "name": "KV Our Team",
+      "settings": {
+        "bg_color": "#F0F8FF",
+        "label": "Behind the scenes",
+        "heading": "Our <em>team</em>",
+        "subtitle": "The people behind Bollit share one goal, creating cleaning tools that make everyday life easier."
+      }
     }
   },
   "order": [
     "main",
     "kv_about_us_hero_QDdMir",
-    "kv_our_story_NRT3km"
+    "kv_our_story_NRT3km",
+    "kv_our_team_zRmGe3"
   ]
 }

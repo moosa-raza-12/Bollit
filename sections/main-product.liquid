@@ -16,6 +16,10 @@
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
   {{ 'kv-product.css' | asset_url | stylesheet_tag }}
+  {%- if product.media.size > 0 -%}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  {%- endif -%}
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -301,7 +305,7 @@
             {%- endfor -%}
           </div>
 
-          {%- comment -%} MOBILE: horizontal slider with dot nav {%- endcomment -%}
+          {%- comment -%} MOBILE: Swiper slider + dot nav {%- endcomment -%}
           <div class="kv-media-slider">
             {%- if product.media.size > 1 -%}
               <button
@@ -325,10 +329,11 @@
                 </svg>
               </button>
             {%- endif -%}
-            <div class="kv-media-slider__track" id="KvSliderTrack-{{ section.id }}">
+            <div class="swiper kv-media-slider__swiper" id="KvMediaSliderSwiper-{{ section.id }}">
+              <div class="swiper-wrapper">
               {%- for media in product.media -%}
                 <div
-                  class="kv-media-slider__slide"
+                  class="swiper-slide kv-media-slider__slide"
                   data-media-id="{{ media.id }}"
                   data-index="{{ forloop.index0 }}"
                 >
@@ -408,17 +413,9 @@
                   {%- endif -%}
                 </div>
               {%- endfor -%}
+              </div>
             </div>
-            <div class="kv-media-slider__dots" id="KvSliderDots-{{ section.id }}">
-              {%- for media in product.media -%}
-                <button
-                  type="button"
-                  class="kv-media-slider__dot{% if forloop.first %} active{% endif %}"
-                  data-index="{{ forloop.index0 }}"
-                  aria-label="Go to slide {{ forloop.index }}"
-                ></button>
-              {%- endfor -%}
-            </div>
+            <div class="kv-media-slider__dots swiper-pagination" id="KvSliderDots-{{ section.id }}"></div>
           </div>
         </div>
 
@@ -1483,66 +1480,37 @@
         updateThumbActive();
       }
 
-      var track = document.getElementById('KvSliderTrack-' + sectionId);
-      var dotsContainer = document.getElementById('KvSliderDots-' + sectionId);
-      if (!track || !dotsContainer) return;
+      var mediaSwiperEl = galleryRoot.querySelector('.kv-media-slider__swiper');
+      var dotsEl = document.getElementById('KvSliderDots-' + sectionId);
+      var prevSlideBtn = galleryRoot.querySelector('[data-kv-slider-prev]');
+      var nextSlideBtn = galleryRoot.querySelector('[data-kv-slider-next]');
 
-      var dots = dotsContainer.querySelectorAll('.kv-media-slider__dot');
-      var prevSlide = galleryRoot.querySelector('[data-kv-slider-prev]');
-      var nextSlide = galleryRoot.querySelector('[data-kv-slider-next]');
-
-      function slideCount() {
-        return track.children.length;
-      }
-
-      function currentSlideIndex() {
-        var w = track.children[0] ? track.children[0].offsetWidth : 1;
-        if (w < 1) return 0;
-        return Math.round(track.scrollLeft / w);
-      }
-
-      function updateDots(index) {
-        dots.forEach(function (d, i) {
-          d.classList.toggle('active', i === index);
-        });
-      }
-
-      function goToSlide(idx) {
-        var n = slideCount();
-        if (n < 1) return;
-        idx = ((idx % n) + n) % n;
-        var slide = track.children[idx];
-        if (slide) {
-          track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
-          updateDots(idx);
+      if (mediaSwiperEl && dotsEl && typeof Swiper !== 'undefined') {
+        var slideNodes = mediaSwiperEl.querySelectorAll('.swiper-slide');
+        if (slideNodes.length > 1) {
+          new Swiper(mediaSwiperEl, {
+            slidesPerView: 1.08,
+            spaceBetween: 12,
+            grabCursor: true,
+            speed: 450,
+            watchOverflow: true,
+            navigation: {
+              prevEl: prevSlideBtn,
+              nextEl: nextSlideBtn
+            },
+            pagination: {
+              el: dotsEl,
+              clickable: true,
+              bulletClass: 'kv-media-slider__dot',
+              bulletActiveClass: 'active'
+            },
+            mousewheel: {
+              forceToAxis: true,
+              sensitivity: 1
+            }
+          });
         }
       }
-
-      dots.forEach(function (dot) {
-        dot.addEventListener('click', function () {
-          var idx = parseInt(this.getAttribute('data-index'), 10);
-          goToSlide(idx);
-        });
-      });
-
-      if (prevSlide) {
-        prevSlide.addEventListener('click', function () {
-          goToSlide(currentSlideIndex() - 1);
-        });
-      }
-      if (nextSlide) {
-        nextSlide.addEventListener('click', function () {
-          goToSlide(currentSlideIndex() + 1);
-        });
-      }
-
-      var scrollTimeout;
-      track.addEventListener('scroll', function () {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(function () {
-          updateDots(currentSlideIndex());
-        }, 80);
-      });
     });
   </script>
 
