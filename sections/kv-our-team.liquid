@@ -162,11 +162,8 @@
                 <div class="kv-our-team-image-wrap">
                   {{
                     block.settings.image
-                    | image_url: width: 700
+                    | image_url: width: master
                     | image_tag:
-                      loading: 'lazy',
-                      widths: '260, 360, 520, 700',
-                      sizes: '(max-width: 767px) 70vw, (max-width: 991px) 35vw, 22vw',
                       alt: block.settings.name
                   }}
                 </div>
