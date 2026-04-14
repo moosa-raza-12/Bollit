@@ -93,7 +93,7 @@ body .kv-main-product  .product.grid {
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  max-width: 100%;
+  max-width: fit-content;
 }
 
 .kv-jump-to__item {
