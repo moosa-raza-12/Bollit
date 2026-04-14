@@ -8,17 +8,18 @@ body .kv-main-product .page-width {
   max-width: 1080px;
 }
 
-
-body .kv-main-product .product.grid {
-  display: flex;
-  gap: 64px;
-  flex-wrap: nowrap;
+body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product .product__info-wrapper.grid__item {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  overflow: hidden;
 }
 
-body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product .product__info-wrapper.grid__item {
-  width: calc(50% - 32px);
-  max-width: calc(50% - 32px);
-  padding: 0;
+
+body .kv-main-product  .product.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
 }
 
 .kv-main-product .product__info-wrapper .product__title h1 {
@@ -952,11 +953,6 @@ body .swiper-pagination-bullets.kv-media-slider__dots {
     gap: 40px;
 }
 
-body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product .product__info-wrapper.grid__item {
-  width: calc(50% - 20px);
-  max-width: calc(50% - 20px);
-}
-
 .kv-main-product .product__info-wrapper .product__title h1 {
   font-size: 36px;
 }
@@ -977,20 +973,10 @@ body .kv-main-product .product__info-wrapper.grid__item .product__info-container
 }
 
 body .kv-main-product .product.grid {
+  display: grid;
+  grid-template-columns: 45% calc(55% - 25px);
   gap: 25px;
 }
-
-body .kv-main-product .product__media-wrapper.grid__item{
-  width: calc(45% - 12.5px);
-  max-width: calc(45% - 12.5px);
-}
-
-
-body .kv-main-product .product__info-wrapper.grid__item {
-  width: calc(55% - 12.5px);
-  max-width: calc(55% - 12.5px);
-}
-
 
 .kv-main-product .product__info-wrapper .product__title h1 {
   font-size: 32px;
@@ -1077,13 +1063,18 @@ body .kv-main-product .product__info-wrapper.grid__item {
 }
 
   body .kv-main-product .product.grid {
+    display: flex;
+    flex-direction: column;
     gap: 36px;
-    overflow: hidden;
 }
 
 body .kv-main-product {
   padding: 0 0 36px 0;
   overflow: hidden;
+}
+
+body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product .product__info-wrapper.grid__item {
+  overflow: visible;
 }
 
 .kv-review-badge__text {
@@ -1106,6 +1097,7 @@ body .kv-main-product {
   .kv-trust-badge img {
     width: 20px;
     height: 20px;
+
 }
 
  }
