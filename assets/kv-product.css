@@ -710,8 +710,8 @@ body .kv-main-product  .product.grid {
   right: 8px;
 }
 
-.kv-media-slider__swiper {
-  overflow: hidden;
+.swiper.kv-media-slider__swiper {
+  overflow: visible;
   width: 100%;
   padding-bottom: 0;
 }
@@ -1057,8 +1057,10 @@ body .kv-main-product .product.grid {
   }
 
   .kv-media-slider {
-    display: block !important;
-  }
+    display: block!important;
+    padding: 0 20px;
+    overflow: visible;
+}
 
   body .kv-main-product .product.grid {
     grid-template-columns: 1fr;
@@ -1069,6 +1071,17 @@ body .kv-main-product {
   padding: 0 0 36px 0;
 }
 
+body .kv-main-product .product__info-wrapper.grid__item {
+  padding: 0 20px;
+}
+
+body .kv-main-product .page-width {
+  padding: 0;
+}
+
+.kv-media-gallery {
+  overflow: hidden;
+}
 }
 
 
