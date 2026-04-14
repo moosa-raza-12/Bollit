@@ -204,6 +204,8 @@
 <section class="kv-section kv-our-story">
   <div class="kv-custom-container">
     <div class="kv-our-story-header">
+      
+          
       {% if section.settings.label != blank %}
         <span class="kv-our-story-label">{{ section.settings.label }}</span>
       {% endif %}
@@ -217,7 +219,10 @@
         <div class="kv-our-story-timeline">
           {% for block in section.blocks %}
             <div class="kv-our-story-item" {{ block.shopify_attributes }}>
-              <span class="kv-our-story-item-icon">{{ block.settings.icon }}</span>
+              {% if block.settings.icon != blank %}
+                <span class="kv-our-story-item-icon">{{ block.settings.icon }}</span>
+              {% endif %}
+             
               {% if block.settings.title != blank %}
                 <h3 class="kv-our-story-item-title">{{ block.settings.title }}</h3>
               {% endif %}
@@ -234,15 +239,14 @@
           {% endif %}
           {% if section.settings.image != blank %}
             <div class="kv-our-story-media">
-              {{
-                section.settings.image
-                | image_url: width: 1400
-                | image_tag:
-                  loading: 'lazy',
-                  widths: '480, 720, 960, 1200, 1400',
-                  sizes: '(max-width: 767px) 100vw, 44vw',
-                  alt: section.settings.image.alt
-              }}
+              {% if section.settings.image != blank %}
+                <img
+                  src="{{ section.settings.image | image_url: width: 1400 }}"
+                  alt="{{ section.settings.image.alt | escape }}"
+                  loading="lazy"
+                >
+              {% endif %}
+              
             </div>
           {% endif %}
         </div>
@@ -287,7 +291,7 @@
         {
           "type": "text",
           "id": "icon",
-          "label": "Icon text",
+          "label": "Icon",
           "default": "⚡"
         },
         {
