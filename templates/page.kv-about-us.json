@@ -144,36 +144,31 @@
         "image_Uwd7Nf": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Product_image_d65582ad-d942-4c7e-94b1-b53e837ba55b.png",
-            "link": ""
+            "image": "shopify://shop_images/Product_image_d65582ad-d942-4c7e-94b1-b53e837ba55b.png"
           }
         },
         "image_KCp6wC": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Product_image-1.png",
-            "link": ""
+            "image": "shopify://shop_images/Product_image-1.png"
           }
         },
         "image_jEXqwf": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Product_image-2.png",
-            "link": ""
+            "image": "shopify://shop_images/Product_image-2.png"
           }
         },
         "image_8NWbRp": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Product_image-3.png",
-            "link": ""
+            "image": "shopify://shop_images/Product_image-3.png"
           }
         },
         "image_mLMmRJ": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Product_image-4.png",
-            "link": ""
+            "image": "shopify://shop_images/Product_image-4.png"
           }
         }
       },
@@ -191,6 +186,47 @@
         "button_text": "Follow @bollitclean",
         "button_url": "#"
       }
+    },
+    "lp_home_free_day_returns_y8NJam": {
+      "type": "lp-home-free-day-returns",
+      "blocks": {
+        "feature_rJWAy7": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "return",
+            "icon_svg": "",
+            "title": "Free 30-Day Returns",
+            "description": "Return it within 30 days, no hassle."
+          }
+        },
+        "feature_8qxYHV": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "money",
+            "icon_svg": "",
+            "title": "100% Money-Back Guarantee",
+            "description": "Your purchase is fully protected."
+          }
+        },
+        "feature_Y6bFw3": {
+          "type": "feature",
+          "settings": {
+            "icon_type": "truck",
+            "icon_svg": "",
+            "title": "Free Shipping",
+            "description": "Free delivery on orders above €30."
+          }
+        }
+      },
+      "block_order": [
+        "feature_rJWAy7",
+        "feature_8qxYHV",
+        "feature_Y6bFw3"
+      ],
+      "name": "KV Features",
+      "settings": {
+        "background_color": "#ffffff"
+      }
     }
   },
   "order": [
@@ -198,6 +234,7 @@
     "kv_about_us_hero_QDdMir",
     "kv_our_story_NRT3km",
     "kv_our_team_zRmGe3",
-    "kv_instagram_ar63by"
+    "kv_instagram_ar63by",
+    "lp_home_free_day_returns_y8NJam"
   ]
 }
