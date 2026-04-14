@@ -641,6 +641,9 @@ cart-drawer-items.is-empty .kv-cart-upsell {
 textarea#ContactForm-body {
     min-height: 143px;
 }
+.form__message {
+    align-items: center;
+}
 
 @media (max-width: 1199.98px) { 
     .kv-font-42{
