@@ -21,10 +21,12 @@
       "type": "kv-about-us-hero",
       "name": "KV About Hero",
       "settings": {
-        "heading": "",
-        "content": "",
-        "btn_text": "",
-        "btn_url": ""
+        "bg_image": "shopify://shop_images/about-desktop.png",
+        "bg_image_mobile": "shopify://shop_images/about-mobile.png",
+        "heading": "About <em>Bollit</em>",
+        "content": "<p>We create powerful, chemical-free cleaning systems designed to make everyday cleaning simpler, safer, and more effective.</p>",
+        "btn_text": "Shop Now",
+        "btn_url": "#"
       }
     }
   },
