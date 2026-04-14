@@ -9,6 +9,65 @@
  */
 {
   "sections": {
+    "kv_pdp_best_sellers_Gyrkkn": {
+      "type": "kv-pdp-best-sellers",
+      "blocks": {
+        "product_chip_fAxFXB": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        },
+        "product_chip_cwgxiq": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        },
+        "product_chip_bpLy3X": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        },
+        "product_chip_KmfETq": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        },
+        "product_chip_QK8bxc": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_chip_fAxFXB",
+        "product_chip_cwgxiq",
+        "product_chip_bpLy3X",
+        "product_chip_KmfETq",
+        "product_chip_QK8bxc"
+      ],
+      "name": "KV PDP Best sellers",
+      "settings": {
+        "lead_label": "Popular",
+        "lead_link": "",
+        "lead_background": "#003665",
+        "lead_text_color": "#ffffff",
+        "section_background": "#ffffff",
+        "chip_background": "#f8f8f8",
+        "chip_border": "#f5f5f5",
+        "chip_label_color": "#003665",
+        "image_ring_color": "#003665"
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -660,6 +719,7 @@
     }
   },
   "order": [
+    "kv_pdp_best_sellers_Gyrkkn",
     "main",
     "related-products",
     "kv_pdp_features_grid_4n76kn",
