@@ -106,7 +106,7 @@ body .kv-main-product  .product.grid {
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 150%;
+  line-height: 112.5%;
   position: relative;
 }
 
@@ -137,7 +137,6 @@ body .kv-main-product  .product.grid {
 
 .kv-jump-to__text {
   flex: 0 1 auto;
-  margin: 2px 0 0 0;
 }
 
 .kv-main-product .product__info-wrapper .product__description {
