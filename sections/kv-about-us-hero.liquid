@@ -1,0 +1,187 @@
+<style>
+  .kv-about-hero {
+    position: relative;
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    border-radius: 0;
+  }
+
+  .kv-about-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(26, 18, 12, 0.78) 0%, rgba(26, 18, 12, 0.62) 32%, rgba(26, 18, 12, 0.28) 54%, rgba(26, 18, 12, 0) 72%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .kv-about-hero .kv-custom-container {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .kv-about-hero-in {
+    max-width: 520px;
+    color: #fff;
+    padding: 72px 0;
+  }
+
+  .kv-about-hero-title {
+    margin: 0 0 18px;
+    font-size: 48px;
+    line-height: 1.15;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .kv-about-hero-title em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .kv-contact-hero-content {
+    font-size: 24px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 28px;
+  }
+
+  .kv-about-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 345px;
+    height: 56px;
+    padding: 0 28px;
+    border-radius: 999px;
+    border: 1px solid #0a4b84;
+    background: #07467e;
+    color: #fff;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    transition: background 0.25s ease;
+  }
+
+  .kv-about-hero-btn:hover {
+    background: #083a67;
+  }
+
+  @media (max-width: 767px) {
+    .kv-about-hero {
+      min-height: 360px;
+      background-position: center;
+    }
+
+    .kv-about-hero::before {
+      background: linear-gradient(180deg, rgba(26, 18, 12, 0.72) 0%, rgba(26, 18, 12, 0.52) 45%, rgba(26, 18, 12, 0.2) 100%);
+    }
+
+    .kv-about-hero-in {
+      max-width: 100%;
+      padding: 56px 0;
+    }
+
+    .kv-about-hero-title {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .kv-contact-hero-content {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .kv-about-hero-btn {
+      min-width: 220px;
+      width: 100%;
+      max-width: 320px;
+      font-size: 18px;
+      height: 50px;
+    }
+  }
+</style>
+
+{% liquid
+  assign hero_bg = section.settings.bg_image | image_url: width: 2400
+  assign hero_bg_mobile = section.settings.bg_image_mobile | image_url: width: 1200
+%}
+
+<section
+  class="kv-section kv-about-hero"
+  style="background-image: url('{% if section.settings.bg_image != blank %}{{ hero_bg }}{% endif %}');"
+>
+  <div class="kv-custom-container">
+    <div class="kv-about-hero-in">
+      {% if section.settings.heading != blank %}
+        <h1 class="kv-about-hero-title">{{ section.settings.heading }}</h1>
+      {% endif %}
+      {% if section.settings.content != blank %}
+        <div class="kv-contact-hero-content">{{ section.settings.content }}</div>
+      {% endif %}
+      {% if section.settings.btn_text != blank and section.settings.btn_url != blank %}
+        <a class="kv-about-hero-btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if section.settings.bg_image_mobile != blank %}
+  <style>
+    @media (max-width: 767px) {
+      .kv-about-hero {
+        background-image: url('{{ hero_bg_mobile }}') !important;
+      }
+    }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "KV About Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "BG Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "BG Mobile"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button text"
+    },
+    {
+      "type": "text",
+      "id": "btn_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV About Hero"
+    }
+  ]
+}
+{% endschema %}
