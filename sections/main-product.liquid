@@ -1006,6 +1006,63 @@
                     </div>
                   </div>
                 {%- endif -%}
+              {%- when 'kv-jump-to' -%}
+                {%- liquid
+                  assign kv_jump_blocks = section.blocks | where: 'type', 'kv-jump-to'
+                  assign is_first_jump_block = true
+                  for jb in kv_jump_blocks
+                    if jb.id != block.id
+                      continue
+                    endif
+                    unless forloop.first
+                      assign is_first_jump_block = false
+                    endunless
+                    break
+                  endfor
+                -%}
+                {%- if is_first_jump_block -%}
+                  {%- liquid
+                    assign jump_first_block = kv_jump_blocks | first
+                    assign jump_heading = jump_first_block.settings.heading | default: 'Jump to:'
+                    assign jump_count = 0
+                    for j in kv_jump_blocks
+                      assign ar = j.settings.anchor | strip | replace: '#', ''
+                      if j.settings.title != blank and ar != blank
+                        assign jump_count = jump_count | plus: 1
+                      endif
+                    endfor
+                  -%}
+                  {%- if jump_count > 0 -%}
+                  <nav class="kv-jump-to" aria-label="{{ jump_heading | escape }}" {{ block.shopify_attributes }}>
+                    <p class="kv-jump-to__label">{{ jump_heading }}</p>
+                    <ul class="kv-jump-to__list" role="list">
+                      {%- for j in kv_jump_blocks -%}
+                        {%- assign anchor_raw = j.settings.anchor | strip | replace: '#', '' -%}
+                        {%- if j.settings.title != blank and anchor_raw != blank -%}
+                          <li class="kv-jump-to__item" {{ j.shopify_attributes }}>
+                            <a href="#{{ anchor_raw | escape }}" class="kv-jump-to__link">
+                              <span class="kv-jump-to__icon-wrap">
+                                {%- if j.settings.icon_image != blank -%}
+                                  <img
+                                    src="{{ j.settings.icon_image | image_url: width: 64 }}"
+                                    alt=""
+                                    width="24"
+                                    height="24"
+                                    loading="lazy"
+                                  >
+                                {%- else -%}
+                                  {% render 'icon-accordion', icon: j.settings.icon_fallback %}
+                                {%- endif -%}
+                              </span>
+                              <span class="kv-jump-to__text">{{ j.settings.title }}</span>
+                            </a>
+                          </li>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </ul>
+                  </nav>
+                  {%- endif -%}
+                {%- endif -%}
               {%- when 'kv-usp-icons' -%}
                 <div class="kv-usp-row" {{ block.shopify_attributes }}>
                   {%- if block.settings.heading_1 != blank -%}
@@ -2922,6 +2979,53 @@
           "id": "video_title",
           "label": "Video title",
           "default": "Customer review"
+        }
+      ]
+    },
+    {
+      "type": "kv-jump-to",
+      "name": "KV - Jump to",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Section label",
+          "default": "Jump to:",
+          "info": "Shown once above the navigation (from the first Jump to block)"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon image"
+        },
+        {
+          "type": "select",
+          "id": "icon_fallback",
+          "options": [
+            { "value": "bolt", "label": "Bolt" },
+            { "value": "refresh", "label": "Refresh" },
+            { "value": "check_mark", "label": "Checkmark" },
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "star", "label": "Star" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "washing", "label": "Washing" }
+          ],
+          "default": "star",
+          "label": "Icon (fallback)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Features"
+        },
+        {
+          "type": "text",
+          "id": "anchor",
+          "label": "Section ID / anchor",
+          "default": "product-features",
+          "info": "The id of the element to scroll to (with or without #). Add the same id to your section or block in the theme editor."
         }
       ]
     }
