@@ -717,7 +717,7 @@ body .kv-main-product  .product.grid {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  gap: 0;
+  gap: 12px;
 }
 
 .kv-media-slider__track::-webkit-scrollbar {
@@ -725,12 +725,12 @@ body .kv-main-product  .product.grid {
 }
 
 .kv-media-slider__slide {
-  flex: 0 0 100%;
+  flex: 0 0 90%;
   scroll-snap-align: start;
   overflow: hidden;
   position: relative;
   border-radius: 20px;
-  background: #F8F8F6;
+  background: #f8f8f6;
 }
 
 /* First-image badge (metafield: custom.product_media_badge) */
@@ -1067,6 +1067,12 @@ body .kv-main-product {
 }
 
 
+ body .kv-main-product .product__info-wrapper.grid__item {
+  overflow: hidden;
+}
+
+body .kv-main-product .product__media-wrapper.grid__item {
+  overflow: visible;
 
 }
 
