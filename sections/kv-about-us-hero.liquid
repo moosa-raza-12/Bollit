@@ -41,28 +41,7 @@
     margin-bottom: 28px;
   }
 
-  .kv-about-hero-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 345px;
-    height: 56px;
-    padding: 0 28px;
-    border-radius: 999px;
-    border: 1px solid #0a4b84;
-    background: #07467e;
-    color: #fff;
-    font-size: 21px;
-    font-weight: 500;
-    line-height: 1;
-    text-decoration: none;
-    transition: background 0.25s ease;
-  }
-
-  .kv-about-hero-btn:hover {
-    background: #083a67;
-  }
-
+ 
   @media (max-width: 767px) {
     .kv-about-hero {
       min-height: 360px;
@@ -88,13 +67,7 @@
       margin-bottom: 20px;
     }
 
-    .kv-about-hero-btn {
-      min-width: 220px;
-      width: 100%;
-      max-width: 320px;
-      font-size: 18px;
-      height: 50px;
-    }
+
   }
 </style>
 
@@ -116,7 +89,7 @@
         <div class="kv-contact-hero-content">{{ section.settings.content }}</div>
       {% endif %}
       {% if section.settings.btn_text != blank and section.settings.btn_url != blank %}
-        <a class="kv-about-hero-btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+        <a class="kv-blue-btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
       {% endif %}
     </div>
   </div>
