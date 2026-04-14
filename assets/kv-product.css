@@ -700,6 +700,7 @@ body .kv-main-product  .product.grid {
   top: 50%;
   transform: translateY(-50%);
   z-index: 6;
+  display: none;
 }
 
 .kv-media-slider .kv-media-slider__nav.kv-media-nav--prev {
