@@ -963,6 +963,7 @@ body .kv-main-product  .product.grid {
 
   body .kv-main-product .product.grid {
     gap: 32px;
+    grid-template-columns: 1fr;
 }
 
 
