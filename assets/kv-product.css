@@ -963,10 +963,6 @@ body .kv-main-product .product__info-wrapper.grid__item .product__info-container
   max-width: 100%;
 }
 
-body .kv-main-product .product.grid {
-  gap: 32px;
-  grid-template-columns: 1fr;
-}
 
  }
 
