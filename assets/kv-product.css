@@ -19,6 +19,7 @@ body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product 
 body .kv-main-product  .product.grid {
   display: flex;
   gap: 64px;
+  flex-wrap: nowrap;
 }
 
 .kv-main-product .product__info-wrapper .product__title h1 {
