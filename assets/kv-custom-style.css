@@ -633,6 +633,11 @@ cart-drawer-items.is-empty .kv-cart-upsell {
 .kv-custom-contact-page-outer  .contact__fields {
     display: unset;
 }
+.kv-custom-contact-page-outer .field__input:not(:placeholder-shown)~.field__label {
+    top: 18px !important;
+    left: 14px;
+    font-size: 10px !important;
+}
 
 @media (max-width: 1199.98px) { 
     .kv-font-42{
