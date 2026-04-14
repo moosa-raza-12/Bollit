@@ -600,10 +600,9 @@ body .kv-main-product  .product.grid {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   }
 
-  .kv-media-grid__item--thumb-active {
-    outline: 2px solid #003665;
-    outline-offset: 2px;
-  }
+  .kv-media-grid__item.kv-media-grid__item--thumb-active {
+    border: 1px solid #003665;
+}
 
   .kv-media-grid__item {
     border-radius: 20px;
