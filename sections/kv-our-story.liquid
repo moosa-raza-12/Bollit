@@ -1,8 +1,5 @@
 <style>
-  .kv-our-story {
-    padding: 70px 0;
-    background: #ffffff;
-  }
+
 
   .kv-our-story-header {
     text-align: center;
@@ -203,17 +200,15 @@
 
 <section class="kv-section kv-our-story">
   <div class="kv-custom-container">
-    <div class="kv-our-story-header">
-      
-          
-      {% if section.settings.label != blank %}
-        <span class="kv-our-story-label">{{ section.settings.label }}</span>
+
+    <div class="kv-section-head">    
+     {% if section.settings.label != blank %}
+        <span>{{ section.settings.label }}</span>
       {% endif %}
-      {% if section.settings.heading != blank %}
-        <h2 class="kv-our-story-title">{{ section.settings.heading }}</h2>
-      {% endif %}
+     <h2 class="kv-font-38">{{ section.settings.heading }}</h2>   
     </div>
 
+  
     <div class="kv-our-story-card">
       <div class="kv-our-story-grid">
         <div class="kv-our-story-timeline">
