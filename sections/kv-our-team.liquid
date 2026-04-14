@@ -77,20 +77,28 @@
     opacity: 0.6;
   }
 
-  .kv-our-team .swiper-scrollbar {
-    position: static;
-    background: rgba(204, 204, 204, 0.40);
-    border-radius: 999px;
-    height: 3px;
-    margin-top: 18px;
-    margin-top: 42px;
-    border-radius: 16px;
-  }
 
-  .kv-our-team .swiper-scrollbar-drag {
-    background: #003665;
-    border-radius: 999px;
-  }
+  .kv-our-team .swiper-scrollbar  {
+  position: relative;
+  height: 4px;
+  background-color: #e5e7eb;
+  border-radius: 16px;
+  margin-top: 70px;
+  overflow: hidden;
+}
+
+swiper-scrollbar-drag{
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background: #003665;
+  border-radius: 16px;
+  transition: width 0.3s ease-out;
+}
+
 
     .kv-our-team .swiper-slide {
         width: 300px;
