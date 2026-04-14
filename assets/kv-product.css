@@ -977,10 +977,20 @@ body .kv-main-product .product__info-wrapper.grid__item .product__info-container
 }
 
 body .kv-main-product .product.grid {
-  display: grid;
-  grid-template-columns: 45% calc(55% - 25px);
   gap: 25px;
 }
+
+body .kv-main-product .product__media-wrapper.grid__item{
+  width: calc(45% - 12.5px);
+  max-width: calc(45% - 12.5px);
+}
+
+
+body .kv-main-product .product__info-wrapper.grid__item {
+  width: calc(55% - 12.5px);
+  max-width: calc(55% - 12.5px);
+}
+
 
 .kv-main-product .product__info-wrapper .product__title h1 {
   font-size: 32px;
