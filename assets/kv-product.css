@@ -1099,6 +1099,10 @@ body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product 
 
 }
 
+.kv-media-badge {
+    font-size: 12px;
+}
+
  }
 
 
