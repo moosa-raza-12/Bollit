@@ -522,6 +522,82 @@ cart-drawer-items.is-empty .kv-cart-upsell {
     display: none;
 }
 
+.contact.page-width {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.50);
+    max-width: 800px;
+    padding: 24px;
+    flex-direction: column;
+    gap: 16px;
+    display: flex;
+}
+
+
+.contact.page-width h2.title.title-wrapper--no-top-margin {
+    color: #1F1F1F;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.27px;
+    margin: 0;
+}
+.contact.page-width form#ContactForm {
+    border-radius: 16px;
+    border: 1px solid #EEEDEF;
+    background: #FFF;
+    padding: 16px;
+}
+.contact.page-width #ContactForm .field__input {
+    border-radius: 12px;
+    background: #F4F3F4;
+    display: flex;
+    padding: 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    letter-spacing: 0;
+}
+
+
+.contact.page-width .field__input {
+    border-radius: 12px!important;
+    background: #F4F3F4;
+    display: flex;
+    padding: 12px !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    letter-spacing: 0;
+    color: #808080;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    min-height: 55px;
+}
+
+.contact.page-width  label.field__label {
+    color: #808080;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    transform: translate(0%, -50%);
+    top: 50%;
+}
+.contact.page-width .field__input, .contact.page-width .customer .field input {
+    box-shadow: none !important;
+}
+
+.contact.page-width .field:after, .contact.page-width .field:before{
+display:none;
+}
+
 @media (max-width: 1199.98px) { 
     .kv-font-42{
         font-size: 38px;
