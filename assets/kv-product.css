@@ -762,21 +762,20 @@ body .kv-main-product  .product.grid {
   object-fit: cover;
 }
 
-.kv-media-slider__dots {
+body .swiper-pagination-bullets.kv-media-slider__dots {
   display: flex;
   justify-content: center;
   gap: 8px;
   position: absolute;
   bottom: 32px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%);
   border-radius: 100px;
-  background: rgba(31, 31, 31, 0.08);
+  background: #1f1f1f14;
+  -webkit-backdrop-filter: blur(50px);
   backdrop-filter: blur(50px);
   padding: 4px 8px;
-  width: auto !important;
-  top: auto !important;
-  right: auto !important;
+  width: auto!important;
 }
 
 .kv-media-slider__dot {
