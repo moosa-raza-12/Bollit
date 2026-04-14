@@ -5,7 +5,6 @@
 {%- assign lead_label = section.settings.lead_label | default: 'Popular' -%}
 
 {%- if lead_label != blank or section.blocks.size > 0 -%}
-
   <div
     class="kv-best-sellers"
     style="--kv-bs-lead-bg: {{ section.settings.lead_background }}; --kv-bs-lead-fg: {{ section.settings.lead_text_color }}; --kv-bs-chip-bg: {{ section.settings.chip_background }}; --kv-bs-chip-border: {{ section.settings.chip_border }}; --kv-bs-label: {{ section.settings.chip_label_color }}; --kv-bs-ring: {{ section.settings.image_ring_color }}; --kv-bs-page-bg: {{ section.settings.section_background }};"
