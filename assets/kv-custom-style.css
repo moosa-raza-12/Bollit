@@ -593,6 +593,33 @@ cart-drawer-items.is-empty .kv-cart-upsell {
 .contact.page-width .field__input, .contact.page-width .customer .field input {
     box-shadow: none !important;
 }
+.kv-custom-contact-page-outer {
+    padding: 64px 0px;
+    background: #F2F2F2;
+}
+
+.kv-custom-contact-page-outer  button.button {
+    border-radius: 100px;
+    background: #003665;
+    display: flex;
+    height: 52px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+    color: #FFF;
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 100%;
+}
+.kv-custom-contact-page-outer  button.button:after, .kv-custom-contact-page-outer  button.button:before{
+    box-shadow:none !important;
+    border:none !important;
+}
 
 .contact.page-width .field:after, .contact.page-width .field:before{
 display:none;
