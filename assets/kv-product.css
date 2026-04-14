@@ -727,10 +727,10 @@ body .kv-main-product  .product.grid {
 .kv-media-slider__slide {
   flex: 0 0 100%;
   scroll-snap-align: start;
-  border-radius: 12px;
   overflow: hidden;
   position: relative;
-  background: #f5f5f5;
+  border-radius: 20px;
+  background: #F8F8F6;
 }
 
 /* First-image badge (metafield: custom.product_media_badge) */
@@ -770,8 +770,15 @@ body .kv-main-product  .product.grid {
 .kv-media-slider__dots {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  padding: 12px 0 4px;
+  gap: 8px;
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 100px;
+  background: rgba(31, 31, 31, 0.08);
+  backdrop-filter: blur(50px);
+  padding: 4px 8px;
 }
 
 .kv-media-slider__dot {
@@ -779,15 +786,13 @@ body .kv-main-product  .product.grid {
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: #ccc;
+  background: #FFF;
   padding: 0;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .kv-media-slider__dot.active {
-  background: #1a1a2e;
-  transform: scale(1.25);
+  background: #003665;
 }
 
 .kv-media-slider {
@@ -1055,6 +1060,10 @@ body .kv-main-product .product.grid {
   body .kv-main-product .product.grid {
     grid-template-columns: 1fr;
     gap: 36px;
+}
+
+body .kv-main-product {
+  padding: 0 0 36px 0;
 }
 
 
