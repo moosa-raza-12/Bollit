@@ -5,7 +5,10 @@
 {%- assign lead_label = section.settings.lead_label | default: 'Popular' -%}
 
 {%- if lead_label != blank or section.blocks.size > 0 -%}
-  <div class="kv-best-sellers" id="kv-best-sellers-{{ section.id }}">
+  <div
+    class="kv-best-sellers"
+    style="--kv-bs-lead-bg: {{ section.settings.lead_background }}; --kv-bs-lead-fg: {{ section.settings.lead_text_color }}; --kv-bs-chip-bg: {{ section.settings.chip_background }}; --kv-bs-chip-border: {{ section.settings.chip_border }}; --kv-bs-label: {{ section.settings.chip_label_color }}; --kv-bs-ring: {{ section.settings.image_ring_color }}; --kv-bs-page-bg: {{ section.settings.section_background }};"
+  >
     <div class="kv-best-sellers__track" role="list">
       {%- if lead_label != blank -%}
         <div class="kv-best-sellers__chip kv-best-sellers__chip--lead" role="listitem">
@@ -61,28 +64,21 @@
   </div>
 
   <style>
-    #kv-best-sellers-{{ section.id }} {
-      --kv-bs-lead-bg: {{ section.settings.lead_background }};
-      --kv-bs-lead-fg: {{ section.settings.lead_text_color }};
-      --kv-bs-chip-bg: {{ section.settings.chip_background }};
-      --kv-bs-chip-border: {{ section.settings.chip_border }};
-      --kv-bs-label: {{ section.settings.chip_label_color }};
-      --kv-bs-ring: {{ section.settings.image_ring_color }};
-      --kv-bs-page-bg: {{ section.settings.section_background }};
+    .kv-best-sellers {
       /* display: none; */
       width: 100%;
       padding: 12px 0;
       background: var(--kv-bs-page-bg, #f5f5f5);
     }
-    @media screen and (max-width: 767.98px) {
-      #kv-best-sellers-{{ section.id }} {
+    @media screen and (max-width: 749.98px) {
+      .kv-best-sellers {
         display: block;
       }
     }
-    /* .shopify-design-mode #kv-best-sellers-{{ section.id }} {
+    .shopify-design-mode .kv-best-sellers {
       display: block !important;
-    } */
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__track {
+    }
+    .kv-best-sellers .kv-best-sellers__track {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
@@ -95,13 +91,13 @@
       scrollbar-width: none;
       list-style: none;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__track::-webkit-scrollbar {
+    .kv-best-sellers .kv-best-sellers__track::-webkit-scrollbar {
       display: none;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__chip {
+    .kv-best-sellers .kv-best-sellers__chip {
       flex: 0 0 auto;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__chip--lead {
+    .kv-best-sellers .kv-best-sellers__chip--lead {
       border-radius: 999px;
       background: var(--kv-bs-lead-bg, #1e2a4a);
       color: var(--kv-bs-lead-fg, #ffffff);
@@ -110,7 +106,7 @@
       line-height: 1.2;
       white-space: nowrap;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__lead-inner {
+    .kv-best-sellers .kv-best-sellers__lead-inner {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -119,15 +115,15 @@
       color: inherit;
       text-decoration: none;
     }
-    #kv-best-sellers-{{ section.id }} a.kv-best-sellers__lead-inner {
+    .kv-best-sellers a.kv-best-sellers__lead-inner {
       color: inherit;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__chip--product {
+    .kv-best-sellers .kv-best-sellers__chip--product {
       border-radius: 999px;
       border: 1px solid var(--kv-bs-chip-border, #e5e5e5);
       background: var(--kv-bs-chip-bg, #ffffff);
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__product-link {
+    .kv-best-sellers .kv-best-sellers__product-link {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -140,7 +136,7 @@
       line-height: 1.2;
       white-space: nowrap;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__img-wrap {
+    .kv-best-sellers .kv-best-sellers__img-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -152,18 +148,18 @@
       overflow: hidden;
       background: #fff;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__img-wrap img {
+    .kv-best-sellers .kv-best-sellers__img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__img-placeholder {
+    .kv-best-sellers .kv-best-sellers__img-placeholder {
       display: block;
       width: 100%;
       height: 100%;
       background: #e8e8e8;
     }
-    #kv-best-sellers-{{ section.id }} .kv-best-sellers__label {
+    .kv-best-sellers .kv-best-sellers__label {
       max-width: 42vw;
       overflow: hidden;
       text-overflow: ellipsis;
