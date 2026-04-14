@@ -1074,7 +1074,9 @@ body .kv-main-product {
   overflow: hidden;
 }
 
-
+body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product .product__info-wrapper.grid__item {
+  overflow: visible;
+}
 
 .kv-review-badge__text {
   font-size: 14px;
