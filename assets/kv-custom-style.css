@@ -588,7 +588,7 @@ cart-drawer-items.is-empty .kv-cart-upsell {
     font-weight: 400;
     letter-spacing: 0;
     transform: translate(0%, -50%);
-    top: 50%;
+    top: 52%;
 }
 .contact.page-width .field__input, .contact.page-width .customer .field input {
     box-shadow: none !important;
