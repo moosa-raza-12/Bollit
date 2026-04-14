@@ -167,6 +167,9 @@
                       loading="lazy"
                     >
                 {%- endcase -%}
+                {%- if forloop.first and product.metafields.custom.product_media_badge.value != blank -%}
+                  <span class="kv-media-badge">{{ product.metafields.custom.product_media_badge.value | escape }}</span>
+                {%- endif -%}
               </div>
             {%- endfor -%}
           </div>
@@ -251,6 +254,9 @@
                         loading="lazy"
                       >
                   {%- endcase -%}
+                  {%- if forloop.first and product.metafields.custom.product_media_badge.value != blank -%}
+                    <span class="kv-media-badge">{{ product.metafields.custom.product_media_badge.value | escape }}</span>
+                  {%- endif -%}
                 </div>
               {%- endfor -%}
             </div>
