@@ -1,6 +1,5 @@
 <style>
   .kv-about-hero {
-    position: relative;
     min-height: 465px;
     display: flex;
     align-items: center;
@@ -11,19 +10,10 @@
     border-radius: 0;
   }
 
-  .kv-about-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg, rgba(26, 18, 12, 0.78) 0%, rgba(26, 18, 12, 0.62) 32%, rgba(26, 18, 12, 0.28) 54%, rgba(26, 18, 12, 0) 72%);
-    pointer-events: none;
-    z-index: 1;
-  }
+
 
   .kv-about-hero .kv-custom-container {
     width: 100%;
-    position: relative;
-    z-index: 2;
   }
 
   .kv-about-hero-in {
@@ -56,47 +46,45 @@
  
   @media (max-width: 767px) {
     .kv-about-hero {
-      min-height: 430px;
-      background-position: center;
+        min-height: 430px;
+        background-position: center;
     }
 
-    .kv-about-hero::before {
-      background: linear-gradient(180deg, rgba(26, 18, 12, 0.72) 0%, rgba(26, 18, 12, 0.52) 45%, rgba(26, 18, 12, 0.2) 100%);
-    }
+
 
     .kv-about-hero-in {
-      max-width: 100%;
+        max-width: 100%;
     }
 
     .kv-about-hero-title {
-      font-size: 34px;
-      margin-bottom: 12px;
+        font-size: 34px;
+        margin-bottom: 12px;
     }
 
-  .kv-section.kv-about-hero {
-    padding: 20px 0px;
-}
-.kv-contact-hero-content p {
-    font-size: 14px;
-}
+    .kv-section.kv-about-hero {
+      padding: 20px 0px;
+    }
+    .kv-contact-hero-content p {
+     font-size: 14px;
+    }
 
-.kv-about-hero-in .kv-blue-btn {
-    font-size: 18px;
-}
+    .kv-about-hero-in .kv-blue-btn {
+     font-size: 18px;
+    }
 
     .kv-about-hero {
         align-items: stretch;
     }
-.kv-about-hero .kv-custom-container {
-  display: flex;
-  height: 100%;
-}
-.kv-about-hero-in {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%; 
-}
+    .kv-about-hero .kv-custom-container {
+        display: flex;
+        height: 100%;
+    }
+    .kv-about-hero-in {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%; 
+    }
   }
 </style>
 
