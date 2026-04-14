@@ -1030,6 +1030,15 @@ body .kv-main-product .product.grid {
 .kv-jump-to__link {
   font-size: 14px;
 }
+
+.kv-media-nav {
+  width: 40px;
+  height: 40px;
+}
+
+.kv-media-nav svg {
+  width: 14px;
+}
  }
 
 
