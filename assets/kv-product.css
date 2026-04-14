@@ -1059,7 +1059,6 @@ body .kv-main-product .product.grid {
 
   .kv-media-slider {
     display: block!important;
-    padding: 0 20px;
     overflow: visible;
 }
 
