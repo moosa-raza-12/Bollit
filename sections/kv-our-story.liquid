@@ -145,6 +145,9 @@
     line-height: normal;
     margin: 0;
 }
+.kv-for-mobile{
+    display:none;
+}
 
 @media (max-width: 767px) {
 .kv-section-head .kv-font-38 {
@@ -168,6 +171,12 @@
 .kv-our-story-item-text p {
     font-size: 16px;
 }
+.kv-for-mobile{
+    display:block;
+}
+.kv-for-desktop{
+    display:none;
+}
  }
 </style>
 
@@ -184,6 +193,9 @@
   
     <div class="kv-our-story-card">
       <div class="kv-our-story-grid">
+          {% if section.settings.right_content != blank %}
+            <div class="kv-our-story-right-content kv-for-mobile">{{ section.settings.right_content }}</div>
+          {% endif %}
         <div class="kv-our-story-timeline">
           {% for block in section.blocks %}
             <div class="kv-our-story-item" {{ block.shopify_attributes }}>
@@ -208,7 +220,7 @@
 
         <div class="kv-our-story-right">
           {% if section.settings.right_content != blank %}
-            <div class="kv-our-story-right-content">{{ section.settings.right_content }}</div>
+            <div class="kv-our-story-right-content kv-for-desktop">{{ section.settings.right_content }}</div>
           {% endif %}
           {% if section.settings.image != blank %}
             <div class="kv-our-story-media">
