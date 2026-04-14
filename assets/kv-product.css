@@ -1094,7 +1094,10 @@ body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product 
 
 @media (max-width: 639px) { 
 
-
+  .kv-trust-badge img {
+    width: 20px;
+    height: 20px;
+}
 
  }
 
