@@ -512,14 +512,6 @@ body .kv-main-product  .product.grid {
 
 
 
-
-
-
-
-
-
-
-@media screen and (min-width: 767.98px) {
   .kv-media-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -595,7 +587,6 @@ body .kv-main-product  .product.grid {
   .kv-media-slider {
     display: none !important;
   }
-}
 
 .kv-media-slider {
   position: relative;
@@ -680,6 +671,10 @@ body .kv-main-product  .product.grid {
 .kv-media-slider__dot.active {
   background: #1a1a2e;
   transform: scale(1.25);
+}
+
+.kv-media-slider {
+  display: none !important;
 }
 
 
