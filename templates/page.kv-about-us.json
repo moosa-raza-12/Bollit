@@ -144,30 +144,35 @@
         "image_Uwd7Nf": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Product_image_d65582ad-d942-4c7e-94b1-b53e837ba55b.png",
             "link": ""
           }
         },
         "image_KCp6wC": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Product_image-1.png",
             "link": ""
           }
         },
         "image_jEXqwf": {
           "type": "image",
           "settings": {
-            "link": ""
-          }
-        },
-        "image_mLMmRJ": {
-          "type": "image",
-          "settings": {
+            "image": "shopify://shop_images/Product_image-2.png",
             "link": ""
           }
         },
         "image_8NWbRp": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Product_image-3.png",
+            "link": ""
+          }
+        },
+        "image_mLMmRJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Product_image-4.png",
             "link": ""
           }
         }
@@ -176,8 +181,8 @@
         "image_Uwd7Nf",
         "image_KCp6wC",
         "image_jEXqwf",
-        "image_mLMmRJ",
-        "image_8NWbRp"
+        "image_8NWbRp",
+        "image_mLMmRJ"
       ],
       "name": "KV Instagram",
       "settings": {
