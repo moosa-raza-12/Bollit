@@ -166,6 +166,42 @@
             "video_url": "",
             "video_title": "Customer review"
           }
+        },
+        "kv_jump_to_f8Hzt8": {
+          "type": "kv-jump-to",
+          "settings": {
+            "heading": "Jump to:",
+            "icon_fallback": "star",
+            "title": "Features",
+            "anchor": "product-features"
+          }
+        },
+        "kv_jump_to_4GXTMb": {
+          "type": "kv-jump-to",
+          "settings": {
+            "heading": "Accessories",
+            "icon_fallback": "star",
+            "title": "Accessories",
+            "anchor": "product-features"
+          }
+        },
+        "kv_jump_to_8MqBkd": {
+          "type": "kv-jump-to",
+          "settings": {
+            "heading": "Accessories",
+            "icon_fallback": "star",
+            "title": "Review",
+            "anchor": "product-features"
+          }
+        },
+        "kv_jump_to_xayKWR": {
+          "type": "kv-jump-to",
+          "settings": {
+            "heading": "Accessories",
+            "icon_fallback": "star",
+            "title": "Usage",
+            "anchor": "product-features"
+          }
         }
       },
       "block_order": [
@@ -188,7 +224,11 @@
         "kv_video_KYQAnd",
         "kv_video_qPgzaG",
         "kv_video_Mai9zp",
-        "kv_video_nbipen"
+        "kv_video_nbipen",
+        "kv_jump_to_f8Hzt8",
+        "kv_jump_to_4GXTMb",
+        "kv_jump_to_8MqBkd",
+        "kv_jump_to_xayKWR"
       ],
       "settings": {
         "enable_sticky_info": true,
