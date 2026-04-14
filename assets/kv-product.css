@@ -1052,6 +1052,11 @@ body .kv-main-product .product.grid {
     display: block !important;
   }
 
+  body .kv-main-product .product.grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+}
+
 
 
 }
