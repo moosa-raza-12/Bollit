@@ -219,9 +219,14 @@
         <div class="kv-our-story-timeline">
           {% for block in section.blocks %}
             <div class="kv-our-story-item" {{ block.shopify_attributes }}>
-              {% if block.settings.icon != blank %}
-                <span class="kv-our-story-item-icon">{{ block.settings.icon }}</span>
+                 {% if section.settings.icon != blank %}
+                 <span class="kv-our-story-item-icon"><img
+                  src="{{ section.settings.icon | image_url: width: master }}"
+                  alt="{{ section.settings.icon.alt | escape }}"
+                  loading="lazy"
+                ></span>
               {% endif %}
+            
              
               {% if block.settings.title != blank %}
                 <h3 class="kv-our-story-item-title">{{ block.settings.title }}</h3>
@@ -241,7 +246,7 @@
             <div class="kv-our-story-media">
               {% if section.settings.image != blank %}
                 <img
-                  src="{{ section.settings.image | image_url: width: 1400 }}"
+                  src="{{ section.settings.image | image_url: width: master }}"
                   alt="{{ section.settings.image.alt | escape }}"
                   loading="lazy"
                 >
