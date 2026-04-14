@@ -963,19 +963,27 @@ body .kv-main-product .product__info-wrapper.grid__item .product__info-container
   max-width: 100%;
 }
 
+body .kv-main-product .product.grid {
+  display: grid;
+  grid-template-columns: 45% calc(55% - 25px);
+  gap: 25px;
+}
+
+
+.kv-media-grid {
+  display: none !important;
+}
+
+.kv-media-slider {
+  display: block !important;
+}
+
 
  }
 
 
 @media (max-width: 767.98px) {
 
-  .kv-media-grid {
-    display: none !important;
-  }
-
-  .kv-media-slider {
-    display: block !important;
-  }
 
 
 
