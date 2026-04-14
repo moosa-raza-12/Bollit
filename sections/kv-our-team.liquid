@@ -93,9 +93,10 @@
   left: 0;
   top: 0;
   height: 100%;
-  width: 0%;
+  min-width: 72px;
   background: #003665;
   border-radius: 16px;
+  opacity: 1;
   transition: width 0.3s ease-out;
 }
 
@@ -175,11 +176,13 @@
       new Swiper(swiperEl, {
         speed: 550,
         grabCursor: true,
+        watchOverflow: false,
         slidesPerView: 'auto',
         spaceBetween: 16,
         scrollbar: {
           el: sectionEl.querySelector('.swiper-scrollbar'),
-          draggable: true
+          draggable: true,
+          hide: false
         },
         breakpoints: {
           576: {

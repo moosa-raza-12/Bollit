@@ -1067,18 +1067,13 @@ body .kv-main-product .product.grid {
 }
 
   body .kv-main-product .product.grid {
-    display: flex;
-    flex-direction: column;
     gap: 36px;
+    overflow: hidden;
 }
 
 body .kv-main-product {
   padding: 0 0 36px 0;
   overflow: hidden;
-}
-
-body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product .product__info-wrapper.grid__item {
-  overflow: visible;
 }
 
 .kv-review-badge__text {
