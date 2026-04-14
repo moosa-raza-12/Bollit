@@ -82,12 +82,14 @@
 >
   <div class="kv-custom-container">
     <div class="kv-about-hero-in">
-      {% if section.settings.heading != blank %}
-        <h1 class="kv-font-44">{{ section.settings.heading }}</h1>
-      {% endif %}
-      {% if section.settings.content != blank %}
-        <div class="kv-contact-hero-content">{{ section.settings.content }}</div>
-      {% endif %}
+        <div class="kv-about-hero-top">
+        {% if section.settings.heading != blank %}
+            <h1 class="kv-font-44">{{ section.settings.heading }}</h1>
+        {% endif %}
+        {% if section.settings.content != blank %}
+            <div class="kv-contact-hero-content">{{ section.settings.content }}</div>
+        {% endif %}
+       </div>
       {% if section.settings.btn_text != blank and section.settings.btn_url != blank %}
         <a class="kv-blue-btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
       {% endif %}
