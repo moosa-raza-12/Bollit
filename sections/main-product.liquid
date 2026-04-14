@@ -80,102 +80,245 @@
         <div class="kv-media-gallery" id="KvMediaGallery-{{ section.id }}">
           {%- comment -%} DESKTOP: 2-col grid, first image full width {%- endcomment -%}
           <div class="kv-media-grid">
-            {%- for media in product.media -%}
-              <div
-                class="kv-media-grid__item{% if forloop.first %} kv-media-grid__item--featured{% endif %}"
-                data-media-id="{{ media.id }}"
-                data-media-type="{{ media.media_type }}"
-                {% if media.media_type == 'image' %}
-                  {% if media.alt contains '#' %}
-                    {% assign _img_groups = media.alt | split: '#' %}
-                    {% for _g in _img_groups %}
-                      {% if _g contains 'variant:' %}
-                        data-variant-img="{{ _g | remove: 'variant:' | strip }}"
-                      {% endif %}
-                    {% endfor %}
-                  {% endif %}
-                {% endif %}
-              >
-                {%- case media.media_type -%}
-                  {%- when 'image' -%}
-                    <img
-                      src="{{ media | image_url: width: 1200 }}"
-                      srcset="
-                        {{ media | image_url: width: 600 }} 600w,
-                        {{ media | image_url: width: 900 }} 900w,
-                        {{ media | image_url: width: 1200 }} 1200w
-                      "
-                      sizes="(min-width: 750px) {% if forloop.first %}100vw{% else %}50vw{% endif %}, 100vw"
-                      alt="{{ media.alt | escape }}"
-                      width="{{ media.width }}"
-                      height="{{ media.height }}"
-                      loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-                    >
-                  {%- when 'video', 'external_video' -%}
-                    <div class="kv-deferred-media" data-media-id="{{ media.id }}">
-                      <button
-                        type="button"
-                        class="kv-deferred-media__poster"
-                        aria-label="{{ 'products.product.media.play_video' | t }}"
-                        data-deferred-media-btn
-                      >
-                        <img
-                          src="{{ media.preview_image | image_url: width: 1200 }}"
-                          alt="{{ media.alt | escape }}"
-                          width="{{ media.preview_image.width }}"
-                          height="{{ media.preview_image.height }}"
-                          loading="lazy"
-                        >
-                        <span class="kv-media-grid__play-btn">
-                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
-                        </span>
-                      </button>
-                      <template>
-                        {%- if media.media_type == 'video' -%}
-                          {{ media | media_tag: autoplay: true, loop: section.settings.enable_video_looping, controls: true, muted: false }}
-                        {%- else -%}
-                          {{ media | external_video_url: autoplay: true, loop: section.settings.enable_video_looping | external_video_tag }}
-                        {%- endif -%}
-                      </template>
-                    </div>
-                  {%- when 'model' -%}
-                    <div class="kv-deferred-media" data-media-id="{{ media.id }}">
-                      <button
-                        type="button"
-                        class="kv-deferred-media__poster"
-                        aria-label="{{ 'products.product.media.play_model' | t }}"
-                        data-deferred-media-btn
-                      >
-                        <img
-                          src="{{ media.preview_image | image_url: width: 1200 }}"
-                          alt="{{ media.alt | escape }}"
-                          width="{{ media.preview_image.width }}"
-                          height="{{ media.preview_image.height }}"
-                          loading="lazy"
-                        >
-                      </button>
-                      <template>
-                        {{ media | model_viewer_tag }}
-                      </template>
-                    </div>
-                  {%- else -%}
-                    <img
-                      src="{{ media.preview_image | image_url: width: 1200 }}"
-                      alt="{{ media.alt | escape }}"
-                      width="{{ media.preview_image.width }}"
-                      height="{{ media.preview_image.height }}"
-                      loading="lazy"
-                    >
-                {%- endcase -%}
-                {%- if forloop.first and product.metafields.custom.product_media_badge.value != blank -%}
-                  <span class="kv-media-badge">{{ product.metafields.custom.product_media_badge.value | escape }}</span>
+            {%- if product.media.size > 0 -%}
+              <div class="kv-media-grid__item kv-media-grid__item--featured kv-media-grid__item--featured-stack" data-kv-featured-stack>
+                {%- if product.media.size > 1 -%}
+                  <button
+                    type="button"
+                    class="kv-media-nav kv-media-nav--prev"
+                    aria-label="{{ 'general.slider.previous_slide' | t }}"
+                    data-kv-featured-prev
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button
+                    type="button"
+                    class="kv-media-nav kv-media-nav--next"
+                    aria-label="{{ 'general.slider.next_slide' | t }}"
+                    data-kv-featured-next
+                  >
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
                 {%- endif -%}
+                <div class="kv-media-featured-layers">
+                  {%- for m in product.media -%}
+                    <div
+                      class="kv-media-featured-layer{% if forloop.first %} is-active{% endif %}"
+                      data-media-id="{{ m.id }}"
+                      data-media-type="{{ m.media_type }}"
+                      data-featured-index="{{ forloop.index0 }}"
+                      {% if m.media_type == 'image' %}
+                        {% if m.alt contains '#' %}
+                          {% assign _img_groups = m.alt | split: '#' %}
+                          {% for _g in _img_groups %}
+                            {% if _g contains 'variant:' %}
+                              data-variant-img="{{ _g | remove: 'variant:' | strip }}"
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      {% endif %}
+                    >
+                      {%- case m.media_type -%}
+                        {%- when 'image' -%}
+                          <img
+                            src="{{ m | image_url: width: 1200 }}"
+                            srcset="
+                              {{ m | image_url: width: 600 }} 600w,
+                              {{ m | image_url: width: 900 }} 900w,
+                              {{ m | image_url: width: 1200 }} 1200w
+                            "
+                            sizes="(min-width: 750px) 100vw, 100vw"
+                            alt="{{ m.alt | escape }}"
+                            width="{{ m.width }}"
+                            height="{{ m.height }}"
+                            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                          >
+                        {%- when 'video', 'external_video' -%}
+                          <div class="kv-deferred-media" data-media-id="{{ m.id }}">
+                            <button
+                              type="button"
+                              class="kv-deferred-media__poster"
+                              aria-label="{{ 'products.product.media.play_video' | t }}"
+                              data-deferred-media-btn
+                            >
+                              <img
+                                src="{{ m.preview_image | image_url: width: 1200 }}"
+                                alt="{{ m.alt | escape }}"
+                                width="{{ m.preview_image.width }}"
+                                height="{{ m.preview_image.height }}"
+                                loading="lazy"
+                              >
+                              <span class="kv-media-grid__play-btn">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+                              </span>
+                            </button>
+                            <template>
+                              {%- if m.media_type == 'video' -%}
+                                {{ m | media_tag: autoplay: true, loop: section.settings.enable_video_looping, controls: true, muted: false }}
+                              {%- else -%}
+                                {{ m | external_video_url: autoplay: true, loop: section.settings.enable_video_looping | external_video_tag }}
+                              {%- endif -%}
+                            </template>
+                          </div>
+                        {%- when 'model' -%}
+                          <div class="kv-deferred-media" data-media-id="{{ m.id }}">
+                            <button
+                              type="button"
+                              class="kv-deferred-media__poster"
+                              aria-label="{{ 'products.product.media.play_model' | t }}"
+                              data-deferred-media-btn
+                            >
+                              <img
+                                src="{{ m.preview_image | image_url: width: 1200 }}"
+                                alt="{{ m.alt | escape }}"
+                                width="{{ m.preview_image.width }}"
+                                height="{{ m.preview_image.height }}"
+                                loading="lazy"
+                              >
+                            </button>
+                            <template>
+                              {{ m | model_viewer_tag }}
+                            </template>
+                          </div>
+                        {%- else -%}
+                          <img
+                            src="{{ m.preview_image | image_url: width: 1200 }}"
+                            alt="{{ m.alt | escape }}"
+                            width="{{ m.preview_image.width }}"
+                            height="{{ m.preview_image.height }}"
+                            loading="lazy"
+                          >
+                      {%- endcase -%}
+                      {%- if forloop.first and product.metafields.custom.product_media_badge.value != blank -%}
+                        <span class="kv-media-badge">{{ product.metafields.custom.product_media_badge.value | escape }}</span>
+                      {%- endif -%}
+                    </div>
+                  {%- endfor -%}
+                </div>
               </div>
+            {%- endif -%}
+
+            {%- for media in product.media -%}
+              {%- unless forloop.first -%}
+                <div
+                  class="kv-media-grid__item"
+                  data-media-id="{{ media.id }}"
+                  data-media-type="{{ media.media_type }}"
+                  {% if media.media_type == 'image' %}
+                    {% if media.alt contains '#' %}
+                      {% assign _img_groups = media.alt | split: '#' %}
+                      {% for _g in _img_groups %}
+                        {% if _g contains 'variant:' %}
+                          data-variant-img="{{ _g | remove: 'variant:' | strip }}"
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                >
+                  {%- case media.media_type -%}
+                    {%- when 'image' -%}
+                      <img
+                        src="{{ media | image_url: width: 1200 }}"
+                        srcset="
+                          {{ media | image_url: width: 600 }} 600w,
+                          {{ media | image_url: width: 900 }} 900w,
+                          {{ media | image_url: width: 1200 }} 1200w
+                        "
+                        sizes="(min-width: 750px) 50vw, 100vw"
+                        alt="{{ media.alt | escape }}"
+                        width="{{ media.width }}"
+                        height="{{ media.height }}"
+                        loading="lazy"
+                      >
+                    {%- when 'video', 'external_video' -%}
+                      <div class="kv-deferred-media" data-media-id="{{ media.id }}">
+                        <button
+                          type="button"
+                          class="kv-deferred-media__poster"
+                          aria-label="{{ 'products.product.media.play_video' | t }}"
+                          data-deferred-media-btn
+                        >
+                          <img
+                            src="{{ media.preview_image | image_url: width: 1200 }}"
+                            alt="{{ media.alt | escape }}"
+                            width="{{ media.preview_image.width }}"
+                            height="{{ media.preview_image.height }}"
+                            loading="lazy"
+                          >
+                          <span class="kv-media-grid__play-btn">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+                          </span>
+                        </button>
+                        <template>
+                          {%- if media.media_type == 'video' -%}
+                            {{ media | media_tag: autoplay: true, loop: section.settings.enable_video_looping, controls: true, muted: false }}
+                          {%- else -%}
+                            {{ media | external_video_url: autoplay: true, loop: section.settings.enable_video_looping | external_video_tag }}
+                          {%- endif -%}
+                        </template>
+                      </div>
+                    {%- when 'model' -%}
+                      <div class="kv-deferred-media" data-media-id="{{ media.id }}">
+                        <button
+                          type="button"
+                          class="kv-deferred-media__poster"
+                          aria-label="{{ 'products.product.media.play_model' | t }}"
+                          data-deferred-media-btn
+                        >
+                          <img
+                            src="{{ media.preview_image | image_url: width: 1200 }}"
+                            alt="{{ media.alt | escape }}"
+                            width="{{ media.preview_image.width }}"
+                            height="{{ media.preview_image.height }}"
+                            loading="lazy"
+                          >
+                        </button>
+                        <template>
+                          {{ media | model_viewer_tag }}
+                        </template>
+                      </div>
+                    {%- else -%}
+                      <img
+                        src="{{ media.preview_image | image_url: width: 1200 }}"
+                        alt="{{ media.alt | escape }}"
+                        width="{{ media.preview_image.width }}"
+                        height="{{ media.preview_image.height }}"
+                        loading="lazy"
+                      >
+                  {%- endcase -%}
+                </div>
+              {%- endunless -%}
             {%- endfor -%}
           </div>
 
           {%- comment -%} MOBILE: horizontal slider with dot nav {%- endcomment -%}
           <div class="kv-media-slider">
+            {%- if product.media.size > 1 -%}
+              <button
+                type="button"
+                class="kv-media-nav kv-media-nav--prev kv-media-slider__nav"
+                aria-label="{{ 'general.slider.previous_slide' | t }}"
+                data-kv-slider-prev
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="kv-media-nav kv-media-nav--next kv-media-slider__nav"
+                aria-label="{{ 'general.slider.next_slide' | t }}"
+                data-kv-slider-next
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            {%- endif -%}
             <div class="kv-media-slider__track" id="KvSliderTrack-{{ section.id }}">
               {%- for media in product.media -%}
                 <div
@@ -1253,18 +1396,50 @@
 
   {%- comment -%}
     ============================================
-    KV - Mobile media slider (dot navigation)
-    Handles swipe dot sync on the mobile gallery
+    KV - Media gallery: desktop featured stack + mobile slider (dots + arrows)
     ============================================
   {%- endcomment -%}
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       var sectionId = '{{ section.id }}';
+      var galleryRoot = document.getElementById('KvMediaGallery-' + sectionId);
+      if (!galleryRoot) return;
+
+      var featuredStack = galleryRoot.querySelector('[data-kv-featured-stack]');
+      if (featuredStack) {
+        var layers = featuredStack.querySelectorAll('.kv-media-featured-layer');
+        var prevBtn = featuredStack.querySelector('[data-kv-featured-prev]');
+        var nextBtn = featuredStack.querySelector('[data-kv-featured-next]');
+        if (layers.length > 1) {
+          var fIdx = 0;
+          function goFeatured(delta) {
+            fIdx = (fIdx + delta + layers.length) % layers.length;
+            layers.forEach(function (el, i) {
+              el.classList.toggle('is-active', i === fIdx);
+            });
+          }
+          if (prevBtn) prevBtn.addEventListener('click', function () { goFeatured(-1); });
+          if (nextBtn) nextBtn.addEventListener('click', function () { goFeatured(1); });
+        }
+      }
+
       var track = document.getElementById('KvSliderTrack-' + sectionId);
       var dotsContainer = document.getElementById('KvSliderDots-' + sectionId);
       if (!track || !dotsContainer) return;
 
       var dots = dotsContainer.querySelectorAll('.kv-media-slider__dot');
+      var prevSlide = galleryRoot.querySelector('[data-kv-slider-prev]');
+      var nextSlide = galleryRoot.querySelector('[data-kv-slider-next]');
+
+      function slideCount() {
+        return track.children.length;
+      }
+
+      function currentSlideIndex() {
+        var w = track.children[0] ? track.children[0].offsetWidth : 1;
+        if (w < 1) return 0;
+        return Math.round(track.scrollLeft / w);
+      }
 
       function updateDots(index) {
         dots.forEach(function (d, i) {
@@ -1272,24 +1447,40 @@
         });
       }
 
+      function goToSlide(idx) {
+        var n = slideCount();
+        if (n < 1) return;
+        idx = ((idx % n) + n) % n;
+        var slide = track.children[idx];
+        if (slide) {
+          track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
+          updateDots(idx);
+        }
+      }
+
       dots.forEach(function (dot) {
         dot.addEventListener('click', function () {
           var idx = parseInt(this.getAttribute('data-index'), 10);
-          var slide = track.children[idx];
-          if (slide) {
-            track.scrollTo({ left: slide.offsetLeft, behavior: 'smooth' });
-            updateDots(idx);
-          }
+          goToSlide(idx);
         });
       });
+
+      if (prevSlide) {
+        prevSlide.addEventListener('click', function () {
+          goToSlide(currentSlideIndex() - 1);
+        });
+      }
+      if (nextSlide) {
+        nextSlide.addEventListener('click', function () {
+          goToSlide(currentSlideIndex() + 1);
+        });
+      }
 
       var scrollTimeout;
       track.addEventListener('scroll', function () {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(function () {
-          var slideWidth = track.children[0] ? track.children[0].offsetWidth : 1;
-          var idx = Math.round(track.scrollLeft / slideWidth);
-          updateDots(idx);
+          updateDots(currentSlideIndex());
         }, 80);
       });
     });

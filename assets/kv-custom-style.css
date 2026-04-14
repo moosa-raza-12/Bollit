@@ -615,6 +615,7 @@ cart-drawer-items.is-empty .kv-cart-upsell {
     font-weight: 500;
     line-height: normal;
     width: 100%;
+    letter-spacing: 0;
 }
 .kv-custom-contact-page-outer  button.button:after, .kv-custom-contact-page-outer  button.button:before{
     box-shadow:none !important;
