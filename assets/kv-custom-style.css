@@ -639,6 +639,9 @@ cart-drawer-items.is-empty .kv-cart-upsell {
     left: 14px;
     font-size: 10px !important;
 }
+textarea#ContactForm-body {
+    min-height: 143px;
+}
 
 @media (max-width: 1199.98px) { 
     .kv-font-42{
@@ -696,6 +699,16 @@ cart-drawer-items.is-empty .kv-cart-upsell {
     .kv-font-30 {
         font-size: 28px;
         letter-spacing: -0.42px;
+    }
+    .kv-custom-contact-page-outer {
+        padding: 36px 20px;
+    }
+    .contact.page-width {
+        padding: 16px;
+    }
+    .contact.page-width h2.title.title-wrapper--no-top-margin {
+        font-size: 16px;
+        letter-spacing: -0.24px;
     }
         
 }
