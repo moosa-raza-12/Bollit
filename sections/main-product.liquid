@@ -1190,7 +1190,7 @@
                   {%- if jump_count > 0 -%}
                   <nav class="kv-jump-to" aria-label="{{ jump_heading | escape }}" {{ block.shopify_attributes }}>
                     <p class="kv-jump-to__label">{{ jump_heading }}</p>
-                    <ul class="kv-jump-to__list" role="list">
+                    <ul class="kv-jump-to__list" role="list" data-kv-jump-scroll>
                       {%- for j in kv_jump_blocks -%}
                         {%- assign anchor_raw = j.settings.anchor | strip | replace: '#', '' -%}
                         {%- if j.settings.title != blank and anchor_raw != blank -%}
@@ -1346,7 +1346,9 @@
   {%- endcomment -%}
   <script>
     (function () {
-      window.kvDragScroll = function (el) {
+      window.kvDragScroll = function (el, opts) {
+        opts = opts || {};
+        var useSnap = opts.snap !== false;
         if (!el) return;
         var isDown = false, startX, scrollLeft;
         el.style.cursor = 'grab';
@@ -1354,7 +1356,7 @@
         el.addEventListener('mousedown', function (e) {
           isDown = true;
           el.style.cursor = 'grabbing';
-          el.style.scrollSnapType = 'none';
+          if (useSnap) el.style.scrollSnapType = 'none';
           startX = e.pageX - el.offsetLeft;
           scrollLeft = el.scrollLeft;
           e.preventDefault();
@@ -1364,14 +1366,16 @@
           if (!isDown) return;
           isDown = false;
           el.style.cursor = 'grab';
-          el.style.scrollSnapType = 'x mandatory';
+          if (useSnap) el.style.scrollSnapType = 'x mandatory';
+          else el.style.removeProperty('scroll-snap-type');
         });
 
         el.addEventListener('mouseup', function () {
           if (!isDown) return;
           isDown = false;
           el.style.cursor = 'grab';
-          el.style.scrollSnapType = 'x mandatory';
+          if (useSnap) el.style.scrollSnapType = 'x mandatory';
+          else el.style.removeProperty('scroll-snap-type');
         });
 
         el.addEventListener('mousemove', function (e) {
@@ -1380,6 +1384,21 @@
           var x = e.pageX - el.offsetLeft;
           el.scrollLeft = scrollLeft - (x - startX) * 1.5;
         });
+      };
+
+      window.kvWheelScrollHorizontal = function (el) {
+        if (!el) return;
+        el.addEventListener(
+          'wheel',
+          function (e) {
+            if (el.scrollWidth <= el.offsetWidth + 2) return;
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+            if (e.deltaY === 0) return;
+            e.preventDefault();
+            el.scrollLeft += e.deltaY;
+          },
+          { passive: false }
+        );
       };
 
       window.kvUpdateArrows = function (scrollEl, leftBtn, rightBtn) {
@@ -1398,6 +1417,16 @@
         }
       };
     })();
+  </script>
+
+  {%- comment -%} KV - Jump to: drag + wheel scroll on non-touch {%- endcomment -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('[data-kv-jump-scroll]').forEach(function (list) {
+        if (window.kvDragScroll) window.kvDragScroll(list, { snap: false });
+        if (window.kvWheelScrollHorizontal) window.kvWheelScrollHorizontal(list);
+      });
+    });
   </script>
 
   {%- comment -%}

@@ -63,6 +63,9 @@ body .kv-main-product  .product.grid {
 
 .kv-jump-to {
   margin: 32px 0 0 0;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .kv-jump-to__label {
@@ -77,7 +80,7 @@ body .kv-main-product  .product.grid {
 
 .kv-jump-to__list {
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: nowrap;
   align-items: stretch;
   gap: 14px;
   margin: 0;
@@ -87,7 +90,10 @@ body .kv-main-product  .product.grid {
   border: 1px solid rgba(204,204,204,.32);
   background: #fff;
   overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
+  max-width: 100%;
 }
 
 .kv-jump-to__item {
