@@ -206,27 +206,99 @@
               </div>
             {%- endif -%}
 
-            {%- comment -%}
-              Desktop: prev/next thumbnails only — they update when the featured index changes (JS).
-            {%- endcomment -%}
-            {%- if product.media.size > 1 -%}
-              <div class="kv-media-grid__row kv-media-grid__row--peek" data-kv-peek-row>
+            {%- for media in product.media -%}
+              {%- unless forloop.first -%}
                 <div
-                  class="kv-media-grid__item kv-media-grid__item--peek kv-media-grid__item--peek-prev"
-                  data-kv-peek="prev"
-                  role="button"
-                  tabindex="0"
-                  aria-label="{{ 'general.slider.previous_slide' | t }}"
-                ></div>
-                <div
-                  class="kv-media-grid__item kv-media-grid__item--peek kv-media-grid__item--peek-next"
-                  data-kv-peek="next"
-                  role="button"
-                  tabindex="0"
-                  aria-label="{{ 'general.slider.next_slide' | t }}"
-                ></div>
-              </div>
-            {%- endif -%}
+                  class="kv-media-grid__item kv-media-grid__item--thumb"
+                  data-kv-grid-thumb
+                  data-media-index="{{ forloop.index0 }}"
+                  data-media-id="{{ media.id }}"
+                  data-media-type="{{ media.media_type }}"
+                  {% if media.media_type == 'image' %}
+                    {% if media.alt contains '#' %}
+                      {% assign _img_groups = media.alt | split: '#' %}
+                      {% for _g in _img_groups %}
+                        {% if _g contains 'variant:' %}
+                          data-variant-img="{{ _g | remove: 'variant:' | strip }}"
+                        {% endif %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endif %}
+                >
+                  {%- case media.media_type -%}
+                    {%- when 'image' -%}
+                      <img
+                        src="{{ media | image_url: width: 1200 }}"
+                        srcset="
+                          {{ media | image_url: width: 600 }} 600w,
+                          {{ media | image_url: width: 900 }} 900w,
+                          {{ media | image_url: width: 1200 }} 1200w
+                        "
+                        sizes="(min-width: 750px) 50vw, 100vw"
+                        alt="{{ media.alt | escape }}"
+                        width="{{ media.width }}"
+                        height="{{ media.height }}"
+                        loading="lazy"
+                      >
+                    {%- when 'video', 'external_video' -%}
+                      <div class="kv-deferred-media" data-media-id="{{ media.id }}">
+                        <button
+                          type="button"
+                          class="kv-deferred-media__poster"
+                          aria-label="{{ 'products.product.media.play_video' | t }}"
+                          data-deferred-media-btn
+                        >
+                          <img
+                            src="{{ media.preview_image | image_url: width: 1200 }}"
+                            alt="{{ media.alt | escape }}"
+                            width="{{ media.preview_image.width }}"
+                            height="{{ media.preview_image.height }}"
+                            loading="lazy"
+                          >
+                          <span class="kv-media-grid__play-btn">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+                          </span>
+                        </button>
+                        <template>
+                          {%- if media.media_type == 'video' -%}
+                            {{ media | media_tag: autoplay: true, loop: section.settings.enable_video_looping, controls: true, muted: false }}
+                          {%- else -%}
+                            {{ media | external_video_url: autoplay: true, loop: section.settings.enable_video_looping | external_video_tag }}
+                          {%- endif -%}
+                        </template>
+                      </div>
+                    {%- when 'model' -%}
+                      <div class="kv-deferred-media" data-media-id="{{ media.id }}">
+                        <button
+                          type="button"
+                          class="kv-deferred-media__poster"
+                          aria-label="{{ 'products.product.media.play_model' | t }}"
+                          data-deferred-media-btn
+                        >
+                          <img
+                            src="{{ media.preview_image | image_url: width: 1200 }}"
+                            alt="{{ media.alt | escape }}"
+                            width="{{ media.preview_image.width }}"
+                            height="{{ media.preview_image.height }}"
+                            loading="lazy"
+                          >
+                        </button>
+                        <template>
+                          {{ media | model_viewer_tag }}
+                        </template>
+                      </div>
+                    {%- else -%}
+                      <img
+                        src="{{ media.preview_image | image_url: width: 1200 }}"
+                        alt="{{ media.alt | escape }}"
+                        width="{{ media.preview_image.width }}"
+                        height="{{ media.preview_image.height }}"
+                        loading="lazy"
+                      >
+                  {%- endcase -%}
+                </div>
+              {%- endunless -%}
+            {%- endfor -%}
           </div>
 
           {%- comment -%} MOBILE: horizontal slider with dot nav {%- endcomment -%}
@@ -1340,9 +1412,6 @@
       if (!galleryRoot) return;
 
       var featuredStack = galleryRoot.querySelector('[data-kv-featured-stack]');
-      var peekRow = galleryRoot.querySelector('[data-kv-peek-row]');
-      var peekPrev = galleryRoot.querySelector('[data-kv-peek="prev"]');
-      var peekNext = galleryRoot.querySelector('[data-kv-peek="next"]');
 
       if (featuredStack) {
         var layers = featuredStack.querySelectorAll('.kv-media-featured-layer');
@@ -1350,38 +1419,11 @@
         var nextBtn = featuredStack.querySelector('[data-kv-featured-next]');
         var fIdx = 0;
 
-        function peekImageFromLayer(layer) {
-          if (!layer) return null;
-          var poster = layer.querySelector('.kv-deferred-media__poster img');
-          if (poster) return poster;
-          return layer.querySelector('img');
-        }
-
-        function fillPeekCell(cell, layer) {
-          if (!cell || !layer) return;
-          cell.innerHTML = '';
-          var srcEl = peekImageFromLayer(layer);
-          if (!srcEl) return;
-          var wrap = document.createElement('div');
-          wrap.className = 'kv-media-peek__inner';
-          var img = srcEl.cloneNode(true);
-          img.setAttribute('loading', 'lazy');
-          wrap.appendChild(img);
-          cell.appendChild(wrap);
-        }
-
-        function syncPeekThumbnails() {
-          var n = layers.length;
-          if (!peekRow || !peekPrev || !peekNext) return;
-          if (n < 2) {
-            peekRow.setAttribute('hidden', '');
-            return;
-          }
-          peekRow.removeAttribute('hidden');
-          var prevIdx = (fIdx - 1 + n) % n;
-          var nextIdx = (fIdx + 1) % n;
-          fillPeekCell(peekPrev, layers[prevIdx]);
-          fillPeekCell(peekNext, layers[nextIdx]);
+        function updateThumbActive() {
+          galleryRoot.querySelectorAll('[data-kv-grid-thumb]').forEach(function (thumb) {
+            var idx = parseInt(thumb.getAttribute('data-media-index'), 10);
+            thumb.classList.toggle('kv-media-grid__item--thumb-active', idx === fIdx);
+          });
         }
 
         function setFeaturedIndex(i) {
@@ -1391,7 +1433,7 @@
           layers.forEach(function (el, idx) {
             el.classList.toggle('is-active', idx === fIdx);
           });
-          syncPeekThumbnails();
+          updateThumbActive();
         }
 
         function goFeatured(delta) {
@@ -1401,30 +1443,17 @@
         if (layers.length > 1) {
           if (prevBtn) prevBtn.addEventListener('click', function () { goFeatured(-1); });
           if (nextBtn) nextBtn.addEventListener('click', function () { goFeatured(1); });
-          if (peekPrev) {
-            peekPrev.addEventListener('click', function () {
-              setFeaturedIndex(fIdx - 1);
-            });
-            peekPrev.addEventListener('keydown', function (e) {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setFeaturedIndex(fIdx - 1);
-              }
-            });
-          }
-          if (peekNext) {
-            peekNext.addEventListener('click', function () {
-              setFeaturedIndex(fIdx + 1);
-            });
-            peekNext.addEventListener('keydown', function (e) {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setFeaturedIndex(fIdx + 1);
-              }
-            });
-          }
         }
-        syncPeekThumbnails();
+
+        galleryRoot.querySelectorAll('[data-kv-grid-thumb]').forEach(function (thumb) {
+          thumb.addEventListener('click', function (e) {
+            if (e.target.closest('[data-deferred-media-btn]')) return;
+            var idx = parseInt(thumb.getAttribute('data-media-index'), 10);
+            if (!isNaN(idx)) setFeaturedIndex(idx);
+          });
+        });
+
+        updateThumbActive();
       }
 
       var track = document.getElementById('KvSliderTrack-' + sectionId);
