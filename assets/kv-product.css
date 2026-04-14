@@ -940,7 +940,13 @@ body .kv-main-product  .product.grid {
 
 @media (max-width: 1199.98px) { 
 
+  body .kv-main-product .product.grid {
+    gap: 40px;
+}
 
+.kv-main-product .product__info-wrapper .product__title h1 {
+  font-size: 36px;
+}
 
  }
 
