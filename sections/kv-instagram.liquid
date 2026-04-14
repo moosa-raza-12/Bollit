@@ -185,20 +185,35 @@
 
         {% if section.settings.heading != blank %}
           <h2 class="kv-instagram-title">
-            <svg class="kv-instagram-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <rect x="2.25" y="2.25" width="19.5" height="19.5" rx="6" stroke="url(#kv-ig-grad)" stroke-width="2.2"/>
-              <circle cx="12" cy="12" r="4.1" stroke="url(#kv-ig-grad)" stroke-width="2.2"/>
-              <circle cx="17.4" cy="6.7" r="1.3" fill="url(#kv-ig-grad)"/>
-              <defs>
-                <linearGradient id="kv-ig-grad" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#feda75"/>
-                  <stop offset="0.34" stop-color="#fa7e1e"/>
-                  <stop offset="0.62" stop-color="#d62976"/>
-                  <stop offset="0.82" stop-color="#962fbf"/>
-                  <stop offset="1" stop-color="#4f5bd5"/>
-                </linearGradient>
-              </defs>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M31.1592 5.51468C30.7512 4.46368 30.2071 3.57342 29.3168 2.68315C28.4266 1.79289 27.5363 1.24884 26.4853 0.840802C25.4714 0.44513 24.2968 0.173105 22.6028 0.0989166C20.8964 0.024728 20.3524 0 16 0C11.6476 0 11.1036 0.0123633 9.39722 0.0989166C7.69088 0.173105 6.52859 0.44513 5.51468 0.840802C4.46368 1.24884 3.57342 1.79289 2.68315 2.68315C1.79289 3.57342 1.24884 4.46368 0.840804 5.51468C0.445132 6.52859 0.173107 7.70325 0.0989185 9.39722C0.0247299 11.1036 0 11.6476 0 16C0 20.3524 0.0123651 20.8964 0.0989185 22.6028C0.173107 24.3091 0.445132 25.4714 0.840804 26.4853C1.24884 27.5363 1.79289 28.4266 2.68315 29.3168C3.57342 30.2071 4.46368 30.7512 5.51468 31.1592C6.52859 31.5549 7.70325 31.8269 9.39722 31.9011C11.1036 31.9753 11.6476 32 16 32C20.3524 32 20.8964 31.9876 22.6028 31.9011C24.3091 31.8269 25.4714 31.5549 26.4853 31.1592C27.5363 30.7512 28.4266 30.2071 29.3168 29.3168C30.2071 28.4266 30.7512 27.5363 31.1592 26.4853C31.5549 25.4714 31.8269 24.2968 31.9011 22.6028C31.9753 20.8964 32 20.3524 32 16C32 11.6476 31.9876 11.1036 31.9011 9.39722C31.8269 7.69088 31.5549 6.52859 31.1592 5.51468ZM29.0201 22.4668C28.9459 24.0247 28.6862 24.8779 28.4637 25.4343C28.1793 26.1762 27.8207 26.7202 27.2643 27.2767C26.7079 27.8331 26.1762 28.1793 25.4219 28.476C24.8532 28.6986 24.0124 28.9583 22.4544 29.0325C20.7604 29.1066 20.2658 29.1314 15.9876 29.1314C11.7094 29.1314 11.2025 29.119 9.52087 29.0325C7.96291 28.9583 7.10974 28.6986 6.55332 28.476C5.81144 28.1917 5.26739 27.8331 4.71097 27.2767C4.15456 26.7202 3.80835 26.1886 3.51159 25.4343C3.28903 24.8655 3.02937 24.0247 2.95518 22.4668C2.88099 20.7728 2.85626 20.2658 2.85626 16C2.85626 11.7342 2.86863 11.2148 2.95518 9.53323C3.02937 7.97527 3.28903 7.1221 3.51159 6.56569C3.79598 5.8238 4.15456 5.27975 4.71097 4.72334C5.26739 4.16692 5.79907 3.82071 6.55332 3.52396C7.1221 3.30139 7.96291 3.04173 9.52087 2.96754C11.2148 2.89335 11.7218 2.86862 15.9876 2.86862C20.2535 2.86862 20.7728 2.88099 22.4544 2.96754C24.0124 3.04173 24.8655 3.30139 25.4219 3.52396C26.1638 3.80835 26.7079 4.16692 27.2643 4.72334C27.8207 5.27975 28.1669 5.81144 28.4637 6.56569C28.6862 7.13447 28.9459 7.97527 29.0201 9.53323C29.0943 11.2272 29.119 11.7342 29.119 16C29.119 20.2658 29.0943 20.7852 29.0201 22.4668Z" fill="url(#paint0_radial_23025_17436)"/>
+                <path d="M15.9882 7.77759C11.4503 7.77759 7.76562 11.4623 7.76562 16.0002C7.76562 20.538 11.4503 24.2227 15.9882 24.2227C20.5261 24.2227 24.2108 20.538 24.2108 16.0002C24.2108 11.4623 20.5261 7.77759 15.9882 7.77759ZM15.9882 21.3417C13.0454 21.3417 10.6466 18.9553 10.6466 16.0002C10.6466 13.0573 13.033 10.6586 15.9882 10.6586C18.9434 10.6586 21.3298 13.045 21.3298 16.0002C21.3298 18.943 18.931 21.3417 15.9882 21.3417Z" fill="url(#paint1_radial_23025_17436)"/>
+                <path d="M24.5337 9.37263C25.5922 9.37263 26.4503 8.51456 26.4503 7.45609C26.4503 6.39761 25.5922 5.53955 24.5337 5.53955C23.4753 5.53955 22.6172 6.39761 22.6172 7.45609C22.6172 8.51456 23.4753 9.37263 24.5337 9.37263Z" fill="url(#paint2_radial_23025_17436)"/>
+                <defs>
+                    <radialGradient id="paint0_radial_23025_17436" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(9.28268 31.9331) scale(32.2855)">
+                    <stop stop-color="#FFD776"/>
+                    <stop offset="0.2463" stop-color="#F3A554"/>
+                    <stop offset="0.3793" stop-color="#F15C3C"/>
+                    <stop offset="0.5394" stop-color="#D94867"/>
+                    <stop offset="0.6995" stop-color="#C32F87"/>
+                    <stop offset="0.9122" stop-color="#7D63A7"/>
+                    <stop offset="0.9852" stop-color="#5C6CB3"/>
+                    </radialGradient>
+                    <radialGradient id="paint1_radial_23025_17436" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12.5451 24.1818) scale(16.579)">
+                    <stop stop-color="#FFD776"/>
+                    <stop offset="0.2463" stop-color="#F3A554"/>
+                    <stop offset="0.3793" stop-color="#F15C3C"/>
+                    <stop offset="0.607" stop-color="#D94867"/>
+                    <stop offset="0.8346" stop-color="#C32F87"/>
+                    <stop offset="0.9577" stop-color="#7D63A7"/>
+                    <stop offset="1" stop-color="#5C6CB3"/>
+                    </radialGradient>
+                    <radialGradient id="paint2_radial_23025_17436" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(23.7328 9.36402) scale(3.87425)">
+                    <stop stop-color="#5F6DB3"/>
+                    <stop offset="1" stop-color="#5C6CB3"/>
+                    </radialGradient>
+                </defs>
+                </svg>
             <span class="kv-instagram-title-text">{{ section.settings.heading }}</span>
           </h2>
         {% endif %}
@@ -215,11 +230,8 @@
               <a class="kv-instagram-item" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
                 {{
                   block.settings.image
-                  | image_url: width: 900
+                  | image_url: width: 'master'
                   | image_tag:
-                    loading: 'lazy',
-                    widths: '260, 420, 620, 900',
-                    sizes: '(max-width: 767px) 50vw, (max-width: 991px) 46vw, 22vw',
                     alt: block.settings.image.alt
                 }}
               </a>
@@ -227,11 +239,8 @@
               <div class="kv-instagram-item" {{ block.shopify_attributes }}>
                 {{
                   block.settings.image
-                  | image_url: width: 900
+                  | image_url: width: 'master'
                   | image_tag:
-                    loading: 'lazy',
-                    widths: '260, 420, 620, 900',
-                    sizes: '(max-width: 767px) 50vw, (max-width: 991px) 46vw, 22vw',
                     alt: block.settings.image.alt
                 }}
               </div>
@@ -281,11 +290,6 @@
           "id": "image",
           "label": "Image"
         },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Post URL"
-        }
       ]
     }
   ],
