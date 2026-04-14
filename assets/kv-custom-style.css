@@ -710,6 +710,9 @@ textarea#ContactForm-body {
         font-size: 16px;
         letter-spacing: -0.24px;
     }
+    textarea#ContactForm-body {
+        min-height: 139px;
+    }
         
 }
 
