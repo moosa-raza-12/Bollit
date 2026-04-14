@@ -79,26 +79,41 @@ body .kv-main-product  .product.grid {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  gap: 0;
+  gap: 14px;
   margin: 0;
   padding: 12px 16px;
   list-style: none;
   border-radius: 20px;
-  border: 1px solid rgba(204, 204, 204, 0.32);
-  background: #FFF;
+  border: 1px solid rgba(204,204,204,.32);
+  background: #fff;
 }
 
 .kv-jump-to__item {
   display: flex;
   align-items: center;
   flex: 0 0 auto;
+  padding: 0 14px 0 0;
+  position: relative;
+}
+
+.kv-jump-to__item:last-child {
+  padding-right: 0;
+}
+
+.kv-jump-to__item::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(204,204,204,.32);
 }
 
 .kv-jump-to__link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 0 14px 0 0;
   text-decoration: none;
   white-space: nowrap;
   transition: color .2s ease,background .2s ease;
