@@ -1,0 +1,306 @@
+<style>
+  .kv-instagram {
+    padding: 56px 0;
+    background: #f4f5f7;
+  }
+
+  .kv-instagram-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 38px;
+    align-items: center;
+  }
+
+  .kv-instagram-content {
+    max-width: 430px;
+  }
+
+  .kv-instagram-label {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+    border-left: 2px solid #d8b178;
+    border-right: 2px solid #d8b178;
+    color: #8a6233;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.1;
+  }
+
+  .kv-instagram-title {
+    margin: 0 0 24px;
+    color: #1f2329;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.05;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .kv-instagram-title em {
+    color: #0f4f85;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .kv-instagram-title-text {
+    display: inline-block;
+  }
+
+  .kv-instagram-icon {
+    width: 32px;
+    height: 32px;
+    margin-top: 10px;
+    flex: 0 0 32px;
+  }
+
+  .kv-instagram-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 380px;
+    min-height: 66px;
+    border-radius: 999px;
+    border: 1px solid #0d4a82;
+    background: #07467e;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    transition: background 0.25s ease;
+  }
+
+  .kv-instagram-btn:hover {
+    background: #083a67;
+  }
+
+  .kv-instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    grid-template-areas:
+      "a b"
+      "a c"
+      "d e";
+  }
+
+  .kv-instagram-item {
+    display: block;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #e8ebef;
+    min-height: 140px;
+  }
+
+  .kv-instagram-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .kv-instagram-item:nth-child(1) { grid-area: a; min-height: 392px; }
+  .kv-instagram-item:nth-child(2) { grid-area: b; min-height: 190px; }
+  .kv-instagram-item:nth-child(3) { grid-area: c; min-height: 194px; }
+  .kv-instagram-item:nth-child(4) { grid-area: d; min-height: 190px; }
+  .kv-instagram-item:nth-child(5) { grid-area: e; min-height: 190px; }
+
+  @media (max-width: 991px) {
+    .kv-instagram-wrap {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    .kv-instagram-content {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .kv-instagram-title {
+      justify-content: center;
+    }
+
+    .kv-instagram-btn {
+      min-width: 300px;
+      min-height: 56px;
+      font-size: 21px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .kv-instagram {
+      padding: 44px 0;
+    }
+
+    .kv-instagram-label {
+      font-size: 14px;
+    }
+
+    .kv-instagram-title {
+      font-size: 38px;
+      margin-bottom: 18px;
+      gap: 8px;
+    }
+
+    .kv-instagram-icon {
+      width: 24px;
+      height: 24px;
+      margin-top: 8px;
+      flex-basis: 24px;
+    }
+
+    .kv-instagram-btn {
+      min-width: 100%;
+      width: 100%;
+      max-width: 360px;
+      min-height: 50px;
+      font-size: 18px;
+    }
+
+    .kv-instagram-grid {
+      gap: 6px;
+    }
+
+    .kv-instagram-item {
+      border-radius: 12px;
+    }
+
+    .kv-instagram-item:nth-child(1) { min-height: 270px; }
+    .kv-instagram-item:nth-child(2),
+    .kv-instagram-item:nth-child(3),
+    .kv-instagram-item:nth-child(4),
+    .kv-instagram-item:nth-child(5) { min-height: 132px; }
+  }
+</style>
+
+<section class="kv-section kv-instagram">
+  <div class="kv-custom-container">
+    <div class="kv-instagram-wrap">
+      <div class="kv-instagram-content">
+        {% if section.settings.label != blank %}
+          <span class="kv-instagram-label">{{ section.settings.label }}</span>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="kv-instagram-title">
+            <svg class="kv-instagram-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2.25" y="2.25" width="19.5" height="19.5" rx="6" stroke="url(#kv-ig-grad)" stroke-width="2.2"/>
+              <circle cx="12" cy="12" r="4.1" stroke="url(#kv-ig-grad)" stroke-width="2.2"/>
+              <circle cx="17.4" cy="6.7" r="1.3" fill="url(#kv-ig-grad)"/>
+              <defs>
+                <linearGradient id="kv-ig-grad" x1="3" y1="21" x2="21" y2="3" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#feda75"/>
+                  <stop offset="0.34" stop-color="#fa7e1e"/>
+                  <stop offset="0.62" stop-color="#d62976"/>
+                  <stop offset="0.82" stop-color="#962fbf"/>
+                  <stop offset="1" stop-color="#4f5bd5"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <span class="kv-instagram-title-text">{{ section.settings.heading }}</span>
+          </h2>
+        {% endif %}
+
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+          <a class="kv-instagram-btn" href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+        {% endif %}
+      </div>
+
+      <div class="kv-instagram-grid">
+        {% for block in section.blocks limit: 5 %}
+          {% if block.settings.image != blank %}
+            {% if block.settings.link != blank %}
+              <a class="kv-instagram-item" href="{{ block.settings.link }}" {{ block.shopify_attributes }}>
+                {{
+                  block.settings.image
+                  | image_url: width: 900
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '260, 420, 620, 900',
+                    sizes: '(max-width: 767px) 50vw, (max-width: 991px) 46vw, 22vw',
+                    alt: block.settings.image.alt
+                }}
+              </a>
+            {% else %}
+              <div class="kv-instagram-item" {{ block.shopify_attributes }}>
+                {{
+                  block.settings.image
+                  | image_url: width: 900
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '260, 420, 620, 900',
+                    sizes: '(max-width: 767px) 50vw, (max-width: 991px) 46vw, 22vw',
+                    alt: block.settings.image.alt
+                }}
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KV Instagram",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top label",
+      "default": "Join our community"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Follow us on <em>Instagram</em>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Follow @bollitclean"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Instagram image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Post URL"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "KV Instagram",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
