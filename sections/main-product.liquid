@@ -1185,7 +1185,7 @@
                     endfor
                   -%}
                   {%- if jump_count > 0 -%}
-                  <nav class="kv-jump-to" aria-label="{{ jump_heading | escape }}" {{ block.shopify_attributes }}>
+                  <div class="kv-jump-to" aria-label="{{ jump_heading | escape }}" {{ block.shopify_attributes }}>
                     <p class="kv-jump-to__label">{{ jump_heading }}</p>
                     <ul class="kv-jump-to__list" role="list" data-kv-jump-scroll>
                       {%- for j in kv_jump_blocks -%}
@@ -1212,7 +1212,7 @@
                         {%- endif -%}
                       {%- endfor -%}
                     </ul>
-                  </nav>
+                  </div>
                   {%- endif -%}
                 {%- endif -%}
               {%- when 'kv-usp-icons' -%}
