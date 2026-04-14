@@ -1070,15 +1070,6 @@ body .kv-main-product {
   padding: 0 0 36px 0;
 }
 
-
- body .kv-main-product .product__info-wrapper.grid__item {
-  overflow: hidden;
-}
-
-body .kv-main-product .product__media-wrapper.grid__item {
-  overflow: visible;
-
-}
 }
 
 
