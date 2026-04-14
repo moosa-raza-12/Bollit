@@ -961,6 +961,10 @@ body .kv-main-product  .product.grid {
     display: block !important;
   }
 
+  body .kv-main-product .product.grid {
+    gap: 32px;
+}
+
 
  }
 
