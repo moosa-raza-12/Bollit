@@ -807,7 +807,7 @@ body .swiper-pagination-bullets.kv-media-slider__dots {
 /* ===== KV VIDEO CAROUSEL (Swiper) ===== */
 
 .kv-videos {
-  margin: 24px 0 0 0;
+  margin: 32px 0 0 0;
 }
 
 .kv-videos__header {
