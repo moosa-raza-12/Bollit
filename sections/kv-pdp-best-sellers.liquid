@@ -9,7 +9,7 @@
     class="kv-best-sellers"
     style="--kv-bs-lead-bg: {{ section.settings.lead_background }}; --kv-bs-lead-fg: {{ section.settings.lead_text_color }}; --kv-bs-chip-bg: {{ section.settings.chip_background }}; --kv-bs-chip-border: {{ section.settings.chip_border }}; --kv-bs-label: {{ section.settings.chip_label_color }}; --kv-bs-ring: {{ section.settings.image_ring_color }}; --kv-bs-page-bg: {{ section.settings.section_background }};"
   >
-    <div class="kv-best-sellers__track" role="list">
+    <div class="kv-best-sellers__track" data-kv-best-sellers-track role="list">
       {%- if lead_label != blank -%}
         <div class="kv-best-sellers__chip kv-best-sellers__chip--lead" role="listitem">
           {%- if section.settings.lead_link != blank -%}
@@ -67,6 +67,8 @@
 .kv-best-sellers {
    display: none;
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
     padding: 8px 0;
     background: var(--kv-bs-page-bg, #f5f5f5);
 }
@@ -82,13 +84,26 @@
     gap: 8px;
     margin: 0;
     padding: 0 20px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
     scrollbar-width: none;
+    -ms-overflow-style: none;
     list-style: none;
     scroll-snap-type: x mandatory;
     scroll-padding-inline: 20px;
+    cursor: grab;
+}
+    .kv-best-sellers .kv-best-sellers__track:active,
+    .kv-best-sellers .kv-best-sellers__track.kv-best-sellers__track--dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    user-select: none;
 }
     .kv-best-sellers .kv-best-sellers__track::-webkit-scrollbar {
       display: none;
@@ -170,6 +185,75 @@
       text-overflow: ellipsis;
     }
   </style>
+  <script>
+    (function () {
+      function wheelToHorizontal(el, e) {
+        if (el.scrollWidth <= el.clientWidth) return;
+        var delta = e.deltaX !== 0 ? e.deltaX : e.deltaY;
+        if (delta === 0) return;
+        el.scrollLeft += delta;
+        e.preventDefault();
+      }
+      function initTrack(el) {
+        if (el.dataset.kvBsInit) return;
+        el.dataset.kvBsInit = '1';
+        var moved = false;
+        var clickSuppress = false;
+        el.addEventListener(
+          'wheel',
+          function (e) {
+            wheelToHorizontal(el, e);
+          },
+          { passive: false }
+        );
+        el.addEventListener('mousedown', function (e) {
+          if (e.button !== 0) return;
+          moved = false;
+          var lastX = e.clientX;
+          el.classList.add('kv-best-sellers__track--dragging');
+          function onMove(e2) {
+            var dx = e2.clientX - lastX;
+            lastX = e2.clientX;
+            if (Math.abs(dx) > 2) moved = true;
+            el.scrollLeft -= dx;
+          }
+          function onUp() {
+            document.removeEventListener('mousemove', onMove);
+            document.removeEventListener('mouseup', onUp);
+            el.classList.remove('kv-best-sellers__track--dragging');
+            if (moved) {
+              clickSuppress = true;
+              setTimeout(function () {
+                clickSuppress = false;
+              }, 0);
+            }
+            moved = false;
+          }
+          document.addEventListener('mousemove', onMove);
+          document.addEventListener('mouseup', onUp);
+        });
+        el.addEventListener(
+          'click',
+          function (e) {
+            if (clickSuppress) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          },
+          true
+        );
+      }
+      function run() {
+        document.querySelectorAll('[data-kv-best-sellers-track]').forEach(initTrack);
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', run);
+      } else {
+        run();
+      }
+      document.addEventListener('shopify:section:load', run);
+    })();
+  </script>
 {%- endif -%}
 
 {% schema %}
