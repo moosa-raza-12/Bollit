@@ -1,0 +1,341 @@
+<style>
+  .kv-our-story {
+    padding: 70px 0;
+    background: #ffffff;
+  }
+
+  .kv-our-story-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .kv-our-story-label {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+    border-left: 2px solid #d8b178;
+    border-right: 2px solid #d8b178;
+    color: #8a6233;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.1;
+  }
+
+  .kv-our-story-title {
+    margin: 0;
+    color: #1f2329;
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .kv-our-story-title em {
+    color: #0f4f85;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .kv-our-story-card {
+    background: #f4f1ec;
+    border: 1px solid #ece5dc;
+    border-radius: 18px;
+    padding: 34px 30px;
+  }
+
+  .kv-our-story-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  .kv-our-story-timeline {
+    position: relative;
+  }
+
+  .kv-our-story-item {
+    position: relative;
+    padding-left: 52px;
+    margin-bottom: 26px;
+  }
+
+  .kv-our-story-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .kv-our-story-item::before {
+    content: "";
+    position: absolute;
+    left: 17px;
+    top: 28px;
+    bottom: -28px;
+    border-left: 1px dashed #cac4bb;
+  }
+
+  .kv-our-story-item:last-child::before {
+    display: none;
+  }
+
+  .kv-our-story-item-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 34px;
+    height: 34px;
+    border: 1px solid #d6d7d9;
+    border-radius: 50%;
+    background: #f7f8f9;
+    color: #165185;
+    font-size: 16px;
+    line-height: 34px;
+    text-align: center;
+  }
+
+  .kv-our-story-item-title {
+    margin: 0 0 8px;
+    color: #0f4f85;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+  }
+
+  .kv-our-story-item-text {
+    margin: 0;
+    color: #30343a;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .kv-our-story-right-content {
+    margin-bottom: 24px;
+    color: #22272d;
+    font-size: 36px;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  .kv-our-story-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 991px) {
+    .kv-our-story {
+      padding: 54px 0;
+    }
+
+    .kv-our-story-title {
+      font-size: 38px;
+    }
+
+    .kv-our-story-grid {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    .kv-our-story-right {
+      order: -1;
+    }
+
+    .kv-our-story-right-content {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .kv-our-story {
+      padding: 44px 0;
+    }
+
+    .kv-our-story-label {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .kv-our-story-title {
+      font-size: 32px;
+    }
+
+    .kv-our-story-card {
+      padding: 22px 18px;
+      border-radius: 14px;
+    }
+
+    .kv-our-story-item {
+      padding-left: 44px;
+      margin-bottom: 20px;
+    }
+
+    .kv-our-story-item::before {
+      left: 14px;
+      top: 24px;
+      bottom: -22px;
+    }
+
+    .kv-our-story-item-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
+      line-height: 28px;
+    }
+
+    .kv-our-story-item-title {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .kv-our-story-item-text {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .kv-our-story-right-content {
+      font-size: 22px;
+      line-height: 1.5;
+    }
+  }
+</style>
+
+<section class="kv-section kv-our-story">
+  <div class="kv-custom-container">
+    <div class="kv-our-story-header">
+      {% if section.settings.label != blank %}
+        <span class="kv-our-story-label">{{ section.settings.label }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="kv-our-story-title">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+
+    <div class="kv-our-story-card">
+      <div class="kv-our-story-grid">
+        <div class="kv-our-story-timeline">
+          {% for block in section.blocks %}
+            <div class="kv-our-story-item" {{ block.shopify_attributes }}>
+              <span class="kv-our-story-item-icon">{{ block.settings.icon }}</span>
+              {% if block.settings.title != blank %}
+                <h3 class="kv-our-story-item-title">{{ block.settings.title }}</h3>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <div class="kv-our-story-item-text">{{ block.settings.text }}</div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="kv-our-story-right">
+          {% if section.settings.right_content != blank %}
+            <div class="kv-our-story-right-content">{{ section.settings.right_content }}</div>
+          {% endif %}
+          {% if section.settings.image != blank %}
+            <div class="kv-our-story-media">
+              {{
+                section.settings.image
+                | image_url: width: 1400
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '480, 720, 960, 1200, 1400',
+                  sizes: '(max-width: 767px) 100vw, 44vw',
+                  alt: section.settings.image.alt
+              }}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KV Our Story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top label",
+      "default": "Our story"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Smarter cleaning since <em>2023</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "right_content",
+      "label": "Right content",
+      "default": "<p>Built for powerful, chemical-free cleaning that delivers visible results while keeping your home safe.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "timeline_item",
+      "name": "Timeline item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon text",
+          "default": "⚡"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "THE BEGINNING"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Bollit began with a simple goal, to create cleaning tools that combine smart design, strong performance, and everyday practicality.</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "KV Our Story",
+      "blocks": [
+        {
+          "type": "timeline_item",
+          "settings": {
+            "icon": "⚡",
+            "title": "THE BEGINNING",
+            "text": "<p>Bollit began with a simple goal, to create cleaning tools that combine smart design, strong performance, and everyday practicality.</p>"
+          }
+        },
+        {
+          "type": "timeline_item",
+          "settings": {
+            "icon": "◌",
+            "title": "GROWING ACROSS EUROPE",
+            "text": "<p>Our products are designed in the Netherlands and produced with trusted partners around the world, with plans to grow further across Europe.</p>"
+          }
+        },
+        {
+          "type": "timeline_item",
+          "settings": {
+            "icon": "◇",
+            "title": "BUILT ON REAL VALUE",
+            "text": "<p>As entrepreneurs, we know how frustrating it is to pay too much for products that do not truly deliver. Bollit is built around one principle, powerful cleaning tools that offer real performance and honest value.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
