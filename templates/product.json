@@ -62,7 +62,7 @@
         "lead_background": "#003665",
         "lead_text_color": "#ffffff",
         "section_background": "#ffffff",
-        "chip_background": "#f8f8f8",
+        "chip_background": "#ffffff",
         "chip_border": "#f5f5f5",
         "chip_label_color": "#003665",
         "image_ring_color": "#003665"
