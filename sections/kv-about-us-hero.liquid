@@ -66,6 +66,7 @@
 
     .kv-about-hero-in {
       max-width: 100%;
+      min-height: 390px;
     }
 
     .kv-about-hero-title {
@@ -82,6 +83,19 @@
 
 .kv-about-hero-in .kv-blue-btn {
     font-size: 18px;
+}
+
+.kv-about-hero-top {
+    order: 1;
+}
+
+.kv-about-hero-in .kv-blue-btn {
+    order: 2;
+}
+
+.kv-about-hero-in .kv-contact-hero-content {
+    order: 3;
+    margin-bottom: 0;
 }
 
 .kv-about-hero .kv-custom-container {
@@ -105,12 +119,12 @@
         {% if section.settings.heading != blank %}
             <h1 class="kv-font-44">{{ section.settings.heading }}</h1>
         {% endif %}
-        {% if section.settings.content != blank %}
-            <div class="kv-contact-hero-content">{{ section.settings.content }}</div>
-        {% endif %}
        </div>
       {% if section.settings.btn_text != blank and section.settings.btn_url != blank %}
         <a class="kv-blue-btn" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}</a>
+      {% endif %}
+      {% if section.settings.content != blank %}
+        <div class="kv-contact-hero-content">{{ section.settings.content }}</div>
       {% endif %}
     </div>
   </div>
