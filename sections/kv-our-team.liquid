@@ -1,0 +1,336 @@
+{% liquid
+  assign section_id = section.id | prepend: 'kv-team-' 
+%}
+
+<style>
+  .kv-our-team {
+    background: {{ section.settings.bg_color }};
+  }
+
+  .kv-our-team-header {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 28px;
+  }
+
+  .kv-our-team-label {
+    display: inline-block;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+    border-left: 2px solid #d8b178;
+    border-right: 2px solid #d8b178;
+    color: #8a6233;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.1;
+  }
+
+  .kv-our-team-title {
+    margin: 0 0 10px;
+    color: #1f2329;
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .kv-our-team-title em {
+    color: #0f4f85;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .kv-our-team-subtitle {
+    margin: 0;
+    color: #6b7179;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .kv-our-team-swiper {
+    padding-bottom: 26px;
+  }
+
+  .kv-our-team-card {
+    background: #ffffff;
+    border: 1px solid #e6ebf0;
+    border-radius: 14px;
+    padding: 10px 10px 14px;
+    text-align: center;
+    height: 100%;
+  }
+
+  .kv-our-team-image-wrap {
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .kv-our-team-image-wrap img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .kv-our-team-name {
+    margin: 0 0 4px;
+    color: #1f2329;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 500;
+  }
+
+  .kv-our-team-role {
+    margin: 0;
+    color: #8b9097;
+    font-size: 27px;
+    line-height: 1.35;
+  }
+
+  .kv-our-team .swiper-scrollbar {
+    position: static;
+    background: #d8dee6;
+    border-radius: 999px;
+    height: 2px;
+    margin-top: 18px;
+  }
+
+  .kv-our-team .swiper-scrollbar-drag {
+    background: #0f4f85;
+    border-radius: 999px;
+  }
+
+  @media (max-width: 991px) {
+    .kv-our-team {
+      padding: 56px 0 44px;
+    }
+
+    .kv-our-team-title {
+      font-size: 38px;
+    }
+
+    .kv-our-team-name {
+      font-size: 24px;
+    }
+
+    .kv-our-team-role {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .kv-our-team {
+      padding: 44px 0 36px;
+    }
+
+    .kv-our-team-label {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .kv-our-team-title {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .kv-our-team-subtitle {
+      font-size: 14px;
+    }
+
+    .kv-our-team-name {
+      font-size: 20px;
+    }
+
+    .kv-our-team-role {
+      font-size: 16px;
+    }
+  }
+</style>
+
+<section class="kv-section kv-our-team" id="{{ section_id }}">
+  <div class="kv-custom-container">
+    <div class="kv-our-team-header">
+      {% if section.settings.label != blank %}
+        <span class="kv-our-team-label">{{ section.settings.label }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2 class="kv-our-team-title">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="kv-our-team-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="swiper kv-our-team-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            <div class="kv-our-team-card">
+              {% if block.settings.image != blank %}
+                <div class="kv-our-team-image-wrap">
+                  {{
+                    block.settings.image
+                    | image_url: width: 700
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '260, 360, 520, 700',
+                      sizes: '(max-width: 767px) 70vw, (max-width: 991px) 35vw, 22vw',
+                      alt: block.settings.name
+                  }}
+                </div>
+              {% endif %}
+              {% if block.settings.name != blank %}
+                <h3 class="kv-our-team-name">{{ block.settings.name }}</h3>
+              {% endif %}
+              {% if block.settings.role != blank %}
+                <p class="kv-our-team-role">{{ block.settings.role }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-scrollbar"></div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  (function () {
+    var sectionEl = document.getElementById('{{ section_id }}');
+    if (!sectionEl) return;
+
+    function initTeamSwiper() {
+      if (typeof Swiper === 'undefined') return false;
+      var swiperEl = sectionEl.querySelector('.kv-our-team-swiper');
+      if (!swiperEl || swiperEl.classList.contains('swiper-initialized')) return true;
+
+      new Swiper(swiperEl, {
+        speed: 550,
+        grabCursor: true,
+        slidesPerView: 1.25,
+        spaceBetween: 14,
+        scrollbar: {
+          el: sectionEl.querySelector('.swiper-scrollbar'),
+          draggable: true
+        },
+        breakpoints: {
+          576: {
+            slidesPerView: 2.1,
+            spaceBetween: 16
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 18
+          },
+          992: {
+            slidesPerView: 4,
+            spaceBetween: 18
+          }
+        }
+      });
+
+      return true;
+    }
+
+    if (!initTeamSwiper()) {
+      var tries = 0;
+      var poll = setInterval(function () {
+        tries += 1;
+        if (initTeamSwiper() || tries > 40) clearInterval(poll);
+      }, 100);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "KV Our Team",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "BG Color",
+      "default": "#F0F8FF"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Top label",
+      "default": "Behind the scenes"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our <em>team</em>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "The people behind Bollit share one goal, creating cleaning tools that make everyday life easier."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "member",
+      "name": "Team member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Member image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Name"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Role",
+          "default": "Role"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV Our Team",
+      "blocks": [
+        {
+          "type": "member",
+          "settings": {
+            "name": "Name",
+            "role": "Role"
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Name",
+            "role": "Role"
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Name",
+            "role": "Role"
+          }
+        },
+        {
+          "type": "member",
+          "settings": {
+            "name": "Name",
+            "role": "Role"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
