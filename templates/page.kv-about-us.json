@@ -132,10 +132,59 @@
       ],
       "name": "KV Our Team",
       "settings": {
-        "bg_color": "#F0F8FF",
+        "bg_color": "#f0f8ff",
         "label": "Behind the scenes",
         "heading": "Our <em>team</em>",
         "subtitle": "The people behind Bollit share one goal, creating cleaning tools that make everyday life easier."
+      }
+    },
+    "kv_instagram_ar63by": {
+      "type": "kv-instagram",
+      "blocks": {
+        "image_Uwd7Nf": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_KCp6wC": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_jEXqwf": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_mLMmRJ": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "image_8NWbRp": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_Uwd7Nf",
+        "image_KCp6wC",
+        "image_jEXqwf",
+        "image_mLMmRJ",
+        "image_8NWbRp"
+      ],
+      "name": "KV Instagram",
+      "settings": {
+        "label": "Join our community",
+        "heading": "Follow us on <em>Instagram</em>",
+        "button_text": "Follow @bollitclean",
+        "button_url": "#"
       }
     }
   },
@@ -143,6 +192,7 @@
     "main",
     "kv_about_us_hero_QDdMir",
     "kv_our_story_NRT3km",
-    "kv_our_team_zRmGe3"
+    "kv_our_team_zRmGe3",
+    "kv_instagram_ar63by"
   ]
 }
