@@ -32,18 +32,7 @@
     padding: 72px 0;
   }
 
-  .kv-about-hero-title {
-    margin: 0 0 18px;
-    font-size: 48px;
-    line-height: 1.15;
-    font-weight: 500;
-    color: #fff;
-  }
-
-  .kv-about-hero-title em {
-    font-style: italic;
-    font-weight: 400;
-  }
+ 
 
   .kv-contact-hero-content {
     font-size: 24px;
@@ -121,7 +110,7 @@
   <div class="kv-custom-container">
     <div class="kv-about-hero-in">
       {% if section.settings.heading != blank %}
-        <h1 class="kv-about-hero-title">{{ section.settings.heading }}</h1>
+        <h1 class="kv-font-44">{{ section.settings.heading }}</h1>
       {% endif %}
       {% if section.settings.content != blank %}
         <div class="kv-contact-hero-content">{{ section.settings.content }}</div>
