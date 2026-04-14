@@ -13,31 +13,7 @@
     margin: 0 auto 28px;
   }
 
-  .kv-our-team-label {
-    display: inline-block;
-    padding: 4px 10px;
-    margin-bottom: 12px;
-    border-left: 2px solid #d8b178;
-    border-right: 2px solid #d8b178;
-    color: #8a6233;
-    font-size: 19px;
-    font-style: italic;
-    line-height: 1.1;
-  }
-
-  .kv-our-team-title {
-    margin: 0 0 10px;
-    color: #1f2329;
-    font-size: 48px;
-    line-height: 1.2;
-    font-weight: 500;
-  }
-
-  .kv-our-team-title em {
-    color: #0f4f85;
-    font-style: italic;
-    font-weight: 400;
-  }
+ 
 
   .kv-our-team-subtitle {
     margin: 0;
@@ -100,61 +76,21 @@
     border-radius: 999px;
   }
 
-  @media (max-width: 991px) {
-    .kv-our-team {
-      padding: 56px 0 44px;
-    }
 
-    .kv-our-team-title {
-      font-size: 38px;
-    }
-
-    .kv-our-team-name {
-      font-size: 24px;
-    }
-
-    .kv-our-team-role {
-      font-size: 18px;
-    }
-  }
 
   @media (max-width: 767px) {
-    .kv-our-team {
-      padding: 44px 0 36px;
-    }
 
-    .kv-our-team-label {
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .kv-our-team-title {
-      font-size: 32px;
-      margin-bottom: 8px;
-    }
-
-    .kv-our-team-subtitle {
-      font-size: 14px;
-    }
-
-    .kv-our-team-name {
-      font-size: 20px;
-    }
-
-    .kv-our-team-role {
-      font-size: 16px;
-    }
   }
 </style>
 
 <section class="kv-section kv-our-team" id="{{ section_id }}">
   <div class="kv-custom-container">
-    <div class="kv-our-team-header">
+    <div class="kv-section-head">
       {% if section.settings.label != blank %}
-        <span class="kv-our-team-label">{{ section.settings.label }}</span>
+        <span>{{ section.settings.label }}</span>
       {% endif %}
       {% if section.settings.heading != blank %}
-        <h2 class="kv-our-team-title">{{ section.settings.heading }}</h2>
+        <h2 class="kv-font-38">{{ section.settings.heading }}</h2>
       {% endif %}
       {% if section.settings.subtitle != blank %}
         <p class="kv-our-team-subtitle">{{ section.settings.subtitle }}</p>
