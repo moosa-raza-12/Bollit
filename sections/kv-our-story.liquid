@@ -206,10 +206,10 @@
         <div class="kv-our-story-timeline">
           {% for block in section.blocks %}
             <div class="kv-our-story-item" {{ block.shopify_attributes }}>
-                 {% if section.settings.icon != blank %}
+                 {% if block.settings.icon != blank %}
                  <span class="kv-our-story-item-icon"><img
-                  src="{{ section.settings.icon | image_url: width: master }}"
-                  alt="{{ section.settings.icon.alt | escape }}"
+                  src="{{ block.settings.icon | image_url: width: master }}"
+                  alt="{{ block.settings.icon.alt | escape }}"
                   loading="lazy"
                 ></span>
               {% endif %}
