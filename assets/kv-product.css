@@ -628,20 +628,21 @@ body .kv-main-product  .product.grid {
 /* First-image badge (metafield: custom.product_media_badge) */
 .kv-media-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
+  top: 18px;
+  left: 18px;
   z-index: 4;
-  max-width: min(90%, 320px);
-  padding: 6px 12px;
+  max-width: fit-content;
+  padding: 3px 12px;
   border-radius: 999px;
   background: #003665;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1.35;
-  letter-spacing: 0.01em;
+  letter-spacing: unset;
   pointer-events: none;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .kv-media-slider__slide img,
