@@ -118,9 +118,10 @@ body .kv-main-product  .product.grid {
   height: 24px;
   flex-shrink: 0;
   border-radius: 9.6px;
-  border: 1.2px solid rgba(0, 54, 101, 0.23);
-  background: #FFF;
+  border: 1.2px solid rgba(0,54,101,.23);
+  background: #fff;
   padding: 2.4px;
+  min-width: 24px;
 }
 
 .kv-jump-to__icon-wrap img {
@@ -137,6 +138,7 @@ body .kv-main-product  .product.grid {
 
 .kv-jump-to__text {
   flex: 0 1 auto;
+  padding: 2px 0 0 0;
 }
 
 .kv-main-product .product__info-wrapper .product__description {
