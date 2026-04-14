@@ -966,6 +966,13 @@ body .kv-main-product  .product.grid {
     grid-template-columns: 1fr;
 }
 
+body .kv-main-product {
+  padding: 45px 0;
+}
+
+body .kv-main-product .product__info-wrapper.grid__item .product__info-container {
+  max-width: 100%;
+}
 
  }
 
