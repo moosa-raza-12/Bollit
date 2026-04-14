@@ -11,9 +11,8 @@ body .kv-main-product .page-width {
 body .kv-main-product .product__media-wrapper.grid__item, body .kv-main-product .product__info-wrapper.grid__item {
   width: 100%;
   max-width: 100%;
+  padding: 0;
   overflow: hidden;
-  padding: 0 20px;
-  margin: 0 -20px;
 }
 
 
