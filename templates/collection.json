@@ -53,16 +53,24 @@
     "kv_collection_tabs_grid_q7Wydr": {
       "type": "kv-collection-tabs-grid",
       "blocks": {
-        "collection_tab_mygTxj": {
-          "type": "collection_tab",
+        "link_tab_EnrAEq": {
+          "type": "link_tab",
           "settings": {
-            "collection": "",
-            "label": ""
+            "label": "Shipping",
+            "link": "shopify://pages/shipping-policy"
+          }
+        },
+        "link_tab_k6x698": {
+          "type": "link_tab",
+          "settings": {
+            "label": "Returns",
+            "link": "shopify://pages/refund-policy"
           }
         }
       },
       "block_order": [
-        "collection_tab_mygTxj"
+        "link_tab_EnrAEq",
+        "link_tab_k6x698"
       ],
       "name": "KV Collection tabs grid",
       "settings": {
