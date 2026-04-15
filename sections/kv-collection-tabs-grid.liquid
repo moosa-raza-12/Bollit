@@ -722,11 +722,12 @@
   } */
   span.kv-ctg-card__chev {
     display: flex;
+    transform: rotate(0deg);
+    transition: transform 0.2s ease;
 }
-  .kv-ctg-card__details[open] .kv-ctg-card__chev {
-    transform: rotate(225deg);
-    margin-top: 4px;
-  }
+.kv-ctg-card__details[open] .kv-ctg-card__chev {
+    transform: rotate(180deg);
+}
 
   .kv-ctg-card__details-body {
     padding-top: 10px;
