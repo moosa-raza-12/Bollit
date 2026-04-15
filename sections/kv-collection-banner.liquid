@@ -1,0 +1,71 @@
+
+<section class="kv-section kv-collection-banner" style="background-image: url({{ section.settings.background_image | img_url: 'master' }});">
+    <div class="kv-custom-container">
+        <div class="kv-collection-banner-content kv-section-head">
+            <span>{{ section.settings.subtitle }}</span>
+            <h2 class="kv-font-42">{{ section.settings.title }}</h2>
+            <p class="kv-font-18">{{ section.settings.description }}</p>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "KV Collection Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Background Image Mobile"
+      },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "A great subtitle!"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Collection Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "A short collection description goes here."
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV Collection Banner",
+      "category": "Banners"
+    }
+  ]
+}
+{% endschema %}
+
+
+<style>
+    .kv-collection-banner {
+        background-image: url({{ section.settings.background_image | img_url: 'master' }});
+    }
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .kv-collection-banner {
+        background-image: url({{ section.settings.image_mobile | img_url: 'master' }});
+    }
+}
+</style>
