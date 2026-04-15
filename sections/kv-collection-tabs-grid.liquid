@@ -17,7 +17,7 @@
     {%- endif -%}
 
     <nav class="kv-ctg__tabs-wrap" aria-label="{{ section.settings.tabs_aria_label | default: 'Product categories' }}">
-      <ul class="kv-ctg__tabs" role="tablist">
+      <ul class="kv-ctg__tabs" role="tablist" data-kv-ctg-tabs>
         {%- if section.settings.show_all_tab -%}
           <li role="presentation">
             <a
@@ -224,36 +224,80 @@
       {%- endif -%}
     {%- endpaginate -%}
   </div>
-</section>
 
-<script>
-  (function () {
-    function wheelScrollHorizontal(el, e) {
-      var maxScroll = el.scrollWidth - el.clientWidth;
-      if (maxScroll <= 0) return;
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-      e.preventDefault();
-      el.scrollLeft += e.deltaY;
-    }
+  <script>
+    (function () {
+      var root = document.getElementById('kv-collection-tabs-grid-{{ section.id }}');
+      if (!root) return;
+      var el = root.querySelector('[data-kv-ctg-tabs]');
+      if (!el) return;
 
-    function initKvCtgTabsScroll() {
-      document.querySelectorAll('.kv-ctg__tabs').forEach(function (el) {
-        if (el.dataset.kvTabsWheel === '1') return;
-        el.dataset.kvTabsWheel = '1';
-        el.addEventListener(
-          'wheel',
-          function (e) {
-            wheelScrollHorizontal(el, e);
-          },
-          { passive: false }
-        );
+      function canScrollX() {
+        return el.scrollWidth > el.clientWidth + 1;
+      }
+
+      el.addEventListener(
+        'wheel',
+        function (e) {
+          if (!canScrollX()) return;
+          var dy = e.deltaY;
+          var dx = e.deltaX;
+          if (e.shiftKey) {
+            el.scrollLeft += dy;
+            e.preventDefault();
+            return;
+          }
+          if (Math.abs(dy) > Math.abs(dx)) {
+            el.scrollLeft += dy;
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      var drag = false;
+      var startX = 0;
+      var startScroll = 0;
+      var moved = false;
+      var DRAG_THRESHOLD = 5;
+
+      el.addEventListener('mousedown', function (e) {
+        if (e.button !== 0) return;
+        drag = true;
+        moved = false;
+        startX = e.pageX;
+        startScroll = el.scrollLeft;
       });
-    }
 
-    document.addEventListener('DOMContentLoaded', initKvCtgTabsScroll);
-    document.addEventListener('shopify:section:load', initKvCtgTabsScroll);
-  })();
-</script>
+      window.addEventListener('mousemove', function (e) {
+        if (!drag) return;
+        var delta = e.pageX - startX;
+        if (Math.abs(delta) > DRAG_THRESHOLD) {
+          moved = true;
+          el.classList.add('kv-ctg__tabs--dragging');
+        }
+        el.scrollLeft = startScroll - delta;
+      });
+
+      window.addEventListener('mouseup', function () {
+        if (!drag) return;
+        drag = false;
+        el.classList.remove('kv-ctg__tabs--dragging');
+      });
+
+      el.addEventListener(
+        'click',
+        function (e) {
+          if (!moved) return;
+          e.preventDefault();
+          e.stopPropagation();
+          moved = false;
+        },
+        true
+      );
+    })();
+  </script>
+</section>
 
 {% schema %}
 {
@@ -396,19 +440,12 @@
 
 <style>
   .kv-ctg {
-    padding: 64px 0;
-    min-width: 0;
-    max-width: 100%;
+    padding: 48px 0 72px;
     --kv-ctg-blue: #003665;
     --kv-ctg-blue-soft: #e8f2fb;
     --kv-ctg-orange: #c9762e;
     --kv-ctg-muted: #808080;
     --kv-ctg-radius: 16px;
-  }
-
-  .kv-ctg .kv-custom-container {
-    min-width: 0;
-    max-width: 100%;
   }
 
   .kv-ctg__kicker {
@@ -418,22 +455,8 @@
   }
 
   .kv-ctg__tabs-wrap {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin-bottom: 42px;
-    position: relative;
-  }
-
-  .kv-ctg__tabs-wrap::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: #e5e5e5;
-    pointer-events: none;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #e5e5e5;
   }
 
   .kv-ctg__tabs {
@@ -445,22 +468,34 @@
     padding: 0 0 4px;
     min-height: 44px;
     align-items: flex-end;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 4px;
     overscroll-behavior-x: contain;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 54, 101, 0.35) transparent;
+    cursor: grab;
+    touch-action: pan-x pinch-zoom;
+  }
+
+  .kv-ctg__tabs.kv-ctg__tabs--dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
+  .kv-ctg__tabs.kv-ctg__tabs--dragging a {
+    pointer-events: none;
   }
 
   .kv-ctg__tabs::-webkit-scrollbar {
-    display: none;
+    height: 6px;
+  }
+
+  .kv-ctg__tabs::-webkit-scrollbar-thumb {
+    background: rgba(0, 54, 101, 0.35);
+    border-radius: 3px;
   }
 
   .kv-ctg__tabs li {
