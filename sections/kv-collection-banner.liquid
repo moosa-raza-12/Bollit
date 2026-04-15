@@ -57,14 +57,16 @@
     .kv-collection-banner {
         background-image: url({{ section.settings.background_image | img_url: 'master' }});
         background-size: cover;
-        background-position: center;
+        background-position: center top;
         background-repeat: no-repeat;
     }
 
     .kv-collection-banner-content.kv-section-head {
     text-align: left;
-    display: unset;
+    display: block;
     padding: unset;
+    max-width: 600px;
+    width: unset;
 }
 
 .kv-collection-banner {
@@ -86,7 +88,15 @@
     padding-left: 0;
 }
 
+@media (max-width: 991.98px) {
+    .kv-collection-banner {
+        padding: 64px 0px;
+    }
 
+    .kv-collection-banner-content.kv-section-head {
+    max-width: 390px;
+}
+}
 
 @media (max-width: 768px) {
     .kv-collection-banner {
@@ -95,5 +105,30 @@
         background-position: center;
         background-repeat: no-repeat;
     }
+
+    .kv-collection-banner {
+    padding: 36px 0px;
 }
+
+}
+
+
+    @media (max-width: 679px) {
+        .kv-collection-banner-content.kv-section-head .kv-font-18 {
+    font-size: 14px;
+}
+
+.kv-collection-banner-content.kv-section-head .kv-font-42 {
+    margin: 10px 0 4px 0;
+}
+
+
+.kv-collection-banner-content.kv-section-head {
+    max-width: 55%;
+}
+
+.kv-collection-banner {
+    padding: 20px 0px;
+}
+    }
 </style>
