@@ -135,20 +135,20 @@
                 {%- else -%}
                   <div class="kv-ctg-card__placeholder" aria-hidden="true"></div>
                 {%- endif -%}
-                {%- assign product_media_badge = product.metafields.custom.product_media_badge -%}
-                {%- if product_media_badge != blank -%}
-                  {%- if product_media_badge.type == 'file_reference' and product_media_badge.value != blank -%}
+                {%- assign collection_card_badge = product.metafields.custom.collection_card_badge -%}
+                {%- if collection_card_badge != blank -%}
+                  {%- if collection_card_badge.type == 'file_reference' and collection_card_badge.value != blank -%}
                     <span class="kv-ctg-card__badge kv-ctg-card__badge--media kv-ctg-card__badge--file">
                       <img
-                        src="{{ product_media_badge.value | image_url: width: 240 }}"
-                        alt="{{ product_media_badge.value.alt | default: product.title | escape }}"
+                        src="{{ collection_card_badge.value | image_url: width: 240 }}"
+                        alt="{{ collection_card_badge.value.alt | default: product.title | escape }}"
                         loading="lazy"
                         width="80"
                         height="80"
                       >
                     </span>
                   {%- else -%}
-                    <div class="kv-ctg-card__badge kv-ctg-card__badge--media">{{ product_media_badge | metafield_tag }}</div>
+                    <div class="kv-ctg-card__badge kv-ctg-card__badge--media">{{ collection_card_badge | metafield_tag }}</div>
                   {%- endif -%}
                 {%- endif -%}
               </div>
@@ -362,7 +362,7 @@
     },
     {
       "type": "paragraph",
-      "content": "Product card corner badge: use the product metafield namespace/key custom.product_media_badge (single line text, rich text, or a file/image). Leave empty on a product to hide the badge."
+      "content": "Product card corner badge: use the product metafield namespace/key custom.collection_card_badge (single line text, rich text, or a file/image). Leave empty on a product to hide the badge."
     },
     {
       "type": "text",
