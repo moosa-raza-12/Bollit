@@ -1,5 +1,5 @@
 
-<section class="kv-collection-banner" style="background-image: url({{ section.settings.background_image | img_url: 'master' }});">
+<section class="kv-collection-banner">
     <div class="kv-custom-container">
         <div class="kv-collection-banner-content kv-section-head">
             <span>{{ section.settings.subtitle }}</span>
@@ -56,6 +56,9 @@
 <style>
     .kv-collection-banner {
         background-image: url({{ section.settings.background_image | img_url: 'master' }});
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
     .kv-collection-banner-content.kv-section-head {
@@ -70,6 +73,9 @@
 @media (max-width: 768px) {
     .kv-collection-banner {
         background-image: url({{ section.settings.image_mobile | img_url: 'master' }});
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }
 </style>
