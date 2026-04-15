@@ -44,6 +44,7 @@
       "name": "KV Collection Banner",
       "settings": {
         "background_image": "shopify://shop_images/collection-banner.png",
+        "image_mobile": "shopify://shop_images/collection-banner-mob.png",
         "subtitle": "Save up to 20%",
         "title": "Shop collection",
         "description": "Powerful, chemical-free tools for floors, fabrics, and deep stains."
