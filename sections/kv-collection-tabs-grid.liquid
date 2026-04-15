@@ -1,0 +1,640 @@
+{%- liquid
+  assign current_handle = collection.handle
+  assign products_per_page = section.settings.products_per_page | default: 12
+  assign best_seller_tag = section.settings.best_seller_tag | default: 'Best Seller'
+-%}
+
+<section class="kv-ctg" id="kv-collection-tabs-grid-{{ section.id }}">
+  <div class="kv-custom-container">
+    {%- if section.settings.heading != blank -%}
+      <p class="kv-ctg__kicker">{{ section.settings.heading }}</p>
+    {%- endif -%}
+
+    <nav class="kv-ctg__tabs-wrap" aria-label="{{ section.settings.tabs_aria_label | default: 'Product categories' }}">
+      <ul class="kv-ctg__tabs" role="tablist">
+        {%- if section.settings.show_all_tab -%}
+          <li role="presentation">
+            <a
+              href="{{ routes.all_products_collection_url }}"
+              class="kv-ctg__tab{% if current_handle == 'all' %} kv-ctg__tab--active{% endif %}"
+              role="tab"
+              {% if current_handle == 'all' %}
+                aria-selected="true"
+              {% else %}
+                aria-selected="false"
+              {% endif %}
+            >
+              {{- section.settings.all_tab_label | default: 'All Products' -}}
+            </a>
+          </li>
+        {%- endif -%}
+
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'collection_tab' -%}
+              {%- assign tab_col = block.settings.collection -%}
+              {%- if tab_col != blank -%}
+                <li role="presentation" {{ block.shopify_attributes }}>
+                  <a
+                    href="{{ tab_col.url }}"
+                    class="kv-ctg__tab{% if tab_col.handle == current_handle %} kv-ctg__tab--active{% endif %}"
+                    role="tab"
+                    {% if tab_col.handle == current_handle %}
+                      aria-selected="true"
+                    {% else %}
+                      aria-selected="false"
+                    {% endif %}
+                  >
+                    {{- block.settings.label | default: tab_col.title -}}
+                  </a>
+                </li>
+              {%- endif -%}
+            {%- when 'link_tab' -%}
+              {%- if block.settings.label != blank and block.settings.link != blank -%}
+                {%- assign link_href = block.settings.link -%}
+                {%- assign link_path = link_href | remove: shop.secure_url | remove: shop.url -%}
+                {%- if link_path == blank -%}
+                  {%- assign link_path = link_href -%}
+                {%- endif -%}
+                <li role="presentation" {{ block.shopify_attributes }}>
+                  <a
+                    href="{{ link_href }}"
+                    class="kv-ctg__tab{% if request.path == link_path %} kv-ctg__tab--active{% endif %}"
+                    role="tab"
+                    {% if request.path == link_path %}
+                      aria-selected="true"
+                    {% else %}
+                      aria-selected="false"
+                    {% endif %}
+                  >
+                    {{- block.settings.label -}}
+                  </a>
+                </li>
+              {%- endif -%}
+          {%- endcase -%}
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <h2 class="kv-ctg__title kv-font-42">{{ collection.title }}</h2>
+
+    {%- paginate collection.products by products_per_page -%}
+      <div class="kv-ctg__grid">
+        {%- for product in collection.products -%}
+          {%- assign v = product.selected_or_first_available_variant -%}
+          {%- assign compare = v.compare_at_price -%}
+          {%- assign price = v.price -%}
+          {%- assign on_sale = false -%}
+          {%- if compare != blank and compare > price -%}
+            {%- assign on_sale = true -%}
+          {%- endif -%}
+          {%- assign save_pct = 0 -%}
+          {%- if on_sale and compare > 0 -%}
+            {%- assign save_pct = compare | minus: price | times: 100.0 | divided_by: compare | round -%}
+          {%- endif -%}
+
+          <article class="kv-ctg-card">
+            <a class="kv-ctg-card__media" href="{{ product.url }}">
+              <div class="kv-ctg-card__image-wrap">
+                {%- if product.featured_image != blank -%}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 800 }}"
+                    alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                    width="{{ product.featured_image.width }}"
+                    height="{{ product.featured_image.height }}"
+                    loading="lazy"
+                  >
+                {%- else -%}
+                  <div class="kv-ctg-card__placeholder" aria-hidden="true"></div>
+                {%- endif -%}
+                {%- if best_seller_tag != blank and product.tags contains best_seller_tag -%}
+                  <span class="kv-ctg-card__badge kv-ctg-card__badge--bestseller">{{ section.settings.best_seller_label | default: 'Best Seller' }}</span>
+                {%- endif -%}
+              </div>
+            </a>
+
+            <div class="kv-ctg-card__body">
+              <h3 class="kv-ctg-card__title">
+                <a href="{{ product.url }}">{{ product.title }}</a>
+              </h3>
+
+              <div class="kv-ctg-card__price-row">
+                {%- if on_sale -%}
+                  <s class="kv-ctg-card__compare">{{ compare | money }}</s>
+                {%- endif -%}
+                <span class="kv-ctg-card__price">{{ price | money }}</span>
+                {%- if on_sale and save_pct > 0 -%}
+                  <span class="kv-ctg-card__badge kv-ctg-card__badge--save">Save {{ save_pct }}%</span>
+                {%- endif -%}
+              </div>
+
+              {%- liquid
+                assign rating_val = product.metafields.reviews.rating.value
+                if rating_val == blank
+                  assign rating_val = product.metafields.review.rating.value
+                endif
+                assign rating_count = product.metafields.reviews.rating_count.value
+                if rating_count == blank
+                  assign rating_count = product.metafields.review.rating_count.value
+                endif
+              -%}
+              {%- if rating_val != blank -%}
+                <div class="kv-ctg-card__rating">
+                  <span class="kv-ctg-card__star" aria-hidden="true">★</span>
+                  <span class="kv-ctg-card__rating-text">
+                    {{ rating_val | round: 1 }}/5
+                    {%- if rating_count != blank -%}
+                      <span class="kv-ctg-card__rating-count">({{ rating_count }}+ {{ section.settings.reviews_suffix | default: 'Reviews' }})</span>
+                    {%- endif -%}
+                  </span>
+                </div>
+              {%- endif -%}
+
+              <details class="kv-ctg-card__details">
+                <summary class="kv-ctg-card__summary">
+                  {{ section.settings.capabilities_label | default: 'See capabilities' }}
+                  <span class="kv-ctg-card__chev" aria-hidden="true"></span>
+                </summary>
+                <div class="kv-ctg-card__details-body">
+                  {%- if product.metafields.custom.capabilities != blank -%}
+                    {{ product.metafields.custom.capabilities | metafield_tag }}
+                  {%- elsif product.description != blank -%}
+                    <div class="rte">{{ product.description | strip_html | truncatewords: 40 }}</div>
+                  {%- else -%}
+                    <p><a href="{{ product.url }}">{{ section.settings.view_product | default: 'View product' }}</a></p>
+                  {%- endif -%}
+                </div>
+              </details>
+            </div>
+          </article>
+        {%- else -%}
+          <p class="kv-ctg__empty">No products in this collection yet.</p>
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <nav class="kv-ctg__pagination" aria-label="{{ section.settings.pagination_aria_label | default: 'Pagination' }}">
+          <ul class="kv-ctg__pagination-list">
+            {%- if paginate.previous -%}
+              <li><a class="kv-ctg__pagination-link" href="{{ paginate.previous.url }}">←</a></li>
+            {%- endif -%}
+            {%- for part in paginate.parts -%}
+              <li>
+                {%- if part.is_link -%}
+                  <a class="kv-ctg__pagination-link" href="{{ part.url }}">{{ part.title }}</a>
+                {%- else -%}
+                  <span class="kv-ctg__pagination-current">{{ part.title }}</span>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+            {%- if paginate.next -%}
+              <li><a class="kv-ctg__pagination-link" href="{{ paginate.next.url }}">→</a></li>
+            {%- endif -%}
+          </ul>
+        </nav>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "KV Collection tabs grid",
+  "tag": "section",
+  "class": "kv-collection-tabs-grid-section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Add one block per collection tab. On any collection URL, the tab for that collection is active (e.g. Best Sellers when viewing /collections/best-sellers). Enable “All products” for the store-wide catalog tab."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Optional kicker text above tabs",
+      "info": "Leave empty to hide."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_all_tab",
+      "label": "Show All products tab",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "all_tab_label",
+      "label": "All products tab label",
+      "default": "All Products"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 4,
+      "max": 48,
+      "step": 4,
+      "default": 12,
+      "label": "Products per page"
+    },
+    {
+      "type": "text",
+      "id": "best_seller_tag",
+      "label": "Best Seller product tag",
+      "default": "Best Seller",
+      "info": "Products with this tag show the Best Seller badge."
+    },
+    {
+      "type": "text",
+      "id": "best_seller_label",
+      "label": "Best Seller badge text",
+      "default": "Best Seller"
+    },
+    {
+      "type": "text",
+      "id": "capabilities_label",
+      "label": "Accordion trigger label",
+      "default": "See capabilities"
+    },
+    {
+      "type": "text",
+      "id": "reviews_suffix",
+      "label": "Reviews line suffix",
+      "default": "Reviews"
+    },
+    {
+      "type": "text",
+      "id": "view_product",
+      "label": "Fallback link label (empty capabilities)",
+      "default": "View product"
+    },
+    {
+      "type": "text",
+      "id": "tabs_aria_label",
+      "label": "Tabs navigation aria label"
+    },
+    {
+      "type": "text",
+      "id": "pagination_aria_label",
+      "label": "Pagination aria label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_tab",
+      "name": "Collection tab",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Tab label",
+          "info": "Optional. Uses collection title when empty."
+        }
+      ]
+    },
+    {
+      "type": "link_tab",
+      "name": "Link tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Shipping"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link",
+          "info": "Any URL works; active underline matches when this page’s path equals the link path."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "KV Collection tabs grid",
+      "blocks": [
+        {
+          "type": "collection_tab"
+        },
+        {
+          "type": "collection_tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .kv-ctg {
+    padding: 48px 0 72px;
+    --kv-ctg-blue: #003665;
+    --kv-ctg-blue-soft: #e8f2fb;
+    --kv-ctg-orange: #c9762e;
+    --kv-ctg-muted: #808080;
+    --kv-ctg-radius: 16px;
+  }
+
+  .kv-ctg__kicker {
+    margin: 0 0 12px;
+    font-size: 14px;
+    color: var(--kv-ctg-muted);
+  }
+
+  .kv-ctg__tabs-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 24px;
+  }
+
+  .kv-ctg__tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 4px;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 44px;
+    align-items: flex-end;
+  }
+
+  .kv-ctg__tabs li {
+    flex: 0 0 auto;
+  }
+
+  .kv-ctg__tab {
+    display: inline-block;
+    padding: 10px 16px 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--kv-ctg-muted);
+    text-decoration: none;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .kv-ctg__tab:hover {
+    color: var(--kv-ctg-blue);
+  }
+
+  .kv-ctg__tab--active {
+    color: var(--kv-ctg-blue);
+    background: var(--kv-ctg-blue-soft);
+    border-bottom-color: var(--kv-ctg-blue);
+  }
+
+  .kv-ctg__title {
+    margin: 0 0 32px;
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .kv-ctg__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 1199px) {
+    .kv-ctg__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767px) {
+    .kv-ctg__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .kv-ctg__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .kv-ctg-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .kv-ctg-card__media {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .kv-ctg-card__image-wrap {
+    position: relative;
+    border-radius: var(--kv-ctg-radius);
+    background: #f0f0f0;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+
+  .kv-ctg-card__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .kv-ctg-card__placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    background: #e8e8e8;
+  }
+
+  .kv-ctg-card__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #fff;
+    background: var(--kv-ctg-blue);
+  }
+
+  .kv-ctg-card__badge--save {
+    position: static;
+    display: inline-block;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .kv-ctg-card__body {
+    padding-top: 14px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .kv-ctg-card__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .kv-ctg-card__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .kv-ctg-card__title a:hover {
+    text-decoration: underline;
+  }
+
+  .kv-ctg-card__price-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    font-size: 15px;
+  }
+
+  .kv-ctg-card__compare {
+    color: var(--kv-ctg-orange);
+    font-weight: 500;
+  }
+
+  .kv-ctg-card__price {
+    font-weight: 700;
+    color: #111;
+  }
+
+  .kv-ctg-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--kv-ctg-muted);
+  }
+
+  .kv-ctg-card__star {
+    color: #f5a623;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .kv-ctg-card__rating-count {
+    color: var(--kv-ctg-muted);
+  }
+
+  .kv-ctg-card__details {
+    margin-top: auto;
+    padding-top: 8px;
+    border: 0;
+  }
+
+  .kv-ctg-card__summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--kv-ctg-blue);
+    user-select: none;
+  }
+
+  .kv-ctg-card__summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .kv-ctg-card__chev {
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    margin-top: -4px;
+    transition: transform 0.2s ease;
+  }
+
+  .kv-ctg-card__details[open] .kv-ctg-card__chev {
+    transform: rotate(225deg);
+    margin-top: 4px;
+  }
+
+  .kv-ctg-card__details-body {
+    padding-top: 10px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.45;
+  }
+
+  .kv-ctg-card__details-body .rte p {
+    margin: 0 0 8px;
+  }
+
+  .kv-ctg__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--kv-ctg-muted);
+    padding: 32px 16px;
+  }
+
+  .kv-ctg__pagination {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .kv-ctg__pagination-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .kv-ctg__pagination-link {
+    display: inline-flex;
+    min-width: 40px;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    text-decoration: none;
+    color: var(--kv-ctg-blue);
+    font-weight: 500;
+  }
+
+  .kv-ctg__pagination-link:hover {
+    background: var(--kv-ctg-blue-soft);
+  }
+
+  .kv-ctg__pagination-current {
+    display: inline-flex;
+    min-width: 40px;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    border-radius: 8px;
+    background: var(--kv-ctg-blue);
+    color: #fff;
+    font-weight: 600;
+  }
+</style>
