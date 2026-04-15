@@ -237,7 +237,7 @@
     }
 
     function initKvCtgTabsScroll() {
-      document.querySelectorAll('.kv-ctg__tabs-wrap').forEach(function (el) {
+      document.querySelectorAll('.kv-ctg__tabs').forEach(function (el) {
         if (el.dataset.kvTabsWheel === '1') return;
         el.dataset.kvTabsWheel = '1';
         el.addEventListener(
@@ -397,11 +397,18 @@
 <style>
   .kv-ctg {
     padding: 64px 0;
+    min-width: 0;
+    max-width: 100%;
     --kv-ctg-blue: #003665;
     --kv-ctg-blue-soft: #e8f2fb;
     --kv-ctg-orange: #c9762e;
     --kv-ctg-muted: #808080;
     --kv-ctg-radius: 16px;
+  }
+
+  .kv-ctg .kv-custom-container {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .kv-ctg__kicker {
@@ -411,19 +418,22 @@
   }
 
   .kv-ctg__tabs-wrap {
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     margin-bottom: 42px;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: 4px;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    position: relative;
   }
 
-  .kv-ctg__tabs-wrap::-webkit-scrollbar {
-    display: none;
+  .kv-ctg__tabs-wrap::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: #e5e5e5;
+    pointer-events: none;
   }
 
   .kv-ctg__tabs {
@@ -433,11 +443,24 @@
     list-style: none;
     margin: 0;
     padding: 0 0 4px;
-    border-bottom: 1px solid #e5e5e5;
     min-height: 44px;
     align-items: flex-end;
-    width: max-content;
-    min-width: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 4px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .kv-ctg__tabs::-webkit-scrollbar {
+    display: none;
   }
 
   .kv-ctg__tabs li {
