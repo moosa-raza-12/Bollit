@@ -186,6 +186,10 @@ letter-spacing: 0px;
   font-weight: 400;
   letter-spacing: 0px;
 }
+.lp-footer__link a{
+  color:#fff;
+  text-decoration:none;
+}
 
 .lp-footer__link:hover {
   opacity: 0.7;
