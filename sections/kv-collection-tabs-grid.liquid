@@ -442,10 +442,9 @@
   .kv-ctg {
     padding: 48px 0 72px;
     --kv-ctg-blue: #003665;
-    --kv-ctg-blue-soft: #e8f2fb;
-    --kv-ctg-orange: #c9762e;
+    --kv-ctg-blue-soft: #F0F8FF;
+    --kv-ctg-orange: #FD9308;
     --kv-ctg-muted: #808080;
-    --kv-ctg-radius: 16px;
   }
 
   .kv-ctg__kicker {
@@ -455,18 +454,16 @@
   }
 
   .kv-ctg__tabs-wrap {
-    margin-bottom: 24px;
-    border-bottom: 1px solid #e5e5e5;
-  }
+    margin-bottom: 42px;
+}
 
-  .kv-ctg__tabs {
+.kv-ctg__tabs {
     display: flex;
     flex-wrap: nowrap;
-    gap: 8px;
+    gap: 4px;
     list-style: none;
     margin: 0;
     padding: 0 0 4px;
-    min-height: 44px;
     align-items: flex-end;
     overflow-x: auto;
     overflow-y: hidden;
@@ -478,7 +475,7 @@
     scrollbar-color: rgba(0, 54, 101, 0.35) transparent;
     cursor: grab;
     touch-action: pan-x pinch-zoom;
-  }
+}
 
   .kv-ctg__tabs.kv-ctg__tabs--dragging {
     cursor: grabbing;
@@ -490,7 +487,7 @@
   }
 
   .kv-ctg__tabs::-webkit-scrollbar {
-    height: 6px;
+    height: 3px;
   }
 
   .kv-ctg__tabs::-webkit-scrollbar-thumb {
@@ -506,17 +503,19 @@
 
   .kv-ctg__tab {
     display: inline-block;
-    padding: 10px 16px 12px;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--kv-ctg-muted);
+    padding: 12px;
     text-decoration: none;
     border-radius: 8px 8px 0 0;
-    border-bottom: 3px solid transparent;
+    border-bottom: 1px solid transparent;
     margin-bottom: -1px;
     transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
     white-space: nowrap;
-  }
+    color: #808080;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
 
   .kv-ctg__tab:hover {
     color: var(--kv-ctg-blue);
