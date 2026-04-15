@@ -74,6 +74,9 @@
       ],
       "name": "KV Collection tabs grid",
       "settings": {
+        "tab_collections": [
+          "frontpage"
+        ],
         "heading": "",
         "show_all_tab": true,
         "all_tab_label": "All Products",
