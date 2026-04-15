@@ -75,7 +75,9 @@
       "name": "KV Collection tabs grid",
       "settings": {
         "tab_collections": [
-          "frontpage"
+          "frontpage",
+          "electric-mops",
+          "steamers"
         ],
         "heading": "",
         "show_all_tab": true,
