@@ -53,14 +53,7 @@
     "kv_collection_tabs_grid_q7Wydr": {
       "type": "kv-collection-tabs-grid",
       "blocks": {
-        "collection_tab_cLrpLw": {
-          "type": "collection_tab",
-          "settings": {
-            "collection": "",
-            "label": ""
-          }
-        },
-        "collection_tab_nrfV8L": {
+        "collection_tab_mygTxj": {
           "type": "collection_tab",
           "settings": {
             "collection": "",
@@ -69,8 +62,7 @@
         }
       },
       "block_order": [
-        "collection_tab_cLrpLw",
-        "collection_tab_nrfV8L"
+        "collection_tab_mygTxj"
       ],
       "name": "KV Collection tabs grid",
       "settings": {
@@ -83,8 +75,6 @@
         "show_all_tab": true,
         "all_tab_label": "All Products",
         "products_per_page": 12,
-        "best_seller_tag": "Best Seller",
-        "best_seller_label": "Best Seller",
         "capabilities_label": "See capabilities",
         "reviews_suffix": "Reviews",
         "view_product": "View product",
