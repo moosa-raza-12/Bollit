@@ -540,13 +540,11 @@
     text-align: left;
     line-height: 1.2;
 }
-
-  .kv-ctg__grid {
+.kv-ctg__grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-  }
-
+}
   .kv-ctg-card {
     display: flex;
     flex-direction: column;
@@ -811,9 +809,22 @@
 
   @media (max-width: 991.98px) {
 
+    .kv-ctg {
+    padding: 42px 0px;
+}
+.kv-ctg__grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
   }
 
   @media (max-width: 767.98px) {
+
+.kv-ctg__grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
 
   }
 
