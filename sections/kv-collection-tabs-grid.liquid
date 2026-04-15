@@ -367,7 +367,7 @@
 
 <style>
   .kv-ctg {
-    padding: 48px 0 72px;
+    padding: 64px 0;
     --kv-ctg-blue: #003665;
     --kv-ctg-blue-soft: #e8f2fb;
     --kv-ctg-orange: #c9762e;
@@ -384,7 +384,17 @@
   .kv-ctg__tabs-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin-bottom: 24px;
+    margin-bottom: 42px;
+    scrollbar-width: thin;
+}
+
+  .kv-ctg__tabs-wrap::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .kv-ctg__tabs-wrap::-webkit-scrollbar-thumb {
+    background: rgba(0, 54, 101, 0.25);
+    border-radius: 999px;
   }
 
   .kv-ctg__tabs {
@@ -397,10 +407,14 @@
     border-bottom: 1px solid #e5e5e5;
     min-height: 44px;
     align-items: flex-end;
+    width: max-content;
+    min-width: 100%;
   }
 
   .kv-ctg__tabs li {
     flex: 0 0 auto;
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
   }
 
   .kv-ctg__tab {
