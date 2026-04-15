@@ -49,11 +49,49 @@
         "title": "Shop collection",
         "description": "Powerful, chemical-free tools for floors, fabrics, and deep stains."
       }
+    },
+    "kv_collection_tabs_grid_q7Wydr": {
+      "type": "kv-collection-tabs-grid",
+      "blocks": {
+        "collection_tab_cLrpLw": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "",
+            "label": ""
+          }
+        },
+        "collection_tab_nrfV8L": {
+          "type": "collection_tab",
+          "settings": {
+            "collection": "",
+            "label": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_cLrpLw",
+        "collection_tab_nrfV8L"
+      ],
+      "name": "KV Collection tabs grid",
+      "settings": {
+        "heading": "",
+        "show_all_tab": true,
+        "all_tab_label": "All Products",
+        "products_per_page": 12,
+        "best_seller_tag": "Best Seller",
+        "best_seller_label": "Best Seller",
+        "capabilities_label": "See capabilities",
+        "reviews_suffix": "Reviews",
+        "view_product": "View product",
+        "tabs_aria_label": "",
+        "pagination_aria_label": ""
+      }
     }
   },
   "order": [
     "banner",
     "product-grid",
-    "kv_collection_banner_MgtktP"
+    "kv_collection_banner_MgtktP",
+    "kv_collection_tabs_grid_q7Wydr"
   ]
 }
