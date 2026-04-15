@@ -1,5 +1,5 @@
 
-<section class="kv-section kv-collection-banner" style="background-image: url({{ section.settings.background_image | img_url: 'master' }});">
+<section class="kv-collection-banner" style="background-image: url({{ section.settings.background_image | img_url: 'master' }});">
     <div class="kv-custom-container">
         <div class="kv-collection-banner-content kv-section-head">
             <span>{{ section.settings.subtitle }}</span>
@@ -58,7 +58,11 @@
         background-image: url({{ section.settings.background_image | img_url: 'master' }});
     }
 
-
+    .kv-collection-banner-content.kv-section-head {
+    text-align: left;
+    display: unset;
+    padding: unset;
+}
 
 
 
