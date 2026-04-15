@@ -262,7 +262,7 @@
       "form": {
         "title": "Contact form",
         "name": "Name",
-        "email": "Email",
+        "email": "Enter email address",
         "phone": "Phone number",
         "comment": "Enter message...",
         "send": "Send",
