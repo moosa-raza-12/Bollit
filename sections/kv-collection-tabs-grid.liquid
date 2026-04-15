@@ -2,6 +2,12 @@
   assign current_handle = collection.handle
   assign products_per_page = section.settings.products_per_page | default: 12
   assign best_seller_tag = section.settings.best_seller_tag | default: 'Best Seller'
+  assign schema_tab_handles = ''
+  for col in section.settings.tab_collections
+    if col != blank
+      assign schema_tab_handles = schema_tab_handles | append: '|' | append: col.handle | append: '|'
+    endif
+  endfor
 -%}
 
 <section class="kv-ctg" id="kv-collection-tabs-grid-{{ section.id }}">
@@ -29,11 +35,34 @@
           </li>
         {%- endif -%}
 
+        {%- for col in section.settings.tab_collections -%}
+          {%- if col != blank -%}
+            <li role="presentation">
+              <a
+                href="{{ col.url }}"
+                class="kv-ctg__tab{% if col.handle == current_handle %} kv-ctg__tab--active{% endif %}"
+                role="tab"
+                {% if col.handle == current_handle %}
+                  aria-selected="true"
+                {% else %}
+                  aria-selected="false"
+                {% endif %}
+              >
+                {{- col.title -}}
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'collection_tab' -%}
               {%- assign tab_col = block.settings.collection -%}
               {%- if tab_col != blank -%}
+                {%- assign tab_mark = '|' | append: tab_col.handle | append: '|' -%}
+                {%- if schema_tab_handles contains tab_mark -%}
+                  {%- continue -%}
+                {%- endif -%}
                 <li role="presentation" {{ block.shopify_attributes }}>
                   <a
                     href="{{ tab_col.url }}"
@@ -205,7 +234,14 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Add one block per collection tab. On any collection URL, the tab for that collection is active (e.g. Best Sellers when viewing /collections/best-sellers). Enable “All products” for the store-wide catalog tab."
+      "content": "Use “Collections in tab bar” to pick multiple collections at once (including on /collections/all). Add blocks for custom tab labels or extra tabs. Duplicate collections are hidden from blocks when already listed."
+    },
+    {
+      "type": "collection_list",
+      "id": "tab_collections",
+      "label": "Collections in tab bar",
+      "limit": 24,
+      "info": "These appear as tabs next to “All products” on every collection page, including /collections/all. Order here sets tab order."
     },
     {
       "type": "text",
