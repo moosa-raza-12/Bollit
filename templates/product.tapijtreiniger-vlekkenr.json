@@ -482,8 +482,8 @@
       "settings": {
         "title": "What's in the <em>box?</em>",
         "description": "Everything you need for deep, effortless cleaning.",
-        "cta_text": "Shop Now",
-        "cta_badge": "Save 24%",
+        "cta_text": "",
+        "cta_badge": "",
         "cta_link": "",
         "background_color": "#ffffff"
       }
