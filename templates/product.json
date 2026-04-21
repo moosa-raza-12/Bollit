@@ -492,39 +492,12 @@
             "title": "Curtain",
             "description": "From hardwood to tile, deep cleans without damaging surfaces."
           }
-        },
-        "highlight_item_RC9Ri6": {
-          "type": "highlight_item",
-          "settings": {
-            "image": "shopify://shop_images/Image.png",
-            "title": "Vehicle",
-            "description": "Lifts dirt from car seats, mats, and interior fabrics.Lifts dirt from car seats, mats, and interior fabrics."
-          }
-        },
-        "highlight_item_pnEVE3": {
-          "type": "highlight_item",
-          "settings": {
-            "image": "shopify://shop_images/product-highlight-carousel.png",
-            "title": "Floor",
-            "description": "From hardwood to tile, deep cleans without damaging surfaces."
-          }
-        },
-        "highlight_item_rjYUak": {
-          "type": "highlight_item",
-          "settings": {
-            "image": "shopify://shop_images/Feature_Image_c59a85a8-205f-45df-8c39-93d3867d607a.png",
-            "title": "Curtain",
-            "description": "From hardwood to tile, deep cleans without damaging surfaces."
-          }
         }
       },
       "block_order": [
         "highlight_item_xgnxDc",
         "highlight_item_KBjRCU",
-        "highlight_item_kkTwqk",
-        "highlight_item_RC9Ri6",
-        "highlight_item_pnEVE3",
-        "highlight_item_rjYUak"
+        "highlight_item_kkTwqk"
       ],
       "name": "KV PDP Highlight Carousel",
       "settings": {
