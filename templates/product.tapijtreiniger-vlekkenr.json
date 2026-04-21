@@ -337,7 +337,7 @@
         "feature_item_tNhnkx": {
           "type": "feature_item",
           "settings": {
-            "image": "shopify://shop_images/featured-image1.png",
+            "image": "shopify://shop_images/bp8.jpg",
             "feature_title": "4 cleaning modes",
             "feature_description": "From gentle care to turbo power and steam boost, each mode adapts for controlled, effective cleaning."
           }
@@ -345,7 +345,7 @@
         "feature_item_Rcwe7y": {
           "type": "feature_item",
           "settings": {
-            "image": "shopify://shop_images/featured-image2.png",
+            "image": "shopify://shop_images/bp10.jpg",
             "feature_title": "Precision LED illumination",
             "feature_description": "Built-in LED lighting reveals hidden dust \nand debris, ensuring no corner is missed."
           }
@@ -353,7 +353,7 @@
         "feature_item_ziDRat": {
           "type": "feature_item",
           "settings": {
-            "image": "shopify://shop_images/featured-image3.png",
+            "image": "shopify://shop_images/bp2.jpg",
             "feature_title": "Large 450ML water tank",
             "feature_description": "Up to 30 minutes of continuous cleaning without frequent refilling."
           }
@@ -361,7 +361,7 @@
         "feature_item_U7fMNf": {
           "type": "feature_item",
           "settings": {
-            "image": "shopify://shop_images/featured-image4.png",
+            "image": "shopify://shop_images/bp4.jpg",
             "feature_title": "230 rotations perminute",
             "feature_description": "Dual motors spin the mop heads at 230 RPM, delivering powerful scrubbing with less effort."
           }
@@ -435,9 +435,9 @@
           "type": "feature_slide",
           "settings": {
             "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/Pads.png",
-            "quantity": "2x",
-            "title": "Hard Scrub Pads",
+            "image": "shopify://shop_images/freepik_use-the-attached-image-im_2832274294.png",
+            "quantity": "4x",
+            "title": "Accessories",
             "description": "Feature description."
           }
         },
@@ -445,9 +445,19 @@
           "type": "feature_slide",
           "settings": {
             "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/Image-12_bd03fcc6-e57c-447b-bb14-aa28541cd692.png",
+            "image": "shopify://shop_images/992885ce8c132cd715eca587261765393ebf0280.png",
             "quantity": "1x",
-            "title": "Stoomreiniger 1550W",
+            "title": "Tapijtreiniger - Vlekkenreiniger",
+            "description": "Feature description."
+          }
+        },
+        "feature_slide_34Uztj": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/freepik_use-the-attached-image-im_2832276403.png",
+            "quantity": "1x",
+            "title": "Stain Remover",
             "description": "Feature description."
           }
         },
@@ -465,6 +475,7 @@
       "block_order": [
         "feature_slide_JX7kYq",
         "feature_slide_UPqHqa",
+        "feature_slide_34Uztj",
         "feature_slide_8NxhFH"
       ],
       "name": "KV PDP Features Tab",
