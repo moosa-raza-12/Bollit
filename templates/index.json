@@ -32,8 +32,8 @@
         "block_lp-home-chemical-free-steam-one_1"
       ],
       "settings": {
-        "background_image_desktop": "shopify://shop_images/01.png",
-        "background_image_mobile": "shopify://shop_images/Mobile-Hero.png",
+        "background_image_desktop": "shopify://shop_images/0ae9a1132f60a3516a92504df49ef763909d23b6.png",
+        "background_image_mobile": "shopify://shop_images/f23534daac8ab51dd3143120e605db1036b5eb2b.png",
         "rating_text": "4.5/5 (1,450+ Reviews)",
         "title": "Smarter cleaning for",
         "title2": "every space.",
@@ -180,61 +180,6 @@
             "feature_4_desc": ""
           }
         },
-        "product_BPrkK9": {
-          "type": "product",
-          "settings": {
-            "product": "electric-mop-steam-1500w-copy",
-            "custom_title": "data",
-            "custom_image": "shopify://shop_images/freepik__output-must-be-img1-but-reduce-item-chairs-etc-in-__29243_2.png",
-            "custom_badge": "",
-            "custom_rating": "",
-            "custom_rating_count": "",
-            "feature_1_title": "save",
-            "feature_1_desc": "save to get one free",
-            "feature_2_title": "save",
-            "feature_2_desc": "",
-            "feature_3_title": "",
-            "feature_3_desc": "",
-            "feature_4_title": "",
-            "feature_4_desc": ""
-          }
-        },
-        "product_ywVxtX": {
-          "type": "product",
-          "settings": {
-            "product": "electric-mop-steam-1500w",
-            "custom_title": "",
-            "custom_badge": "",
-            "custom_rating": "",
-            "custom_rating_count": "",
-            "feature_1_title": "",
-            "feature_1_desc": "",
-            "feature_2_title": "",
-            "feature_2_desc": "",
-            "feature_3_title": "",
-            "feature_3_desc": "",
-            "feature_4_title": "",
-            "feature_4_desc": ""
-          }
-        },
-        "product_XNTaNF": {
-          "type": "product",
-          "settings": {
-            "product": "electric-mop-steam-1500w",
-            "custom_title": "",
-            "custom_badge": "",
-            "custom_rating": "",
-            "custom_rating_count": "",
-            "feature_1_title": "",
-            "feature_1_desc": "",
-            "feature_2_title": "",
-            "feature_2_desc": "",
-            "feature_3_title": "",
-            "feature_3_desc": "",
-            "feature_4_title": "",
-            "feature_4_desc": ""
-          }
-        },
         "product_REgYMH": {
           "type": "product",
           "settings": {
@@ -275,9 +220,6 @@
       "block_order": [
         "product_A7qyzb",
         "product_xgVJ4m",
-        "product_BPrkK9",
-        "product_ywVxtX",
-        "product_XNTaNF",
         "product_REgYMH",
         "product_FHf68K"
       ],
