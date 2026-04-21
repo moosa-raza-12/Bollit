@@ -24,6 +24,7 @@
       "blocks": {
         "custom_dropdown_NVnrCi": {
           "type": "custom_dropdown",
+          "name": "Category",
           "settings": {
             "menu_handle": "",
             "childlink_title": "Custom",
@@ -47,26 +48,25 @@
         },
         "custom_bestseller_Q3dLRC": {
           "type": "custom_bestseller",
+          "name": "Bestsellers",
           "settings": {
             "menu_handle": "",
             "childlink_title": "Custom-Best-Seller",
             "card_1_image": "shopify://shop_images/Product_Image_897d26ac-dd2b-45db-a345-05d8a35d9ce7.png",
-            "card_1_title": "Tapijtreinigers",
+            "card_1_title": "BOLLIT Tapijtreiniger - Vlekkenreiniger",
             "card_1_url": "shopify://products/electric-mop-steam-1500w",
             "card_2_image": "shopify://shop_images/Product_image_58e0d9ab-5013-4d04-97bb-609ae5f82315.png",
-            "card_2_title": "Handheld Steamers",
+            "card_2_title": "1500W Elektrische Dweil STOOM",
             "card_2_url": "shopify://products/electric-mop-steam-1500w-copy",
             "card_3_image": "shopify://shop_images/Product_Image_cda63df3-6798-4217-80de-43f7fe7caf77.png",
-            "card_3_title": "Luchtreiniers",
+            "card_3_title": "20-in-1 Stoomreiniger 1550W Lichtgewicht",
             "card_3_url": "shopify://products/steam-cleaner",
-            "card_4_image": "shopify://shop_images/Product_image_900e133c-87c6-4b6d-bdb2-ce9820046885.png",
-            "card_4_title": "HandSteamer",
+            "card_4_image": "shopify://shop_images/Untitled_4.png",
+            "card_4_title": "Stoomreiniger PRO 2000W",
             "card_4_url": "shopify://products/handheld-steamer",
-            "card_5_image": "shopify://shop_images/Product_image_1c8da0e1-44f1-4bc1-aa4a-b8529dc7bdd7.png",
-            "card_5_title": "Stoomreiniger",
-            "card_5_url": "shopify://products/steam-scrubber",
-            "card_6_image": "shopify://shop_images/Product_Image_9fbb0c0c-0246-4b66-9cbf-da1007a2aecf.png",
-            "card_6_title": "Accessories",
+            "card_5_title": "",
+            "card_5_url": "",
+            "card_6_title": "",
             "card_6_url": "shopify://products/electric-mop-steam-1500w-copy"
           }
         },
