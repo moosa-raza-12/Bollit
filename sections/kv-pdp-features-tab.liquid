@@ -19,17 +19,6 @@
         {% endfor %}
         {% assign tab_list = tabs_string | split: "|||" %}
 
-        <div class="kv-pdp-ft-tabs-row">
-            <div class="kv-pdp-ft-tabs">
-                {% for tab in tab_list %}
-                    <button class="kv-pdp-ft-tab" type="button" data-tab="{{ tab | handleize }}">
-                        {{ tab }}
-                    </button>
-                {% endfor %}
-            </div>
-
-        </div>
-
         {% for tab in tab_list %}
             <div class="kv-pdp-ft-swiper-wrap" data-tab-content="{{ tab | handleize }}">
                 <div class="swiper kv-pdp-ft-swiper">
