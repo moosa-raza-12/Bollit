@@ -435,9 +435,9 @@
           "type": "feature_slide",
           "settings": {
             "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/Pads.png",
+            "image": "shopify://shop_images/freepik_use-the-attached-image-im_2832107480.png",
             "quantity": "2x",
-            "title": "Hard Scrub Pads",
+            "title": "Accessories",
             "description": "Feature description."
           }
         },
@@ -445,16 +445,27 @@
           "type": "feature_slide",
           "settings": {
             "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/Image-12_bd03fcc6-e57c-447b-bb14-aa28541cd692.png",
+            "image": "shopify://shop_images/Image-8_5331b8fe-f392-4de0-ae50-e83dc63eb57f.png",
             "quantity": "1x",
             "title": "Stoomreiniger 1550W",
+            "description": "Feature description."
+          }
+        },
+        "feature_slide_aKzpkW": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/Prduct-Manual.png",
+            "quantity": "1x",
+            "title": "Product Manual",
             "description": "Feature description."
           }
         }
       },
       "block_order": [
         "feature_slide_JX7kYq",
-        "feature_slide_UPqHqa"
+        "feature_slide_UPqHqa",
+        "feature_slide_aKzpkW"
       ],
       "name": "KV PDP Features Tab",
       "settings": {
