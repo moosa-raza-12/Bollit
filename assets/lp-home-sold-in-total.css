@@ -206,8 +206,8 @@
 }
 
 .lp-best-sellers__image-inner {
-  width: 184px;
-  height: 184px;
+  /* width: 184px;
+  height: 184px; */
   display: flex;
   align-items: center;
   justify-content: center;
