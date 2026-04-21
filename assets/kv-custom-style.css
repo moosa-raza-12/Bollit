@@ -648,6 +648,9 @@ textarea#ContactForm-body {
 .form__message {
     align-items: center;
 }
+.product__info-wrapper .product__tax.caption{
+    display: none;
+}
 
 @media (max-width: 1199.98px) { 
     .kv-font-42{
