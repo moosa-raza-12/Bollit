@@ -87,7 +87,6 @@
       "blocks": {
         "block_lp-home-view-all_0": {
           "type": "category",
-          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/freepik__output-must-be-img1-but-reduce-item-chairs-etc-in-__29243_2.png",
             "title": "Tapijtreinigers",
@@ -96,6 +95,7 @@
         },
         "block_lp-home-view-all_1": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/90e71209fa0e16e909426a27f465b9ee7a8c3fe4.png",
             "title": "HandSteamer",
