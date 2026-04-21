@@ -166,7 +166,7 @@
 }
 
 .lp-best-sellers__slide {
-  /* width: 280px; */
+  width: 280px;
   flex-shrink: 0;
 }
 
