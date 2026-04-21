@@ -27,14 +27,7 @@
                     </button>
                 {% endfor %}
             </div>
-            {% if section.settings.cta_text != blank %}
-                <a href="{{ section.settings.cta_link }}" class="kv-pdp-ft-cta">
-                    {{ section.settings.cta_text }}
-                    {% if section.settings.cta_badge != blank %}
-                        <span class="kv-pdp-ft-cta-badge">{{ section.settings.cta_badge }}</span>
-                    {% endif %}
-                </a>
-            {% endif %}
+
         </div>
 
         {% for tab in tab_list %}
@@ -68,14 +61,8 @@
                     <div class="kv-pdp-ft-progressbar-wrap">
                         <div class="swiper-pagination kv-pdp-ft-progressbar"></div>
                     </div>
-                    {% if section.settings.cta_text != blank %}
-                        <a href="{{ section.settings.cta_link }}" class="kv-pdp-ft-cta mobile-cta" style="display: none;">
-                            {{ section.settings.cta_text }}
-                            {% if section.settings.cta_badge != blank %}
-                                <span class="kv-pdp-ft-cta-badge">{{ section.settings.cta_badge }}</span>
-                            {% endif %}
-                        </a>
-                    {% endif %}
+                    
+                    
                 </div>
             </div>
         {% endfor %}
@@ -182,23 +169,6 @@
       "id": "description",
       "label": "Section Description",
       "default": "Everything you need for deep, effortless cleaning."
-    },
-    {
-      "type": "text",
-      "id": "cta_text",
-      "label": "CTA Button Text",
-      "default": "Shop Now"
-    },
-    {
-      "type": "text",
-      "id": "cta_badge",
-      "label": "CTA Badge Text",
-      "default": "Save 24%"
-    },
-    {
-      "type": "url",
-      "id": "cta_link",
-      "label": "CTA Button Link"
     },
     {
       "type": "color",
