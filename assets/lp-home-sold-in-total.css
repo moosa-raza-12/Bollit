@@ -251,7 +251,8 @@ a.lp-best-sellers__image-link {
     margin-bottom: 14px;
   }
   .lp-best-sellers__card-title, .lp-best-sellers__card-title a {
-    font-size: 22px;
+    font-size: 19px;
+    line-height: 25px;
   }
   .lp-best-sellers__card-badge {
     font-size: 14px;
