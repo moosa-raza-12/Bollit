@@ -26,13 +26,13 @@
           {% for block in section.blocks %}
             <div class="swiper-slide lp-happier-homes__slide" {{ block.shopify_attributes }}>
               <div class="lp-happier-homes__card">
-                <div class="lp-happier-homes__card-image-wrapper">
+                <!--<div class="lp-happier-homes__card-image-wrapper">
                   {% if block.settings.product_image != blank %}
                     {{ block.settings.product_image | image_url: width: master | image_tag: class: 'lp-happier-homes__card-image', loading: 'lazy' }}
                   {% else %}
                     {{ 'product-1' | placeholder_svg_tag: 'lp-happier-homes__card-image' }}
                   {% endif %}
-                </div>
+                </div>-->
 
                 <div class="lp-happier-homes__card-content">
                   <div class="lp-happier-homes__card-stars">
