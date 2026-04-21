@@ -450,11 +450,33 @@
             "title": "Stoomreiniger 1550W",
             "description": "Feature description."
           }
+        },
+        "feature_slide_PdxVzr": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/freepik_use-the-attached-image-im_2832020447.png",
+            "quantity": "1x",
+            "title": "Measure Cup",
+            "description": "Feature description."
+          }
+        },
+        "feature_slide_ECc9yF": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/Prduct-Manual.png",
+            "quantity": "1x",
+            "title": "Product Manual",
+            "description": "Feature description."
+          }
         }
       },
       "block_order": [
         "feature_slide_JX7kYq",
-        "feature_slide_UPqHqa"
+        "feature_slide_UPqHqa",
+        "feature_slide_PdxVzr",
+        "feature_slide_ECc9yF"
       ],
       "name": "KV PDP Features Tab",
       "settings": {
