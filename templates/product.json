@@ -441,130 +441,20 @@
             "description": "Feature description."
           }
         },
-        "feature_slide_LibD7g": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/featured-image2.png",
-            "quantity": "2x",
-            "title": "Hard Scrub Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_7GHCjk": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/Image.png",
-            "quantity": "2x",
-            "title": "Hard Scrub Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_rXUe6p": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/f23534daac8ab51dd3143120e605db1036b5eb2b.png",
-            "quantity": "2x",
-            "title": "Hard Scrub Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_ptz6V8": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/992885ce8c132cd715eca587261765393ebf0280.png",
-            "quantity": "2x",
-            "title": "Hard Scrub Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_LzttAk": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Hard Scrub Pads",
-            "image": "shopify://shop_images/collection-img-4.png",
-            "quantity": "2x",
-            "title": "Hard Scrub Pads",
-            "description": "Feature description."
-          }
-        },
         "feature_slide_UPqHqa": {
           "type": "feature_slide",
           "settings": {
-            "tab_name": "Soft Cleaning Pads",
-            "image": "shopify://shop_images/featured-image2.png",
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/Image-12_bd03fcc6-e57c-447b-bb14-aa28541cd692.png",
             "quantity": "1x",
-            "title": "Soft Cleaning Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_Xg7Cbc": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Soft Cleaning Pads",
-            "image": "shopify://shop_images/Mop_Image.png",
-            "quantity": "1x",
-            "title": "Soft Cleaning Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_AganKU": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Soft Cleaning Pads",
-            "image": "shopify://shop_images/Feature_Image_c59a85a8-205f-45df-8c39-93d3867d607a.png",
-            "quantity": "1x",
-            "title": "Soft Cleaning Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_MPGFgF": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Soft Cleaning Pads",
-            "image": "shopify://shop_images/image_144.png",
-            "quantity": "1x",
-            "title": "Soft Cleaning Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_xdDe3t": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Soft Cleaning Pads",
-            "image": "shopify://shop_images/Mop_Image.png",
-            "quantity": "1x",
-            "title": "Soft Cleaning Pads",
-            "description": "Feature description."
-          }
-        },
-        "feature_slide_LijrAi": {
-          "type": "feature_slide",
-          "settings": {
-            "tab_name": "Soft Cleaning Pads",
-            "image": "shopify://shop_images/Image.png",
-            "quantity": "1x",
-            "title": "Soft Cleaning Pads",
+            "title": "Stoomreiniger 1550W Lichtgewicht",
             "description": "Feature description."
           }
         }
       },
       "block_order": [
         "feature_slide_JX7kYq",
-        "feature_slide_LibD7g",
-        "feature_slide_7GHCjk",
-        "feature_slide_rXUe6p",
-        "feature_slide_ptz6V8",
-        "feature_slide_LzttAk",
-        "feature_slide_UPqHqa",
-        "feature_slide_Xg7Cbc",
-        "feature_slide_AganKU",
-        "feature_slide_MPGFgF",
-        "feature_slide_xdDe3t",
-        "feature_slide_LijrAi"
+        "feature_slide_UPqHqa"
       ],
       "name": "KV PDP Features Tab",
       "settings": {
