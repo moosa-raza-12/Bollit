@@ -18,7 +18,7 @@
             {% endunless %}
         {% endfor %}
         {% assign tab_list = tabs_string | split: "|||" %}
-
+{% comment %} 
         <div class="kv-pdp-ft-tabs-row">
             <div class="kv-pdp-ft-tabs">
                 {% for tab in tab_list %}
@@ -28,7 +28,7 @@
                 {% endfor %}
             </div>
 
-        </div>
+        </div> {% endcomment %}
 
         {% for tab in tab_list %}
             <div class="kv-pdp-ft-swiper-wrap" data-tab-content="{{ tab | handleize }}" {% unless forloop.first %}style="display:none;"{% endunless %}>
