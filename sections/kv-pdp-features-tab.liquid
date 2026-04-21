@@ -22,7 +22,7 @@
         <div class="kv-pdp-ft-tabs-row">
             <div class="kv-pdp-ft-tabs">
                 {% for tab in tab_list %}
-                    <button class="kv-pdp-ft-tab{% if forloop.first %} active{% endif %}" data-tab="{{ tab | handleize }}">
+                    <button class="kv-pdp-ft-tab" type="button" data-tab="{{ tab | handleize }}">
                         {{ tab }}
                     </button>
                 {% endfor %}
@@ -31,7 +31,7 @@
         </div>
 
         {% for tab in tab_list %}
-            <div class="kv-pdp-ft-swiper-wrap" data-tab-content="{{ tab | handleize }}" {% unless forloop.first %}style="display:none;"{% endunless %}>
+            <div class="kv-pdp-ft-swiper-wrap" data-tab-content="{{ tab | handleize }}">
                 <div class="swiper kv-pdp-ft-swiper">
                     <div class="swiper-wrapper">
                         {% for block in section.blocks %}
@@ -74,7 +74,6 @@
         var section = document.querySelector('.kv-pdp-ft-section');
         if (!section) return;
 
-        var tabs = section.querySelectorAll('.kv-pdp-ft-tab');
         var swiperInstances = {};
 
         var swiperConfig = {
@@ -113,13 +112,12 @@
             },
         };
 
-        function initSwiper(tabId) {
-            if (swiperInstances[tabId]) {
-                swiperInstances[tabId].update();
+        function initSwiper(wrap, index) {
+            if (!wrap) return;
+            if (swiperInstances[index]) {
+                swiperInstances[index].update();
                 return;
             }
-            var wrap = section.querySelector('[data-tab-content="' + tabId + '"]');
-            if (!wrap) return;
 
             var config = Object.assign({}, swiperConfig, {
                 pagination: {
@@ -127,29 +125,12 @@
                     type: 'progressbar'
                 }
             });
-            swiperInstances[tabId] = new Swiper(wrap.querySelector('.kv-pdp-ft-swiper'), config);
+            swiperInstances[index] = new Swiper(wrap.querySelector('.kv-pdp-ft-swiper'), config);
         }
 
-        var firstTabId = tabs[0] ? tabs[0].getAttribute('data-tab') : null;
-        if (firstTabId) initSwiper(firstTabId);
-
-        tabs.forEach(function (tab) {
-            tab.addEventListener('click', function () {
-                var tabId = this.getAttribute('data-tab');
-
-                tabs.forEach(function (t) { t.classList.remove('active'); });
-                this.classList.add('active');
-
-                section.querySelectorAll('.kv-pdp-ft-swiper-wrap').forEach(function (w) {
-                    w.style.display = 'none';
-                });
-
-                var activeWrap = section.querySelector('[data-tab-content="' + tabId + '"]');
-                if (activeWrap) {
-                    activeWrap.style.display = 'block';
-                    initSwiper(tabId);
-                }
-            });
+        var wraps = section.querySelectorAll('.kv-pdp-ft-swiper-wrap');
+        wraps.forEach(function (wrap, index) {
+            initSwiper(wrap, index);
         });
     });
 </script>
