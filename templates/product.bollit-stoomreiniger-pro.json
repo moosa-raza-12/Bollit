@@ -1,0 +1,603 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "kv_pdp_best_sellers_Gyrkkn": {
+      "type": "kv-pdp-best-sellers",
+      "blocks": {
+        "product_chip_fAxFXB": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        },
+        "product_chip_cwgxiq": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        },
+        "product_chip_bpLy3X": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        },
+        "product_chip_KmfETq": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        },
+        "product_chip_QK8bxc": {
+          "type": "product_chip",
+          "settings": {
+            "product": "handheld-steamer",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_chip_fAxFXB",
+        "product_chip_cwgxiq",
+        "product_chip_bpLy3X",
+        "product_chip_KmfETq",
+        "product_chip_QK8bxc"
+      ],
+      "name": "KV PDP Best sellers",
+      "settings": {
+        "lead_label": "Popular",
+        "lead_link": "",
+        "lead_background": "#003665",
+        "lead_text_color": "#ffffff",
+        "section_background": "#ffffff",
+        "chip_background": "#ffffff",
+        "chip_border": "#f5f5f5",
+        "chip_label_color": "#003665",
+        "image_ring_color": "#003665"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "kv_review_badge_X3BLK6": {
+          "type": "kv-review-badge",
+          "settings": {
+            "rating_text": "4.5/5",
+            "review_count": "1,450+",
+            "review_label": "Reviews"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "description_KDf6Q4": {
+          "type": "description",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "kv_usp_icons_RfwtAa": {
+          "type": "kv-usp-icons",
+          "settings": {
+            "icon_image_1": "shopify://shop_images/usp-icon1.svg",
+            "icon_1": "bolt",
+            "heading_1": "1500W high-performance",
+            "icon_image_2": "shopify://shop_images/usp-icon2.svg",
+            "icon_2": "refresh",
+            "heading_2": "Dual rotating cleaning",
+            "icon_image_3": "shopify://shop_images/usp-icon3.svg",
+            "icon_3": "check_mark",
+            "heading_3": "Chemical-free steam"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false,
+            "trust_badge_1_icon": "shopify://shop_images/warranty-atc.svg",
+            "trust_badge_1_text": "2-year warranty",
+            "trust_badge_2_icon": "shopify://shop_images/returns-atc.svg",
+            "trust_badge_2_text": "30-day returns"
+          }
+        },
+        "kv_tab_RpLngJ": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "How it works",
+            "content": "<p>Effortlessly rid your carpets and upholstery of stubborn stains with the revolutionary Bollit Carpet Cleaner! Say goodbye to dirt and welcome a radiant interior. This portable stain cleaner is your secret weapon against unwanted stains, and makes cleaning an easy job.<br/><br/>Effortlessly rid your carpets and upholstery of stubborn stains with the revolutionary Bollit Carpet Cleaner! Say goodbye to dirt and welcome a radiant interior. </p>"
+          }
+        },
+        "kv_tab_BUtBW8": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "Product description",
+            "content": "{{ product.description }}"
+          }
+        },
+        "kv_tab_kpAqQ6": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "Delivery time",
+            "content": "<p>delivery time</p>"
+          }
+        },
+        "kv_tab_jdfdF9": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "Returns & Shipping",
+            "content": "<p>Returns & Shipping</p>"
+          }
+        },
+        "kv_tab_eEXPz4": {
+          "type": "kv-tab",
+          "settings": {
+            "heading": "Returns & Shipping",
+            "content": "<p>Returns & Shipping</p>"
+          }
+        },
+        "kv_video_ThFYJq": {
+          "type": "kv-video",
+          "disabled": true,
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/dummy_ugc_video.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_LyQrkb": {
+          "type": "kv-video",
+          "disabled": true,
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_Q8Npjd": {
+          "type": "kv-video",
+          "disabled": true,
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/dummy_ugc_video.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_KYQAnd": {
+          "type": "kv-video",
+          "disabled": true,
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_qPgzaG": {
+          "type": "kv-video",
+          "disabled": true,
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/dummy_ugc_video.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_Mai9zp": {
+          "type": "kv-video",
+          "disabled": true,
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/cute_dog_playing_dummy_ugc.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_video_nbipen": {
+          "type": "kv-video",
+          "disabled": true,
+          "settings": {
+            "section_heading": "Trusted in 2,000+ homes",
+            "video": "shopify://files/videos/dummy_ugc_video.mp4",
+            "video_url": "",
+            "video_title": "Customer review"
+          }
+        },
+        "kv_jump_to_f8Hzt8": {
+          "type": "kv-jump-to",
+          "settings": {
+            "heading": "Jump to:",
+            "icon_fallback": "star",
+            "title": "Features",
+            "anchor": "product-features"
+          }
+        },
+        "kv_jump_to_4GXTMb": {
+          "type": "kv-jump-to",
+          "settings": {
+            "heading": "Accessories",
+            "icon_fallback": "star",
+            "title": "Accessories",
+            "anchor": "product-features"
+          }
+        },
+        "kv_jump_to_8MqBkd": {
+          "type": "kv-jump-to",
+          "settings": {
+            "heading": "Accessories",
+            "icon_fallback": "star",
+            "title": "Review",
+            "anchor": "product-features"
+          }
+        },
+        "kv_jump_to_xayKWR": {
+          "type": "kv-jump-to",
+          "settings": {
+            "heading": "Accessories",
+            "icon_fallback": "star",
+            "title": "Usage",
+            "anchor": "product-features"
+          }
+        }
+      },
+      "block_order": [
+        "kv_review_badge_X3BLK6",
+        "title",
+        "description_KDf6Q4",
+        "price",
+        "kv_usp_icons_RfwtAa",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "kv_tab_RpLngJ",
+        "kv_tab_BUtBW8",
+        "kv_tab_kpAqQ6",
+        "kv_tab_jdfdF9",
+        "kv_tab_eEXPz4",
+        "kv_video_ThFYJq",
+        "kv_video_LyQrkb",
+        "kv_video_Q8Npjd",
+        "kv_video_KYQAnd",
+        "kv_video_qPgzaG",
+        "kv_video_Mai9zp",
+        "kv_video_nbipen",
+        "kv_jump_to_f8Hzt8",
+        "kv_jump_to_4GXTMb",
+        "kv_jump_to_8MqBkd",
+        "kv_jump_to_xayKWR"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "large",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "stacked",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "kv_pdp_features_grid_4n76kn": {
+      "type": "kv-pdp-features-grid",
+      "blocks": {
+        "feature_item_tNhnkx": {
+          "type": "feature_item",
+          "settings": {
+            "image": "shopify://shop_images/featured-image1.png",
+            "feature_title": "4 cleaning modes",
+            "feature_description": "From gentle care to turbo power and steam boost, each mode adapts for controlled, effective cleaning."
+          }
+        },
+        "feature_item_Rcwe7y": {
+          "type": "feature_item",
+          "settings": {
+            "image": "shopify://shop_images/featured-image2.png",
+            "feature_title": "Precision LED illumination",
+            "feature_description": "Built-in LED lighting reveals hidden dust \nand debris, ensuring no corner is missed."
+          }
+        },
+        "feature_item_ziDRat": {
+          "type": "feature_item",
+          "settings": {
+            "image": "shopify://shop_images/featured-image3.png",
+            "feature_title": "Large 450ML water tank",
+            "feature_description": "Up to 30 minutes of continuous cleaning without frequent refilling."
+          }
+        },
+        "feature_item_U7fMNf": {
+          "type": "feature_item",
+          "settings": {
+            "image": "shopify://shop_images/featured-image4.png",
+            "feature_title": "230 rotations perminute",
+            "feature_description": "Dual motors spin the mop heads at 230 RPM, delivering powerful scrubbing with less effort."
+          }
+        }
+      },
+      "block_order": [
+        "feature_item_tNhnkx",
+        "feature_item_Rcwe7y",
+        "feature_item_ziDRat",
+        "feature_item_U7fMNf"
+      ],
+      "name": "KV PDP Features Grid",
+      "settings": {
+        "title": "Designed to target <em>stubborn surfaces</em>",
+        "description": "Clears tough dirt at the source, leaving surfaces cleaner, fresher, and visibly renewed.",
+        "background_color": "#f0f8ff"
+      }
+    },
+    "kv_pdp_comparison_K3iwhT": {
+      "type": "kv-pdp-comparison",
+      "blocks": {
+        "comparison_item_aJ9efR": {
+          "type": "comparison_item",
+          "settings": {
+            "image_others": "shopify://shop_images/bollit-before.png",
+            "image_bollit": "shopify://shop_images/bollit-after.png"
+          }
+        },
+        "comparison_item_tdAeeL": {
+          "type": "comparison_item",
+          "settings": {
+            "image_others": "shopify://shop_images/bollit-before.png",
+            "image_bollit": "shopify://shop_images/bollit-after.png"
+          }
+        },
+        "comparison_item_eeNYDq": {
+          "type": "comparison_item",
+          "settings": {
+            "image_others": "shopify://shop_images/bollit-before.png",
+            "image_bollit": "shopify://shop_images/bollit-after.png"
+          }
+        },
+        "comparison_item_a4x4FT": {
+          "type": "comparison_item",
+          "settings": {
+            "image_others": "shopify://shop_images/bollit-before.png",
+            "image_bollit": "shopify://shop_images/bollit-after.png"
+          }
+        }
+      },
+      "block_order": [
+        "comparison_item_aJ9efR",
+        "comparison_item_tdAeeL",
+        "comparison_item_eeNYDq",
+        "comparison_item_a4x4FT"
+      ],
+      "disabled": true,
+      "name": "KV PDP Comparison",
+      "settings": {
+        "title": "Real homes, <em>visible results</em>",
+        "description": "See how homeowners transform their homes with effortless cleaning, no filters, just results.",
+        "bollit_icon": "shopify://shop_images/bollit-after-logo.svg",
+        "others_title": "Others",
+        "background_color": "#f9f9f9"
+      }
+    },
+    "kv_pdp_features_tab_MdaUtV": {
+      "type": "kv-pdp-features-tab",
+      "blocks": {
+        "feature_slide_JX7kYq": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/Pads.png",
+            "quantity": "2x",
+            "title": "Hard Scrub Pads",
+            "description": "Feature description."
+          }
+        },
+        "feature_slide_UPqHqa": {
+          "type": "feature_slide",
+          "settings": {
+            "tab_name": "Hard Scrub Pads",
+            "image": "shopify://shop_images/Image-12_bd03fcc6-e57c-447b-bb14-aa28541cd692.png",
+            "quantity": "1x",
+            "title": "Stoomreiniger 1550W",
+            "description": "Feature description."
+          }
+        }
+      },
+      "block_order": [
+        "feature_slide_JX7kYq",
+        "feature_slide_UPqHqa"
+      ],
+      "name": "KV PDP Features Tab",
+      "settings": {
+        "title": "What's in the <em>box?</em>",
+        "description": "Everything you need for deep, effortless cleaning.",
+        "cta_text": "Shop Now",
+        "cta_badge": "Save 24%",
+        "cta_link": "",
+        "background_color": "#ffffff"
+      }
+    },
+    "kv_pdp_hightlight_carousel_tCiMk8": {
+      "type": "kv-pdp-hightlight-carousel",
+      "blocks": {
+        "highlight_item_xgnxDc": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/Image-13_ae32c7d3-4705-4bb4-a15a-c62ef7d1da62.png",
+            "title": "Floor",
+            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+          }
+        },
+        "highlight_item_KBjRCU": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/Image-12_950026f9-178a-4338-a3fa-0e63c7784ef4.png",
+            "title": "Furniture",
+            "description": "Removes dirt from upholstery and fabric with controlled power."
+          }
+        },
+        "highlight_item_kkTwqk": {
+          "type": "highlight_item",
+          "settings": {
+            "image": "shopify://shop_images/Image-8_fff55345-e494-4cfd-b606-403e6a0340ad.png",
+            "title": "Curtain",
+            "description": "From hardwood to tile, deep cleans without damaging surfaces."
+          }
+        }
+      },
+      "block_order": [
+        "highlight_item_xgnxDc",
+        "highlight_item_KBjRCU",
+        "highlight_item_kkTwqk"
+      ],
+      "name": "KV PDP Highlight Carousel",
+      "settings": {
+        "title": "Power that adapts <em>to every surface</em>",
+        "description": "From hardwood to tile, Bollit delivers powerful, controlled cleaning wherever life happens.",
+        "background_color": "#fffbf5"
+      }
+    },
+    "lp_home_join_happier_homes_zn66gG": {
+      "type": "lp-home-join-happier-homes",
+      "blocks": {
+        "testimonial_XNdGkP": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_a768tj": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_6m4ByX": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_ywUeCq": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_qkG9FH": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        },
+        "testimonial_cDQ9xL": {
+          "type": "testimonial",
+          "settings": {
+            "product_image": "shopify://shop_images/Product_Image_Container_c4175d4f-e1e2-4c84-aa85-62c3bb479086.png",
+            "review_title": "Best on the market",
+            "review_desc": "I love this product because the support is great. I love this product because the support is great.",
+            "reviewer_name": "Margreet",
+            "reviewer_avatar": "shopify://shop_images/Ellipse_159.png",
+            "reviewer_country_img": "shopify://shop_images/Nederland_svg.svg"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_XNdGkP",
+        "testimonial_a768tj",
+        "testimonial_6m4ByX",
+        "testimonial_ywUeCq",
+        "testimonial_qkG9FH",
+        "testimonial_cDQ9xL"
+      ],
+      "settings": {
+        "reviews_text": "4.5/5 (1,450+ Reviews)",
+        "title": "Join 2,000+ <em>happier homes</em>"
+      }
+    }
+  },
+  "order": [
+    "kv_pdp_best_sellers_Gyrkkn",
+    "main",
+    "related-products",
+    "kv_pdp_features_grid_4n76kn",
+    "kv_pdp_comparison_K3iwhT",
+    "kv_pdp_features_tab_MdaUtV",
+    "kv_pdp_hightlight_carousel_tCiMk8",
+    "lp_home_join_happier_homes_zn66gG"
+  ]
+}
