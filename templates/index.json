@@ -87,6 +87,7 @@
       "blocks": {
         "block_lp-home-view-all_0": {
           "type": "category",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/freepik__output-must-be-img1-but-reduce-item-chairs-etc-in-__29243_2.png",
             "title": "Tapijtreinigers",
